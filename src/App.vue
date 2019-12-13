@@ -3,7 +3,7 @@
         <NavBar/>
     <div id="nav">
     </div>
-      <!-- <router-link to="/menu">Menu</router-link> |
+<!--       <router-link to="/menu">Menu</router-link> |
       <router-link to="/room">Room</router-link> |
       <router-link to="/register">Register</router-link> |
       <router-link to="/profile">Profile</router-link> |
