@@ -1,14 +1,16 @@
 <template>
-  <div class="navBar">
-      
-    <b-navbar toggleable="lg" style="background-Color:black" type="dark">
-      <b-navbar-brand href="#">
-           <img src="../assets/logoWhite.png" style="width: 180px" >
-      </b-navbar-brand>
+    <div class="navBar">
+      <b-navbar toggleable="lg" style="background-Color:black" type="dark">
+        <b-navbar-brand href="#">
+        
+          <img src="../assets/logoWhite.png" style="width: 180px" />
+        </b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <b-collapse id="nav-collapse" is-nav>
+        <b-collapse id="nav-collapse" is-nav style="margin-left:350px">
+          <!-- Right aligned nav items -->
+            <img src="../assets/Logo.mao.png" style="width: 50px" />
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
