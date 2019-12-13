@@ -1,12 +1,37 @@
 <template>
   <div id="app">
+        <NavBar/>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
     </div>
+      <!-- <router-link to="/menu">Menu</router-link> |
+      <router-link to="/room">Room</router-link> |
+      <router-link to="/register">Register</router-link> |
+      <router-link to="/profile">Profile</router-link> |
+      <router-link to="/eventsProfile">EventsProfile</router-link> |
+      <router-link to="/roomProfile">RoomProfile</router-link> |
+      <router-link to="/editProfile">EditProfile</router-link> |
+      <router-link to="/reservation">Reservation</router-link> |
+      <router-link to="/events">EventsReserv</router-link> |
+      <router-link to="/information">Information</router-link> |
+      <router-link to="/menu">MenuReserv</router-link> |
+      <router-link to="/components">Components</router-link> |
+      <router-link to="/extra">Extra</router-link> |
+      <router-link to="/summary">Summary</router-link> -->
     <router-view />
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import NavBar from "@/components/NavBar.vue";
+
+export default {
+  name: "home",
+  components: {
+    NavBar
+  }
+};
+</script>
 
 <style>
 #app {
