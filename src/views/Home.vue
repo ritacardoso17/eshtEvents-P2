@@ -2,7 +2,7 @@
   <div class="home">
 
     <Carousel/>
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img alt="Vue logo" src="../assets/logo.eshtEvents.png" />
     
   </div>
 </template>
