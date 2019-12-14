@@ -12,13 +12,13 @@
           <!-- Right aligned nav items -->
             <img src="../assets/Logo.mao.png" style="width: 50px" />
 
-          <b-navbar-nav class="ml-auto">
-            <b-nav-item-dropdown right></b-nav-item-dropdown>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
-    </div>
-
-    
-    
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item-dropdown right>
+      
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
