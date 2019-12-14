@@ -1,14 +1,14 @@
 <template>
   <div class="hello">
-    <div class="container" width="3000px">
+    <div class="container" width="300px">
       <b-carousel
       id="carousel-1"
       v-model="slide"
-      :interval="4000"
+      :interval="6000"
       controls
       indicators
-      background="#ababab"
-      img-width="1600"
+      background="white"
+      img-width="1300"
       img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
@@ -18,10 +18,9 @@
 
 
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
+      <b-carousel-slide  img-blank img-alt="Blank image">
+        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eros felis, tincidunt
-          a tincidunt eget, convallis vel est. Ut pellentesque ut lacus vel interdum.
         </p>
       </b-carousel-slide>
     </b-carousel>
@@ -55,3 +54,16 @@ name: "Carousel",
     }
   }
 </script>
+
+<style>
+.imgCarousel{
+  width: 70%;
+  height: auto;
+  position: absolute;
+  right: 120px;
+  top: -320px;
+  background-color: white;
+  border: 3px solid;
+  border-color: #F7CA18;
+}
+</style>
