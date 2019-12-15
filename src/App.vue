@@ -34,6 +34,21 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: Channel;
+    src: url(/assets/Fonts/Channel.ttf);
+}
+
+@font-face {
+    font-family: Champagne;
+    src: url(/assets/Fonts/Champagne&Limousines.ttf);
+}
+
+@font-face {
+    font-family: GeosansLight;
+    src: url(/assets/Fonts/GeosansLight.ttf);
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
