@@ -4,13 +4,19 @@
   <nav style="background-Color:black" type="dark">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="/html/landingPage.html">
-      <img src="../assets/logoWhite.png" style="width: 180px" /></a>
-
-    <a class="profile_img" href="/html/profile.html">
-      <img class="avatarImg" alt="">
-      <b><p class="user_name"></p></b>
+    <a class="navbar-brand" href="#">
+      <img src="../assets/logoWhite.png" style="width: 180px" id="logo" />
+      <img src="../assets/Logo.mao.png" style="width: 50px"/>
     </a>
+
+    <b-modal id="modal-1" title="Iniciar Sessão">
+      <div class="form-group">
+        <label for="">E-mail:</label>
+        <input type="email" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+        <label for="">Palavra-Chave:</label>
+        <input type="password" class="form-control" name="" id="" aria-describedby="emailHelpId" placeholder="">
+      </div>
+    </b-modal>
 
     <!-- Collapse button -->
     <button class="navbar-toggler toggler-example purple darken-3" type="button" data-toggle="collapse"
@@ -25,25 +31,28 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/html/profile.html">
-            <img class="user_img" src="/html/imagens/verde.png" alt="" href="#">PERFIL</a>
+          <a class="nav-link" href="#">
+            <img class="user_img" src="#" alt="" href="#">Perfil</a>
         </li>
         <li class="nav-item6">
-          <a class="nav-link" href="/html/gamesIntro.html">JOGOS</a>
+          <a class="nav-link" href="#">Eventos e Catering</a>
         </li>
         <li class="nav-item5">
-          <a class="nav-link" href="/html/catalog.html">CADERNETA</a>
+          <a class="nav-link" href="#">Espaços</a>
         </li>
-       
         <li class="nav-item4">
-          <a class="nav-link" href="/html/curiosity.html">CURIOSIDADES</a>
+          <a class="nav-link" href="#">Workshops</a>
         </li>
-        <li class="nav-item2" id="terminarSessao">
-          <a class="nav-link" href="#">TERMINAR SESSÃO</a>
+        <li class="nav-item4">
+          <a class="nav-link" href="#">Menus</a>
         </li>
         <li class="nav-item1" id="sobreNos">
-          <a class="nav-link" href="/html/contact.html">¿SOBRE NÓS</a>
+          <a class="nav-link" href="#">Sobre Nós</a>
         </li>
+        <li class="nav-item2" id="terminarSessao">
+          <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão<!-- moustache? --></a>
+        </li>
+        
       </ul>
       <!-- Links -->
 
@@ -54,3 +63,34 @@
   <!--/.Navbar-->
   </div>
 </template>
+
+<style>
+#logo{
+  position: absolute;
+  left: 30px;
+}
+
+#login{
+  color: white;
+  font-family: Geosans;
+}
+
+.nav-link{
+  color: white;
+  font-family: Geosans;
+}
+
+.navbar-nav{
+  width: 200px;
+  text-align: right;
+  float: right;
+  background-color: brown
+}
+
+.navbar-toggler{
+  position: absolute;
+  background-color: white;
+  right: 50px;
+  top: 10px;
+}
+</style>

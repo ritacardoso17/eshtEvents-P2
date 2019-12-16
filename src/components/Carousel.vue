@@ -19,9 +19,22 @@
 
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
       <b-carousel-slide  img-blank img-alt="Blank image">
-        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
-        <p>
+        <p id="hey">
+          HEY
         </p>
+        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
+      </b-carousel-slide>
+      <b-carousel-slide  img-blank img-alt="Blank image">
+        <p id="oh">
+          OH
+        </p>
+        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
+      </b-carousel-slide>
+      <b-carousel-slide  img-blank img-alt="Blank image">
+        <p id="lets">
+          LETS GO
+        </p>
+        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
       </b-carousel-slide>
     </b-carousel>
     </div>
@@ -65,5 +78,17 @@ name: "Carousel",
   background-color: white;
   border: 3px solid;
   border-color: #F7CA18;
+}
+
+#hey{
+  font-family: Champagne
+}
+
+#ho{
+  font-family: GeosansLight
+}
+
+#lets{
+  font-family: Channel
 }
 </style>
