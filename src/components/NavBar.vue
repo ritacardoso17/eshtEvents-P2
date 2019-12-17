@@ -11,7 +11,7 @@
           <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
         </li>
       </ul>
-      
+
       <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão<!-- moustache? --></a>
       <b-modal id="modal-1" title="Iniciar Sessão" hide-footer>
         <div class="form-group">
@@ -29,8 +29,8 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <router-link to="/"> Eventos e Catering</router-link>
-        <router-link to="/">Espaços</router-link>
+        <router-link to="/"> Eventos e Catering</router-link> <span></span>
+        <router-link to="/">Espaços</router-link> <span></span>
         <router-link to="/"> Workshops</router-link>
         <router-link to="/"> Menus</router-link>
       </div>
@@ -92,12 +92,11 @@ img {
   font-family: Geosans;
 }
 
-p {
+.container{
   padding: 20px;
   padding-bottom: 0;
   padding-top: 0;
 
-  color: white;
 }
 </style>
 
