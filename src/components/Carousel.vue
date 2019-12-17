@@ -19,20 +19,7 @@
 
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
       <b-carousel-slide  img-blank img-alt="Blank image">
-        <p id="hey">
-          HEY
-        </p>
-        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
-      </b-carousel-slide>
-      <b-carousel-slide  img-blank img-alt="Blank image">
-        <p id="oh">
-          OH
-        </p>
-        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
-      </b-carousel-slide>
-      <b-carousel-slide  img-blank img-alt="Blank image">
-        <p id="lets">
-          LETS GO
+        <p>
         </p>
         <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
       </b-carousel-slide>
