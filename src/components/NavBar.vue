@@ -78,18 +78,19 @@
 .nav-link{
   color: white;
   font-family: Geosans;
+  margin-right: 30px;
 }
 
 .navbar-nav{
   width: 200px;
   text-align: right;
   float: right;
-  background-color: brown
+  background-color: black
 }
 
 .navbar-toggler{
   position: absolute;
-  background-color: white;
+  background-color: #F7CA18;
   right: 50px;
   top: 10px;
 }
