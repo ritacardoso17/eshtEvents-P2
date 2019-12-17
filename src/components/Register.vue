@@ -53,7 +53,7 @@ export default {
          * GET LAST ID
          */
         getLastId() {
-          return this.$store.getters.lastId
+          return this.$store.getters.getLastId
         },
         /***
          * FUNCTION CREATED TO ADD NEW TRAVEL
