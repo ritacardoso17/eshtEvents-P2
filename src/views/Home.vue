@@ -2,7 +2,7 @@
   <div class="home">
 
     <Carousel/>
-    <img alt="Vue logo" src="../assets/logo.eshtEvents.png" />
+    <!-- <img alt="Vue logo" id="logoola" class="img-fluid" src="../assets/logo.eshtEvents.png" /> -->
     
   </div>
 </template>
@@ -18,3 +18,10 @@ export default {
   }
 };
 </script>
+
+<style>
+  #logoola {
+    width: 30%;
+    height: auto
+  }
+</style>

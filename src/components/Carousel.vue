@@ -1,31 +1,6 @@
 <template>
   <div class="hello">
-    <div class="container" width="300px">
-      <b-carousel
-      id="carousel-1"
-      v-model="slide"
-      :interval="6000"
-      controls
-      indicators
-      background="white"
-      img-width="1300"
-      img-height="480"
-      style="text-shadow: 1px 1px 2px #333;"
-      @sliding-start="onSlideStart"
-      @sliding-end="onSlideEnd"
-    >
-      <!-- Text slides with image -->
-
-
-      <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide  img-blank img-alt="Blank image">
-        <p>
-        </p>
-        <b-img src="../assets/catering-table-display.jpg" fluid alt="Responsive image" class="imgCarousel" />
-      </b-carousel-slide>
-    </b-carousel>
-    </div>
-   
+  <b-img src="../assets/catering-table-display.jpg" class="imgCarousel" />
   </div>
 </template>
 
@@ -57,16 +32,14 @@ name: "Carousel",
 
 <style>
 .imgCarousel{
-  width: 70%;
+  width: 1000px;
   height: auto;
-  position: absolute;
-  right: 120px;
-  top: -320px;
+  position: relative;
   background-color: white;
-  border: 3px solid;
+  border: 1px solid;
   border-color: #F7CA18;
 }
-
+/*
 #hey{
   font-family: Champagne
 }
@@ -76,6 +49,6 @@ name: "Carousel",
 }
 
 #lets{
-  font-family: Channel
-}
+  font-family: Channel 
+}*/
 </style>
