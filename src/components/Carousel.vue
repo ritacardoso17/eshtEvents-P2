@@ -1,54 +1,81 @@
 <template>
-  <div class="hello">
-  <b-img src="../assets/catering-table-display.jpg" class="imgCarousel" />
+  <div class="container">
+    <div class="row">
+      <b-img src="../assets/zaton-catering-001.jpg" class="imgCarousel" />
+    </div>
+    <div class="row">
+      <b-img src="../assets/bandeja.preto.png" class="bandeja"></b-img>
+    </div>
+    <div class="row">
+      <b-img src="../assets/eshtEvents.dourado.png" class="douradoLogo" />
+    </div>
+    <div class="row" id="text">
+      <p>
+      <br>
+      <br>
+        O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, <br>  com capacidade para 50 pessoas sentadas.
+        Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.
+      </p>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  
-};
+export default {};
 </script>
 
 <script>
-  export default {
-name: "Carousel",
-    data() {
-      return {
-        slide: 0,
-        sliding: null
-      }
+export default {
+  name: "Carousel",
+  data() {
+    return {
+      slide: 0,
+      sliding: null
+    };
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true;
     },
-    methods: {
-      onSlideStart(slide) {
-        this.sliding = true
-      },
-      onSlideEnd(slide) {
-        this.sliding = false
-      }
+    onSlideEnd(slide) {
+      this.sliding = false;
     }
   }
+};
 </script>
 
 <style>
-.imgCarousel{
+.imgCarousel {
   width: 1000px;
   height: auto;
-  position: relative;
   background-color: white;
-  border: 1px solid;
-  border-color: #F7CA18;
-}
-/*
-#hey{
-  font-family: Champagne
-}
-
-#ho{
-  font-family: GeosansLight
+  /* -webkit-filter: blur(2px);
+  filter: blur(2px); */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#lets{
-  font-family: Channel 
-}*/
+.bandeja {
+  width: 100px;
+  height: auto;
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40px;
+}
+.douradoLogo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+#text {
+  color: black;
+  font-family: Champagne;
+}
 </style>
