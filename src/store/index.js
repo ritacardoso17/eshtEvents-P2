@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [],
-    logged: false,
+    userExist: false,
     loggedUser: []
   },
 
@@ -16,18 +16,40 @@ export default new Vuex.Store({
       if (state.users.some(user => user.email === payload.email)) {
         if (payload.password !== payload.confPass) {
           alert("PASSWORDS DIFERENTES")
+        } else {
+          state.users.push({
+            id: payload.id,
+            name: payload.name,
+            email: payload.email,
+            password: payload.password,
+          });
+
+          alert("REGISTADO")
+        }
+      } else {
+        alert("EMAIL JA EXISTENTE")
+
+      }
+    },
+    LOGIN: (state, payload) => {
+      for (const user of state.users) {
+        if (user.email == payload.email && user.password == payload.password) {
+          state.loggedUser.push({
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            password: user.password
+          })
+
+          alert("USER LOGGADO")
+          state.userExist = true
         }
       }
-
+      if (state.userExist == false) {
+        alert("Conta não existe")
+      }
       else {
-        state.users.push({
-          id: payload.id,
-          name: payload.name,
-          email: payload.email,
-          password: payload.password,
-        });
-
-        alert("REGISTADO")
+        state.userExist === false
       }
     }
   },

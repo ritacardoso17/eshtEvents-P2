@@ -13,26 +13,15 @@
       </ul>
       
       <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão<!-- moustache? --></a>
-      <b-modal id="modal-1" title="Iniciar Sessão">
+      <b-modal id="modal-1" title="Iniciar Sessão" hide-footer>
         <div class="form-group">
-          <label for>E-mail:</label>
-          <input
-            type="email"
-            class="form-control"
-            name
-            id
-            aria-describedby="emailHelpId"
-            placeholder
-          />
-          <label for>Palavra-Chave:</label>
-          <input
-            type="password"
-            class="form-control"
-            name
-            id
-            aria-describedby="emailHelpId"
-            placeholder
-          />
+           <form v-on:submit.prevent="login()">
+          <label for="txtEmailLogin">E-mail:</label>
+          <input  type="email" class="form-control" id="txtEmailLogin" aria-describedby="emailHelpId" placeholder="Insira o seu e-mail" v-model="email" required/>
+          <label for="txtPasswordLogin">Palavra-Chave:</label>
+         <input type="password" class="form-control"  id="txtPasswordLogin" aria-describedby="emailHelpId" placeholder="Insira a sua palavra-chave" v-model="password" required/>
+         <b-button type="submit" class="btn btn-primary  float-right">Entrar</b-button>
+        </form>
         </div>
       </b-modal>
     </nav>
@@ -40,18 +29,43 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <p>Eventos e Catering</p>
-
-        <p>Espaços</p>
-
-        <p>Workshops</p>
-
-        <p>Menus</p>
+        <router-link to="/"> Eventos e Catering</router-link>
+        <router-link to="/">Espaços</router-link>
+        <router-link to="/"> Workshops</router-link>
+        <router-link to="/"> Menus</router-link>
       </div>
     </nav>
     <!--/.Navbar-->
   </div>
 </template>
+
+<script>
+export default {
+  name:"Login",
+  data:()=>({
+    email:"",
+    password:""
+  }),
+  created: function () {
+            if (localStorage.getItem("users")) {
+                this.$store.state.users = JSON.parse(localStorage.getItem("users"))
+            }
+            if(localStorage.getItem("loggedUser")){
+                this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+            }
+        },
+  methods:{
+    /**VER SE EXISTE UM USER COM O EMAIL E PASS */
+    login(){
+      this.$store.commit('LOGIN',{
+        email:this.email,
+        password:this.password
+      })
+    }
+  }
+  
+}
+</script>
 
 <style>
 .navbar-light {
@@ -86,3 +100,4 @@ p {
   color: white;
 }
 </style>
+
