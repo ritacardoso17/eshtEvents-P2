@@ -29,10 +29,10 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <router-link to="/"> Eventos e Catering</router-link> <span></span>
-        <router-link to="/">Espaços</router-link> <span></span>
-        <router-link to="/"> Workshops</router-link>
-        <router-link to="/"> Menus</router-link>
+        <router-link to="/" id="eventsLink"> Eventos e Catering</router-link> <span> // </span>
+        <router-link to="/" id="roomsLink">Espaços</router-link> <span> // </span>
+        <router-link to="/" id="workshopsLink"> Workshops</router-link> <span> // </span>
+        <router-link to="/" id="menusLink"> Menus</router-link>
       </div>
     </nav>
     <!--/.Navbar-->
@@ -98,5 +98,19 @@ img {
   padding-top: 0;
 
 }
+#eventsLink{
+  color: white;
+}
+#roomsLink{
+  color: white;
+}
+#workshopsLink{
+  color: white;
+}
+#menusLink{
+  color: white;
+}
+span{
+  color: #000;
+}
 </style>
-

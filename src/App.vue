@@ -49,6 +49,11 @@ export default {
     src: url(/assets/Fonts/GeosansLight.ttf);
 }
 
+@font-face {
+    font-family: ScriptMTBold;
+    src: url(/assets/Fonts/ScriptMTBold.ttf);
+}
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

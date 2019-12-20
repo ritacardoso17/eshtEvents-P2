@@ -9,6 +9,9 @@
     <div class="row">
       <b-img src="../assets/eshtEvents.dourado.png" class="douradoLogo" />
     </div>
+    <div id="subTitle">
+      <h3 >Eventos & Catering</h3>
+    </div>
     <div class="row" id="text">
       <p>
       <br>
@@ -66,7 +69,7 @@ export default {
   top: 40px;
 }
 .douradoLogo {
-  width: 180px;
+  width: 250px;
   height: auto;
   display: block;
   margin-left: auto;
@@ -77,5 +80,10 @@ export default {
 #text {
   color: black;
   font-family: Champagne;
+}
+
+#subTitle{
+  text-align: center;
+  font-family: GeosansLight;
 }
 </style>

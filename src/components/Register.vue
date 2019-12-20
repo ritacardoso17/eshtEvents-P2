@@ -1,58 +1,31 @@
 <template>
   <div id="registerForm">
+    <hr class="line1">
     <div class="container col-sm-4">
       <form v-on:submit.prevent="addUser()">
         <div class="form-group">
           <label for="txtName">Nome:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="txtName"
-            placeholder="Insira o seu nome"
-            required
-            v-model="name"
-          />
+          <input type="text" class="form-control" id="txtName" placeholder="Insira o seu nome" required v-model="name"/>
         </div>
         <div class="form-group">
           <label for="emailTxt">E-mail:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="emailTxt"
-            aria-describedby="emailHelp"
-            placeholder="Insira o seu email"
-            required
-            v-model="email"
-          />
+          <input type="email" class="form-control" id="emailTxt" aria-describedby="emailHelp" placeholder="Insira o seu email" required v-model="email"/>
         </div>
         <div class="form-group">
           <label for="passTxt">Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="passTxt"
-            placeholder="Password"
-            required
-            v-model="password"
-          />
+          <input type="password" class="form-control" id="passTxt" placeholder="Password" required v-model="password"/>
         </div>
         <div class="form-group">
           <label for="confirmarPassTxt">Confirmar Password:</label>
-          <input
-            type="password"
-            class="form-control"
-            id="confirmarPassTxt"
-            placeholder="Confirme sua Password"
-            required
-            v-model="confPass"
-          />
+          <input type="password" class="form-control" id="confirmarPassTxt" placeholder="Confirme sua Password" required v-model="confPass"/>
         </div>
-        <button type="submit" class="btn btn-primary float-right">Confirmar</button>
+        <button type="submit" class="btn">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
-                    <router-link to="/login">Login</router-link>
+          <router-link to="/login">Login</router-link>
         </button>-->
       </form>
     </div>
+    <hr class="line2">
   </div>
 </template>
 
@@ -116,15 +89,32 @@ export default {
   background-color: #fff;
 }
 .btn {
+  position: absolute;
+  left: 308px;
+  color: white;
+  border-radius: 0;
   background-color: #000;
   border-color: #0000;
-  border-radius: 0px;
-  border-width: medium;
+  border-width: thick;
 }
 .btn:hover {
+  color: white;
+  border-radius: 0;
   border-color: #f7ca18;
-  border-radius: 0px;
   background-color: #000;
-  border-width: medium;
+  border-width: thick;
+}
+.line1{
+  position: relative;
+  background-color: #000;
+  height: 3px;
+  width: 1100px;
+}
+.line2{
+  position: relative;
+  background-color: #000;
+  height: 3px;
+  width: 1100px;
+  margin-top: 80px;
 }
 </style>
