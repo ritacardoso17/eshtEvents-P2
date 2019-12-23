@@ -8,6 +8,18 @@
           <input type="text" class="form-control" id="txtName" placeholder="Insira o seu nome" required v-model="name"/>
         </div>
         <div class="form-group">
+        <label for="sltSchool">Escola:</label>
+            <select id="sltSchool" v-model="school">
+                <option value="pick">Escolher Escola</option>
+                <option value="esht">ESHT</option>
+                <option value="esmad">ESMAD</option>
+                <option value="isep">ISEP</option>
+                <option value="iscap">ISCAP</option>
+                <option value="ese">ESE</option>
+                <option value="esmae">ESMAE</option>
+            </select>
+        </div>
+        <div class="form-group">
           <label for="emailTxt">E-mail:</label>
           <input type="email" class="form-control" id="emailTxt" aria-describedby="emailHelp" placeholder="Insira o seu email" required v-model="email"/>
         </div>
@@ -35,6 +47,7 @@ export default {
   data: () => ({
     id: 0,
     name: "",
+    school:"pick",
     email: "",
     password: "",
     confPass: ""
@@ -64,6 +77,7 @@ export default {
       this.$store.commit("ADD_USER", {
         id: this.getLastId() + 1,
         name: this.name,
+        school:this.school,
         email: this.email,
         password: this.password,
         confPass: this.confPass

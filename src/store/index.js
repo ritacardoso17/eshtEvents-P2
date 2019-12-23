@@ -20,10 +20,11 @@ export default new Vuex.Store({
           state.users.push({
             id: payload.id,
             name: payload.name,
+            school: payload.school,
             email: payload.email,
             password: payload.password,
           });
-
+          location.href = "views/home.vue"
           alert("REGISTADO")
         }
       } else {
@@ -37,6 +38,7 @@ export default new Vuex.Store({
           state.loggedUser.push({
             id: user.id,
             name: user.name,
+            school:user.school,
             email: user.email,
             password: user.password
           })
