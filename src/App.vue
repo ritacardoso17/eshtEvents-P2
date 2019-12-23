@@ -18,17 +18,21 @@
       <router-link to="/extra">Extra</router-link> |
       <router-link to="/summary">Summary</router-link> -->
     <router-view />
+    <Footer/>
   </div>
+    
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "InicialPage",
   components: {
-    NavBar
+    NavBar,
+    Footer
   }
 };
 </script>
