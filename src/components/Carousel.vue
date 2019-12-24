@@ -10,7 +10,7 @@
       <b-img src="../assets/eshtEvents.dourado.png" class="douradoLogo" />
     </div>
     <div id="subTitle">
-      <h3 >Eventos & Catering</h3>
+      <h5>Eventos & Catering</h5>
     </div>
     <div class="row" id="text">
       <p>
@@ -31,18 +31,9 @@ export default {};
 export default {
   name: "Carousel",
   data() {
-    return {
-      slide: 0,
-      sliding: null
-    };
   },
   methods: {
-    onSlideStart(slide) {
-      this.sliding = true;
-    },
-    onSlideEnd(slide) {
-      this.sliding = false;
-    }
+
   }
 };
 </script>

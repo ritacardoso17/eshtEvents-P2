@@ -29,9 +29,9 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <router-link to="/" id="eventsLink"> Eventos e Catering</router-link> <span> // </span>
-        <router-link to="/" id="roomsLink">Espaços</router-link> <span> // </span>
-        <router-link to="/" id="workshopsLink"> Workshops</router-link> <span> // </span>
+        <router-link to="/" id="eventsLink"> Eventos e Catering</router-link> <span> ///// </span>
+        <router-link to="/" id="roomsLink">Espaços</router-link> <span> ///// </span>
+        <router-link to="/" id="workshopsLink"> Workshops</router-link> <span> ///// </span>
         <router-link to="/" id="menusLink"> Menus</router-link>
       </div>
     </nav>
@@ -73,7 +73,7 @@ export default {
 }
 
 #navBar2 {
-  background-color: black;
+  background-color: #232323;
   height: 40px;
 }
 
@@ -111,6 +111,6 @@ img {
   color: white;
 }
 span{
-  color: #000;
+  color: #232323;
 }
 </style>
