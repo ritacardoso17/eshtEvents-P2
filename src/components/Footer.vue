@@ -1,57 +1,66 @@
 <template>
-    <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
-<hr id="line" />
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
+  <!-- Footer -->
+  <footer class="page-footer font-small indigo">
+    <hr id="lineFooter">
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+      <!-- Grid row -->
+      <div class="row">
+        <!-- Grid column -->
+        <div class="col-md-3 mx-auto">
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
 
-    <!-- Grid row -->
-    <div class="row">
+          <img src="/src/assets/bandeja.preto.png" alt />
+        </div>
+        <!-- Grid column -->
 
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
+        <hr class="clearfix w-100 d-md-none" />
 
+        <!-- Grid column -->
+        <div class="col-md-3 mx-auto">
+
+          <p id="textFooter">
+            Escola Superior de Hotelaria e Turismo
+            <br />Rua D. Sancho I, n.º 981
+            <br />4480-876 Vila do Conde Portugal
+            <br />T. +351 252 291 700
+            <br />E. geral@esht.ipp.pt
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none" />
+
+        <!-- Grid column -->
+        <div class="col-md-3 mx-auto">
+          <!-- empty column -->
           
+        </div>
+        <!-- Grid column -->
 
-        <!-- Content -->
-        <h5 class="text-uppercase"></h5>
-        <p>Escola Superior de Hotelaria e Turismo <br>
-            Rua D. Sancho I, n.º 981 <br>
-            4480-876 Vila do Conde Portugal <br>
-            T. +351 252 291 700 <br>
-            E. geral@esht.ipp.pt   </p>
+        <hr class="clearfix w-100 d-md-none" />
 
+        <!-- Grid column -->
+        <div class="col-md-3 mx-auto">
+          <!-- LOGO IPP -->
+          <img src="src/assets/p.porto.png" alt="">
+        
+        </div>
+        <!-- Grid column -->
       </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-    
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-      </div>
-      <!-- Grid column -->
-
+      <!-- Grid row -->
     </div>
-    <!-- Grid row -->
+    <!-- Footer Links -->
 
-  </div>
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> eshtEvents</a>
-  </div>
-  <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+      © 2019 Copyright:
+      <a href="#">eshtEvents</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
 </template>
 
 <script>
@@ -59,12 +68,12 @@ export default {};
 </script>
 
 <style>
-#line {
-  background-color: #f7ca18;
+#lineFooter {
+  background-color: #232323;
   height: 5px;
-  width: 1000px;
-  position: relative;
-  left: -20px;
-  top: -15px;
+}
+#textFooter {
+  font-size: 11px;
+  margin-top: 40px;
 }
 </style>
