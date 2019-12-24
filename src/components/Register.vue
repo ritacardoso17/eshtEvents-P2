@@ -57,11 +57,6 @@ export default {
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     }
-    if (localStorage.getItem("loggedUser")) {
-      this.$store.state.loggedUser = JSON.parse(
-        localStorage.getItem("loggedUser")
-      );
-    }
   },
   methods: {
     /**
@@ -75,7 +70,7 @@ export default {
      */
     addUser() {
       this.$store.commit("ADD_USER", {
-        id: this.getLastId() + 1,
+        id: this.getLastId(),
         name: this.name,
         school:this.school,
         email: this.email,

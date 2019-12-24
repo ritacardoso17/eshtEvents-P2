@@ -50,12 +50,6 @@ export default {
             if (localStorage.getItem("users")) {
                 this.$store.state.users = JSON.parse(localStorage.getItem("users"))
             }
-            else{
-              this.$store.state.users = [{
-
-                
-              }]
-            }
             if(localStorage.getItem("loggedUser")){
                 this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
             }
