@@ -2,7 +2,7 @@
   <div class="navBar">
     <!--Navbar-->
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand text-left" href="#">
+      <a class="navbar-brand text-left" href="/">
         <img src="../assets/logo.eshtEvents.png" class="img-fluid" alt />
       </a>
 
@@ -29,7 +29,7 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <router-link to="/" id="eventsLink"> Eventos e Catering</router-link> <span> ///// </span>
+        <router-link to="/events" id="eventsLink"> Eventos e Catering</router-link> <span> ///// </span>
         <router-link to="/" id="roomsLink">Espaços</router-link> <span> ///// </span>
         <router-link to="/" id="workshopsLink"> Workshops</router-link> <span> ///// </span>
         <router-link to="/" id="menusLink"> Menus</router-link>

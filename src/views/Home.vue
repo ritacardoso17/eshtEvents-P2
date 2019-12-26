@@ -25,7 +25,7 @@
           <b-col md="6">
             <b-card-body title>
               <b-card-text class="text">
-                O Restaurante de Aplicação da Escola Superior de Hotelaria
+                O R.3estaurante de Aplicação da Escola Superior de Hotelaria
                 <br />e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
                 <br />para 50 pessoas sentadas.
                 Durante estes últimos anos, o Restaurante tem acolhido

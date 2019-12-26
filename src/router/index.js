@@ -36,6 +36,11 @@ const routes = [
     component: Menu
   },
   {
+    path: "/events",
+    name: "events",
+    component: EventsProfile
+  },
+  {
     path: "/room",
     name: "room",
     component: Room
