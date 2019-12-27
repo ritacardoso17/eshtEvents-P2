@@ -13,7 +13,7 @@
       </ul>
 
       <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão<!-- moustache? --></a>
-      <b-modal id="modal-1" title="Iniciar Sessão" hide-footer>
+      <b-modal id="modal-1" centered size="m" title="Iniciar Sessão" hide-footer>
         <div class="form-group">
            <form v-on:submit.prevent="login()">
           <label for="txtEmailLogin">E-mail:</label>
