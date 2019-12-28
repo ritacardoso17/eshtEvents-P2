@@ -25,15 +25,15 @@
           <b-col md="6">
             <b-card-body title>
               <b-card-text class="text">
-                O R.3estaurante de Aplicação da Escola Superior de Hotelaria
+                O Restaurante de Aplicação da Escola Superior de Hotelaria
                 <br />e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
                 <br />para 50 pessoas sentadas.
                 Durante estes últimos anos, o Restaurante tem acolhido
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <button type="submit" id="seeMore" class="btn">Ver Mais</button>
-              <button type="submit" id="reserve" class="btn">Reservar Agora</button>
+              <b-button id="seeMore" href="#">Ver Mais</b-button>
+              <b-button id="reserve"  href="../views/EventsReserv.vue">Reservar Agora</b-button>
             </b-card-body>
           </b-col>
         </b-row>
