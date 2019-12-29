@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <Carousel />
     <button type="submit" class="btnAboutUs">Descobre mais sobre nós</button>
     <router-link to="/profile">
       <button type="submit" class="btnAboutUs">Profile</button><!--PARA TIRAR-->

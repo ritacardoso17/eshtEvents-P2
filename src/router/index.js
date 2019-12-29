@@ -1,9 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Menu from "../views/Menu.vue";
-import Room from "../views/Room.vue";
 import Register from "../views/Register.vue";
 import Profile from "../views/Profile.vue";
 import EventsProfile from "../views/EventsProfile.vue";
@@ -16,6 +15,7 @@ import MenuReserv from "../views/MenuReserv.vue";
 import Components from "../views/Components.vue";
 import Extra from "../views/Extra.vue";
 import Summary from "../views/Summary.vue";
+import MenuBackoffice from "../views/BackofficeMenu.vue";
 
 Vue.use(VueRouter);
 
@@ -31,19 +31,9 @@ const routes = [
     component: About
   },
   {
-    path: "/menu",
-    name: "menu",
-    component: Menu
-  },
-  {
     path: "/events",
     name: "events",
     component: EventsProfile
-  },
-  {
-    path: "/room",
-    name: "room",
-    component: Room
   },
   {
     path: "/register",
@@ -54,11 +44,6 @@ const routes = [
     path: "/profile",
     name: "profile",
     component: Profile
-  },
-  {
-    path: "/profile/eventsProfile",
-    name: "eventsProfile",
-    component: EventsProfile
   },
   {
     path: "/profile/roomProfile",
@@ -104,6 +89,11 @@ const routes = [
     path: "/reservation/summary",
     name: "summary",
     component: Summary
+  },
+  {
+    path: "/menuAdmin",
+    name: "menuAdmin",
+    component: MenuBackoffice
   }
 ];
 
