@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <carousel></carousel>
     <button type="submit" class="btnAboutUs">Descobre mais sobre nós</button>
     <router-link to="/profile">
       <button type="submit" class="btnAboutUs">Profile</button><!--PARA TIRAR-->
@@ -128,6 +129,7 @@ export default {
 .btnAboutUs {
   position: relative;
   width: 200px;
+  height: 40px;
   color: white;
   background-color: #000;
   font-family: GeosansLight;

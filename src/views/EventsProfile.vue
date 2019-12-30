@@ -34,7 +34,7 @@
     <a href="#" class="menus">
       <b>Ver Menus</b>
     </a>
-    <b-button id="btnReserve" href="../views/EventsReserv.vue">Fazer Reserva</b-button>
+    <b-button id="btnReserve" to="/reservation/events">Fazer Reserva</b-button>
   </div>
 </template>
 
