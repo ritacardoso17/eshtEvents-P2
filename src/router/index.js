@@ -17,6 +17,8 @@ import Extra from "../views/Extra.vue";
 import Summary from "../views/Summary.vue";
 import Room from "../views/Room.vue";
 import MenuBackoffice from "../views/BackofficeMenu.vue";
+import UserBackoffice from "../views/userBackOffice.vue"
+
 
 Vue.use(VueRouter);
 
@@ -97,9 +99,14 @@ const routes = [
     component: Room
   },
   {
-    path: "/menuAdmin",
-    name: "menuAdmin",
+    path: "/menuadmin",
+    name: "menuadmin",
     component: MenuBackoffice
+  },
+  {
+    path: "/usersadmin",
+    name: "usersadmin",
+    component: UserBackoffice
   }
 ];
 

@@ -19,7 +19,7 @@ export default new Vuex.Store({
         if (payload.password !== payload.confPass) {
           alert("PASSWORDS DIFERENTES")
         } else {
-          state.users.push({
+            state.users.push({
             id: payload.id,
             name: payload.name,
             school: payload.school,
@@ -27,7 +27,7 @@ export default new Vuex.Store({
             email: payload.email,
             password: payload.password,
           });
-          location.href = "App.vue"
+          location.href = "/"
           alert("REGISTADO")
         }
       } else {
@@ -42,6 +42,7 @@ export default new Vuex.Store({
             id: user.id,
             name: user.name,
             school: user.school,
+            typeUser:user.typeUser,
             email: user.email,
             password: user.password
           })
