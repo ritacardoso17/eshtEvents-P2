@@ -9,7 +9,7 @@
       </div>
       <a id="editPhoto">Editar Foto</a>
 
-      <h3 id="name">Mafalda Cunha</h3>
+      <h3 id="name">Mafalda Cunha {{}}</h3>
 
       <p id="info">Data de Nascimento: 05/12/1997</p>
 
@@ -30,6 +30,18 @@
 </template>
 
 <script>
+export default{
+  name: "Profile",
+  data:() => ({
+    
+  }),
+  methods: {
+    getUser() {
+      return this.$store.state.loggedUser;
+    }
+  }
+}
+
 </script>
 
 <style>
