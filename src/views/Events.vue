@@ -1,6 +1,7 @@
 <template>
   <div class="events">
     <b-img class="catering" src="../assets/zaton-catering-001.jpg"></b-img>
+    <br><br><br>
     <hr id="lineLeft" />
     <h3 id="titule">Eventos e Catering</h3>
     <hr id="lineRight" />
@@ -34,14 +35,13 @@
     <a href="#" class="menus">
       <b>Ver Menus</b>
     </a>
-    <b-button id="btnReserve" to="/reservation/events">Fazer Reserva</b-button>
+    <router-link tag="button" id="btnReserve" :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
   </div>
 </template>
 
 <style>
 .catering {
   position: relative;
-  top: -60px;
   width: 1263px;
 }
 #lineLeft {

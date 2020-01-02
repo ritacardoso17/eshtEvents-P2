@@ -30,6 +30,12 @@ const routes = [
     component: InicialPage
   },
   {
+    path: "/eventsReserv",
+    name: "eventsReserv",
+    component: EventsReserv
+  },
+
+  {
     path: "/about",
     name: "about",
     component: About

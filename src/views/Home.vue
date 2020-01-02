@@ -2,7 +2,9 @@
   <div class="home">
     <div class="container">
       <div class="row">
-        <b-img src="../assets/zaton-catering-001.jpg" class="imgCarousel" />
+        <b-img src="../assets/catering-table-display.jpg" class="imgCarousel" />
+        <div id="bar"></div>
+        <h1 class="centered" id="welcome">Bem-vindo</h1>
       </div>
       <div class="row">
         <b-img src="../assets/bandeja.preto.png" class="bandeja"></b-img>
@@ -55,7 +57,8 @@
                 das expectativas dos clientes.
               </b-card-text>
               <b-button id="seeMore" href="#">Ver Mais</b-button>
-              <b-button id="reserve" href="../views/EventsReserv.vue">Reservar Agora</b-button>
+              <!-- <b-button id="reserve" href="../views/EventsReserv.vue">Reservar Agora</b-button> -->
+              <router-link tag="button" id="reserve" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -139,24 +142,38 @@
 
 export default {
   name: "home",
-  components: {
- 
-  }
+  components: {}
 };
 </script>
 
 <style>
 .imgCarousel {
-  width: 1000px;
+  position: relative;
+  left: -67px;
+  width: 1263px;
   height: auto;
   background-color: white;
-  /* -webkit-filter: blur(2px);
-  filter: blur(2px); */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
 }
-
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Channel;
+  font-size: 210%;
+}
+#bar {
+  position: absolute;
+  opacity: 0.6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1263px;
+  height: 90px;
+  background-color: white;
+}
 .bandeja {
   width: 100px;
   height: auto;
@@ -180,7 +197,7 @@ export default {
   font-family: GeosansLight;
 }
 
-#subTitle{
+#subTitle {
   text-align: center;
   font-family: GeosansLight;
 }
@@ -222,6 +239,8 @@ export default {
   height: 30px;
   font-size: 70%;
   color: white;
+  white-space: nowrap;
+  padding: 4px;
   bottom: -70px;
   left: 150px;
   background-color: #232323;

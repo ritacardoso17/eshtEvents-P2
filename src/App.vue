@@ -5,6 +5,9 @@
       <router-view></router-view>
       <Footer />
     </div>
+    <div v-else>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

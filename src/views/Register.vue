@@ -1,35 +1,68 @@
 <template>
- <div id="registerForm">
-    <hr class="line1">
+  <div id="registerForm">
+    <b-img src="../assets/imgRegisto.jpg" class="imgRegister" />
+    <div id="bar"></div>
+    <h1 class="centered" id="registerPage">Registo</h1>
+    <br><br><br>
+    <hr class="line1" />
     <div class="container col-sm-4">
       <form v-on:submit.prevent="addUser()">
         <div class="form-group">
           <label for="txtName">Nome:</label>
-          <input type="text" class="form-control" id="txtName" placeholder="Insira o seu nome" required v-model="name"/>
+          <input
+            type="text"
+            class="form-control"
+            id="txtName"
+            placeholder="Insira o seu nome"
+            required
+            v-model="name"
+          />
         </div>
         <div class="form-group">
-        <label for="sltSchool">Escola:</label>
-            <select id="sltSchool" v-model="school">
-                <option value="pick">Escolher Escola</option>
-                <option value="esht">ESHT</option>
-                <option value="esmad">ESMAD</option>
-                <option value="isep">ISEP</option>
-                <option value="iscap">ISCAP</option>
-                <option value="ese">ESE</option>
-                <option value="esmae">ESMAE</option>
-            </select>
+          <label for="sltSchool">Escola:</label>
+          <select id="sltSchool" v-model="school">
+            <option value="pick">Escolher Escola</option>
+            <option value="esht">ESHT</option>
+            <option value="esmad">ESMAD</option>
+            <option value="isep">ISEP</option>
+            <option value="iscap">ISCAP</option>
+            <option value="ese">ESE</option>
+            <option value="esmae">ESMAE</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="emailTxt">E-mail:</label>
-          <input type="email" class="form-control" id="emailTxt" aria-describedby="emailHelp" placeholder="Insira o seu email" required v-model="email"/>
+          <input
+            type="email"
+            class="form-control"
+            id="emailTxt"
+            aria-describedby="emailHelp"
+            placeholder="Insira o seu email"
+            required
+            v-model="email"
+          />
         </div>
         <div class="form-group">
           <label for="passTxt">Password:</label>
-          <input type="password" class="form-control" id="passTxt" placeholder="Password" required v-model="password"/>
+          <input
+            type="password"
+            class="form-control"
+            id="passTxt"
+            placeholder="Password"
+            required
+            v-model="password"
+          />
         </div>
         <div class="form-group">
           <label for="confirmarPassTxt">Confirmar Password:</label>
-          <input type="password" class="form-control" id="confirmarPassTxt" placeholder="Confirme sua Password" required v-model="confPass"/>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmarPassTxt"
+            placeholder="Confirme sua Password"
+            required
+            v-model="confPass"
+          />
         </div>
         <button type="submit" class="btn">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
@@ -37,19 +70,18 @@
         </button>-->
       </form>
     </div>
-    <hr class="line2">
+    <hr class="line2" />
   </div>
 </template>
 
 <script>
-
 // @ is an alias to /src
 export default {
   name: "Register",
   data: () => ({
     id: 0,
     name: "",
-    school:"pick",
+    school: "pick",
     email: "",
     password: "",
     confPass: ""
@@ -74,7 +106,7 @@ export default {
       this.$store.commit("ADD_USER", {
         id: this.getLastId(),
         name: this.name,
-        school:this.school,
+        school: this.school,
         email: this.email,
         password: this.password,
         confPass: this.confPass
@@ -88,11 +120,19 @@ export default {
       );
     }
   }
-  }
-
+};
 </script>
+
 <style>
-  .form-control {
+.imgRegister {
+  position: relative;
+  width: 1263px;
+  height: auto;
+  background-color: white;
+  /* -webkit-filter: blur(2px);
+  filter: blur(2px); */
+}
+.form-control {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -115,13 +155,13 @@ export default {
   background-color: #000;
   border-width: thick;
 }
-.line1{
+.line1 {
   position: relative;
   background-color: #000;
   height: 3px;
   width: 1100px;
 }
-.line2{
+.line2 {
   position: relative;
   background-color: #000;
   height: 3px;

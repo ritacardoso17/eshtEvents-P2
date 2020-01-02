@@ -31,8 +31,8 @@
       <div class="container" style="justify-content: center">
         <router-link to="/events" id="eventsLink"> Eventos e Catering</router-link> <span> ///// </span>
         <router-link to="/room" id="roomsLink">Espaços</router-link> <span> ///// </span>
-        <router-link to="/" id="workshopsLink"> Workshops</router-link> <span> ///// </span>
-        <router-link to="/" id="menusLink"> Menus</router-link>
+        <router-link to="/workshops" id="workshopsLink"> Workshops</router-link> <span> ///// </span>
+        <router-link to="/menus" id="menusLink"> Menus</router-link>
       </div>
     </nav>
     <!--/.Navbar-->
