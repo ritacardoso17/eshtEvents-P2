@@ -98,28 +98,28 @@ img {
   text-decoration: none;
 }
 #eventsLink:hover{
-  color: #f7ca18;
+  color: #DAAA29;
 }
 #roomsLink{
   color: white;
   text-decoration: none;
 }
 #roomsLink:hover{
-  color: #f7ca18;
+  color: #DAAA29;
 }
 #workshopsLink{
   color: white;
   text-decoration: none;
 }
 #workshopsLink:hover{
-  color: #f7ca18;
+  color: #DAAA29;
 }
 #menusLink{
   color: white;
   text-decoration: none;
 }
 #menusLink:hover{
-  color: #f7ca18;
+  color: #DAAA29;
 }
 span{
   color: #232323;

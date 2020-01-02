@@ -46,7 +46,7 @@
 }
 #lineLeft {
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: -15px;
@@ -54,7 +54,7 @@
 }
 #lineRight {
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: -30px;
@@ -104,7 +104,7 @@
 #btnReserve:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 </style>

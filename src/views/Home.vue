@@ -56,8 +56,7 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <b-button id="seeMore" href="#">Ver Mais</b-button>
-              <!-- <b-button id="reserve" href="../views/EventsReserv.vue">Reservar Agora</b-button> -->
+              <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver Mais</router-link>
               <router-link tag="button" id="reserve" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
@@ -91,8 +90,8 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <button type="submit" id="seeMore2" class="btn">Ver Mais</button>
-              <button type="submit" id="reserve2" class="btn">Reservar Agora</button>
+              <router-link tag="button" id="seeMore2" :to="{ name: 'events' }">Ver mais</router-link>
+              <router-link tag="button" id="reserve2" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -125,7 +124,7 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <button type="submit" id="workshopsbtn" class="btn">Ver Workshops</button>
+              <router-link tag="button" id="workshopsbtn" :to="{ name: 'workshops' }">Ver Workshops</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -213,7 +212,7 @@ export default {
   position: relative;
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #seeMore {
@@ -230,7 +229,7 @@ export default {
 #seeMore:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #reserve {
@@ -249,7 +248,7 @@ export default {
 #reserve:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #seeMore2 {
@@ -266,7 +265,7 @@ export default {
 #seeMore2:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #reserve2 {
@@ -283,7 +282,7 @@ export default {
 #reserve2:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #workshopsbtn {
@@ -300,7 +299,7 @@ export default {
 #workshopsbtn:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #firstCard {
@@ -345,7 +344,7 @@ export default {
   font-size: 150%;
 }
 #line {
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 5px;
   width: 1000px;
   position: relative;

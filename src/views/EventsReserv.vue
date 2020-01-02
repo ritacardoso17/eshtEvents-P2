@@ -98,6 +98,7 @@ export default {
 }
 .nav-link {
   color: white !important;
+  font-family: GeosansLight;
 }
 .nav-link.active {
   background-color: #232323 !important;
@@ -257,38 +258,5 @@ export default {
   margin-top: 20px;
 }
 /* --------------- */
-#btnPrevious {
-  position: relative;
-  width: 80px;
-  height: 30px;
-  font-size: 70%;
-  color: white;
-  bottom: -70px;
-  left: 150px;
-  background-color: #232323;
-  font-family: GeosansLight;
-}
-#btnPrevious:hover {
-  color: white;
-  border: 2px solid;
-  border-color: #f7ca18;
-  background-color: #000;
-}
-#btnNext {
-  position: relative;
-  width: 80px;
-  height: 30px;
-  font-size: 70%;
-  color: white;
-  /* bottom: -70px;
-  left: 150px; */
-  background-color: #232323;
-  font-family: GeosansLight;
-}
-#btnNext:hover {
-  color: white;
-  border: 2px solid;
-  border-color: #f7ca18;
-  background-color: #000;
-}
+
 </style>

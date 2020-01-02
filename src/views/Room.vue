@@ -114,7 +114,7 @@
 #btnRent:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 </style>

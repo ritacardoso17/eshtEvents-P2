@@ -151,7 +151,7 @@ export default {
 .btn:hover {
   color: white;
   border-radius: 0;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
   border-width: thick;
 }
