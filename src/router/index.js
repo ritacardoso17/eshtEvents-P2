@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../views/Home.vue";
+import InicialPage from "../views/InicialPage.vue"
 import About from "../views/About.vue";
 import Register from "../views/Register.vue";
 import Profile from "../views/Profile.vue";
@@ -22,6 +23,11 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/InicialPage",
+    name: "inicialPage",
+    component: InicialPage
   },
   {
     path: "/about",
