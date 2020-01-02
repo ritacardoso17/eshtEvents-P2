@@ -70,7 +70,7 @@ export default {
 
 #text {
   color: black;
-  font-family: Champagne;
+  font-family: GeosansLight;
 }
 
 #subTitle{
