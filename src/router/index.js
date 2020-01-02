@@ -5,17 +5,12 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import Register from "../views/Register.vue";
 import Profile from "../views/Profile.vue";
-import EventsProfile from "../views/EventsProfile.vue";
-import RoomProfile from "../views/RoomProfile.vue";
+import Events from "../views/Events.vue";
 import EditProfile from "../views/EditProfile.vue";
-import Reservation from "../views/Reservation.vue";
+import RentRoom from "../views/RentRoom.vue";
 import EventsReserv from "../views/EventsReserv.vue";
-import Information from "../views/Information.vue";
-import MenuReserv from "../views/MenuReserv.vue";
-import Components from "../views/Components.vue";
-import Extra from "../views/Extra.vue";
-import Summary from "../views/Summary.vue";
 import Room from "../views/Room.vue";
+import Workshops from "../views/Workshops.vue"
 import MenuBackoffice from "../views/BackofficeMenu.vue";
 import UserBackoffice from "../views/userBackOffice.vue"
 
@@ -36,7 +31,7 @@ const routes = [
   {
     path: "/events",
     name: "events",
-    component: EventsProfile
+    component: Events
   },
   {
     path: "/register",
@@ -49,19 +44,14 @@ const routes = [
     component: Profile
   },
   {
-    path: "/profile/roomProfile",
-    name: "roomProfile",
-    component: RoomProfile
-  },
-  {
     path: "/profile/editProfile",
     name: "editProfile",
     component: EditProfile
   },
   {
-    path: "/reservation",
-    name: "reservation",
-    component: Reservation
+    path: "/rentRoom",
+    name: "rentRoom",
+    component: RentRoom
   },
   {
     path: "/reservation/events",
@@ -69,35 +59,16 @@ const routes = [
     component: EventsReserv
   },
   {
-    path: "/reservation/information",
-    name: "information",
-    component: Information
-  },
-  {
-    path: "/reservation/menu",
-    name: "menuReserv",
-    component: MenuReserv
-  },
-  {
-    path: "/reservation/components",
-    name: "components",
-    component: Components
-  },
-  {
-    path: "/reservation/extra",
-    name: "extra",
-    component: Extra
-  },
-  {
-    path: "/reservation/summary",
-    name: "summary",
-    component: Summary
-  },
-  {
     path: "/room",
     name: "room",
     component: Room
   },
+  {
+    path: "/workshops",
+    name: "workshops",
+    component: Workshops
+  },
+
   {
     path: "/menuadmin",
     name: "menuadmin",
