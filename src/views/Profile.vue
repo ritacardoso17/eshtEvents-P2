@@ -9,7 +9,7 @@
       </div>
       <a id="editPhoto">Editar Foto</a>
 
-      <h3 id="name">Mafalda Cunha {{}}</h3>
+      <h3 id="name">Mafalda Cunha {{loggedUser}}</h3>
 
       <p id="info">Data de Nascimento: 05/12/1997</p>
 
@@ -32,13 +32,19 @@
 <script>
 export default{
   name: "Profile",
-  data:() => ({
-    
-  }),
+  data: function(){
+    return{
+      loogedUser: [],
+      name: ""
+    };
+  },
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
     }
+  },
+  created() {
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
   }
 }
 
