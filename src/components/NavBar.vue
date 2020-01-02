@@ -86,16 +86,11 @@ img {
   width: 10%;
   height: auto;
 }
-
-#text {
-  color: white;
-  font-family: Geosans;
-}
-
 .container{
   padding: 20px;
   padding-bottom: 0;
   padding-top: 0;
+  font-family: GeosansLight;
 
 }
 #eventsLink{
