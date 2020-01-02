@@ -4,8 +4,6 @@
   </div>
 </template>
 
-
-
 <script>
 import  RegisterForm from "@/components/Register.vue"
 // @ is an alias to /src
