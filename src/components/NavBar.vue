@@ -40,7 +40,7 @@
               required
             />
             <b-button type="submit" class="btn btn-primary float-right" id="btnLogin">Entrar</b-button>
-            <a href="" id="join">Ainda não estás registado? Junta-te a nós!</a>
+            <router-link tag="a" id="join" :to="{ name: 'register' }">Ainda não estás registado? Junta-te a nós!</router-link>
           </form>
         </div>
       </b-modal>
@@ -110,18 +110,18 @@ img {
   width: 40%;
   height: auto;
 }
-#join{
+#join {
   font-size: 80%;
   font-family: GeosansLight;
   color: #000;
 }
-#x1{
+#x1 {
   position: relative;
   width: 30px;
   height: auto;
   top: -65px;
 }
-#x2{
+#x2 {
   position: relative;
   width: 30px;
   height: auto;

@@ -8,7 +8,7 @@
     <div class="container col-sm-4">
       <form v-on:submit.prevent="addUser()">
         <div class="form-group">
-          <label for="txtName">Nome:</label>
+          <label for="txtName" class="nameLabel">Nome de Utilizador:</label>
           <input
             type="text"
             class="form-control"
@@ -19,31 +19,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="sltSchool">Escola:</label>
-          <select id="sltSchool" v-model="school">
-            <option value="pick">Escolher Escola</option>
-            <option value="esht">ESHT</option>
-            <option value="esmad">ESMAD</option>
-            <option value="isep">ISEP</option>
-            <option value="iscap">ISCAP</option>
-            <option value="ese">ESE</option>
-            <option value="esmae">ESMAE</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="emailTxt">E-mail:</label>
-          <input
-            type="email"
-            class="form-control"
-            id="emailTxt"
-            aria-describedby="emailHelp"
-            placeholder="Insira o seu email"
-            required
-            v-model="email"
-          />
-        </div>
-        <div class="form-group">
-          <label for="passTxt">Password:</label>
+          <label for="passTxt" class="passLabel">Palavra-chave:</label>
           <input
             type="password"
             class="form-control"
@@ -54,7 +30,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="confirmarPassTxt">Confirmar Password:</label>
+          <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
           <input
             type="password"
             class="form-control"
@@ -64,7 +40,32 @@
             v-model="confPass"
           />
         </div>
-        <button type="submit" class="btn">Confirmar</button>
+        <div class="form-group">
+          <label for="sltSchool" class="schoolLabel">Instituição:</label>
+          <select id="sltSchool" v-model="school">
+            <option value="pick">Escolher Instituição</option>
+            <option value="esht">ESHT</option>
+            <option value="esmad">ESMAD</option>
+            <option value="isep">ISEP</option>
+            <option value="iscap">ISCAP</option>
+            <option value="ese">ESE</option>
+            <option value="esmae">ESMAE</option>
+            <option value="ess">ESS</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="emailTxt" class="emailLabel">E-mail:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="emailTxt"
+            aria-describedby="emailHelp"
+            placeholder="Insira o seu email"
+            required
+            v-model="email"
+          />
+        </div>
+        <button type="submit" class="btnConf">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
           <router-link to="/login">Login</router-link>
         </button>-->
@@ -140,14 +141,16 @@ export default {
   border-bottom-style: groove;
   background-color: #fff;
 }
-.btn {
-  position: absolute;
-  left: 308px;
+.btnConf{
+  position: relative;
+  width: 90px;
+  font-size: 12px;
+  height: 30px;
   color: white;
-  border-radius: 0;
   background-color: #000;
-  border-color: #0000;
-  border-width: thick;
+  font-family: GeosansLight;
+  top: 50px;
+  left: 250px;
 }
 .btn:hover {
   color: white;
@@ -168,5 +171,60 @@ export default {
   height: 3px;
   width: 1100px;
   margin-top: 80px;
+}
+.nameLabel{
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -250px;
+  margin-top: 60px;
+}
+#txtName{
+  position: relative;
+  left: 140px;
+  top: -45px;
+}
+.passLabel{
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -280px;
+  margin-top: -60px;
+}
+#passTxt{
+  position: relative;
+  left: 110px;
+  top: -45px;
+}
+.confLabel{
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -220px;
+  margin-top: -60px;
+}
+#confirmarPassTxt{
+  position: relative;
+  left: 170px;
+  top: -45px;
+}
+.schoolLabel{
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -110px;
+  margin-top: -60px;
+}
+#sltSchool{
+  position: relative;
+  left: 10px;
+  width: 200px;
+}
+.emailLabel{
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -330px;
+  top: 45px;
+}
+#emailTxt{
+  position: relative;
+  left: 60px;
+  width: 500px;
 }
 </style>
