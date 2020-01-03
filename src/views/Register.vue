@@ -87,6 +87,7 @@ export default {
     confPass: ""
   }),
   created: function() {
+   
     window.addEventListener("unload", this.saveStorage);
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
