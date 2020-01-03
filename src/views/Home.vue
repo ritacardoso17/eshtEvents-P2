@@ -44,16 +44,16 @@
 
         <b-row no-gutters>
           <b-col md="6">
-            <b-card-img src="../assets/catering-table-display.jpg" class="rounded-0" id="imgCard1"></b-card-img>
+            <b-img src="../assets/CatePessoas.jpg" class="rounded-0" id="imgCard1"></b-img>
           </b-col>
           <b-col md="6">
             <b-card-body title>
               <b-card-text class="text">
                 O Restaurante de Aplicação da Escola Superior de Hotelaria
-                <br />e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
-                <br />para 50 pessoas sentadas.
+                e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
+                para 50 pessoas sentadas.
                 Durante estes últimos anos, o Restaurante tem acolhido
-                <br />diversos eventos, conseguindo sempre estar à altura
+                diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
               <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver Mais</router-link>
@@ -78,16 +78,16 @@
 
         <b-row no-gutters>
           <b-col md="6">
-            <b-card-img src="../assets/catering-table-display.jpg" class="rounded-0" id="imgCard2"></b-card-img>
+            <b-img src="../assets/CatePessoas.jpg" class="rounded-0" id="imgCard2"></b-img>
           </b-col>
           <b-col md="6">
             <b-card-body title>
               <b-card-text class="text2">
                 O Restaurante de Aplicação da Escola Superior de Hotelaria
-                <br />e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
-                <br />para 50 pessoas sentadas.
+                e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
+                para 50 pessoas sentadas.
                 Durante estes últimos anos, o Restaurante tem acolhido
-                <br />diversos eventos, conseguindo sempre estar à altura
+                diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
               <router-link tag="button" id="seeMore2" :to="{ name: 'events' }">Ver mais</router-link>
@@ -112,16 +112,16 @@
 
         <b-row no-gutters>
           <b-col md="6">
-            <b-card-img src="../assets/catering-table-display.jpg" class="rounded-0" id="imgCard1"></b-card-img>
+            <b-img src="../assets/CatePessoas.jpg" class="rounded-0" id="imgCard1"></b-img>
           </b-col>
           <b-col md="6">
             <b-card-body title>
               <b-card-text class="text">
                 O Restaurante de Aplicação da Escola Superior de Hotelaria
-                <br />e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
-                <br />para 50 pessoas sentadas.
+                e Turismo é da responsabilidade do Politécnico do Porto, com capacidade
+                para 50 pessoas sentadas.
                 Durante estes últimos anos, o Restaurante tem acolhido
-                <br />diversos eventos, conseguindo sempre estar à altura
+                diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
               <router-link tag="button" id="workshopsbtn" :to="{ name: 'workshops' }">Ver Workshops</router-link>
@@ -257,7 +257,7 @@ export default {
   height: 30px;
   font-size: 70%;
   color: white;
-  bottom: -140px;
+  bottom: -70px;
   left: -650px;
   background-color: #232323;
   font-family: GeosansLight;
@@ -272,9 +272,11 @@ export default {
   position: relative;
   width: 80px;
   height: 30px;
+  white-space: nowrap;
+  padding: 4px;
   font-size: 70%;
   color: white;
-  bottom: -140px;
+  bottom: -70px;
   left: -635px;
   background-color: #232323;
   font-family: GeosansLight;
@@ -360,6 +362,7 @@ export default {
   margin-left: -490px;
   font-family: GeosansLight;
   font-size: 17px;
+  width: 400px;
 }
 .text {
   font-size: 80%;
@@ -368,5 +371,6 @@ export default {
   margin-top: 25px;
   font-family: GeosansLight;
   font-size: 17px;
+  width: 400px;
 }
 </style>

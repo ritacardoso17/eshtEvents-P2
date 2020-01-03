@@ -9,9 +9,10 @@
         <!-- Grid column -->
         <div class="col-md-3 mx-auto">
           <!-- Links -->
-          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4"></h5>
 
-          <img src="/src/assets/bandeja.preto.png" alt />
+          <b-img src="../assets/bandeja.preto.png" class="logoFooter" />
+          <b-img src="../assets/logo.eshtEvents.png" class="logo1Footer"/>
         </div>
         <!-- Grid column -->
 
@@ -44,7 +45,7 @@
         <!-- Grid column -->
         <div class="col-md-3 mx-auto">
           <!-- LOGO IPP -->
-          <img src="src/assets/p.porto.png" alt="">
+          <b-img src="../assets/p.porto.png" class="ipp"/>
         
         </div>
         <!-- Grid column -->
@@ -54,7 +55,7 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">
+    <div class="footer-copyright text-center py-3" id="copyright">
       © 2019 Copyright:
       <a href="#">eshtEvents</a>
     </div>
@@ -73,7 +74,26 @@ export default {};
   height: 5px;
 }
 #textFooter {
-  font-size: 11px;
-  margin-top: 40px;
+  font-size: 15px;
+  margin-top: 30px;
+  margin-left: -60px;
+}
+.logoFooter{
+  width: 30%;
+  height: auto;
+}
+.logo1Footer{
+  position: relative;
+  width: 50%;
+  height: auto;
+  bottom: -80px;
+  left: -90px;
+}
+.ipp{
+  margin-bottom: -300px;
+  margin-left: 200px;
+}
+#copyright{
+  font-family: GeosansLight;
 }
 </style>
