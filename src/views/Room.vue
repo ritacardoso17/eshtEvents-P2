@@ -1,6 +1,7 @@
 <template>
   <div class="rooms">
     <b-img class="catering" src="../assets/zaton-catering-001.jpg"></b-img>
+    <br><br><br>
     <hr id="lineLeft" />
     <h3 id="titule">Os nossos Espaços</h3>
     <hr id="lineRight" />
@@ -24,7 +25,7 @@
       Lorem ipsum quisque venenatis mi lacus morbi elit lacinia non, placerat urna quam commodo iaculis dictumst porttitor dictum
       suspendisse, mollis tempor dapibus euismod id neque taciti leo. amet cubilia elementum nec ante habitant condimentum fringilla quam.
     </p>
-    <b-img class="table" src="../assets/t30_2x_bapt_6_121452.jpg"></b-img>
+    <b-img class="outdoor" src="../assets/t30_2x_bapt_6_121452.jpg"></b-img>
    
     <h5 id="room3">Cozinha</h5>
     <br />
@@ -36,7 +37,7 @@
     </p>
     <b-img class="kitchen2" src="../assets/cozinha.jpg"></b-img>
 
-    <b-button id="btnRent">Alugar</b-button>
+    <router-link tag="button" id="btnRent" :to="{ name: 'rentRoom' }">Alugar</router-link>
     <br><br>
   </div>
 </template>
@@ -85,7 +86,7 @@
     left: 300px;
     top: -200px;
 }
-.table{
+.outdoor{
     position: relative;
     width: 30%;
     height: auto;
@@ -113,7 +114,7 @@
 #btnRent:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 </style>

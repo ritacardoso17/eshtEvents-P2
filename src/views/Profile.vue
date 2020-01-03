@@ -109,7 +109,7 @@ h1 {
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
   border-width: thick;
 }
@@ -126,7 +126,7 @@ h1 {
 }
 #line1{
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: 187px;
@@ -134,7 +134,7 @@ h1 {
 }
 #line2{
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: 117px;

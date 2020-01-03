@@ -1,6 +1,7 @@
 <template>
   <div class="events">
     <b-img class="catering" src="../assets/zaton-catering-001.jpg"></b-img>
+    <br><br><br>
     <hr id="lineLeft" />
     <h3 id="titule">Eventos e Catering</h3>
     <hr id="lineRight" />
@@ -34,19 +35,18 @@
     <a href="#" class="menus">
       <b>Ver Menus</b>
     </a>
-    <b-button id="btnReserve" to="/reservation/events">Fazer Reserva</b-button>
+    <router-link tag="button" id="btnReserve" :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
   </div>
 </template>
 
 <style>
 .catering {
   position: relative;
-  top: -60px;
   width: 1263px;
 }
 #lineLeft {
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: -15px;
@@ -54,7 +54,7 @@
 }
 #lineRight {
   position: relative;
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: -30px;
@@ -104,7 +104,7 @@
 #btnReserve:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 </style>

@@ -141,7 +141,7 @@ h1 {
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
   border-width: thick;
 }

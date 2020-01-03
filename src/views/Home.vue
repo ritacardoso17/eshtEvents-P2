@@ -2,7 +2,9 @@
   <div class="home">
     <div class="container">
       <div class="row">
-        <b-img src="../assets/zaton-catering-001.jpg" class="imgCarousel" />
+        <b-img src="../assets/catering-table-display.jpg" class="imgCarousel" />
+        <div id="bar"></div>
+        <h1 class="centered" id="welcome">Bem-vindo</h1>
       </div>
       <div class="row">
         <b-img src="../assets/bandeja.preto.png" class="bandeja"></b-img>
@@ -54,8 +56,8 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <b-button id="seeMore" href="#">Ver Mais</b-button>
-              <b-button id="reserve" href="../views/EventsReserv.vue">Reservar Agora</b-button>
+              <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver Mais</router-link>
+              <router-link tag="button" id="reserve" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -88,8 +90,8 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <button type="submit" id="seeMore2" class="btn">Ver Mais</button>
-              <button type="submit" id="reserve2" class="btn">Reservar Agora</button>
+              <router-link tag="button" id="seeMore2" :to="{ name: 'events' }">Ver mais</router-link>
+              <router-link tag="button" id="reserve2" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -122,7 +124,7 @@
                 <br />diversos eventos, conseguindo sempre estar à altura
                 das expectativas dos clientes.
               </b-card-text>
-              <button type="submit" id="workshopsbtn" class="btn">Ver Workshops</button>
+              <router-link tag="button" id="workshopsbtn" :to="{ name: 'workshops' }">Ver Workshops</router-link>
             </b-card-body>
           </b-col>
         </b-row>
@@ -139,24 +141,38 @@
 
 export default {
   name: "home",
-  components: {
- 
-  }
+  components: {}
 };
 </script>
 
 <style>
 .imgCarousel {
-  width: 1000px;
+  position: relative;
+  left: -67px;
+  width: 1263px;
   height: auto;
   background-color: white;
-  /* -webkit-filter: blur(2px);
-  filter: blur(2px); */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  -webkit-filter: blur(2px);
+  filter: blur(2px);
 }
-
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Channel;
+  font-size: 210%;
+}
+#bar {
+  position: absolute;
+  opacity: 0.6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1263px;
+  height: 90px;
+  background-color: white;
+}
 .bandeja {
   width: 100px;
   height: auto;
@@ -180,7 +196,7 @@ export default {
   font-family: GeosansLight;
 }
 
-#subTitle{
+#subTitle {
   text-align: center;
   font-family: GeosansLight;
 }
@@ -196,7 +212,7 @@ export default {
   position: relative;
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #seeMore {
@@ -213,7 +229,7 @@ export default {
 #seeMore:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #reserve {
@@ -222,6 +238,8 @@ export default {
   height: 30px;
   font-size: 70%;
   color: white;
+  white-space: nowrap;
+  padding: 4px;
   bottom: -70px;
   left: 150px;
   background-color: #232323;
@@ -230,7 +248,7 @@ export default {
 #reserve:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #seeMore2 {
@@ -247,7 +265,7 @@ export default {
 #seeMore2:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #reserve2 {
@@ -264,7 +282,7 @@ export default {
 #reserve2:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #workshopsbtn {
@@ -281,7 +299,7 @@ export default {
 #workshopsbtn:hover {
   color: white;
   border: 2px solid;
-  border-color: #f7ca18;
+  border-color: #DAAA29;
   background-color: #000;
 }
 #firstCard {
@@ -326,7 +344,7 @@ export default {
   font-size: 150%;
 }
 #line {
-  background-color: #f7ca18;
+  background-color: #DAAA29;
   height: 5px;
   width: 1000px;
   position: relative;
