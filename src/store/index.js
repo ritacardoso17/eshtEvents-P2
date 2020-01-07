@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [
-      { id: "0", name: "Admin", school: "",  typeUser:"admin", email: "admin@email.com", password: "123" }
+      { id: 0, name: "Admin", school: "",  typeUser:"admin", email: "admin@email.com", password: "123" }
     ],
     userExist: false,
     loggedUser: []
@@ -57,16 +57,14 @@ export default new Vuex.Store({
         state.userExist === false
       }
 
+    },
+    REMOVE_USER:(state,payload)=>{
+     state.users = state.users.filter( (user) => payload.id !== user.id)
     }
   },
-
   getters: {
     getLastId(state) {
-      if (state.users.length) {
-        return state.users[state.users.length - 1].id
-      } else {
-        return 0
-      }
+        return state.users.length ? state.users[state.users.length - 1].id : 0
     }
   }
 });

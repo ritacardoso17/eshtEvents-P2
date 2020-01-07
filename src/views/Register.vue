@@ -106,7 +106,7 @@ export default {
      */
     addUser() {
       this.$store.commit("ADD_USER", {
-        id: this.getLastId(),
+        id: this.getLastId() + 1 ,
         name: this.name,
         school: this.school,
         email: this.email,

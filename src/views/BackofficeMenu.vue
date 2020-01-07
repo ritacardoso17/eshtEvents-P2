@@ -3,17 +3,17 @@
     <router-link to="/usersadmin">
     <button id="btnUsers" >USERS</button> </router-link>
     
-   <span> ///// </span>
+   <!-- <span> </span> -->
    <router-link to="/register"> 
     <button id="btnMenus">USERS</button> </router-link>
 
-    <span> ///// </span>
+    <!-- <span> ///// </span> -->
     <router-link to="/"> 
     <button id="btnReservations">USERS</button> </router-link>
 
-    <span> ///// </span>
+    <!-- <span> ///// </span> -->
     <router-link to="/"> 
-    <button id="btnlolz">USERS</button> </router-link>
+    <button id="btnWorkshops">USERS</button> </router-link>
   </div>
 </template>
 
@@ -24,13 +24,16 @@ button {
   position: relative;
   color: transparent;
   background-color: transparent;
+  border-color: black;
+   top:5px;
 }
 #btnUsers{
   background-image: url('../assets/noun_User_2501722.png') ;
   background-size: 280px ;
   background-position: -13px 1px;
   font-family: GeosansLight;
-
+  left: -60px;
+ 
 }
 #btnMenus{
 
@@ -38,6 +41,7 @@ button {
   background-size: 280px ;
   background-position: -13px 1px;
   font-family: GeosansLight;
+  left: -30px;
 
 }
 #btnReservations{
@@ -46,7 +50,16 @@ button {
   background-size: 280px ;
   background-position: -13px 1px;
   font-family: GeosansLight;
+  left: 0px;
 
 }
+#btnWorkshops{
+  background-image: url('../assets/noun_reservation_2548917.png') ;
+  background-size: 280px ;
+  background-position: -13px 1px;
+  font-family: GeosansLight;
+  left: 30px;
+}
+
 
 </style>
