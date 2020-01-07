@@ -1,12 +1,12 @@
 <template>
   <div class="bckUsers">
-    <b-table striped hover :items="this.items" :fields="this.fields">
+    <b-table striped hover :items="this.items" :fields="this.fields" >
        <!-- <template v-slot:cell(typeUser)="row">
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>
       </template> -->
       <template v-slot:cell(options)="row">
-        <b-button class="lol" size="sm" @click="row.removeUser">
+        <b-button class="lol" size="sm" @click="removeUser(row)">
          Eliminar Utilizador
         </b-button>
         
@@ -20,15 +20,20 @@ export default {
   data() {
     return {
        items: [], 
-       fields:[{key:"id",lable:"id"},{key:"name",lable:"name",sortable:"true"},{key:"typeUser",lable:"typeUser"},{key:"options"}]
+       fields:[{key:"id",lable:"id"},{key:"name",lable:"name",sortable:"true"},{key:"typeUser",lable:"typeUser"}
+       ,{key:"options"}]
        };
   },
   created(){
     this.items=JSON.parse(localStorage.getItem("users"))
     }, 
-    removeUser(){
-      alert("dd")
-    }
+   methods:{ removeUser(){
+    this.$store.commit("REMOVE_USER",
+    {
+      id: this.items.id
+    })
+    }}
+   
 };
 </script>
 

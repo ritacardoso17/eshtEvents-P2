@@ -27,6 +27,8 @@ export default new Vuex.Store({
             email: payload.email,
             password: payload.password,
           });
+          localStorage.setItem("users", JSON.stringify(state.users))
+          localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           location.href = "/"
           alert("REGISTADO")
         }
@@ -59,7 +61,9 @@ export default new Vuex.Store({
 
     },
     REMOVE_USER:(state,payload)=>{
+  
      state.users = state.users.filter( (user) => payload.id !== user.id)
+     
     }
   },
   getters: {
