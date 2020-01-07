@@ -3,7 +3,9 @@
     <b-img src="../assets/imgRegisto.jpg" class="imgRegister" />
     <div id="bar"></div>
     <h1 class="centered" id="registerPage">Registo</h1>
-    <br><br><br>
+    <br />
+    <br />
+    <br />
     <hr class="line1" />
     <div class="container col-sm-4">
       <form v-on:submit.prevent="addUser()">
@@ -59,12 +61,37 @@
             type="email"
             class="form-control"
             id="emailTxt"
-            aria-describedby="emailHelp"
             placeholder="Insira o seu email"
             required
             v-model="email"
           />
         </div>
+        <div class="form-group">
+          <label for="contactTxt" class="contactLabel">Contacto:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="contactTxt"
+            placeholder="Insira o seu número de telefone"
+            required
+            v-model="contact"
+          />
+        </div>
+        <div class="form-group">
+          <label for="birthTxt" class="birthLabel">Data de Nascimento:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="birthTxt"
+            placeholder
+            required
+            v-model="birth"
+          />
+        </div>
+        <div id="avatar">
+          <img id="avatar1" src="../assets/78457815_2435966936655734_3103731526311870464_n.png"/>
+        </div>
+        <a href="" id="addAvatar">Adicionar Avatar</a>
         <button type="submit" class="btnConf">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
           <router-link to="/login">Login</router-link>
@@ -88,7 +115,6 @@ export default {
     confPass: ""
   }),
   created: function() {
-   
     window.addEventListener("unload", this.saveStorage);
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
@@ -106,7 +132,7 @@ export default {
      */
     addUser() {
       this.$store.commit("ADD_USER", {
-        id: this.getLastId() + 1 ,
+        id: this.getLastId() + 1,
         name: this.name,
         school: this.school,
         email: this.email,
@@ -141,21 +167,21 @@ export default {
   border-bottom-style: groove;
   background-color: #fff;
 }
-.btnConf{
+.btnConf {
   position: relative;
-  width: 90px;
+  width: 120px;
   font-size: 12px;
   height: 30px;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
   top: 50px;
-  left: 250px;
+  left: 490px;
 }
 .btn:hover {
   color: white;
   border-radius: 0;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
   border-width: thick;
 }
@@ -172,59 +198,105 @@ export default {
   width: 1100px;
   margin-top: 80px;
 }
-.nameLabel{
+.nameLabel {
   font-family: GeosansLight;
   position: relative;
   margin-left: -250px;
   margin-top: 60px;
 }
-#txtName{
+#txtName {
   position: relative;
   left: 140px;
   top: -45px;
 }
-.passLabel{
+.passLabel {
   font-family: GeosansLight;
   position: relative;
   margin-left: -280px;
   margin-top: -60px;
 }
-#passTxt{
+#passTxt {
   position: relative;
   left: 110px;
   top: -45px;
+  width: 410px;
 }
-.confLabel{
+.confLabel {
   font-family: GeosansLight;
   position: relative;
   margin-left: -220px;
   margin-top: -60px;
 }
-#confirmarPassTxt{
+#confirmarPassTxt {
   position: relative;
   left: 170px;
   top: -45px;
+  width: 350px;
 }
-.schoolLabel{
+.schoolLabel {
   font-family: GeosansLight;
   position: relative;
   margin-left: -110px;
   margin-top: -60px;
 }
-#sltSchool{
+#sltSchool {
   position: relative;
   left: 10px;
   width: 200px;
 }
-.emailLabel{
+.emailLabel {
   font-family: GeosansLight;
   position: relative;
   margin-left: -330px;
   top: 45px;
 }
-#emailTxt{
+#emailTxt {
   position: relative;
   left: 60px;
-  width: 500px;
+  width: 465px;
+}
+.contactLabel {
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -320px;
+  top: 45px;
+}
+#contactTxt {
+  position: relative;
+  left: 70px;
+  width: 455px;
+}
+.birthLabel {
+  font-family: GeosansLight;
+  position: relative;
+  margin-left: -250px;
+  top: 45px;
+}
+#birthTxt {
+  position: relative;
+  left: 145px;
+  width: 380px;
+}
+#avatar {
+  position: absolute;
+  top: 70px;
+  width: 200px;
+  height: 300px;
+  left: -300px;
+  border: 2px solid #232323;
+}
+#avatar1{
+   position: absolute;
+   width: 100px;
+   left: 50px;
+   top: 100px;
+}
+#addAvatar{
+  position: absolute;
+  color:#000;
+  left: -265px;
+  top: 390px;
+  font-size: 120%;
+  font-family: GeosansLight;
 }
 </style>
