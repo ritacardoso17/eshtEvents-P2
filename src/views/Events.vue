@@ -96,7 +96,7 @@
   height: 50px;
   font-size: 100%;
   color: white;
-  bottom: 410px;
+  top: -380px;
   left: -110px;
   background-color: #232323;
   font-family: GeosansLight;

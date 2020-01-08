@@ -89,9 +89,9 @@
           />
         </div>
         <div id="avatar">
-          <img id="avatar1" src="../assets/78457815_2435966936655734_3103731526311870464_n.png"/>
+          <img id="avatar1" src="../assets/78457815_2435966936655734_3103731526311870464_n.png" />
         </div>
-        <a href="" id="addAvatar">Adicionar Avatar</a>
+        <a href id="addAvatar">Adicionar Avatar</a>
         <button type="submit" class="btnConf">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
           <router-link to="/login">Login</router-link>
@@ -285,15 +285,15 @@ export default {
   left: -300px;
   border: 2px solid #232323;
 }
-#avatar1{
-   position: absolute;
-   width: 100px;
-   left: 50px;
-   top: 100px;
-}
-#addAvatar{
+#avatar1 {
   position: absolute;
-  color:#000;
+  width: 100px;
+  left: 50px;
+  top: 100px;
+}
+#addAvatar {
+  position: absolute;
+  color: #000;
   left: -265px;
   top: 390px;
   font-size: 120%;
