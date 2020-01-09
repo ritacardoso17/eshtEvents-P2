@@ -26,17 +26,18 @@
     <router-link to="/Profile/roomProfile" id="profileLinks"> Espaços</router-link>
 
     <hr id="line1"><h2 id="subtitle">Os teus eventos</h2><hr id="line2">
+
+    <div class="yourEvents" id="yourEvents">
+      <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+    </div>
   </div>
 </template>
 
 <script>
 export default{
   name: "Profile",
-  data: function(){
-    return{
-      loogedUser: [],
-      name: ""
-    };
+  data(){
+    return { loogedUser: [], fields:[{key:"Evento",lable:"event"},{key:"Data",lable:"date"},{key:"Estado",lable:"state"},{key:"Alterar",lable:"change"},{key:"Avaliações",lable:"classification"}]};
   },
   methods: {
     getUser() {
@@ -139,5 +140,14 @@ h1 {
   width: 150px;
   top: 117px;
   margin-right: 350px;
+}
+.table {
+  position: sticky;
+  color: black;
+  top: 50px;
+  left: 500px;
+}
+.yourEvents{
+  color: #ffffff;
 }
 </style>
