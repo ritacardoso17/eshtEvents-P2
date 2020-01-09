@@ -1,7 +1,7 @@
 <template>
   <div class="editProfile">
-    <h1 id="title">Editar Perfil</h1>
-    <div id="container">
+    <h1 id="title">Alterar Palavra-passe</h1>
+    <div id="container" >
       <div id="linha1"></div>
       <div id="linha2"></div>
       <div id="picture">
@@ -9,19 +9,16 @@
       </div>
       <a id="editPhoto">Editar Foto</a>
 
-      <h3 id="name">Mafalda Cunha</h3>
+      <h3 id="name">{{loggedUser[0].name}}</h3>
 
-      <label for="birthDate" class="birth"><p>Data de Nascimento:</p></label>
-      <input type="date" class="form-control" id="birthDate" />
+      <label for="password" class="password"><p>Palavra-passe:</p></label>
+      <input type="password" class="form-control" id="password"/>
 
-      <label for="number" class="phone"><p>Contacto:</p></label>
-      <input type="text" class="form-control" id="number" placeholder="912345678" />
+      <label for="password" class="newPassword"><p>Nova palavra-passe:</p></label>
+      <input type="password" class="form-control" id="newPassword"/>
 
-      <label for="institution" class="school"><p>Instituição:</p></label>
-      <input type="text" class="form-control" id="institution" placeholder="ISEP" />
-
-      <label for="schoolEmail" class="email"><p>E-mail:</p></label>
-      <input type="text" class="form-control" id="schoolEmail" placeholder="mafaldacunha97@isep.ipp.pt"/>
+      <label for="password" class="confirmPassword"><p>Confirmar palavra-passe:</p></label>
+      <input type="password" class="form-control" id="confirmPassword"/>
 
       <router-link to="/Profile"><button type="submit" id="edit">Confirmar</button></router-link>
       
@@ -30,13 +27,30 @@
 </template>
 
 <script>
+  export default{
+  name: "editProfile",
+  data(){
+    return {
+      loggedUser: [],
+    }
+  },
+  methods: {
+    getUser() {
+      return this.$store.state.loggedUser;
+    }
+  },
+  created() {
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+  }
+}
 </script>
 
 <style>
 h1 {
   font-family: ScriptMTBold;
+  margin-top: 30px;
   color: #000;
-  font-size: 70px;
+  font-size: 50px;
 }
 #container {
   border-left: 6px solid black;
@@ -46,6 +60,7 @@ h1 {
   margin-left: 100px;
   height: 350px;
   width: 1050px;
+  font-family: GeosansLight;
 }
 #picture {
   position: absolute;
@@ -62,69 +77,45 @@ h1 {
   top: 340px;
   text-decoration: underline;
 }
-#name {
+#password {
   position: relative;
-  padding-top: 10px;
-  margin-left: 106px;
-  font-weight: bold;
-  font-family: Champagne;
-}
-#birthDate {
-  position: relative;
-  font-family: GeosansLight;
-  /* border-bottom-style: hidden; */
-  bottom: 45px;
-  left: 615px;
+  top: -50px;
+  left: 560px;
   height: 20px;
-  width: 160px;
-}
-.birth {
-    position: relative;
-    margin-top: 40px;
+  width: 100px;
   font-family: GeosansLight;
-  margin-left: 65px;
 }
-#number {
+.password {
+  right: 10px;
+  margin-top: 30px;
   position: relative;
   font-family: GeosansLight;
-  /* border-bottom-style: hidden; */
+}
+#newPassword {
+  position: relative;
+  font-family: GeosansLight;
   bottom: 45px;
-  left: 545px;
+  left: 600px;
   height: 20px;
   width: 100px;
 }
-.phone {
+.newPassword {
+  left: 10px;
   position: relative;
   font-family: GeosansLight;
-  right: 3px;
 }
-#institution {
+#confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  /* border-bottom-style: hidden; */
   bottom: 45px;
-  left: 548px;
+  left: 620px;
   height: 20px;
   width: 100px;
 }
-.school {
+.confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  right: 2px;
-}
-#schoolEmail {
-  position: relative;
-  font-family: GeosansLight;
-  /* border-bottom-style: hidden; */
-  bottom: 45px;
-  left: 525px;
-  height: 20px;
-  width: 200px;
-}
-.email {
-  position: relative;
-  font-family: GeosansLight;
-  right: 12px;
+  left: 20px;
 }
 
 #edit {
