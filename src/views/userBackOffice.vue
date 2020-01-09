@@ -6,8 +6,12 @@
       </b-form-select>
       </template>-->
       <template v-slot:cell(options)="row">
-        <b-button class="btnRemove" size="sm" @click="removeUser()">Eliminar Utilizador</b-button>
-        <b-button class="btnChange" size="sm" @click="changeUser()">Mudar tipo de utilizador</b-button>
+        <b-button class="btnRemove" size="sm" @click="removeUser(row.item.id)">Eliminar Utilizador</b-button>
+        <b-button
+          class="btnChange"
+          size="sm"
+          @click="changeUser(row.item.id)"
+        >Mudar tipo de utilizador</b-button>
       </template>
     </b-table>
   </div>
@@ -21,7 +25,8 @@ export default {
       fields: [
         { key: "id", lable: "id" },
         { key: "name", lable: "name", sortable: "true" },
-        { key: "typeUser", lable: "typeUser" },
+        { key: "typeUser", lable: "typeUser",sortable: "true" },
+        {key:"email", lable: "email"},
         { key: "options" }
       ]
     };
@@ -32,17 +37,32 @@ export default {
       this.items = JSON.parse(localStorage.getItem("users"));
     }
   },
-  //NAO FUNCIONA BEM YET
   methods: {
-    removeUser() {
-      this.$store.commit("REMOVE_USER", {
-        id: this.items.id
-      });
+    removeUser(id) {
+      for (let i in this.items) {
+        if (this.items[i].id === id) {
+          this.items = this.items.filter(item => this.items[i].id !== item.id);
+          localStorage.setItem("users", JSON.stringify(this.items));
+          this.$store.state.users = localStorage.setItem("users", JSON.stringify(this.items));
+        }
+      }
     },
-    changeUser(){
-      this.$store.commit("CHANGE_TYPE", {
-        id: this.items.id
-      });
+    changeUser(id) {
+      for (let i in this.items) {
+        if (this.items[i].id === id) {
+          const index = this.items.findIndex(
+            item => this.items[i].id === item.id
+          );
+          if (this.items[i].typeUser == "user") {
+            this.items[index].typeUser = "admin";
+          }
+          else{
+             this.items[index].typeUser = "user";
+          }
+
+          localStorage.setItem("users", JSON.stringify(this.items));
+        }
+      }
     }
   }
 };
@@ -50,20 +70,18 @@ export default {
 
 <style>
 .b-table {
-  
   top: 50px;
   left: 500px;
 }
 .btnRemove {
   width: 210px;
   height: 70px;
-  top:3px;
-
+  top: 3px;
 }
 .btnChange {
   width: 210px;
   height: 70px;
   right: -12px;
-  top:3px;
+  top: 3px;
 }
 </style>

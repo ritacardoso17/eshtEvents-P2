@@ -69,32 +69,9 @@ export default new Vuex.Store({
 
     },
     LOGOUT:(state)=>{
-      state.loggedUser.pop()
-      localStorage.removeItem("loggedUser", JSON.stringify(this.state.loggedUser))
+      // state.loggedUser.pop()
+      localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
     },
-    REMOVE_USER: (state, payload) => {
-      state.users = state.users.filter((user) => payload.id !== user.id)
-      localStorage.setItem("users", JSON.stringify(state.users))
-
-    },
-    CHANGE_TYPE: (state, payload) => {
-      for (const user of state.users) {
-        if (user.id == payload.id) {
-          state.users.push({
-            id: user.id,
-            name: user.name,
-            school: user.school,
-            typeUser:"admin",
-            email: user.email,
-            password: user.password,
-            contact: user.contact,
-            birth: user.birth
-          })
-        }
-
-      }
-
-    }
   },
   getters: {
     getTypeUser(state) {
