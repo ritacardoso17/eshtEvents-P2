@@ -179,6 +179,22 @@
           <p id="components2">
             <b>Componentes</b>
           </p>
+          <p id="menu2">
+            <b>Menu</b>
+          </p>
+          <p id="choiseMenu2">▶ AQUI É O NOME DO MENU ESCOLHIDO</p>
+          <p id="addMenu2">▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
+             BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA </p>
+           <p id="observ2">
+            <b>Observações</b>
+          </p>
+          <p id="observMade2">▶ AQUI SAO AS OBSERVAÇÕES FEITAS PELO CLIENTE BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+            BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAHBLAH BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
+          </p>
+          <p id="extras2">
+            <b>Extras</b>
+          </p>
+          <p id="choiseExtras2">▶ Extra ▶ Extra ▶ Extra ▶  Extra</p>
           <a name id="confirm2" class="btn btn-primary" href="#" role="button">Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="#" role="button">Cancelar</a>
         </b-tab>
@@ -476,7 +492,7 @@ export default {
   margin-top: 20px;
 }
 #resumeLine2 {
-  width: 650px;
+  width: 800px;
   height: 2px;
   background-color: #daaa29;
   border: none;
@@ -486,43 +502,110 @@ export default {
   text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 360px;
+  margin-left: 320px;
 }
-#components2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 20px;
-  color: black;
-  margin-left: 700px;
-  margin-top: -180px;
-}
+
 #pDate2 {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 350px;
+  margin-left: 300px;
 }
 #pTime2 {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 350px;
+  margin-left: 300px;
 }
 #pDuration2 {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 350px;
+  margin-left: 300px;
 }
 #pPersons2 {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 350px;
+  margin-left: 300px;
+}
+#components2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 770px;
+  margin-top: -180px;
+}
+#menu2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 320px;
+  top: 350px;
+}
+#choiseMenu2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 400px;
+}
+#addMenu2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 420px;
+  width: 300px;
+}
+#observ2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 320px;
+  top: 500px;
+}
+#observMade2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 550px;
+  width: 600px;
+}
+#extras2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 770px;
+  top: 350px;
+}
+#choiseExtras2{
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 13px;
+  color: black;
+  margin-left: 770px;
+  top: 400px;
+  width: 40px;
 }
 #confirm2 {
   position: relative;
@@ -532,19 +615,33 @@ export default {
   color: white;
   background-color: #000;
   font-family: GeosansLight;
-  top: 400px;
+  border: 2px solid black;
+  top: 440px;
   left: 100px;
+}
+#confirm2:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #DAAA29;
+  background-color: #000;
 }
 #cancel2 {
   position: relative;
   width: 90px;
   font-size: 12px;
+  border: 2px solid black;
   height: 30px;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
-  top: 400px;
+  top: 440px;
   left: -100px;
+}
+#cancel2:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #DAAA29;
+  background-color: #000;
 }
 /* --------------- */
 </style>
