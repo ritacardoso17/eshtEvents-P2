@@ -9,15 +9,15 @@
       </div>
       <a id="editPhoto">Editar Foto</a>
 
-      <h3 id="name">Mafalda Cunha {{loggedUser}}</h3>
+      <h3 id="name">{{loggedUser[0].name}}</h3>
 
-      <p id="info">Data de Nascimento: 05/12/1997</p>
+      <p id="info">Data de Nascimento: {{loggedUser[0].birth}}</p>
 
-      <p id="info">Contacto: 912345678</p>
+      <p id="info">Contacto: {{loggedUser[0].contact}}</p>
 
-      <p id="info">Instituição: ISEP</p>
+      <p id="info">Instituição: {{loggedUser[0].school}}</p>
 
-      <p id="info">E-mail: mafaldacunha97@isep.ipp.pt</p>
+      <p id="info">E-mail: {{loggedUser[0].email}}</p>
 
       <router-link to="/Profile/editProfile"><button id="edit">Editar Perfil</button></router-link>
     </div>
@@ -37,7 +37,7 @@
 export default{
   name: "Profile",
   data(){
-    return { loogedUser: [], fields:[{key:"Evento",lable:"event"},{key:"Data",lable:"date"},{key:"Estado",lable:"state"},{key:"Alterar",lable:"change"},{key:"Avaliações",lable:"classification"}]};
+    return { loggedUser: [], fields:[{key:"Evento",lable:"event"},{key:"Data",lable:"date"},{key:"Estado",lable:"state"},{key:"Alterar",lable:"change"},{key:"Avaliações",lable:"classification"}]};
   },
   methods: {
     getUser() {
