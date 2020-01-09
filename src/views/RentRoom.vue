@@ -13,10 +13,10 @@
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
           <p class="guide7">▶ Escolha o espaço que pretende alugar</p>
-          <b-button id="butn1"></b-button>
-          <b-button id="butn2"></b-button>
-          <b-button id="butn3"></b-button>
-          <b-button id="butn4"></b-button>
+          <b-button id="cozinha" name="cozinha" v-if="roomType"></b-button>
+          <b-button id="bar" name="bar"></b-button>
+          <b-button id="restaurante" name="restaurante"></b-button>
+          <b-button id="butn4" name="butn4" disabled></b-button>
         </b-tab>
         <b-tab title="Informação">
           <p class="guide8">▶ Data e hora para o aluguer</p>
@@ -48,6 +48,29 @@
 </template>
 
 <script>
+export default{
+  name: "rentRoom",
+  data: () => ({
+    type: "",
+    day: "",
+    time: "",
+    duration: "",
+  }),
+  methods: {
+    getUser() {
+      return this.$store.state.loggedUser;
+    },
+    getTypeById(type) {
+      return this.rooms.filter(room => room.type === type)[0].name;
+    }
+  },
+  created() {
+    window.addEventListener("unload", this.saveStorage);
+    if (localStorage.getItem("rooms")) {
+      this.$store.state.rooms = JSON.parse(localStorage.getItem("rooms"));
+    }
+  }
+}
 </script>
 
 <style>
@@ -62,38 +85,38 @@
   margin-left: 180px;
   font-size: 110%;
 }
-#butn1 {
+#cozinha {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
-  left: 200px;
-  top: 170px;
+  left: -15px;
+  top: 0px;
 }
 
-#butn2 {
+#bar {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
   left: 425px;
-  top: 170px;
+  top: 370px;
 }
-#butn3 {
+#restaurante {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
-  left: 650px;
-  top: 170px;
+  left: 190px;
+  top: 0px;
 }
 #butn4 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
-  left: 875px;
-  top: 170px;
+  left: 0px;
+  top: 155px;
 }
 /* INFO TAB */
 .guide8 {

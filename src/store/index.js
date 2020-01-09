@@ -10,9 +10,11 @@ export default new Vuex.Store({
     ],
     userExist: false,
     loggedUser: [],
-    rooms:[],
-    workshops:[],
-    foodMenus:[],
+    rooms: [
+      { type: "restaurante", day: "06-04-2020", time: "19:45", duration: "2" }
+    ],
+    workshops: [],
+    foodMenus: [],
   },
 
   mutations: {
@@ -68,7 +70,7 @@ export default new Vuex.Store({
       }
 
     },
-    LOGOUT:(state)=>{
+    LOGOUT: (state) => {
       state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(this.state.loggedUser))
     },
@@ -84,7 +86,7 @@ export default new Vuex.Store({
             id: user.id,
             name: user.name,
             school: user.school,
-            typeUser:"admin",
+            typeUser: "admin",
             email: user.email,
             password: user.password,
             contact: user.contact,
@@ -93,16 +95,30 @@ export default new Vuex.Store({
         }
 
       }
+}
 
-    }
-  },
-  getters: {
-    getTypeUser(state) {
-      return state.loggedUser[0].typeUser
     },
-    getLastId(state) {
-      return state.users.length ? state.users[state.users.length - 1].id : 0
 
+    RENT_ROOM: (state, payload) => {
+        if (payload == true) {
+          alert("check")
+        } else {
+          state.rooms.push({
+            type: payload.type,
+            day: payload.day,
+            time: payload.time,
+            duration: payload.duration
+          });
+          localStorage.setItem("rooms", JSON.stringify(state.rooms))
+        }
+    },
+    getters: {
+      getTypeUser(state) {
+        return state.loggedUser[0].typeUser
+      },
+      getLastId(state) {
+        return state.users.length ? state.users[state.users.length - 1].id : 0
+
+      }
     }
-  }
 });
