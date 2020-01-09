@@ -1,6 +1,6 @@
 <template>
   <div class="editProfile">
-    <h1 id="title">Editar Perfil</h1>
+    <h1 id="title">Alterar Palavra-passe</h1>
     <div id="container" >
       <div id="linha1"></div>
       <div id="linha2"></div>
@@ -48,8 +48,9 @@
 <style>
 h1 {
   font-family: ScriptMTBold;
+  margin-top: 30px;
   color: #000;
-  font-size: 70px;
+  font-size: 50px;
 }
 #container {
   border-left: 6px solid black;
@@ -59,6 +60,7 @@ h1 {
   margin-left: 100px;
   height: 350px;
   width: 1050px;
+  font-family: GeosansLight;
 }
 #picture {
   position: absolute;
@@ -78,27 +80,42 @@ h1 {
 #password {
   position: relative;
   top: -50px;
-  left: 600px;
+  left: 560px;
   height: 20px;
   width: 100px;
+  font-family: GeosansLight;
+}
+.password {
+  right: 10px;
+  margin-top: 30px;
+  position: relative;
   font-family: GeosansLight;
 }
 #newPassword {
   position: relative;
   font-family: GeosansLight;
-  /* border-bottom-style: hidden; */
   bottom: 45px;
   left: 600px;
   height: 20px;
   width: 100px;
 }
+.newPassword {
+  left: 10px;
+  position: relative;
+  font-family: GeosansLight;
+}
 #confirmPassword {
   position: relative;
   font-family: GeosansLight;
   bottom: 45px;
-  left: 610px;
+  left: 620px;
   height: 20px;
   width: 100px;
+}
+.confirmPassword {
+  position: relative;
+  font-family: GeosansLight;
+  left: 20px;
 }
 
 #edit {
