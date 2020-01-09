@@ -13,10 +13,10 @@
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
           <p class="guide7">▶ Escolha o espaço que pretende alugar</p>
-          <b-button id="cozinha" name="cozinha" v-if="roomType"></b-button>
-          <b-button id="bar" name="bar"></b-button>
-          <b-button id="restaurante" name="restaurante"></b-button>
-          <b-button id="butn4" name="butn4" disabled></b-button>
+          <b-button id="btn1" v-if="roomType"></b-button>
+          <b-button id="btn2" ></b-button>
+          <b-button id="btn3" ></b-button>
+          <b-button id="butn4" disabled></b-button>
         </b-tab>
         <b-tab title="Informação">
           <p class="guide8">▶ Data e hora para o aluguer</p>
@@ -85,7 +85,7 @@ export default{
   margin-left: 180px;
   font-size: 110%;
 }
-#cozinha {
+#btn1 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
@@ -94,7 +94,7 @@ export default{
   top: 0px;
 }
 
-#bar {
+#btn2 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
@@ -102,7 +102,7 @@ export default{
   left: 425px;
   top: 370px;
 }
-#restaurante {
+#btn3 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
