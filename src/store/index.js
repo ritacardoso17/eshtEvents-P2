@@ -10,9 +10,11 @@ export default new Vuex.Store({
     ],
     userExist: false,
     loggedUser: [],
-    rooms:[],
-    workshops:[],
-    foodMenus:[],
+    rooms: [
+      { type: "restaurante", day: "06-04-2020", time: "19:45", duration: "2" }
+    ],
+    workshops: [],
+    foodMenus: [],
   },
 
   mutations: {
@@ -68,18 +70,55 @@ export default new Vuex.Store({
       }
 
     },
-    LOGOUT:(state)=>{
-      // state.loggedUser.pop()
-      localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
+    LOGOUT: (state) => {
+      state.loggedUser.pop()
+      localStorage.removeItem("loggedUser", JSON.stringify(this.state.loggedUser))
     },
-  },
-  getters: {
-    getTypeUser(state) {
-      return state.loggedUser[0].typeUser
-    },
-    getLastId(state) {
-      return state.users.length ? state.users[state.users.length - 1].id : 0
+    REMOVE_USER: (state, payload) => {
+      state.users = state.users.filter((user) => payload.id !== user.id)
+      localStorage.setItem("users", JSON.stringify(state.users))
 
+    },
+    CHANGE_TYPE: (state, payload) => {
+      for (const user of state.users) {
+        if (user.id == payload.id) {
+          state.users.push({
+            id: user.id,
+            name: user.name,
+            school: user.school,
+            typeUser: "admin",
+            email: user.email,
+            password: user.password,
+            contact: user.contact,
+            birth: user.birth
+          })
+        }
+
+      }
+}
+
+    },
+
+    RENT_ROOM: (state, payload) => {
+        if (payload == true) {
+          alert("check")
+        } else {
+          state.rooms.push({
+            type: payload.type,
+            day: payload.day,
+            time: payload.time,
+            duration: payload.duration
+          });
+          localStorage.setItem("rooms", JSON.stringify(state.rooms))
+        }
+    },
+    getters: {
+      getTypeUser(state) {
+        return state.loggedUser[0].typeUser
+      },
+      getLastId(state) {
+        return state.users.length ? state.users[state.users.length - 1].id : 0
+
+      }
     }
-  }
 });
