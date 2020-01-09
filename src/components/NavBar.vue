@@ -12,10 +12,10 @@
         </li>
       </ul>
 
-      <a class="nav-link" v-b-modal.modal-1 id="login">
-        Iniciar Sessão
-        <!-- moustache? -->
-      </a>
+      <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão </a>
+
+      <a id="logout" @click="logout()"> LOUTOUT </a>
+
       <b-modal id="modal-1" centered size="m" title="Iniciar Sessão" hide-header-close hide-footer>
         <b-img src="../assets/noun_X_2290001.png" id="x1"></b-img>
         <b-img src="../assets/noun_X_2290001.png" id="x2"></b-img>
@@ -40,7 +40,11 @@
               required
             />
             <b-button type="submit" class="btn btn-primary float-right" id="btnLogin">Entrar</b-button>
-            <router-link tag="a" id="join" :to="{ name: 'register' }">Ainda não estás registado? Junta-te a nós!</router-link>
+            <router-link
+              tag="a"
+              id="join"
+              :to="{ name: 'register' }"
+            >Ainda não estás registado? Junta-te a nós!</router-link>
           </form>
         </div>
       </b-modal>
@@ -49,13 +53,30 @@
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
-        <router-link to="/events" id="eventsLink">Eventos e Catering</router-link>
-        <span>/////</span>
-        <router-link to="/room" id="roomsLink">Espaços</router-link>
-        <span>/////</span>
-        <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
-        <span>/////</span>
-        <router-link to="/menus" id="menusLink">Menus</router-link>
+
+        <!--GESTÃO DO ADMIN-->
+        <li class="nav-item">
+          <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
+            <router-link to="/menuAdmin">Area Administrador</router-link>
+            <span>/////</span>
+            <router-link to="/events" id="eventsLink">Eventos e Catering</router-link>
+            <span>/////</span>
+            <router-link to="/room" id="roomsLink">Espaços</router-link>
+            <span>/////</span>
+            <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
+            <span>/////</span>
+            <router-link to="/menus" id="menusLink">Menus</router-link>
+          </span>
+          <span v-else>
+            <router-link to="/events" id="eventsLink">Eventos e Catering</router-link>
+            <span>/////</span>
+            <router-link to="/room" id="roomsLink">Espaços</router-link>
+            <span>/////</span>
+            <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
+            <span>/////</span>
+            <router-link to="/menus" id="menusLink">Menus</router-link>
+          </span>
+        </li>
       </div>
     </nav>
     <!--/.Navbar-->
@@ -69,14 +90,12 @@ export default {
     email: "",
     password: ""
   }),
-  created: function() {
+  created: function() { 
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     }
     if (localStorage.getItem("loggedUser")) {
-      this.$store.state.loggedUser = JSON.parse(
-        localStorage.getItem("loggedUser")
-      );
+      this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     }
   },
   methods: {
@@ -86,12 +105,16 @@ export default {
         email: this.email,
         password: this.password
       });
+    },
+    logout(){
+       this.$store.commit("LOGOUT")
+    },
+    getTypeUser() {
+      return this.$store.getters.getTypeUser;
     }
   }
 };
 </script>
-
-
 
 <style>
 .navbar-light {

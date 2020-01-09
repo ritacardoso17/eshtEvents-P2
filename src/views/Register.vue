@@ -72,6 +72,7 @@
             type="tel"
             class="form-control"
             id="contactTxt"
+            pattern="[0-9]{9}"
             placeholder="Insira o seu número de telefone"
             required
             v-model="contact"
@@ -90,6 +91,7 @@
         </div>
         <div id="avatar">
           <img id="avatar1" src="../assets/78457815_2435966936655734_3103731526311870464_n.png" />
+          <!-- FALTA UM INPUT PARA A IMAGEM DO USER -->
         </div>
         <a href id="addAvatar">Adicionar Avatar</a>
         <button type="submit" class="btnConf">Confirmar</button>
@@ -112,7 +114,9 @@ export default {
     school: "pick",
     email: "",
     password: "",
-    confPass: ""
+    confPass: "",
+    contact:"",
+
   }),
   created: function() {
     window.addEventListener("unload", this.saveStorage);
@@ -128,7 +132,7 @@ export default {
       return this.$store.getters.getLastId;
     },
     /***
-     * FUNCTION CREATED TO ADD NEW TRAVEL
+     * FUNCTION CREATED TO ADD NEW USER
      */
     addUser() {
       this.$store.commit("ADD_USER", {
@@ -137,7 +141,9 @@ export default {
         school: this.school,
         email: this.email,
         password: this.password,
-        confPass: this.confPass
+        confPass: this.confPass,
+        birth:this.birth,
+        contact:this.contact
       });
     },
     saveStorage() {

@@ -6,10 +6,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     users: [
-      { id: 0, name: "Admin", school: "",  typeUser:"admin", email: "admin@email.com", password: "123" }
+      { id: 0, name: "Admin", school: "", typeUser: "admin", email: "admin@email.com", password: "123", birth: "", contact: "" }
     ],
     userExist: false,
-    loggedUser: []
+    loggedUser: [],
+    rooms:[],
+    workshops:[],
+    foodMenus:[],
   },
 
   mutations: {
@@ -19,16 +22,18 @@ export default new Vuex.Store({
         if (payload.password !== payload.confPass) {
           alert("PASSWORDS DIFERENTES")
         } else {
-            state.users.push({
+          state.users.push({
             id: payload.id,
             name: payload.name,
             school: payload.school,
-            typeUser:"user",
+            typeUser: "user",
             email: payload.email,
             password: payload.password,
+            contact: payload.contact,
+            birth: payload.birth
           });
           localStorage.setItem("users", JSON.stringify(state.users))
-          localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
+
           location.href = "/"
           alert("REGISTADO")
         }
@@ -44,10 +49,13 @@ export default new Vuex.Store({
             id: user.id,
             name: user.name,
             school: user.school,
-            typeUser:user.typeUser,
+            typeUser: user.typeUser,
             email: user.email,
-            password: user.password
+            password: user.password,
+            contact: user.contact,
+            birth: user.birth
           })
+          localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           alert("USER LOGGADO")
           state.userExist = true
         }
@@ -60,15 +68,41 @@ export default new Vuex.Store({
       }
 
     },
-    REMOVE_USER:(state,payload)=>{
-  
-     state.users = state.users.filter( (user) => payload.id !== user.id)
-     
+    LOGOUT:(state)=>{
+      state.loggedUser.pop()
+      localStorage.removeItem("loggedUser", JSON.stringify(this.state.loggedUser))
+    },
+    REMOVE_USER: (state, payload) => {
+      state.users = state.users.filter((user) => payload.id !== user.id)
+      localStorage.setItem("users", JSON.stringify(state.users))
+
+    },
+    CHANGE_TYPE: (state, payload) => {
+      for (const user of state.users) {
+        if (user.id == payload.id) {
+          state.users.push({
+            id: user.id,
+            name: user.name,
+            school: user.school,
+            typeUser:"admin",
+            email: user.email,
+            password: user.password,
+            contact: user.contact,
+            birth: user.birth
+          })
+        }
+
+      }
+
     }
   },
   getters: {
+    getTypeUser(state) {
+      return state.loggedUser[0].typeUser
+    },
     getLastId(state) {
-        return state.users.length ? state.users[state.users.length - 1].id : 0
+      return state.users.length ? state.users[state.users.length - 1].id : 0
+
     }
   }
 });
