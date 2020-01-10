@@ -12,7 +12,7 @@
     <button id="btnReservations">USERS</button> </router-link>
 
     <!-- <span> ///// </span> -->
-    <router-link to="/"> 
+    <router-link to="/workshopadmin"> 
     <button id="btnWorkshops">USERS</button> </router-link>
   </div>
 </template>

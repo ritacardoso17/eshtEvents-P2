@@ -1,17 +1,13 @@
 <template>
   <div class="bckUsers">
-    <b-table striped hover :items="this.items" :fields="this.fields">
+    <b-table bordered   hover :items="this.items" :fields="this.fields" small="true">
       <!-- <template v-slot:cell(typeUser)="row">
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>
       </template>-->
       <template v-slot:cell(options)="row">
         <b-button class="btnRemove" size="sm" @click="removeUser(row.item.id)">Eliminar Utilizador</b-button>
-        <b-button
-          class="btnChange"
-          size="sm"
-          @click="changeUser(row.item.id)"
-        >Mudar tipo de utilizador</b-button>
+        <b-button class="btnChange" size="sm"  @click="changeUser(row.item.id)" >Mudar tipo de utilizador</b-button>
       </template>
     </b-table>
   </div>
@@ -26,7 +22,6 @@ export default {
         { key: "id", lable: "id" },
         { key: "name", lable: "name", sortable: "true" },
         { key: "typeUser", lable: "typeUser",sortable: "true" },
-        {key:"email", lable: "email"},
         { key: "options" }
       ]
     };
@@ -53,7 +48,7 @@ export default {
           const index = this.items.findIndex(
             item => this.items[i].id === item.id
           );
-          if (this.items[i].typeUser == "user") {
+          if (this.items[index].typeUser == "user") {
             this.items[index].typeUser = "admin";
           }
           else{
@@ -61,6 +56,7 @@ export default {
           }
 
           localStorage.setItem("users", JSON.stringify(this.items));
+          this.$store.state.users = localStorage.setItem("users", JSON.stringify(this.items));
         }
       }
     }
@@ -75,12 +71,13 @@ export default {
 }
 .btnRemove {
   width: 210px;
-  height: 70px;
+  height: 40px;
+
   top: 3px;
 }
 .btnChange {
   width: 210px;
-  height: 70px;
+  height: 40px;
   right: -12px;
   top: 3px;
 }

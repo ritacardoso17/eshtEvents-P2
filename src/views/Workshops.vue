@@ -3,7 +3,7 @@
   <div id="workshop">
     <cardWorkshop />
     <router-view></router-view>
-     </div>
+  </div>
 </template>
 
 <style>
@@ -13,9 +13,9 @@
 import cardWorkshop from "@/components/cardWorkshop.vue";
 
 export default {
-     name: "Workshop",
+  name: "Workshop",
   components: {
-   cardWorkshop
+    cardWorkshop
   }
 };
 </script>
