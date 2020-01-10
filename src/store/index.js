@@ -115,15 +115,10 @@ export default new Vuex.Store({
         alert("Workshop Criado")
       }else{
         alert("Workshop com nome igual a um workshop criado")
-    }
-    }
-
-  },
-
-  RENT_ROOM: (state, payload) => {
-    if (payload == true) {
-      alert("check")
-    } else {
+    
+      }
+    },
+    RENT_ROOM: (state, payload) => {
       state.rooms.push({
         type: payload.type,
         day: payload.day,
@@ -131,14 +126,19 @@ export default new Vuex.Store({
         duration: payload.duration
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
-    }
+    },
+
   },
-  getters: {
+    getters: {
     getTypeUser(state) {
       return state.loggedUser[0].typeUser
     },
     getLastId(state) {
       return state.users.length ? state.users[state.users.length - 1].id : 0
+
+    },
+    getLastIdWorkshops(state) {
+      return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
 
     }
   }
