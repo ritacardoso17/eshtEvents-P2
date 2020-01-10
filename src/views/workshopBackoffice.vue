@@ -1,6 +1,6 @@
 <template>
   <div class="bckWorksjop">
-    <router-link tag="button" class="btnAdd" :to="{ name: 'addWorkshop' }">*</router-link>
+    <router-link tag="button" class="btnAdd" :to="{ name: 'addWorkshop' }">Adicionar</router-link>
     <b-table bordered fixed hover :items="this.workshops" :fields="this.fields" small="true">
       <template v-slot:cell(options)="row">
         <b-button class="btnRemove" size="sm" @click="removeWorkshop(row.item.id)">Eliminar Workshop</b-button>

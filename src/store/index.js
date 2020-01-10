@@ -12,12 +12,12 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { type: "restaurante", day: "06-04-2020", time: "19:45", duration: "2" }
+      { type: "butn1", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
     workshops: [
-      {id:1,name:"A", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"},
-      {id:2,name:"B", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"},
-      {id:3,name:"C", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"}
+      { id: 1, name: "A", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
+      { id: 2, name: "B", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
+      { id: 3, name: "C", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
     foodMenus: [],
   },
@@ -40,7 +40,6 @@ export default new Vuex.Store({
             birth: payload.birth
           });
           localStorage.setItem("users", JSON.stringify(state.users))
-
           location.href = "/"
           alert("REGISTADO")
         }
@@ -65,7 +64,7 @@ export default new Vuex.Store({
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           alert("USER LOGGADO")
           state.userExist = true
-        router.push({name:'home'})
+          router.push({ name: 'home' })
         }
       }
       if (!state.userExist) {
@@ -101,30 +100,46 @@ export default new Vuex.Store({
         }
 
       }
-}
-
     },
-
-    RENT_ROOM: (state, payload) => {
-        if (payload == true) {
-          alert("check")
-        } else {
-          state.rooms.push({
-            type: payload.type,
-            day: payload.day,
-            time: payload.time,
-            duration: payload.duration
-          });
-          localStorage.setItem("rooms", JSON.stringify(state.rooms))
-        }
-    },
-    getters: {
-      getTypeUser(state) {
-        return state.loggedUser[0].typeUser
-      },
-      getLastId(state) {
-        return state.users.length ? state.users[state.users.length - 1].id : 0
-
-      }
+    ADD_WORKSHOP: (state, payload) => {
+      if (!state.workshops.some(workshop => workshop.title === payload.title)) {
+        state.workshops.push({
+          id: payload.id,
+          title: payload.title,
+          date: payload.date,
+          place: payload.place,
+          teacher: payload.teacher,
+          vacancies: payload.vacancies
+        });
+        localStorage.setItem("workshops", JSON.stringify(state.workshops))
+        alert("Workshop Criado")
+      }else{
+        alert("Workshop com nome igual a um workshop criado")
     }
+    }
+
+  },
+
+  RENT_ROOM: (state, payload) => {
+    if (payload == true) {
+      alert("check")
+    } else {
+      state.rooms.push({
+        type: payload.type,
+        day: payload.day,
+        time: payload.time,
+        duration: payload.duration
+      });
+      localStorage.setItem("rooms", JSON.stringify(state.rooms))
+    }
+  },
+  getters: {
+    getTypeUser(state) {
+      return state.loggedUser[0].typeUser
+    },
+    getLastId(state) {
+      return state.users.length ? state.users[state.users.length - 1].id : 0
+
+    }
+  }
 });
