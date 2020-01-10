@@ -9,21 +9,22 @@
     <hr id="lineRight" />
 
     <b-card no-body>
-      <b-tabs align="center" v-model="tabIndex" small card id="tab1">
+      <!-- v-model="tabIndex" -->
+      <b-tabs align="center" small card id="tab1">
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
           <p class="guide7">▶ Escolha o espaço que pretende alugar</p>
-          <b-button id="butn1" @click="menuType(menu.id)"></b-button>
-          <b-button id="butn2" @click="menuType(menu.id)"></b-button>
-          <b-button id="butn3" @click="menuType(menu.id)"></b-button>
-          <b-button id="butn4" @click="menuType(menu.id)" disabled></b-button>
+          <b-img src="../assets/cozinha.jpg" id="butn1" value="Restaurant" @click="updatePhoto()"></b-img>
+          <b-img src="../assets/cozinha.jpg" id="butn2" value="bar" @click="updatePhoto()"></b-img>
+          <b-img src="../assets/cozinha.jpg" id="butn3" value="kitchen" @click="updatePhoto()"></b-img>
+          <b-img src="../assets/cozinha.jpg" id="butn4" value="newRestaurant" @click="updatePhoto()" disabled></b-img>
         </b-tab>
         <b-tab title="Informação">
           <p class="guide8">▶ Data e hora para o aluguer</p>
-          <b-form-input v-model="text" type="date" id="rentDate" required></b-form-input>
-          <b-form-input v-model="text" type="time" id="rentTime" required></b-form-input>
+          <b-form-input v-model="day" type="date" id="rentDate" required></b-form-input>
+          <b-form-input v-model="time" type="time" id="rentTime" required></b-form-input>
           <p class="guide9">▶ Tempo de duração</p>
-          <b-form-input v-model="text" type="time" id="rentDuration" required></b-form-input>
+          <b-form-input v-model="duration" type="number" max="12" min="1" id="rentDuration" required></b-form-input>
         </b-tab>
         <b-tab title="Resumo">
           <h3 class="resume">
@@ -33,14 +34,15 @@
           <p id="inform">
             <b>Informações</b>
           </p>
-          <p id="pDate">▶ AQUI VAI SER A DATA</p>
-          <p id="pTime">▶ AQUI AS HORAS</p>
-          <p id="pDuration">▶ E A DURAÇÃO</p>
+          <p id="pDate">▶ Dia: {{day}}</p>
+          <p id="pTime">▶ Hora: {{time}}h</p>
+          <p id="pDuration">▶ Duração: {{duration}}h</p>
           <p id="room">
             <b>Espaço</b>
           </p>
-          <a name id="confirm" class="btn btn-primary" href="#" role="button">Confirmar</a>
-          <a name id="cancel" class="btn btn-primary" href="#" role="button">Cancelar</a>
+          <img :src="type" alt="HEY" />
+          <a id="confirm" class="btn btn-primary" href="/room" role="button">Confirmar</a>
+          <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
     </b-card>
@@ -51,32 +53,30 @@
 export default {
   name: "rentRoom",
   data: () => ({
-      type: "",
-      day: "",
-      time: "",
-      duration: "",
+    /* type: "", */
+    day: "",
+    time: "",
+    duration: ""
   }),
   methods: {
+/*     updatePhoto() {
+      this.type = document.getElementsByTagName("button").value
+    }, */
+
     getUser() {
       return this.$store.state.loggedUser;
     },
     getTypeById(type) {
       return this.rooms.filter(room => room.type === type)[0].name;
     },
-    menuType(){
-      /* for (const room of state.rooms) {
-        if (this.id === this.type) {
-          this.$store.state.rooms = JSON.parse(localStorage.setItem("rooms"));
-        }
-      } */
-    },
-    rentRoom(){
+    rentRoom() {
       this.$store.commit("RENT_ROOM", {
+        /* type: this.type, */
         date: this.date,
         time: this.time,
         duration: this.duration
-      })
-     },
+      });
+    },
   },
   created() {
     window.addEventListener("unload", this.saveStorage);
@@ -84,8 +84,7 @@ export default {
       this.$store.state.rooms = JSON.parse(localStorage.getItem("rooms"));
     }
   }
-}
-
+};
 </script>
 
 <style>
@@ -102,7 +101,6 @@ export default {
 }
 #butn1 {
   border: 2px solid #232323;
-  background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
   left: -15px;
@@ -111,7 +109,6 @@ export default {
 
 #butn2 {
   border: 2px solid #232323;
-  background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
   left: 425px;
@@ -119,7 +116,6 @@ export default {
 }
 #butn3 {
   border: 2px solid #232323;
-  background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
   left: 190px;
@@ -127,7 +123,6 @@ export default {
 }
 #butn4 {
   border: 2px solid #232323;
-  background-image: url("../assets/cozinha.jpg");
   width: 190px;
   height: 130px;
   left: 0px;
