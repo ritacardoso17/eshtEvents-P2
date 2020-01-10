@@ -13,17 +13,17 @@
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
           <p class="guide7">▶ Escolha o espaço que pretende alugar</p>
-          <b-button id="btn1" v-if="roomType"></b-button>
-          <b-button id="btn2" ></b-button>
-          <b-button id="btn3" ></b-button>
-          <b-button id="butn4" disabled></b-button>
+          <b-button id="butn1" @click="menuType(menu.id)"></b-button>
+          <b-button id="butn2" @click="menuType(menu.id)"></b-button>
+          <b-button id="butn3" @click="menuType(menu.id)"></b-button>
+          <b-button id="butn4" @click="menuType(menu.id)" disabled></b-button>
         </b-tab>
         <b-tab title="Informação">
           <p class="guide8">▶ Data e hora para o aluguer</p>
-          <b-form-input v-model="text" type="date" id="rentDate"></b-form-input>
-          <b-form-input v-model="text" type="time" id="rentTime"></b-form-input>
+          <b-form-input v-model="text" type="date" id="rentDate" required></b-form-input>
+          <b-form-input v-model="text" type="time" id="rentTime" required></b-form-input>
           <p class="guide9">▶ Tempo de duração</p>
-          <b-form-input v-model="text" type="time" id="rentDuration"></b-form-input>
+          <b-form-input v-model="text" type="time" id="rentDuration" required></b-form-input>
         </b-tab>
         <b-tab title="Resumo">
           <h3 class="resume">
@@ -48,13 +48,13 @@
 </template>
 
 <script>
-export default{
+export default {
   name: "rentRoom",
   data: () => ({
-    type: "",
-    day: "",
-    time: "",
-    duration: "",
+      type: "",
+      day: "",
+      time: "",
+      duration: "",
   }),
   methods: {
     getUser() {
@@ -62,7 +62,21 @@ export default{
     },
     getTypeById(type) {
       return this.rooms.filter(room => room.type === type)[0].name;
-    }
+    },
+    menuType(){
+      /* for (const room of state.rooms) {
+        if (this.id === this.type) {
+          this.$store.state.rooms = JSON.parse(localStorage.setItem("rooms"));
+        }
+      } */
+    },
+    rentRoom(){
+      this.$store.commit("RENT_ROOM", {
+        date: this.date,
+        time: this.time,
+        duration: this.duration
+      })
+     },
   },
   created() {
     window.addEventListener("unload", this.saveStorage);
@@ -71,6 +85,7 @@ export default{
     }
   }
 }
+
 </script>
 
 <style>
@@ -85,7 +100,7 @@ export default{
   margin-left: 180px;
   font-size: 110%;
 }
-#btn1 {
+#butn1 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
@@ -94,7 +109,7 @@ export default{
   top: 0px;
 }
 
-#btn2 {
+#butn2 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
@@ -102,7 +117,7 @@ export default{
   left: 425px;
   top: 370px;
 }
-#btn3 {
+#butn3 {
   border: 2px solid #232323;
   background-image: url("../assets/cozinha.jpg");
   width: 190px;
