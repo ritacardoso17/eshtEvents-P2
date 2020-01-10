@@ -11,12 +11,13 @@
             tag="article"
             style="max-width: 15rem;"
             class="mb-2"
+            id="cards"
           >
             <b-card-text>{{menu.ingredients}}</b-card-text>
-
-            <b-button v-b-modal.modal-2 id="cardBtn" >Ver mais</b-button>
+            <p>{{menu.id}}</p>
+            <b-button  v-b-modal="menu.id" id="cardBtn" >Ver mais</b-button>
             <div>
-              <b-modal id="modal-2" :title="menu.name">
+              <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
                   <img src="" alt="">
                 <p class="my-4">{{menu.ingredients}}</p>
               </b-modal>
@@ -35,32 +36,74 @@ export default {
     return {
       menus: [
         {
+          id:"0",
           name: "coffeebreak A",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
+          id:"1",
           name: "coffeebreak B",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
+          id:"2",
           name: "coffeebreak B",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
+          id:"3",
           name: "coffeebreak B",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
+          id:"4",
           name: "coffeebreak B",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
+          id:"5",
           name: "coffeebreak B",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+         {
+          id:"6",
+          name: "Porto de Honra A",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+        {
+          id:"7",
+          name: "Porto de Honra B",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+        {
+          id:"8",
+          name: "Porto de Honra B",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+        {
+          id:"9",
+          name: "Porto de Honra B",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+        {
+          id:"10",
+          name: "Porto de Honra B",
+          image: require("../assets/transferir.jpg"),
+          ingredients: "no idea"
+        },
+        {
+          id:"11",
+          name: "Porto de Honra B",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         }
@@ -69,12 +112,17 @@ export default {
   },
   created() {
     //   this.menus = JSON.parse(localStorage.getItem("foodMenus"))
-  }
+  },
+  
 };
 </script>
 
 <style>
 #cardsMenu {
+    position: center;
+}
+#cards{
+    margin: 50px;
 }
 #cardBtn {
   position: relative;
