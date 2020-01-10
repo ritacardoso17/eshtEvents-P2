@@ -106,6 +106,7 @@ export default {
         email: this.email,
         password: this.password
       });
+     location.reload()
     },
     logout() {
       this.$store.commit("LOGOUT");

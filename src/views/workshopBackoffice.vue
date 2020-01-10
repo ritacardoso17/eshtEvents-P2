@@ -1,12 +1,12 @@
 <template>
   <div class="bckWorksjop">
+    <router-link tag="button" class="btnAdd" :to="{ name: 'addWorkshop' }">*</router-link>
     <b-table bordered fixed hover :items="this.workshops" :fields="this.fields" small="true">
       <template v-slot:cell(options)="row">
         <b-button class="btnRemove" size="sm" @click="removeWorkshop(row.item.id)">Eliminar Workshop</b-button>
         <b-button class="btnChange" size="sm" @click="editWorkshop(row.item.id)">Editar</b-button>
       </template>
     </b-table>
-    <b-button class="btnRemove" size="sm">Adicionar Workshop</b-button>
   </div>
 </template>
 
@@ -49,7 +49,8 @@ export default {
     },
     editWorkshop() {
       //O QUE EDITAR??
-    }
+    },
+   
   }
 };
 </script>
