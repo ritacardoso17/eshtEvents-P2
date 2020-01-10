@@ -7,7 +7,7 @@
     <hr id="lineLeft2" />
     <h3 id="titleMenu">Menus</h3>
     <hr id="lineRight2" />
-    <br><br><br>
+
     <menuMaker/>
   </div>
 </template>
