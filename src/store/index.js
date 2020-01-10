@@ -10,9 +10,8 @@ export default new Vuex.Store({
       { id: 0, name: "Admin", school: "", typeUser: "admin", email: "admin@email.com", password: "123", birth: "", contact: "" }
     ],
     userExist: false,
-    loggedUser: [],
     rooms: [
-      { type: "butn1", day: "06-04-2020", time: "19:45", duration: "2" }
+      { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
     workshops: [
       { id: 1, name: "A", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
@@ -21,6 +20,7 @@ export default new Vuex.Store({
     ],
     foodMenus: [],
   },
+
 
   mutations: {
     ADD_USER: (state, payload) => {
@@ -113,23 +113,24 @@ export default new Vuex.Store({
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
         alert("Workshop Criado")
-      }else{
+      } else {
         alert("Workshop com nome igual a um workshop criado")
-    
+
       }
     },
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
-        type: payload.type,
+        /* type: payload.type, */
         day: payload.day,
         time: payload.time,
         duration: payload.duration
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
+      alert(state.rooms)
     },
 
   },
-    getters: {
+  getters: {
     getTypeUser(state) {
       return state.loggedUser[0].typeUser
     },
