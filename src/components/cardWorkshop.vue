@@ -1,5 +1,5 @@
  <template>
-  <div class="container">
+  <div>
     <div v-for="workshop in workshops" v-bind:key="workshop.id">
       <span v-if="workshop.id % 2 == 0">
         <b-card

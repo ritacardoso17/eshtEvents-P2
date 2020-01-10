@@ -1,24 +1,24 @@
 <template>
   <div class="bckAdmin">
     <router-link to="/usersadmin">
-    <button id="btnUsers" >USERS</button> </router-link>
+    <button class="btn" id="btnUsers" >USERS</button> </router-link>
     
    <!-- <span> </span> -->
    <router-link to="/register"> 
-    <button id="btnMenus">USERS</button> </router-link>
+    <button class="btn" id="btnMenus">USERS</button> </router-link>
 
     <!-- <span> ///// </span> -->
     <router-link to="/"> 
-    <button id="btnReservations">USERS</button> </router-link>
+    <button class="btn" id="btnReservations">USERS</button> </router-link>
 
     <!-- <span> ///// </span> -->
     <router-link to="/workshopadmin"> 
-    <button id="btnWorkshops">USERS</button> </router-link>
+    <button class="btn" id="btnWorkshops">USERS</button> </router-link>
   </div>
 </template>
 
 <style>
-button {
+.btn {
   width: 250px;
   height: 250px;
   position: relative;

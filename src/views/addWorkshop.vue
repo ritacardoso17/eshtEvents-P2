@@ -1,13 +1,17 @@
 <template>
   <div>
     <form v-on:submit.prevent="addWorkshop()">
-         <div class="form-group">
-          <label for="txtTitle" class="nameLabel">Titulo do Workshop:</label>
-          <input type="text" class="form-control" id="txtTitle" placeholder="Insira o seu titulo" required v-model="title"
-          />
-        </div>
-
+      <div class="form-group">
+        <label for="txtTitle" class="nameLabel">Titulo do Workshop:</label>
+        <input type="text" class="form-control" id="txtTitle"
+          placeholder="Insira o seu titulo"
+          required
+          v-model="title"
+        />
+      </div>
+      <button type="submit" class="btnConf">Confirmar</button>
     </form>
+    <h1>LOL</h1>
   </div>
 </template>
 
