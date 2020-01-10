@@ -21,10 +21,10 @@
         </b-tab>
         <b-tab title="Informação">
           <p class="guide8">▶ Data e hora para o aluguer</p>
-          <b-form-input v-model="day" type="date" id="rentDate" required="true"></b-form-input>
-          <b-form-input v-model="time" type="time" id="rentTime" required="true"></b-form-input>
+          <b-form-input v-model="day" type="date" id="rentDate" required></b-form-input>
+          <b-form-input v-model="time" type="time" id="rentTime" required></b-form-input>
           <p class="guide9">▶ Tempo de duração</p>
-          <b-form-input v-model="duration" type="number" max="12" min="1" id="rentDuration" required="true"></b-form-input>
+          <b-form-input v-model="duration" type="number" max="12" min="1" id="rentDuration" required></b-form-input>
         </b-tab>
         <b-tab title="Resumo">
           <h3 class="resume">

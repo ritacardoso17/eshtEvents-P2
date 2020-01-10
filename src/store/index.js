@@ -10,6 +10,7 @@ export default new Vuex.Store({
       { id: 0, name: "Admin", school: "", typeUser: "admin", email: "admin@email.com", password: "123", birth: "", contact: "" }
     ],
     userExist: false,
+    loggedUser: [],
     rooms: [
       { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
@@ -19,7 +20,8 @@ export default new Vuex.Store({
       { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
     foodMenus: [],
-    eventType:[]
+    eventType:[],
+    reservations: [],
   },
 
 
@@ -130,6 +132,19 @@ export default new Vuex.Store({
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
       alert(state.rooms)
     },
+    ADD_RESERVATION: (state, payload) => {
+      state.reservations.push({
+        day: payload.day,
+        time: payload.time,
+        people: payload.people,
+        duration: payload.duration,
+        place: payload.place,
+        observation: payload.observation,
+        extra: payload.extra
+      });
+      localStorage.setItem("reservations", JSON.stringify(state.reservations))
+      alert(state.reservations)
+    }
 
   },
   getters: {
