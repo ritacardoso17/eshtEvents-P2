@@ -12,11 +12,12 @@
 
     <b-card no-body>
       <b-tabs align="center" v-model="tabIndex" small card id="tab">
+        <!-- TAB EVENTO -->
         <b-tab title="Evento" :title-link-class="'tab-title-class'" active>
           <br />
           <br />
           <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
-          <b-button id="btn1">
+          <b-button id="btn1" value="coffee break" @click="getEventType(btn1)">
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Coffee Break</b>
@@ -45,6 +46,7 @@
             </div>
           </b-button>
         </b-tab>
+        <!-- TAB INFO -->
         <b-tab title="Informações">
           <form action>
             <div class="form-group">
@@ -78,7 +80,11 @@
           </form>
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
-        <b-tab title="Menu">Sibzamini!</b-tab>
+        <!-- TAB MENU -->
+        <b-tab title="Menu">Sibzamini!
+          
+        </b-tab>
+        <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
           <br />
           <p class="guide3">▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
@@ -93,6 +99,7 @@
           <p class="guide5">▶ Observações</p>
           <textarea id="textArea" cols="80" rows="3">Escreva aqui...</textarea>
         </b-tab>
+        <!-- TAB EXTRAS -->
         <b-tab title="Extras">
           <br />
           <p class="guide6">▶ Selecione os extras que pretenda</p>
@@ -164,6 +171,7 @@
           <p class="observ">▶ Observações</p>
           <textarea id="textArea2" cols="130" rows="5">Escreva aqui...</textarea>
         </b-tab>
+        <!-- TAB RESUMO -->
         <b-tab title="Resumo">
           <h3 class="resume2">
             <b>TIPO DE EVENTO ESCOLHIDO</b>
@@ -217,6 +225,12 @@ export default {
     return {
       tabIndex: 1
     };
+  },
+  methods: {
+      getEventType(id){
+          btn = document.getElementById(id).value
+  	                
+      }
   }
 };
 </script>
