@@ -17,10 +17,10 @@
           <br />
           <br />
           <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
-          <b-button id="btn1" value="coffee break" @click="getEventType(btn1)">
+          <b-button id="btn1" @click="x('coffee break')" value="coffee break">
             <div id="bar2">
               <h1 id="eventType" class="centered">
-                <b>Coffee Break</b>
+                <b id="coffee break">Coffee Break</b>
               </h1>
             </div>
           </b-button>
@@ -174,7 +174,7 @@
         <!-- TAB RESUMO -->
         <b-tab title="Resumo">
           <h3 class="resume2">
-            <b>TIPO DE EVENTO ESCOLHIDO</b>
+            <b>{{title}}</b>
           </h3>
           <hr id="resumeLine2" />
           <p id="inform2">
@@ -223,14 +223,16 @@
 export default {
   data() {
     return {
-      tabIndex: 1
+      tabIndex: 1,
+      title:""
     };
   },
-  methods: {
-      getEventType(id){
-          btn = document.getElementById(id).value
-  	                
+  methods:{
+    x(k){
+      if(k === "coffee break"){
+        this.title = "Coffee Break"
       }
+    }
   }
 };
 </script>
