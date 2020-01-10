@@ -15,11 +15,12 @@ export default new Vuex.Store({
       { type: "butn1", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
     workshops: [
-      { id: 1, name: "A", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
-      { id: 2, name: "B", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
-      { id: 3, name: "C", img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
+      { id: 1, title: "A",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
+      { id: 2, title: "B",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
+      { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
     foodMenus: [],
+    eventType:[]
   },
 
   mutations: {
@@ -109,7 +110,8 @@ export default new Vuex.Store({
           date: payload.date,
           place: payload.place,
           teacher: payload.teacher,
-          vacancies: payload.vacancies
+          vacancies: payload.vacancies,
+          description:payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
         alert("Workshop Criado")

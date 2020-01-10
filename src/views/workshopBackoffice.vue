@@ -18,7 +18,8 @@ export default {
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
         { key: "id", lable: "id" },
-        { key: "name", lable: "name", sortable: "true" },
+        { key: "title", lable: "title", sortable: "true" },
+        { key: "vacancies", lable: "vacancies" },
         { key: "options" }
       ]
     };
