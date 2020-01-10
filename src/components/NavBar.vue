@@ -73,7 +73,7 @@
             <span>/////</span>
             <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
             <span>/////</span>
-            <router-link to="/menus" id="menusLink">Menus</router-link>
+            <router-link to="/menu" id="menusLink">Menus</router-link>
           </span>
         </li>
       </div>

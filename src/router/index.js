@@ -11,9 +11,11 @@ import EditProfile from "../views/EditProfile.vue";
 import RentRoom from "../views/RentRoom.vue";
 import EventsReserv from "../views/EventsReserv.vue";
 import Room from "../views/Room.vue";
-import Workshops from "../views/Workshops.vue"
+import Workshops from "../views/Workshops.vue";
 import MenuBackoffice from "../views/BackofficeMenu.vue";
+import Menu from "../views/Menu.vue";
 import UserBackoffice from "../views/userBackOffice.vue"
+import addWorkshop from "../views/addWorkshop.vue"
 
 
 Vue.use(VueRouter);
@@ -23,6 +25,11 @@ const routes = [
     path: "/",
     name: "home",
     component: Home
+  },
+  {
+    path: "/addWorkshop",
+    name: "addWorkshop",
+    component: addWorkshop
   },
   {
     path: "/InicialPage",
@@ -80,7 +87,11 @@ const routes = [
     name: "workshops",
     component: Workshops
   },
-
+  {
+    path: "/menu",
+    name: "menu",
+    component: Menu
+  },
   {
     path: "/menuadmin",
     name: "menuadmin",

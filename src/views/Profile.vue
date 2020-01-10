@@ -1,9 +1,9 @@
 <template>
   <div class="profile">
-    <h1 id="title">Perfil</h1>
-    <div id="container">
-      <div id="linha1"></div>
-      <div id="linha2"></div>
+    <h1 id="title" class="centered">Perfil</h1>
+    <!-- <div id="container"> -->
+      <hr id="linha1"/>
+      <hr id="linha2"/>
       <div id="picture">
         <img id="picture" />
       </div>
@@ -20,7 +20,7 @@
       <p id="info">E-mail: {{loggedUser[0].email}}</p>
 
       <router-link to="/Profile/editProfile"><button id="edit">Editar Perfil</button></router-link>
-    </div>
+    <!-- </div> -->
     
     <router-link to="/Profile" id="profileLinks"> <u>Eventos</u> |</router-link>
     <router-link to="/Profile/roomProfile" id="profileLinks"> Espaços</router-link>
@@ -52,23 +52,39 @@ export default{
 </script>
 
 <style>
-h1 {
-  font-family: ScriptMTBold;
+#title{
+  font-family: Channel;
   color: #000;
-  font-size: 70px;
+  position: absolute;
+  top: 150px;
+  font-size: 25px;
 }
-#container {
-  border-left: 6px solid black;
-  border-right: 6px solid black;
+/* #container {
   position: relative;
   margin-top: 50px;
   margin-left: 100px;
   height: 350px;
   width: 1050px;
+} */
+#linha1{
+  position: absolute;
+  left:100px;
+  top: 200px;
+  height: 500px;
+  width: 2px;
+  background-color:#000; 
+}
+#linha2{
+  position: absolute;
+  top: 200px;
+  right: 100px;
+  height: 500px;
+  width: 2px;
+  background-color:#000; 
 }
 #picture {
   position: absolute;
-  margin-top: 10px;
+  top: 100px;
   width: 200px;
   height: 300px;
   left: 100px;
@@ -78,7 +94,7 @@ h1 {
   width: 200px;
   height: 300px;
   left: 200px;
-  top: 340px;
+  top: 1040px;
   text-decoration: underline;
 }
 #name {
@@ -97,9 +113,10 @@ h1 {
 }
 #edit {
   position: relative;
-  margin-top: 40px;
+  top: 40px;
   margin-left: 600px;
   width: 150px;
+  height: 50px;
   color: white;
   background-color: #000;
   border-color: #0000;
@@ -148,6 +165,11 @@ h1 {
   left: 500px;
 }
 .yourEvents{
-  color: #ffffff;
+  /* background-color: #232323;
+  color: white; */
+  position: absolute;
+  top: 1000px;
+  width: 1000px;
 }
+
 </style>
