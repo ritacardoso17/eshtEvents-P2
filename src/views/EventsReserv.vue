@@ -24,21 +24,21 @@
               </h1>
             </div>
           </b-button>
-          <b-button id="btn2">
+          <b-button id="btn2" @click="x('porto de honra')" value="porto de honra">
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Porto de Honra</b>
               </h1>
             </div>
           </b-button>
-          <b-button id="btn3">
+          <b-button id="btn3" @click="x('almoço')" value="almoço" >
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Almoço</b>
               </h1>
             </div>
           </b-button>
-          <b-button id="btn4">
+          <b-button id="btn4" @click="x('jantar')" value="jantar" >
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Jantar</b>
@@ -81,7 +81,29 @@
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
         <!-- TAB MENU -->
-        <b-tab title="Menu">Sibzamini!
+        <b-tab title="Menu">
+         <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
+          <b-card
+            :title="menu.name"
+            :img-src="menu.image"
+            img-alt="Image"
+            img-top
+            tag="article"
+            style="max-width: 15rem;"
+            class="mb-2"
+            id="cards"
+          >
+            <b-card-text>{{menu.ingredients}}</b-card-text>
+            <p>{{menu.id}}</p>
+            <b-button  v-b-modal="menu.id" id="cardBtn" >Ver mais</b-button>
+            <div>
+              <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
+                  <img src="" alt="">
+                <p class="my-4">{{menu.ingredients}}</p>
+              </b-modal>
+            </div>
+          </b-card>
+        </div>
           
         </b-tab>
         <!-- TAB COMPONENTES -->
@@ -224,14 +246,45 @@ export default {
   data() {
     return {
       tabIndex: 1,
-      title:""
+      title:"",
+      menus:[]
     };
   },
+  created(){
+  window.addEventListener("unload", this.saveStorage);
+    if (localStorage.getItem("foodMenus")) {
+      this.$store.state.foodMenus = JSON.parse(localStorage.getItem("foodMenus"));
+    }
+  },
+
+
   methods:{
     x(k){
       if(k === "coffee break"){
         this.title = "Coffee Break"
       }
+      else if(k === "almoço"){
+        this.title = "Almoço"
+      }
+      if(k === "jantar"){
+        this.title = "Jantar"
+      }
+      if(k === "porto de honra"){
+        this.title = "Porto de Honra"
+      }
+    }
+  },
+  computed:{
+    menuType(){
+      return this.menus.filter(
+        (menu) => {
+          let menuType = true
+          if(this.menuType !== ""){
+            menuType = menu.type == this.menuType
+          }
+          return menuType
+        }
+      )
     }
   }
 };
