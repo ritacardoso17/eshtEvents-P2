@@ -14,6 +14,8 @@ import Room from "../views/Room.vue";
 import Workshops from "../views/Workshops.vue"
 import MenuBackoffice from "../views/BackofficeMenu.vue";
 import UserBackoffice from "../views/userBackOffice.vue"
+import WorkshopBackoffice from "../views/workshopBackoffice.vue"
+
 
 
 Vue.use(VueRouter);
@@ -90,6 +92,11 @@ const routes = [
     path: "/usersadmin",
     name: "usersadmin",
     component: UserBackoffice
+  },
+  {
+    path: "/workshopadmin",
+    name: "workshopadmin",
+    component: WorkshopBackoffice
   }
 ];
 

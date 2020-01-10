@@ -13,7 +13,11 @@ export default new Vuex.Store({
     rooms: [
       { type: "restaurante", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
-    workshops: [],
+    workshops: [
+      {id:1,name:"A", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"},
+      {id:2,name:"B", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"},
+      {id:3,name:"C", img:"https://picsum.photos/600/300/?image=25", description:"OLA PEPS BEM VINDO"}
+    ],
     foodMenus: [],
   },
 
@@ -71,8 +75,8 @@ export default new Vuex.Store({
 
     },
     LOGOUT: (state) => {
-      state.loggedUser.pop()
-      localStorage.removeItem("loggedUser", JSON.stringify(this.state.loggedUser))
+      // state.loggedUser.pop()
+      localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
     },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)

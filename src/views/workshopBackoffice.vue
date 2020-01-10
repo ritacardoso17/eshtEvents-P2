@@ -1,0 +1,56 @@
+<template>
+  <div class="bckWorksjop">
+    <b-table bordered fixed hover :items="this.workshops" :fields="this.fields" small="true">
+      <template v-slot:cell(options)="row">
+        <b-button class="btnRemove" size="sm" @click="removeWorkshop(row.item.id)">Eliminar Workshop</b-button>
+        <b-button class="btnChange" size="sm" @click="editWorkshop(row.item.id)">Editar</b-button>
+      </template>
+    </b-table>
+    <b-button class="btnRemove" size="sm">Adicionar Workshop</b-button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      workshops: [],
+      //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
+      fields: [
+        { key: "id", lable: "id" },
+        { key: "name", lable: "name", sortable: "true" },
+        { key: "options" }
+      ]
+    };
+  },
+  created() {
+    localStorage.setItem(
+      "workshops",
+      JSON.stringify(this.$store.state.workshops)
+    );
+    if (localStorage.getItem("workshops")) {
+      this.workshops = JSON.parse(localStorage.getItem("workshops"));
+    }
+  },
+  methods: {
+    removeWorkshop(id) {
+      for (let i in this.workshops) {
+        if (this.workshops[i].id === id) {
+          this.workshops = this.workshops.filter(
+            workshop => this.workshops[i].id !== workshop.id
+          );
+          localStorage.setItem("workshops", JSON.stringify(this.workshops));
+          this.$store.state.workshops = localStorage.setItem(
+            "workshops",
+            JSON.stringify(this.workshops)
+          );
+        }
+      }
+    },
+    editWorkshop() {
+      //O QUE EDITAR??
+    }
+  }
+};
+</script>
+

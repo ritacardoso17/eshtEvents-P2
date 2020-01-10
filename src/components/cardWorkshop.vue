@@ -1,25 +1,51 @@
  <template>
- <div class="cardWorkshop">
-  <b-card
-    title="Card Title"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-    <b-card-text>
-      Some quick example text to build on the card title and make up the bulk of the card's content.
-    </b-card-text>
+  <div class="container">
+    <div v-for="workshop in workshops" v-bind:key="workshop.id">
+      <span v-if="workshop.id % 2 == 0">
+        <b-card
+          :title="workshop.name"
+          :img-src="workshop.img"
+          img-alt="Image"
+          img-right
+          tag="article"
+          class="mb-2"
+        >
+          <b-card-text>{{workshop.description}}</b-card-text>
 
-    <b-button href="#" variant="primary">Go somewhere</b-button>
-  </b-card>
-</div>
- </template>
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+        </span>
+        <span v-else>
+        <b-card
+          :title="workshop.name"
+          :img-src="workshop.img"
+          img-alt="Image"
+          img-left
+          tag="article"
+          class="mb-2"
+        >
+          <b-card-text>{{workshop.description}}</b-card-text>
+
+          <b-button href="#" variant="primary">Go somewhere</b-button>
+        </b-card>
+      </span>
+    </div>
+  </div>
+</template>
 
 <script>
 export default {
-    
-}
+  data() {
+    return { workshops: [] };
+  },
+  created() {
+    localStorage.setItem(
+      "workshops",
+      JSON.stringify(this.$store.state.workshops)
+    );
+    if (localStorage.getItem("workshops")) {
+      this.workshops = JSON.parse(localStorage.getItem("workshops"));
+    }
+  }
+};
 </script>
