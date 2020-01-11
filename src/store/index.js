@@ -12,7 +12,7 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { type: "butn1", day: "06-04-2020", time: "19:45", duration: "2" }
+      { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
     workshops: [
       { id: 1, title: "A",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
@@ -20,8 +20,10 @@ export default new Vuex.Store({
       { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
     foodMenus: [],
-    eventType:[]
+    eventType:[],
+    reservations: [],
   },
+
 
   mutations: {
     ADD_USER: (state, payload) => {
@@ -115,23 +117,37 @@ export default new Vuex.Store({
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
         alert("Workshop Criado")
-      }else{
+      } else {
         alert("Workshop com nome igual a um workshop criado")
-    
+
       }
     },
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
-        type: payload.type,
+        /* type: payload.type, */
         day: payload.day,
         time: payload.time,
         duration: payload.duration
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
+      alert(state.rooms)
     },
+    ADD_RESERVATION: (state, payload) => {
+      state.reservations.push({
+        day: payload.day,
+        time: payload.time,
+        people: payload.people,
+        duration: payload.duration,
+        place: payload.place,
+        observation: payload.observation,
+        extra: payload.extra
+      });
+      localStorage.setItem("reservations", JSON.stringify(state.reservations))
+      alert(state.reservations)
+    }
 
   },
-    getters: {
+  getters: {
     getTypeUser(state) {
       return state.loggedUser[0].typeUser
     },

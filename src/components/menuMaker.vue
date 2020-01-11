@@ -38,72 +38,85 @@ export default {
         {
           id:"0",
           name: "coffeebreak A",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"1",
           name: "coffeebreak B",
+          type:"coffebreaak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"2",
           name: "coffeebreak B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"3",
           name: "coffeebreak B",
+          type:"coffebressak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"4",
           name: "coffeebreak B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"5",
           name: "coffeebreak B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
          {
           id:"6",
           name: "Porto de Honra A",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"7",
           name: "Porto de Honra B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"8",
           name: "Porto de Honra B",
+
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"9",
           name: "Porto de Honra B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"10",
           name: "Porto de Honra B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"11",
           name: "Porto de Honra B",
+          type:"coffebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         }
@@ -111,8 +124,13 @@ export default {
     };
   },
   created() {
-    //   this.menus = JSON.parse(localStorage.getItem("foodMenus"))
+     this.foodMenus = JSON.parse(localStorage.getItem("foodMenus"))
   },
+  methods:{
+    addMenu(){
+      this.menus.push
+    }
+  }
   
 };
 </script>
