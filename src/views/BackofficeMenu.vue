@@ -1,24 +1,24 @@
 <template>
   <div class="bckAdmin">
     <router-link to="/usersadmin">
-    <button class="btn" id="btnUsers" >USERS</button> </router-link>
+    <button class="btn100" id="btnUsers" >USERS</button> </router-link>
     
    <!-- <span> </span> -->
-   <router-link to="/register"> 
-    <button class="btn" id="btnMenus">USERS</button> </router-link>
+   <router-link to="/usersadmin"> 
+    <button class="btn100" id="btnMenus">MENUS</button> </router-link>
 
     <!-- <span> ///// </span> -->
     <router-link to="/"> 
-    <button class="btn" id="btnReservations">USERS</button> </router-link>
+    <button class="btn100" id="btnReservations">RESERVAS</button> </router-link>
 
     <!-- <span> ///// </span> -->
     <router-link to="/workshopadmin"> 
-    <button class="btn" id="btnWorkshops">USERS</button> </router-link>
+    <button class="btn100" id="btnWorkshops">WORKSHOPS</button> </router-link>
   </div>
 </template>
 
 <style>
-.btn {
+.btn100 {
   width: 250px;
   height: 250px;
   position: relative;
@@ -27,6 +27,8 @@
   border-color: black;
    top:5px;
 }
+
+
 #btnUsers{
   background-image: url('../assets/noun_User_2501722.png') ;
   background-size: 280px ;
