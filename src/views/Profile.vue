@@ -2,57 +2,83 @@
   <div class="profile">
     <h1 id="title" class="centered">Perfil</h1>
     <!-- <div id="container"> -->
-      <hr id="linha1"/>
-      <hr id="linha2"/>
-      <div id="picture">
-        <img id="picture" />
-      </div>
-      <a id="editPhoto">Editar Foto</a>
-
-      <h3 id="name">{{loggedUser[0].name}}</h3>
-
-      <p id="info">Data de Nascimento: {{loggedUser[0].birth}}</p>
-
-      <p id="info">Contacto: {{loggedUser[0].contact}}</p>
-
-      <p id="info">Instituição: {{loggedUser[0].school}}</p>
-
-      <p id="info">E-mail: {{loggedUser[0].email}}</p>
-
-      <router-link to="/Profile/editProfile"><button id="edit">Editar Perfil</button></router-link>
-    <!-- </div> -->
-    
-    <router-link to="/Profile" id="profileLinks"> <u>Eventos</u> |</router-link>
-    <router-link to="/Profile/roomProfile" id="profileLinks"> Espaços</router-link>
-
-    <hr id="line1"><h2 id="subtitle">Os teus eventos</h2><hr id="line2">
-
-    <div class="yourEvents" id="yourEvents">
-      <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+    <hr id="linha1" />
+    <hr id="linha2" />
+    <div id="picture">
+      <img id="picture" />
     </div>
+    <a id="editPhoto">Editar Foto</a>
+
+    <h3 id="name">{{loggedUser[0].name}}</h3>
+
+    <p id="info">Data de Nascimento: {{loggedUser[0].birth}}</p>
+
+    <p id="info">Contacto: {{loggedUser[0].contact}}</p>
+
+    <p id="info">Instituição: {{loggedUser[0].school}}</p>
+
+    <p id="info">E-mail: {{loggedUser[0].email}}</p>
+
+    <router-link to="/Profile/editProfile">
+      <button id="edit">Editar Perfil</button>
+    </router-link>
+    <!-- </div> -->
+
+    <router-link to="/Profile" id="profileLinks">
+      <u>Eventos</u> |
+    </router-link>
+    <router-link to="/Profile/roomProfile" id="profileLinks">Espaços</router-link>
+
+    <hr id="line1" />
+    <h2 id="subtitle">As tuas reservas</h2>
+    <hr id="line2" />
+
+    <b-tabs align="center" id="profileTabs">
+      <b-tab title="Eventos" id="profileEvents">
+        <div class="yourEvents" id="yourEvents">
+          <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+        </div>
+      </b-tab>
+      <b-tab title="Espaços" id="profileRooms">
+        <div class="yourRooms" id="yourRooms">
+          <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+        </div>
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
 
 <script>
-export default{
+export default {
   name: "Profile",
-  data(){
-    return { loggedUser: [], fields:[{key:"Evento",lable:"event"},{key:"Data",lable:"date"},{key:"Estado",lable:"state"},{key:"Alterar",lable:"change"},{key:"Avaliações",lable:"classification"}]};
+  data() {
+    return {
+      loggedUser: [],
+      fields: [
+        { key: "Evento", lable: "event" },
+        { key: "Data", lable: "date" },
+        { key: "Estado", lable: "state" },
+        { key: "Alterar", lable: "change" },
+        { key: "Avaliações", lable: "classification" }
+      ]
+    };
   },
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
+    },
+    getRooms(){
+      return this.$store.state.rooms;
     }
   },
   created() {
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   }
-}
-
+};
 </script>
 
 <style>
-#title{
+#title {
   font-family: Channel;
   color: #000;
   position: absolute;
@@ -66,21 +92,21 @@ export default{
   height: 350px;
   width: 1050px;
 } */
-#linha1{
+#linha1 {
   position: absolute;
-  left:100px;
+  left: 100px;
   top: 200px;
   height: 500px;
   width: 2px;
-  background-color:#000; 
+  background-color: #000;
 }
-#linha2{
+#linha2 {
   position: absolute;
   top: 200px;
   right: 100px;
   height: 500px;
   width: 2px;
-  background-color:#000; 
+  background-color: #000;
 }
 #picture {
   position: absolute;
@@ -127,32 +153,32 @@ export default{
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
   border-width: thick;
 }
-#profileLinks{
+#profileLinks {
   position: relative;
   top: 100px;
   font-size: 35px;
   font-family: GeosansLight;
   color: black;
 }
-#subtitle{
+#subtitle {
   position: relative;
   top: 150px;
 }
-#line1{
+#line1 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: 187px;
   margin-left: 350px;
 }
-#line2{
+#line2 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: 117px;
@@ -164,12 +190,28 @@ export default{
   top: 50px;
   left: 500px;
 }
-.yourEvents{
+.yourEvents {
   /* background-color: #232323;
   color: white; */
   position: absolute;
   top: 1000px;
   width: 1000px;
 }
-
+.profileTabs{
+  top: 100px !important;
+}
+.profileEvents{
+  color: black !important;
+}
+.profileEvents:active{
+  color: black;
+  background-color: white
+}
+.profileRooms{
+  color: black;
+}
+.profileRooms:active{
+  color: black;
+  background-color: white
+}
 </style>

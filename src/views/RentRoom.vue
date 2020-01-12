@@ -53,16 +53,13 @@
 export default {
   name: "rentRoom",
   data: () => ({
-    /* type: "", */
+    type: "",
     day: "",
     time: "",
-    duration: ""
+    duration: "",
+    user: "",
   }),
   methods: {
-/*     updatePhoto() {
-      this.type = document.getElementsByTagName("button").value
-    }, */
-
     getUser() {
       return this.$store.state.loggedUser;
     },
@@ -71,12 +68,16 @@ export default {
     },
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
-        /* type: this.type, */
+        type: this.type,  
         date: this.date,
         time: this.time,
-        duration: this.duration
+        duration: this.duration,
+        user: this.loggedUser,
       });
     },
+    saveStorage() {
+      localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
+    }
   },
   created() {
     window.addEventListener("unload", this.saveStorage);
