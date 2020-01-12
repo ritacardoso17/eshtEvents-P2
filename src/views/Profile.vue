@@ -105,6 +105,7 @@ export default {
     }
   },
   created() {
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
     if (localStorage.getItem("rooms")) {
       this.objects = JSON.parse(localStorage.getItem("rooms"));
@@ -114,7 +115,7 @@ export default {
 </script>
 
 <style>
-#title {
+#title{
   font-family: Channel;
   color: #000;
   position: absolute;
@@ -128,21 +129,21 @@ export default {
   height: 350px;
   width: 1050px;
 } */
-#linha1 {
+#linha1{
   position: absolute;
-  left: 100px;
+  left:100px;
   top: 200px;
   height: 500px;
   width: 2px;
-  background-color: #000;
+  background-color:#000; 
 }
-#linha2 {
+#linha2{
   position: absolute;
   top: 200px;
   right: 100px;
   height: 500px;
   width: 2px;
-  background-color: #000;
+  background-color:#000; 
 }
 #picture {
   position: absolute;
@@ -189,32 +190,32 @@ export default {
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #daaa29;
+  border-color: #DAAA29;
   background-color: #000;
   border-width: thick;
 }
-#profileLinks {
+#profileLinks{
   position: relative;
   top: 100px;
   font-size: 35px;
   font-family: GeosansLight;
   color: black;
 }
-#subtitle {
+#subtitle{
   position: relative;
   top: 150px;
 }
-#line1 {
+#line1{
   position: relative;
-  background-color: #daaa29;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: 187px;
   margin-left: 350px;
 }
-#line2 {
+#line2{
   position: relative;
-  background-color: #daaa29;
+  background-color: #DAAA29;
   height: 0.5px;
   width: 150px;
   top: 117px;
@@ -226,28 +227,12 @@ export default {
   top: 50px;
   left: 500px;
 }
-.yourEvents {
+.yourEvents{
   /* background-color: #232323;
   color: white; */
   position: absolute;
   top: 1000px;
   width: 1000px;
 }
-.profileTabs {
-  top: 100px !important;
-}
-.profileEvents {
-  color: black !important;
-}
-.profileEvents:active {
-  color: black;
-  background-color: white;
-}
-.profileRooms {
-  color: black;
-}
-.profileRooms:active {
-  color: black;
-  background-color: white;
-}
+
 </style>
