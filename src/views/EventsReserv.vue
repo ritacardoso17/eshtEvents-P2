@@ -63,7 +63,7 @@
                 min="0"
               />
               <label for class="durationLabel">▶ Tempo de duração</label>
-              <input type="time" class="form-control" id="txtDuration" required />
+              <input type="number" max="12" min="1" class="form-control" id="txtDuration" required v-model="duration" />
 
               <label for class="locationLabel">▶ Localização</label>
               <select id="sltLocation">
@@ -119,7 +119,7 @@
           <b-button id="btn10"></b-button>
           <b-button id="btn11"></b-button>
           <p class="guide5">▶ Observações</p>
-          <textarea id="textArea" cols="80" rows="3">Escreva aqui...</textarea>
+          <textarea id="textArea" cols="80" rows="3" placeholder="Escreva aqui..." v-model="observation"></textarea>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
@@ -191,7 +191,7 @@
             </div>
           </form>
           <p class="observ">▶ Observações</p>
-          <textarea id="textArea2" cols="130" rows="5">Escreva aqui...</textarea>
+          <textarea id="textArea2" cols="130" rows="5" placeholder="Escreva aqui..." v-model="observations"></textarea>
         </b-tab>
         <!-- TAB RESUMO -->
         <b-tab title="Resumo">
@@ -202,10 +202,11 @@
           <p id="inform2">
             <b>Informações</b>
           </p>
-          <p id="pDate2">▶ AQUI VAI SER A DATA</p>
-          <p id="pTime2">▶ AQUI AS HORAS</p>
-          <p id="pDuration2">▶ E A DURAÇÃO</p>
-          <p id="pPersons2">▶ NºPESSOAS</p>
+          <p id="pDate2">▶ {{date}}</p>
+          <p id="pTime2">▶ {{time}}</p>
+          <p id="pDuration2">▶ {{duration}}</p>
+          <p id="pPersons2">▶ {{persons}}</p>
+          <p id="pLocation">▶ {{location}}</p>
           <p id="components2">
             <b>Componentes</b>
           </p>
@@ -220,9 +221,7 @@
           <p id="observ2">
             <b>Observações</b>
           </p>
-          <p id="observMade2">
-            ▶ AQUI SAO AS OBSERVAÇÕES FEITAS PELO CLIENTE BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
-            BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAHBLAH BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
+          <p id="observMade2">▶ {{observation}} <br> ▶ {{observations}}
           </p>
           <p id="extras2">
             <b>Extras</b>
@@ -601,6 +600,13 @@ export default {
   margin-left: 300px;
 }
 #pPersons2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+#pLocation {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 12px;
