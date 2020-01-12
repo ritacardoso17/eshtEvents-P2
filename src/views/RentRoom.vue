@@ -58,6 +58,7 @@ export default {
     time: "",
     duration: "",
     user: "",
+    state: "Pendente",
   }),
   methods: {
     getUser() {

@@ -36,12 +36,23 @@
     <b-tabs align="center" id="profileTabs">
       <b-tab title="Eventos" id="profileEvents">
         <div class="yourEvents" id="yourEvents">
-          <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+          <b-table striped hover :objects="this.objects" :camps="this.camps"></b-table>
         </div>
       </b-tab>
       <b-tab title="Espaços" id="profileRooms">
         <div class="yourRooms" id="yourRooms">
-          <b-table striped hover :items="this.items" :fields="this.fields"></b-table>
+          <b-table striped hover :objects="this.objects" :camps="this.camps">
+            <template v-slot:cell(Alterar)="row">
+              <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
+            </template>
+            <template v-slot:cell(Avaliações)="row">
+              <img src="/assets/star.svg" id="star1" @click="editStars()" alt="">
+              <img src="/assets/star.svg" id="star2" @click="editStars()" alt="">
+              <img src="/assets/star.svg" id="star3" @click="editStars()" alt="">
+              <img src="/assets/star.svg" id="star4" @click="editStars()" alt="">
+              <img src="/assets/star.svg" id="star5" @click="editStars()" alt="">
+            </template>
+          </b-table>
         </div>
       </b-tab>
     </b-tabs>
@@ -53,13 +64,13 @@ export default {
   name: "Profile",
   data() {
     return {
-      loggedUser: [],
-      fields: [
-        { key: "Evento", lable: "event" },
-        { key: "Data", lable: "date" },
-        { key: "Estado", lable: "state" },
-        { key: "Alterar", lable: "change" },
-        { key: "Avaliações", lable: "classification" }
+      objects: [],
+      camps: [
+        { key: "Evento", lable: "type", sortable: true },
+        { key: "Data", lable: "date", sortable: true },
+        { key: "Estado", lable: "state", sortable: true },
+        { key: "Alterar" },
+        { key: "Avaliações"}
       ]
     };
   },
@@ -67,12 +78,37 @@ export default {
     getUser() {
       return this.$store.state.loggedUser;
     },
-    getRooms(){
+    getRooms() {
       return this.$store.state.rooms;
+    },
+    editStars() {
+      let star1 = document.addEventListener("click")
+      let star2 = document.addEventListener("click")
+      let star3 = document.addEventListener("click")
+      let star4 = document.addEventListener("click")
+      let star5 = document.addEventListener("click")
+      if (star1) {
+        /* src da primeira estrela mudar para preenchido */
+      }
+      else if (star2) {
+        /* src da 1 e 2 estrelas mudar para preenchido */
+      }
+      else if (star3) {
+        /* src da 1, 2 e 3 estrelas mudar para preenchido */
+      }
+      else if (star4) {
+        /* src da 1, 2, 3 e 4 estrelas mudar para preenchido */
+      }
+      else if (star5) {
+        /* src da 1, 2, 3, 4 e 5 estrelas mudar para preenchido */
+      }
     }
   },
   created() {
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
+    if (localStorage.getItem("rooms")) {
+      this.objects = JSON.parse(localStorage.getItem("rooms"));
+    }
   }
 };
 </script>
@@ -197,21 +233,21 @@ export default {
   top: 1000px;
   width: 1000px;
 }
-.profileTabs{
+.profileTabs {
   top: 100px !important;
 }
-.profileEvents{
+.profileEvents {
   color: black !important;
 }
-.profileEvents:active{
+.profileEvents:active {
   color: black;
-  background-color: white
+  background-color: white;
 }
-.profileRooms{
+.profileRooms {
   color: black;
 }
-.profileRooms:active{
+.profileRooms:active {
   color: black;
-  background-color: white
+  background-color: white;
 }
 </style>
