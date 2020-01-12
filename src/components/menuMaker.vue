@@ -13,7 +13,7 @@
             class="mb-2"
             id="cards"
           >
-            <b-card-text>{{menu.ingredients}}</b-card-text>
+            <b-card-text>{{menu.type}}</b-card-text>
             <p>{{menu.id}}</p>
             <b-button  v-b-modal="menu.id" id="cardBtn" >Ver mais</b-button>
             <div>
@@ -45,49 +45,49 @@ export default {
         {
           id:"1",
           name: "coffeebreak B",
-          type:"coffebreaak",
+          type:"coffeebreaak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"2",
           name: "coffeebreak B",
-          type:"coffebreak",
+          type:"jantar",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"3",
           name: "coffeebreak B",
-          type:"coffebressak",
+          type:"almoço",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"4",
           name: "coffeebreak B",
-          type:"coffebreak",
+          type:"coffeebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"5",
           name: "coffeebreak B",
-          type:"coffebreak",
+          type:"coffeebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
          {
           id:"6",
           name: "Porto de Honra A",
-          type:"coffebreak",
+          type:"coffeebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"7",
           name: "Porto de Honra B",
-          type:"coffebreak",
+          type:"coffeebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
@@ -95,7 +95,7 @@ export default {
           id:"8",
           name: "Porto de Honra B",
 
-          type:"coffebreak",
+          type:"coffeebreak",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
@@ -109,14 +109,14 @@ export default {
         {
           id:"10",
           name: "Porto de Honra B",
-          type:"coffebreak",
+          type:"portodehonra",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         },
         {
           id:"11",
           name: "Porto de Honra B",
-          type:"coffebreak",
+          type:"portodehonra",
           image: require("../assets/transferir.jpg"),
           ingredients: "no idea"
         }
@@ -124,12 +124,9 @@ export default {
     };
   },
   created() {
-     this.foodMenus = JSON.parse(localStorage.getItem("foodMenus"))
+  localStorage.setItem("foodMenus", JSON.stringify(this.menus))
   },
   methods:{
-    addMenu(){
-      this.menus.push
-    }
   }
   
 };

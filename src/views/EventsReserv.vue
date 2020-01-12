@@ -31,14 +31,14 @@
               </h1>
             </div>
           </b-button>
-          <b-button id="btn3" @click="x('almoço')" value="almoço" >
+          <b-button id="btn3" @click="x('almoço')" value="almoço">
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Almoço</b>
               </h1>
             </div>
           </b-button>
-          <b-button id="btn4" @click="x('jantar')" value="jantar" >
+          <b-button id="btn4" @click="x('jantar')" value="jantar">
             <div id="bar2">
               <h1 id="eventType" class="centered">
                 <b>Jantar</b>
@@ -51,8 +51,8 @@
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" required v-model="date" />
-              <input type="time" class="form-control" id="txtTime" required v-model="time" />
+              <input type="date" class="form-control" id="txtDate" required />
+              <input type="time" class="form-control" id="txtTime" required />
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -60,14 +60,13 @@
                 id="txtPersons"
                 required
                 placeholder="0"
-                v-model="persons"
                 min="0"
               />
               <label for class="durationLabel">▶ Tempo de duração</label>
-              <input type="time" class="form-control" id="txtDuration" required v-model="duration" />
+              <input type="time" class="form-control" id="txtDuration" required />
 
               <label for class="locationLabel">▶ Localização</label>
-              <select id="sltLocation" v-model="location">
+              <select id="sltLocation">
                 <option value="esht">ESHT</option>
                 <option value="esmad">ESMAD</option>
                 <option value="isep">ISEP</option>
@@ -82,29 +81,30 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab title="Menu">
-         <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
-          <b-card
-            :title="menu.name"
-            :img-src="menu.image"
-            img-alt="Image"
-            img-top
-            tag="article"
-            style="max-width: 15rem;"
-            class="mb-2"
-            id="cards"
-          >
-            <b-card-text>{{menu.ingredients}}</b-card-text>
-            <p>{{menu.id}}</p>
-            <b-button  v-b-modal="menu.id" id="cardBtn" >Ver mais</b-button>
-            <div>
-              <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
-                  <img src="" alt="">
-                <p class="my-4">{{menu.ingredients}}</p>
-              </b-modal>
+          <div class="row">
+            <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
+              <b-card
+                :title="menu.name"
+                :img-src="menu.image"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 15rem;"
+                class="mb-2"
+                id="cards"
+              >
+                <b-card-text>{{menu.ingredients}}</b-card-text>
+                <p>{{menu.id}}</p>
+                <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
+                <div>
+                  <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
+                    <img src alt />
+                    <p class="my-4">{{menu.ingredients}}</p>
+                  </b-modal>
+                </div>
+              </b-card>
             </div>
-          </b-card>
-        </div>
-          
+          </div>
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
@@ -213,18 +213,21 @@
             <b>Menu</b>
           </p>
           <p id="choiseMenu2">▶ AQUI É O NOME DO MENU ESCOLHIDO</p>
-          <p id="addMenu2">▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
-             BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA </p>
-           <p id="observ2">
+          <p id="addMenu2">
+            ▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
+            BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA
+          </p>
+          <p id="observ2">
             <b>Observações</b>
           </p>
-          <p id="observMade2">▶ AQUI SAO AS OBSERVAÇÕES FEITAS PELO CLIENTE BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
+          <p id="observMade2">
+            ▶ AQUI SAO AS OBSERVAÇÕES FEITAS PELO CLIENTE BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
             BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAHBLAH BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH
           </p>
           <p id="extras2">
             <b>Extras</b>
           </p>
-          <p id="choiseExtras2">▶ Extra ▶ Extra ▶ Extra ▶  Extra</p>
+          <p id="choiseExtras2">▶ Extra ▶ Extra ▶ Extra ▶ Extra</p>
           <a name id="confirm2" class="btn btn-primary" href="#" role="button">Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="#" role="button">Cancelar</a>
         </b-tab>
@@ -246,45 +249,47 @@ export default {
   data() {
     return {
       tabIndex: 1,
-      title:"",
-      menus:[]
+      title: "",
+      menus: []
     };
   },
-  created(){
-  window.addEventListener("unload", this.saveStorage);
+  created() {
+    window.addEventListener("unload", this.saveStorage);
     if (localStorage.getItem("foodMenus")) {
-      this.$store.state.foodMenus = JSON.parse(localStorage.getItem("foodMenus"));
+      this.menus = JSON.parse(localStorage.getItem("foodMenus"));
     }
   },
 
-
-  methods:{
-    x(k){
-      if(k === "coffee break"){
-        this.title = "Coffee Break"
+  methods: {
+    x(k) {
+      if (k === "coffee break") {
+        this.title = "Coffee Break";
+        this.filter = "coffeebreak";
+      } else if (k === "almoço") {
+        this.title = "Almoço";
+        this.filter="almoço"
       }
-      else if(k === "almoço"){
-        this.title = "Almoço"
+      if (k === "jantar") {
+        this.title = "Jantar";
+        this.filter="jantar"
       }
-      if(k === "jantar"){
-        this.title = "Jantar"
-      }
-      if(k === "porto de honra"){
-        this.title = "Porto de Honra"
+      if (k === "porto de honra") {
+        this.title = "Porto de Honra";
+        this.filter="portodehonra"
       }
     }
   },
-  computed:{
-    menuType(){
-      return this.menus.filter(
-        (menu) => {
-          let menuType = true
-          if(this.menuType !== ""){
-            menuType = menu.type == this.menuType
-          }
-          return menuType
+  computed: {
+    menuType() {
+      return this.menus.filter(menu => {
+        let menuTypeResult = true;
+
+        if (this.title !== "") {
+          menuTypeResult = menu.type.includes(this.filter);
+          // alert(this.menuTypeResult);
         }
-      )
+        return menuTypeResult;
+      });
     }
   }
 };
@@ -610,7 +615,7 @@ export default {
   margin-left: 770px;
   margin-top: -180px;
 }
-#menu2{
+#menu2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -619,7 +624,7 @@ export default {
   margin-left: 320px;
   top: 350px;
 }
-#choiseMenu2{
+#choiseMenu2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -628,7 +633,7 @@ export default {
   margin-left: 300px;
   top: 400px;
 }
-#addMenu2{
+#addMenu2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -638,7 +643,7 @@ export default {
   top: 420px;
   width: 300px;
 }
-#observ2{
+#observ2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -647,7 +652,7 @@ export default {
   margin-left: 320px;
   top: 500px;
 }
-#observMade2{
+#observMade2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -657,7 +662,7 @@ export default {
   top: 550px;
   width: 600px;
 }
-#extras2{
+#extras2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -666,7 +671,7 @@ export default {
   margin-left: 770px;
   top: 350px;
 }
-#choiseExtras2{
+#choiseExtras2 {
   font-family: GeosansLight;
   position: absolute;
   text-align: justify;
@@ -691,7 +696,7 @@ export default {
 #confirm2:hover {
   color: white;
   border: 2px solid;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
 }
 #cancel2 {
@@ -709,7 +714,7 @@ export default {
 #cancel2:hover {
   color: white;
   border: 2px solid;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
 }
 /* --------------- */
