@@ -34,8 +34,15 @@ export default {
   },
   methods: {
       removeMenu(id){
+        for(let i in this.menus){
+            if(this.menus[i].id === id){
+                this.menus = this.menus.filter(menus => this.menus[i].id !== menus.id)
+                this.$store.state.menus = localStorage.setItem("foodMenus",JSON.stringify(this.menus))
 
-      }
+            }
+        }
+      },
+      
   }
 };
 </script>>
