@@ -17,24 +17,34 @@ export default new Vuex.Store({
     workshops: [
       {
         id: 1,
-        title: "A",
+        title: "Workshop A",
         vacancies:20, 
         img: require('../assets/CatePessoas.jpg'), 
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes." 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.", 
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
       },
       {
         id: 2, 
-        title: "B",
+        title: "Workshop B",
         vacancies:20,
-        img: "https://picsum.photos/600/300/?image=25", 
-        description: "OLA PEPS BEM VINDO" 
+        img: require('../assets/CatePessoas.jpg'), 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
       },
       {
         id: 3,
-        title: "C",
+        title: "Workshop C",
         vacancies:20, 
-        img: "https://picsum.photos/600/300/?image=25",
-        description: "OLA PEPS BEM VINDO" }
+        img: require('../assets/CatePessoas.jpg'), 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      }
     ],
     foodMenus: [
       {

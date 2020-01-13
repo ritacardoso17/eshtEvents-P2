@@ -155,13 +155,14 @@ export default {
   -webkit-filter: blur(2px);
   filter: blur(2px);
 }
-.centered {
+#welcome {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Channel;
   font-size: 210%;
+  color: black;
 }
 #bar {
   position: absolute;

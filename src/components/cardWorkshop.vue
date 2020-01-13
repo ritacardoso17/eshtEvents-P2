@@ -11,19 +11,32 @@
           :img-src="workshop.img"
           img-alt="Image"
           img-right
+          img-width="40%"
           tag="article"
           class="mb-2"
           id="workCard"
         >
-          <b-card-text>{{workshop.description}}</b-card-text>
+          <b-card-text id="workDescrip">{{workshop.description}}</b-card-text>
+          <b-card-text id="workInfo2">
+            {{workshop.date}}
+            <br />
+            Sala: {{workshop.room}}
+            <br />
+            Locutor: {{workshop.locutor}}
+            <br />
+            Vagas: {{workshop.vacancies}}
+          </b-card-text>
 
           <b-button
             href="#"
+            id="workInscp2"
             variant="primary"
             @click="sign(workshop.id,workshop.vacancies)"
           >Inscrever-me</b-button>
         </b-card>
-        <br> <br> <br>
+        <br />
+        <br />
+        <br />
       </span>
       <!-- CARD WORKSHOPS À ESQUERDA -->
       <span v-else>
@@ -35,20 +48,32 @@
           :img-src="workshop.img"
           img-alt="Image"
           img-left
-          img-width="50%"
+          img-width="40%"
           tag="article"
           class="mb-2"
           id="workCard"
         >
-          <b-card-text>{{workshop.description}}</b-card-text>
+          <b-card-text id="workDescrip">{{workshop.description}}</b-card-text>
+          <b-card-text id="workInfo">
+            {{workshop.date}}
+            <br />
+            Sala: {{workshop.room}}
+            <br />
+            Locutor: {{workshop.locutor}}
+            <br />
+            Vagas: {{workshop.vacancies}}
+          </b-card-text>
 
           <b-button
             href="#"
             variant="primary"
+            id="workInscp"
             @click="sign(workshop.id,workshop.vacancies)"
           >Inscrever-me</b-button>
         </b-card>
-        <br> <br> <br>
+        <br />
+        <br />
+        <br />
       </span>
     </div>
   </div>
@@ -109,15 +134,76 @@ export default {
   background-color: #000;
   color: white;
   height: 50px;
-  text-align: justify;
+  text-align: end;
   font-size: 150%;
+  font-family: GeosansLight;
 }
 #lineCards {
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 15px;
   width: 1100px;
   position: relative;
   left: -20px;
   top: -20px;
+}
+#workDescrip {
+  text-align: justify;
+  font-family: GeosansLight;
+  width: 450px;
+}
+#workInfo {
+  text-align: justify;
+  position: absolute;
+  font-family: GeosansLight;
+  width: 450px;
+  font-size: 100%;
+  bottom: -10px;
+}
+#workInfo2 {
+  text-align: justify;
+  position: absolute;
+  font-family: GeosansLight;
+  width: 450px;
+  font-size: 100%;
+  bottom: -10px;
+  left: 180px;
+}
+#workInscp {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  font-size: 90%;
+  padding: 4px;
+  color: white;
+  border: 1px solid black;
+  bottom: -100px;
+  left: 270px;
+  background-color: #232323;
+  font-family: GeosansLight;
+}
+#workInscp:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
+}
+#workInscp2 {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  font-size: 90%;
+  padding: 4px;
+  color: white;
+  border: 1px solid black;
+  bottom: -100px;
+  right: 270px;
+  background-color: #232323;
+  font-family: GeosansLight;
+}
+#workInscp2:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
 }
 </style>
