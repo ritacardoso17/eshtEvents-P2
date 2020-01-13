@@ -19,91 +19,7 @@ export default new Vuex.Store({
       { id: 2, title: "B",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
       { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
-    foodMenus: [  {
-      id:"0",
-      name: "Coffeebreak A",
-      type:"coffebreak",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"1",
-      name: "Coffeebreak B",
-      type:"coffeebreak",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"2",
-      name: "Coffeebreak C",
-      type:"coffeebreak",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"3",
-      name: "Almoço A",
-      type:"almoço",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"4",
-      name: "Almoço B",
-      type:"almoço",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"5",
-      name: "Almoço C",
-      type:"almoço",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-     {
-      id:"6",
-      name: "Porto de Honra A",
-      type:"portoHonra",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"7",
-      name: "Porto de Honra B",
-      type:"portoHonra",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"8",
-      name: "Porto de Honra C",
-
-      type:"portoHonra",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"9",
-      name: "Jantar A",
-      type:"jantar",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"10",
-      name: "Jantar B",
-      type:"jantar",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    },
-    {
-      id:"11",
-      name: "Jantar C",
-      type:"jantar",
-      image: require("../assets/transferir.jpg"),
-      ingredients: "no idea"
-    }],
+    foodMenus: [],
     eventType:[],
     reservations: [],
   },
@@ -127,11 +43,11 @@ export default new Vuex.Store({
             birth: payload.birth
           });
           localStorage.setItem("users", JSON.stringify(state.users))
-          location.href = "/"
           alert("REGISTADO")
         }
       } else {
         alert("EMAIL JA EXISTENTE")
+
       }
     },
     LOGIN: (state, payload) => {
@@ -164,9 +80,6 @@ export default new Vuex.Store({
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
-      alert("DONE")
-      location.reload()
-      
     },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)
@@ -176,8 +89,16 @@ export default new Vuex.Store({
     CHANGE_TYPE: (state, payload) => {
       for (const user of state.users) {
         if (user.id == payload.id) {
-          state.users.push({ typeUser: "admin"  })
-          localStorage.setItem("users", JSON.stringify(state.users))
+          state.users.push({
+            id: user.id,
+            name: user.name,
+            school: user.school,
+            typeUser: "admin",
+            email: user.email,
+            password: user.password,
+            contact: user.contact,
+            birth: user.birth
+          })
         }
 
       }
@@ -187,14 +108,13 @@ export default new Vuex.Store({
         state.workshops.push({
           id: payload.id,
           title: payload.title,
-          img:payload.img,
           date: payload.date,
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
           description:payload.description
         });
-         localStorage.setItem("workshops", JSON.stringify(state.workshops))
+        localStorage.setItem("workshops", JSON.stringify(state.workshops))
         alert("Workshop Criado")
       } else {
         alert("Workshop com nome igual a um workshop criado")
@@ -237,9 +157,6 @@ export default new Vuex.Store({
     getLastIdWorkshops(state) {
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
 
-    },
-    getLoggedUser(state){
-      return state.loggedUser[0].name
     }
   }
 });

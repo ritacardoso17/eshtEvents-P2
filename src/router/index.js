@@ -1,6 +1,24 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+
+import Home from "../views/Home.vue";
+import InicialPage from "../views/InicialPage.vue"
+import About from "../views/About.vue";
+import Register from "../views/Register.vue";
+import Profile from "../views/Profile.vue";
+import Events from "../views/Events.vue";
+import EditProfile from "../views/EditProfile.vue";
+import RentRoom from "../views/RentRoom.vue";
+import EventsReserv from "../views/EventsReserv.vue";
+import Room from "../views/Room.vue";
+import Workshops from "../views/Workshops.vue";
+import MenuBackoffice from "../views/BackofficeMenu.vue";
+import Menu from "../views/Menu.vue";
+import UserBackoffice from "../views/userBackOffice.vue"
+import WorkshopBackoffice from "../views/workshopBackoffice.vue"
+import addWorkshop from "../views/addWorkshop.vue"
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -82,10 +100,9 @@ const routes = [
   {
     path: "/workshopadmin",
     name: "workshopadmin",
-    component:  () => import("../views/workshopBackoffice.vue")
-  }
 
- 
+    component: WorkshopBackoffice
+  },
 ];
 
 const router = new VueRouter({
