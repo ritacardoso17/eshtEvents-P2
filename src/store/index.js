@@ -21,86 +21,86 @@ export default new Vuex.Store({
     ],
     foodMenus: [  {
       id:"0",
-      name: "coffeebreak A",
+      name: "Coffeebreak A",
       type:"coffebreak",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"1",
-      name: "coffeebreak B",
-      type:"coffeebreaak",
+      name: "Coffeebreak B",
+      type:"coffeebreak",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"2",
-      name: "coffeebreak B",
-      type:"jantar",
+      name: "Coffeebreak C",
+      type:"coffeebreak",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"3",
-      name: "coffeebreak B",
+      name: "Almoço A",
       type:"almoço",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"4",
-      name: "coffeebreak B",
-      type:"coffeebreak",
+      name: "Almoço B",
+      type:"almoço",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"5",
-      name: "coffeebreak B",
-      type:"coffeebreak",
+      name: "Almoço C",
+      type:"almoço",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
      {
       id:"6",
       name: "Porto de Honra A",
-      type:"coffeebreak",
+      type:"portoHonra",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"7",
       name: "Porto de Honra B",
-      type:"coffeebreak",
+      type:"portoHonra",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"8",
-      name: "Porto de Honra B",
+      name: "Porto de Honra C",
 
-      type:"coffeebreak",
+      type:"portoHonra",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"9",
-      name: "Porto de Honra B",
-      type:"coffebreak",
+      name: "Jantar A",
+      type:"jantar",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"10",
-      name: "Porto de Honra B",
-      type:"portodehonra",
+      name: "Jantar B",
+      type:"jantar",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     },
     {
       id:"11",
-      name: "Porto de Honra B",
-      type:"portodehonra",
+      name: "Jantar C",
+      type:"jantar",
       image: require("../assets/transferir.jpg"),
       ingredients: "no idea"
     }],
