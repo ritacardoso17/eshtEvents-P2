@@ -127,7 +127,6 @@ export default new Vuex.Store({
             birth: payload.birth
           });
           localStorage.setItem("users", JSON.stringify(state.users))
-          location.href = "/"
           alert("REGISTADO")
         }
       } else {
