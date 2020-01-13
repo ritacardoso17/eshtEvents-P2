@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <form v-on:submit.prevent="addWorkshop()">
       <div class="form-group">
@@ -8,8 +8,17 @@
           class="form-control"
           id="txtTitle"
           placeholder="Insira o seu titulo"
-          
           v-model="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="txtVacancies" class="nameLabel">Imagem do Workshop:</label>
+        <input
+          type="url"
+          class="form-control"
+          id="txtVacancies"
+          placeholder="Insira a imagem para o Workshop"
+          v-model="img"
         />
       </div>
       <div class="form-group">
@@ -19,7 +28,6 @@
           class="form-control"
           id="txtdate"
           placeholder="Insira a data"
-          
           v-model="date"
         />
       </div>
@@ -30,7 +38,6 @@
           class="form-control"
           id="txtLugar"
           placeholder="Insira o lugar "
-          
           v-model="place"
         />
       </div>
@@ -41,7 +48,6 @@
           class="form-control"
           id="txtTeacher"
           placeholder="Insira o nome do locutor"
-          
           v-model="teacher"
         />
       </div>
@@ -51,7 +57,8 @@
           type="number"
           class="form-control"
           id="txtVacancies"
-          placeholder="Insira o numero maximo de vagas" v-model="vacancies"
+          placeholder="Insira o numero maximo de vagas"
+          v-model="vacancies"
         />
       </div>
        <div class="form-group">
@@ -61,7 +68,8 @@
           class="form-control"
           id="txtDescription"
           style="resize:none;"
-          placeholder="Insira uma descrição" v-model="description"
+          placeholder="Insira uma descrição"
+           v-model="description"
         ></textarea>
       </div>
 
@@ -76,6 +84,7 @@ export default {
   data: () => ({
     id: 0,
     title: "",
+    img:"",
     date: "",
     place: "",
     teacher: "",
@@ -85,17 +94,12 @@ export default {
   created() {
     window.addEventListener("unload", this.saveStorage);
     if (localStorage.getItem("workshops")) {
-      this.$store.state.workshops = JSON.parse(
-        localStorage.getItem("workshops")
-      );
+      this.$store.state.workshops = JSON.parse(localStorage.getItem("workshops"));
     }
   },
   methods: {
     saveStorage() {
-      localStorage.setItem(
-        "workshops",
-        JSON.stringify(this.$store.state.workshops)
-      );
+      localStorage.setItem("workshops",JSON.stringify(this.$store.state.workshops));
     },
     getLastIdWorkshops() {
       return this.$store.getters.getLastIdWorkshops;
@@ -104,6 +108,7 @@ export default {
       this.$store.commit("ADD_WORKSHOP", {
         id: this.getLastIdWorkshops() + 1,
         title: this.title,
+        img:this.img,
         date: this.date,
         place: this.place,
         teacher: this.teacher,
