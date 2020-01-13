@@ -98,6 +98,8 @@ export default {
         localStorage.getItem("loggedUser")
       );
     }
+    localStorage.setItem("foodMenus", JSON.stringify(this.$store.state.foodMenus));
+  
   },
   methods: {
     /**VER SE EXISTE UM USER COM O EMAIL E PASS */

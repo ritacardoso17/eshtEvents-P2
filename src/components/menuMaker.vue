@@ -15,10 +15,10 @@
           >
             <b-card-text>{{menu.type}}</b-card-text>
             <p>{{menu.id}}</p>
-            <b-button  v-b-modal="menu.id" id="cardBtn" >Ver mais</b-button>
+            <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
             <div>
               <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
-                  <img src="" alt="">
+                <img src alt />
                 <p class="my-4">{{menu.ingredients}}</p>
               </b-modal>
             </div>
@@ -34,110 +34,21 @@ export default {
   name: "Menu",
   data: function() {
     return {
-      menus: [
-        {
-          id:"0",
-          name: "coffeebreak A",
-          type:"coffebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"1",
-          name: "coffeebreak B",
-          type:"coffeebreaak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"2",
-          name: "coffeebreak B",
-          type:"jantar",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"3",
-          name: "coffeebreak B",
-          type:"almoço",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"4",
-          name: "coffeebreak B",
-          type:"coffeebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"5",
-          name: "coffeebreak B",
-          type:"coffeebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-         {
-          id:"6",
-          name: "Porto de Honra A",
-          type:"coffeebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"7",
-          name: "Porto de Honra B",
-          type:"coffeebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"8",
-          name: "Porto de Honra B",
-
-          type:"coffeebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"9",
-          name: "Porto de Honra B",
-          type:"coffebreak",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"10",
-          name: "Porto de Honra B",
-          type:"portodehonra",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        },
-        {
-          id:"11",
-          name: "Porto de Honra B",
-          type:"portodehonra",
-          image: require("../assets/transferir.jpg"),
-          ingredients: "no idea"
-        }
-      ]
+      menus: []
     };
   },
   created() {
-  localStorage.setItem("foodMenus", JSON.stringify(this.menus))
-  },
-  methods:{
+    this.menus = JSON.parse(localStorage.getItem("foodMenus"));
   }
-  
 };
 </script>
 
 <style>
 #cardsMenu {
-    position: center;
+  position: center;
 }
-#cards{
-    margin: 50px;
+#cards {
+  margin: 50px;
 }
 #cardBtn {
   position: relative;
@@ -152,7 +63,7 @@ export default {
 #cardBtn:hover {
   color: white;
   border: 2px solid;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
 }
 </style>
