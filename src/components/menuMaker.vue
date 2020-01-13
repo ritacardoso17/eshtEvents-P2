@@ -18,7 +18,7 @@
             <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
             <div>
               <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
-                <img src alt />
+                <b-img :src="menu.image" id="imgModal"/>
                 <p class="my-4">{{menu.ingredients}}</p>
               </b-modal>
             </div>
@@ -65,5 +65,8 @@ export default {
   border: 2px solid;
   border-color: #daaa29;
   background-color: #000;
+}
+#imgModal{
+  position: absolute;
 }
 </style>

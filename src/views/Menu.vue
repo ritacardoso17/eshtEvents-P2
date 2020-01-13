@@ -45,4 +45,8 @@ export default {
   font-family: Channel;
   color: black;
 }
+.catering {
+  position: relative;
+  width: 1263px;
+}
 </style>

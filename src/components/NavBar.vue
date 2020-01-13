@@ -3,7 +3,7 @@
     <!--Navbar-->
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand text-left" href="/">
-        <img src="../assets/logo.eshtEvents.png" class="img-fluid" alt />
+        <img src="../assets/logo.eshtEvents.png" class="img-fluid"  id="logoText" alt />
       </a>
 
       <ul class="navbar-nav mr-auto">
@@ -135,7 +135,7 @@ export default {
 .modal-header {
   border: none;
 }
-img {
+#logoText {
   width: 40%;
   height: auto;
 }
@@ -237,6 +237,6 @@ span {
   color: #232323;
 }
 #login{
-  color: black;
+  color: black !important;
 }
 </style>
