@@ -81,7 +81,7 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab title="Menu">
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
               <b-card
                 :title="menu.name"
@@ -104,7 +104,7 @@
                 </div>
               </b-card>
             </div>
-          </div>
+          </div> -->
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
@@ -295,6 +295,31 @@ export default {
 </script>
 
 <style>
+.catering {
+  position: relative;
+  width: 1263px;
+}
+#lineLeft {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -15px;
+  margin-left: 290px;
+}
+#lineRight {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -30px;
+  margin-right: 290px;
+}
+#titule {
+  margin-top: -4%;
+  font-family: Channel;
+  color: black;
+}
 #guide {
   font-family: GeosansLight;
   text-align: center;
