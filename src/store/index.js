@@ -15,49 +15,69 @@ export default new Vuex.Store({
       { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2" }
     ],
     workshops: [
-      { id: 1, title: "A",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
-      { id: 2, title: "B",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
-      { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
+      {
+        id: 1,
+        title: "A",
+        vacancies:20, 
+        img: require('../assets/CatePessoas.jpg'), 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes." 
+      },
+      {
+        id: 2, 
+        title: "B",
+        vacancies:20,
+        img: "https://picsum.photos/600/300/?image=25", 
+        description: "OLA PEPS BEM VINDO" 
+      },
+      {
+        id: 3,
+        title: "C",
+        vacancies:20, 
+        img: "https://picsum.photos/600/300/?image=25",
+        description: "OLA PEPS BEM VINDO" }
     ],
     foodMenus: [
       {
         id:1,
-        img:"/img/transferir.844659d6.jpg",
-        name:"Menu A",type:"coffebreak"
+        img: require('../assets/transferir.jpg'),
+        name:"Menu A",
+        type:"coffebreak"
       },
       {
         id:2,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu B",
         type:"coffebreak"
       },
       {
         id:3,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu C",
         type:"coffebreak"
       },
       {
         id:4,
-        img:"/img/transferir.844659d6.jpg",
-        name:"Menu A",type:"coffebreak"
+        img: require('../assets/transferir.jpg'),
+        name:"Menu A",
+        type:"coffebreak"
       },
       {
         id:5,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu B",
         type:"coffebreak"
       },
       {
         id:6,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu C",
         type:"coffebreak"
       },
       {
         id:7,
-        img:"/img/transferir.844659d6.jpg",
-        name:"Menu A",type:"coffebreak"
+        img: require('../assets/transferir.jpg'),
+        name:"Menu A",
+        type:"coffebreak"
       },
       {
         id:8,
@@ -67,24 +87,25 @@ export default new Vuex.Store({
       },
       {
         id:9,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu C",
         type:"coffebreak"
       },
       {
         id:10,
-        img:"/img/transferir.844659d6.jpg",
-        name:"Menu A",type:"coffebreak"
+        img: require('../assets/transferir.jpg'),
+        name:"Menu A",
+        type:"coffebreak"
       },
       {
         id:11,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu B",
         type:"coffebreak"
       },
       {
         id:12,
-        img:"/img/transferir.844659d6.jpg",
+        img: require('../assets/transferir.jpg'),
         name:"Menu C",
         type:"coffebreak"
       },
