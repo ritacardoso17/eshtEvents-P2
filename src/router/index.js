@@ -17,6 +17,7 @@ import Menu from "../views/Menu.vue";
 import UserBackoffice from "../views/userBackOffice.vue"
 import WorkshopBackoffice from "../views/workshopBackoffice.vue"
 import addWorkshop from "../views/addWorkshop.vue"
+import LastPage from "../views/lastPage.vue"
 
 
 
@@ -108,6 +109,11 @@ const routes = [
     path: "/workshopadmin",
     name: "workshopadmin",
     component: WorkshopBackoffice
+  },
+  {
+    path: "/#",
+    name: "lastPage",
+    component: LastPage
   }
 ];
 
