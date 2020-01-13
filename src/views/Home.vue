@@ -217,13 +217,13 @@ export default {
   background-color: #000;
 }
 #seeMore {
-  position: relative;
+  position: absolute;
   width: 80px;
   height: 30px;
   font-size: 70%;
   color: white;
-  bottom: -70px;
-  left: 135px;
+  top: 250px;
+  left: 300px;
   background-color: #232323;
   font-family: GeosansLight;
 }
@@ -234,15 +234,15 @@ export default {
   background-color: #000;
 }
 #reserve {
-  position: relative;
+  position: absolute;
   width: 80px;
   height: 30px;
   font-size: 70%;
   color: white;
   white-space: nowrap;
   padding: 4px;
-  bottom: -70px;
-  left: 150px;
+  top: 250px;
+  left: 400px;
   background-color: #232323;
   font-family: GeosansLight;
 }
@@ -253,13 +253,13 @@ export default {
   background-color: #000;
 }
 #seeMore2 {
-  position: relative;
+  position: absolute;
   width: 80px;
   height: 30px;
   font-size: 70%;
   color: white;
-  bottom: -70px;
-  left: -650px;
+  top: 250px;
+  left: -480px;
   background-color: #232323;
   font-family: GeosansLight;
 }
@@ -270,15 +270,15 @@ export default {
   background-color: #000;
 }
 #reserve2 {
-  position: relative;
+  position: absolute;
   width: 80px;
   height: 30px;
   white-space: nowrap;
   padding: 4px;
   font-size: 70%;
   color: white;
-  bottom: -70px;
-  left: -635px;
+  top: 250px;
+  left: -380px;
   background-color: #232323;
   font-family: GeosansLight;
 }
@@ -289,13 +289,13 @@ export default {
   background-color: #000;
 }
 #workshopsbtn {
-  position: relative;
+  position: absolute;
   width: 120px;
   height: 30px;
   font-size: 70%;
   color: white;
-  bottom: -70px;
-  left: 170px;
+  top: 250px;
+  left: 350px;
   background-color: #232323;
   font-family: GeosansLight;
 }
@@ -307,23 +307,23 @@ export default {
 }
 #firstCard {
   width: 1000px;
-  height: 400px;
+  height: 350px;
   margin: 0 auto; /* Added */
   float: none; /* Added */
   margin-bottom: 10px; /* Added */
   box-shadow: 2px 2px #f5f5f0;
 }
 #imgCard1 {
-  width: 400px;
-  height: 300px;
-  margin-top: 30px;
+  position: absolute;
+  width: 80%;
+  left: 10px;
+  top: 20px;
 }
 #imgCard2 {
-  position: relative;
-  width: 400px;
-  height: 300px;
-  margin-top: 30px;
-  left: 500px;
+  position: absolute;
+  width: 80%;
+  top: 20px;
+  left: 590px;
 }
 #header1 {
   background-color: #000;
@@ -355,23 +355,19 @@ export default {
   top: -15px;
 }
 .text2 {
-  /* position: absolute; */
-  font-size: 80%;
+  position: absolute;
+  font-size: 110%;
   text-align: justify;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  margin-left: -490px;
   font-family: GeosansLight;
-  font-size: 17px;
   width: 400px;
+  right: 560px;
 }
 .text {
-  font-size: 80%;
+  position: absolute;
+  font-size: 110%;
+  left: -50px;
   text-align: justify;
-  margin-bottom: 10px;
-  margin-top: 25px;
   font-family: GeosansLight;
-  font-size: 17px;
   width: 400px;
 }
 </style>
