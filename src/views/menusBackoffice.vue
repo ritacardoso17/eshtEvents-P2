@@ -5,7 +5,9 @@
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>
       </template>-->
-      <template v-slot:cell(options)="row"></template>
+      <template v-slot:cell(options)="row">
+        <b-button class="btnRemove" size="sm" @click="removeMenu(row.item.id)">Eliminar Menu</b-button>
+      </template>
     </b-table>
   </div>
 </template>
@@ -14,7 +16,7 @@
 export default {
   data() {
     return {
-      menus: [],
+      menus: this.$store.state.foodMenus,
       fields: [
         { key: "id", lable: "id" },
         { key: "name", lable: "name", sortable: "true" },
@@ -25,11 +27,15 @@ export default {
   },
   created() {
     if (localStorage.getItem("foodMenus")) {
-      this.$store.state.menus = JSON.parse(localStorage.getItem("foodMenus"));
+      this.$store.state.foodMenus = JSON.parse(
+        localStorage.getItem("foodMenus")
+      );
     }
   },
-  methods:{
+  methods: {
+      removeMenu(id){
 
+      }
   }
 };
 </script>>

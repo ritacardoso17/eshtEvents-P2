@@ -4,7 +4,7 @@
     <button class="btn100" id="btnUsers" >USERS</button> </router-link>
     
    <!-- <span> </span> -->
-   <router-link to="/usersadmin"> 
+   <router-link to="/menusBackoffice"> 
     <button class="btn100" id="btnMenus">MENUS</button> </router-link>
 
     <!-- <span> ///// </span> -->
