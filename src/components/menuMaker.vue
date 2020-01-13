@@ -5,7 +5,7 @@
         <div class="col-sm-4" v-for="menu in this.menus" :key="menu.id">
           <b-card
             :title="menu.name"
-            :img-src="menu.image"
+            :img-src="menu.img"
             img-alt="Image"
             img-top
             tag="article"

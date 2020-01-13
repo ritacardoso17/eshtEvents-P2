@@ -19,7 +19,76 @@ export default new Vuex.Store({
       { id: 2, title: "B",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
       { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
-    foodMenus: [{id:1,img:"/img/transferir.844659d6.jpg",name:"Menu A",type:"coffebreak"},{id:2,img:"/img/transferir.844659d6.jpg",name:"Menu B",type:"coffebreak"},{id:3,img:"/img/transferir.844659d6.jpg",name:"Menu C",type:"coffebreak"}],
+    foodMenus: [
+      {
+        id:1,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu A",type:"coffebreak"
+      },
+      {
+        id:2,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu B",
+        type:"coffebreak"
+      },
+      {
+        id:3,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu C",
+        type:"coffebreak"
+      },
+      {
+        id:4,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu A",type:"coffebreak"
+      },
+      {
+        id:5,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu B",
+        type:"coffebreak"
+      },
+      {
+        id:6,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu C",
+        type:"coffebreak"
+      },
+      {
+        id:7,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu A",type:"coffebreak"
+      },
+      {
+        id:8,
+        img: require('../assets/transferir.jpg'),
+        name:"Menu B",
+        type:"coffebreak"
+      },
+      {
+        id:9,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu C",
+        type:"coffebreak"
+      },
+      {
+        id:10,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu A",type:"coffebreak"
+      },
+      {
+        id:11,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu B",
+        type:"coffebreak"
+      },
+      {
+        id:12,
+        img:"/img/transferir.844659d6.jpg",
+        name:"Menu C",
+        type:"coffebreak"
+      },
+    ],
     eventType:[],
     reservations: [],
   },
