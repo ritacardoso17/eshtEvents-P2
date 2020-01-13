@@ -41,7 +41,7 @@
             <b>Espaço</b>
           </p>
           <img :src="type" alt="HEY" />
-          <a id="confirm" class="btn btn-primary" href="/room" role="button">Confirmar</a>
+          <a id="confirm" class="btn btn-primary" @click="rentRoom()" role="button">Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
@@ -76,6 +76,7 @@ export default {
         user: this.loggedUser,
       });
     },
+    
     saveStorage() {
       localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
     }

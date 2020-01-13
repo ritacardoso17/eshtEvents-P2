@@ -1,7 +1,9 @@
 <template>
   <div class="rooms">
     <b-img class="catering" src="../assets/zaton-catering-001.jpg"></b-img>
-    <br><br><br>
+    <br />
+    <br />
+    <br />
     <hr id="lineLeft" />
     <h3 id="titule">Os nossos Espaços</h3>
     <hr id="lineRight" />
@@ -16,7 +18,7 @@
       suspendisse, mollis tempor dapibus euismod id neque taciti leo. amet cubilia elementum nec ante habitant condimentum fringilla quam.
     </p>
     <b-img class="kitchen" src="../assets/cozinha.jpg"></b-img>
-    
+
     <h5 id="room2">Cozinha</h5>
     <br />
     <p class="paragraph2">
@@ -26,7 +28,7 @@
       suspendisse, mollis tempor dapibus euismod id neque taciti leo. amet cubilia elementum nec ante habitant condimentum fringilla quam.
     </p>
     <b-img class="outdoor" src="../assets/t30_2x_bapt_6_121452.jpg"></b-img>
-   
+
     <h5 id="room3">Cozinha</h5>
     <br />
     <p class="paragraph3">
@@ -37,11 +39,22 @@
     </p>
     <b-img class="kitchen2" src="../assets/cozinha.jpg"></b-img>
 
-    <router-link tag="button" id="btnRent" :to="{ name: 'rentRoom' }">Alugar</router-link>
-    <br><br>
+    <span v-if="this.$store.state.loggedUser.length != 0">
+      <router-link tag="button" id="btnRent" :to="{ name: 'rentRoom' }">Alugar</router-link>
+    </span>
+     <span v-else>
+      <router-link tag="button" id="btnRent" :to="{ name: 'register' }">Alugar</router-link>
+    </span>
+    <br />
+    <br />
   </div>
 </template>
 
+<script>
+export default {
+ 
+}
+</script>
 <style>
 .paragraph1 {
   font-family: GeosansLight;
@@ -77,28 +90,27 @@
   text-align: justify;
   margin-left: 60px;
   margin-top: -200px;
-  
 }
-.kitchen{
-    position: relative;
-    width: 30%;
-    height: auto;
-    left: 300px;
-    top: -200px;
+.kitchen {
+  position: relative;
+  width: 30%;
+  height: auto;
+  left: 300px;
+  top: -200px;
 }
-.outdoor{
-    position: relative;
-    width: 30%;
-    height: auto;
-    right: 300px;
-    top: -270px;
+.outdoor {
+  position: relative;
+  width: 30%;
+  height: auto;
+  right: 300px;
+  top: -270px;
 }
-.kitchen2{
-    position: relative;
-    width: 30%;
-    height: auto;
-    left: 400px;
-    top: -200px;
+.kitchen2 {
+  position: relative;
+  width: 30%;
+  height: auto;
+  left: 400px;
+  top: -200px;
 }
 #btnRent {
   position: relative;
@@ -114,7 +126,7 @@
 #btnRent:hover {
   color: white;
   border: 2px solid;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
 }
 </style>

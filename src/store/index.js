@@ -170,7 +170,8 @@ export default new Vuex.Store({
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
-    },
+      window.location.reload()
+      alert("Concluido")    },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)
       localStorage.setItem("users", JSON.stringify(state.users))
@@ -219,7 +220,7 @@ export default new Vuex.Store({
         duration: payload.duration
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
-      alert(state.rooms)
+      alert("state.rooms")
     },
     ADD_RESERVATION: (state, payload) => {
       state.reservations.push({
