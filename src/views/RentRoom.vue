@@ -70,7 +70,7 @@ export default {
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
         type: this.type,  
-        date: this.date,
+        day: this.day,
         time: this.time,
         duration: this.duration,
         user: this.loggedUser,

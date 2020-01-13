@@ -1,5 +1,7 @@
 <template>
-    <img src="noun_waiter" alt="">
+<div>
+    <img src="noun_waiter">
+</div>
 </template>
 
 <script>
