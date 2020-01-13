@@ -19,7 +19,7 @@ export default new Vuex.Store({
       { id: 2, title: "B",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" },
       { id: 3, title: "C",vacancies:20, img: "https://picsum.photos/600/300/?image=25", description: "OLA PEPS BEM VINDO" }
     ],
-    foodMenus: [],
+    foodMenus: [{id:1,img:"/img/transferir.844659d6.jpg",name:"Menu A",type:"coffebreak"},{id:2,img:"/img/transferir.844659d6.jpg",name:"Menu B",type:"coffebreak"},{id:3,img:"/img/transferir.844659d6.jpg",name:"Menu C",type:"coffebreak"}],
     eventType:[],
     reservations: [],
   },
