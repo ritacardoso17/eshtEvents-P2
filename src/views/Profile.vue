@@ -67,7 +67,7 @@ export default {
       objects: [],
       camps: [
         { key: "Evento", lable: "type", sortable: true },
-        { key: "Data", lable: "date", sortable: true },
+        { key: "Data", lable: "day", sortable: true },
         { key: "Estado", lable: "state", sortable: true },
         { key: "Alterar" },
         { key: "Avaliações"}

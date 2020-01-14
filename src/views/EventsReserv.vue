@@ -51,8 +51,8 @@
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" required />
-              <input type="time" class="form-control" id="txtTime" required />
+              <input type="date" class="form-control" id="txtDate" required v-model="day"/>
+              <input type="time" class="form-control" id="txtTime" required v-model="time"/>
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -60,13 +60,13 @@
                 id="txtPersons"
                 required
                 placeholder="0"
-                min="0"
+                min="0" v-model="persons"
               />
               <label for class="durationLabel">▶ Tempo de duração</label>
               <input type="number" max="12" min="1" class="form-control" id="txtDuration" required v-model="duration" />
 
               <label for class="locationLabel">▶ Localização</label>
-              <select id="sltLocation">
+              <select id="sltLocation"  v-model="location">
                 <option value="esht">ESHT</option>
                 <option value="esmad">ESMAD</option>
                 <option value="isep">ISEP</option>
@@ -81,7 +81,7 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab title="Menu">
-          <div class="row" >
+          <div class="row">
             <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
               <b-card
                 :title="menu.name"
@@ -202,7 +202,7 @@
           <p id="inform2">
             <b>Informações</b>
           </p>
-          <p id="pDate2">▶ {{date}}</p>
+          <p id="pDate2">▶ {{day}}</p>
           <p id="pTime2">▶ {{time}}</p>
           <p id="pDuration2">▶ {{duration}}</p>
           <p id="pPersons2">▶ {{persons}}</p>
@@ -227,7 +227,7 @@
             <b>Extras</b>
           </p>
           <p id="choiseExtras2">▶ Extra ▶ Extra ▶ Extra ▶ Extra</p>
-          <a name id="confirm2" class="btn btn-primary" href="#" role="button">Confirmar</a>
+          <a name id="confirm2" class="btn btn-primary" href="#" role="button" @click="eventsReserv()">Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="#" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
@@ -276,6 +276,22 @@ export default {
         this.title = "Porto de Honra";
         this.filter="portodehonra"
       }
+    },
+    eventsReserv() {
+      this.$store.commit("ADD_RESERVATION", {
+        type: this.type,
+        day: this.day,
+        time: this.time,
+        people: this.persons,
+        duration: this.duration,
+        place: this.location,
+        observation: this.observation,
+        extra: this.extra,
+        user: this.getLoggedUserEmail(),
+      });
+    },
+    saveStorage() {
+      localStorage.setItem("reservations", JSON.stringify(this.$store.state.reservations));
     }
   },
   computed: {
@@ -295,6 +311,31 @@ export default {
 </script>
 
 <style>
+.catering {
+  position: relative;
+  width: 1263px;
+}
+#lineLeft {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -15px;
+  margin-left: 290px;
+}
+#lineRight {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -30px;
+  margin-right: 290px;
+}
+#titule {
+  margin-top: -4%;
+  font-family: Channel;
+  color: black;
+}
 #guide {
   font-family: GeosansLight;
   text-align: center;

@@ -12,29 +12,39 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2" }
+      {type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "", user: ""}
     ],
     workshops: [
       {
         id: 1,
-        title: "A",
+        title: "Workshop A",
         vacancies:20, 
         img: require('../assets/CatePessoas.jpg'), 
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes." 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.", 
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
       },
       {
         id: 2, 
-        title: "B",
+        title: "Workshop B",
         vacancies:20,
-        img: "https://picsum.photos/600/300/?image=25", 
-        description: "OLA PEPS BEM VINDO" 
+        img: require('../assets/CatePessoas.jpg'), 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
       },
       {
         id: 3,
-        title: "C",
+        title: "Workshop C",
         vacancies:20, 
-        img: "https://picsum.photos/600/300/?image=25",
-        description: "OLA PEPS BEM VINDO" }
+        img: require('../assets/CatePessoas.jpg'), 
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      }
     ],
     foodMenus: [
       {
@@ -111,7 +121,9 @@ export default new Vuex.Store({
       },
     ],
     eventType:[],
-    reservations: [],
+    reservations: [
+      {type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "", user:""}
+    ],
   },
 
 
@@ -214,10 +226,11 @@ export default new Vuex.Store({
     },
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
-        /* type: payload.type, */
+        type: payload.type,
         day: payload.day,
         time: payload.time,
-        duration: payload.duration
+        duration: payload.duration,
+        user : state.loggedUser
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
       alert("state.rooms")
@@ -230,7 +243,8 @@ export default new Vuex.Store({
         duration: payload.duration,
         place: payload.place,
         observation: payload.observation,
-        extra: payload.extra
+        extra: payload.extra,
+        user : state.user
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)
@@ -248,6 +262,9 @@ export default new Vuex.Store({
     getLastIdWorkshops(state) {
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
 
+    },
+    getLoggedUserEmail(state){
+      return state.loggedUser[0].email
     }
   }
 });

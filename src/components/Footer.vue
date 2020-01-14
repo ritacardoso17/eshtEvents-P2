@@ -91,7 +91,8 @@ export default {};
 }
 .ipp{
   margin-bottom: -300px;
-  margin-left: 200px;
+  margin-left: 130px;
+  width: 150px;
 }
 #copyright{
   font-family: GeosansLight;

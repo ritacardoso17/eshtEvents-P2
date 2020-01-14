@@ -32,9 +32,7 @@
       gravida tortor feugiat tortor consequat curabitur tempor facilisis, ornare orci urna quisque nibh curabitur a. faucibus donec integer quam ut
     </p>
 
-    <a href="#" class="menus">
-      <b>Ver Menus</b>
-    </a>
+    <router-link tag="a" class="menus" :to="{ name: 'menu' }"><b>Ver menus</b></router-link>
     <router-link tag="button" id="btnReserve" :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
   </div>
 </template>
