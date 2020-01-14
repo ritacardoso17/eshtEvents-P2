@@ -24,7 +24,7 @@
         </p>
       </div>
     </div>
-    <button type="submit" class="btnAboutUs">Descobre mais sobre nós</button>
+    <router-link tag="button" class="btnAboutUs" :to="{ name: 'about' }">Descobre mais sobre nós</router-link>
     <router-link to="/profile">
       <button type="submit" class="btnAboutUs">Profile</button>
       <!--PARA TIRAR-->
