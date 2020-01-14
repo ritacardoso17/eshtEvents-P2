@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      workshops: [],
+      workshops:  this.$store.state.workshops,
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
         { key: "id", lable: "id" },
@@ -25,26 +25,18 @@ export default {
     };
   },
   created() {
-    localStorage.setItem(
-      "workshops",
-      JSON.stringify(this.$store.state.workshops)
-    );
     if (localStorage.getItem("workshops")) {
-      this.workshops = JSON.parse(localStorage.getItem("workshops"));
+      this.$store.state.workshops = JSON.parse(localStorage.getItem("workshops"));
     }
   },
   methods: {
     removeWorkshop(id) {
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
-          this.workshops = this.workshops.filter(
-            workshop => this.workshops[i].id !== workshop.id
-          );
+          this.workshops = this.workshops.filter( workshop => this.workshops[i].id !== workshop.id);
+         
           localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          this.$store.state.workshops = localStorage.setItem(
-            "workshops",
-            JSON.stringify(this.workshops)
-          );
+          this.$store.state.workshops = localStorage.setItem("workshops", JSON.stringify(this.workshops));
         }
       }
     },

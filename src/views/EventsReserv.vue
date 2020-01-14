@@ -81,7 +81,7 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab title="Menu">
-          <div class="row">
+          <div class="row" >
             <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
               <b-card
                 :title="menu.name"

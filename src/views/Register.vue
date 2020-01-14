@@ -148,9 +148,7 @@ export default {
     },
     saveStorage() {
       localStorage.setItem("users", JSON.stringify(this.$store.state.users));
-      localStorage.setItem(
-        "loggedUser",
-        JSON.stringify(this.$store.state.loggedUser)
+      localStorage.setItem("loggedUser", JSON.stringify(this.$store.state.loggedUser)
       );
     }
   }
