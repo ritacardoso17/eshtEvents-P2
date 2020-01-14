@@ -12,15 +12,15 @@
       <h3 id="name">{{loggedUser[0].name}}</h3>
 
       <label for="password" class="password"><p>Palavra-passe:</p></label>
-      <input type="password" class="form-control" id="password"/>
+      <input type="password" class="form-control" id="password" v-model="password" required/>
 
       <label for="password" class="newPassword"><p>Nova palavra-passe:</p></label>
-      <input type="password" class="form-control" id="newPassword"/>
+      <input type="password" class="form-control" id="newPassword" v-model="newPassword" required/>
 
       <label for="password" class="confirmPassword"><p>Confirmar palavra-passe:</p></label>
-      <input type="password" class="form-control" id="confirmPassword"/>
+      <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required/>
 
-      <router-link to="/Profile"><button type="submit" id="edit">Confirmar</button></router-link>
+      <router-link to="/Profile"><button type="submit" id="edit" @click="changePassword()">Confirmar</button></router-link>
       
     </div>
   </div>
@@ -37,7 +37,20 @@
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
-    }
+    },
+    changePassword(){
+      this.$store.commit("CHANGE_PASSWORD",{
+        id: this.id,
+        name: this.name,
+        school: this.school,
+        typeUser: this.typeUser,
+        email: this.email,
+        password: this.password,
+        contact: this.contact,
+        birth: this.birth,
+      });
+    },
+
   },
   created() {
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
