@@ -4,9 +4,9 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeft" />
+    <hr id="lineLeftR" />
     <h3 id="titule">Os nossos Espaços</h3>
-    <hr id="lineRight" />
+    <hr id="lineRightR" />
 
     <br />
     <h5 id="room1">Cozinha</h5>
@@ -56,6 +56,31 @@ export default {
 }
 </script>
 <style>
+.catering {
+  position: relative;
+  width: 1263px;
+}
+#lineLeftR {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -15px;
+  margin-left: 300px;
+}
+#lineRightR {
+  position: relative;
+  background-color: #DAAA29;
+  height: 0.5px;
+  width: 150px;
+  top: -30px;
+  margin-right: 300px;
+}
+#titule {
+  margin-top: -4%;
+  font-family: Channel;
+  color: black;
+}
 .paragraph1 {
   font-family: GeosansLight;
   text-align: justify;
