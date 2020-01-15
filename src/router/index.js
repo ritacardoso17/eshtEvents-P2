@@ -22,7 +22,7 @@ const routes = [
   {
     path: "/eventsReserv",
     name: "eventsReserv",
-    component:  () => import("../views/EventsReserv.vue")
+    component: () => import("../views/EventsReserv.vue")
   },
   {
     path: "/about",
@@ -47,32 +47,32 @@ const routes = [
   {
     path: "/profile/editProfile",
     name: "editProfile",
-    component:  () => import("../views/EditProfile.vue")
+    component: () => import("../views/EditProfile.vue")
   },
   {
     path: "/rentRoom",
     name: "rentRoom",
-    component:  () => import("../views/RentRoom.vue")
+    component: () => import("../views/RentRoom.vue")
   },
   {
     path: "/room",
     name: "room",
-    component:  () => import("../views/Room.vue")
+    component: () => import("../views/Room.vue")
   },
   {
     path: "/workshops",
     name: "workshops",
-    component:  () => import("../views/Workshops.vue")
+    component: () => import("../views/Workshops.vue")
   },
   {
     path: "/menu",
     name: "menu",
-    component:  () => import("../views/Menu.vue")
+    component: () => import("../views/Menu.vue")
   },
   {
     path: "/menuadmin",
     name: "menuadmin",
-    component:  () => import("../views/BackofficeMenu.vue")
+    component: () => import("../views/BackofficeMenu.vue")
   },
   {
     path: "/usersadmin",
@@ -98,6 +98,11 @@ const routes = [
     path: "/reservationsBackoffice",
     name: "reservationsBackoffice",
     component: () => import("../views/reservationsBackoffice.vue")
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/Login.vue")
   },
 ];
 

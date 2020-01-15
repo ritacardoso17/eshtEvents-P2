@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import router from "vue-router";
-
+/* import router from "vue-router";
+ */
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -12,24 +12,24 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      {type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "", user: ""}
+      { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "", user: "" }
     ],
     workshops: [
       {
         id: 1,
         title: "Workshop A",
-        vacancies:20, 
-        img: require('../assets/CatePessoas.jpg'), 
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.", 
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
         date: "6 de Abril de 2020",
         room: "B204",
         locutor: "Américo Andrade"
       },
       {
-        id: 2, 
+        id: 2,
         title: "Workshop B",
-        vacancies:20,
-        img: require('../assets/CatePessoas.jpg'), 
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
         description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
         date: "6 de Abril de 2020",
         room: "B204",
@@ -38,8 +38,8 @@ export default new Vuex.Store({
       {
         id: 3,
         title: "Workshop C",
-        vacancies:20, 
-        img: require('../assets/CatePessoas.jpg'), 
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
         description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
         date: "6 de Abril de 2020",
         room: "B204",
@@ -48,81 +48,81 @@ export default new Vuex.Store({
     ],
     foodMenus: [
       {
-        id:1,
+        id: 1,
         img: require('../assets/transferir.jpg'),
-        name:"Menu A",
-        type:"coffebreak"
+        name: "Menu A",
+        type: "coffebreak"
       },
       {
-        id:2,
+        id: 2,
         img: require('../assets/transferir.jpg'),
-        name:"Menu B",
-        type:"coffebreak"
+        name: "Menu B",
+        type: "coffebreak"
       },
       {
-        id:3,
+        id: 3,
         img: require('../assets/transferir.jpg'),
-        name:"Menu C",
-        type:"coffebreak"
+        name: "Menu C",
+        type: "coffebreak"
       },
       {
-        id:4,
+        id: 4,
         img: require('../assets/transferir.jpg'),
-        name:"Menu A",
-        type:"coffebreak"
+        name: "Menu A",
+        type: "coffebreak"
       },
       {
-        id:5,
+        id: 5,
         img: require('../assets/transferir.jpg'),
-        name:"Menu B",
-        type:"coffebreak"
+        name: "Menu B",
+        type: "coffebreak"
       },
       {
-        id:6,
+        id: 6,
         img: require('../assets/transferir.jpg'),
-        name:"Menu C",
-        type:"coffebreak"
+        name: "Menu C",
+        type: "coffebreak"
       },
       {
-        id:7,
+        id: 7,
         img: require('../assets/transferir.jpg'),
-        name:"Menu A",
-        type:"coffebreak"
+        name: "Menu A",
+        type: "coffebreak"
       },
       {
-        id:8,
+        id: 8,
         img: require('../assets/transferir.jpg'),
-        name:"Menu B",
-        type:"coffebreak"
+        name: "Menu B",
+        type: "coffebreak"
       },
       {
-        id:9,
+        id: 9,
         img: require('../assets/transferir.jpg'),
-        name:"Menu C",
-        type:"coffebreak"
+        name: "Menu C",
+        type: "coffebreak"
       },
       {
-        id:10,
+        id: 10,
         img: require('../assets/transferir.jpg'),
-        name:"Menu A",
-        type:"coffebreak"
+        name: "Menu A",
+        type: "coffebreak"
       },
       {
-        id:11,
+        id: 11,
         img: require('../assets/transferir.jpg'),
-        name:"Menu B",
-        type:"coffebreak"
+        name: "Menu B",
+        type: "coffebreak"
       },
       {
-        id:12,
+        id: 12,
         img: require('../assets/transferir.jpg'),
-        name:"Menu C",
-        type:"coffebreak"
+        name: "Menu C",
+        type: "coffebreak"
       },
     ],
-    eventType:[],
+    eventType: [],
     reservations: [
-      {type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "", user:""}
+      { type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "", user: "" }
     ],
   },
 
@@ -168,7 +168,8 @@ export default new Vuex.Store({
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           alert("USER LOGGADO")
           state.userExist = true
-          router.push({ name: 'home' })
+          window.location = "./"
+
         }
       }
       if (!state.userExist) {
@@ -183,7 +184,8 @@ export default new Vuex.Store({
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
       window.location.reload()
-      alert("Concluido")    },
+      alert("Concluido")
+    },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)
       localStorage.setItem("users", JSON.stringify(state.users))
@@ -215,7 +217,7 @@ export default new Vuex.Store({
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
-          description:payload.description
+          description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
         alert("Workshop Criado")
@@ -230,7 +232,7 @@ export default new Vuex.Store({
         day: payload.day,
         time: payload.time,
         duration: payload.duration,
-        user : state.loggedUser
+        user: state.loggedUser
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
       alert("state.rooms")
@@ -244,12 +246,11 @@ export default new Vuex.Store({
         place: payload.place,
         observation: payload.observation,
         extra: payload.extra,
-        user : state.user
+        user: state.user
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)
-    }
-
+    },
   },
   getters: {
     getTypeUser(state) {
@@ -263,8 +264,11 @@ export default new Vuex.Store({
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
 
     },
-    getLoggedUserEmail(state){
+    getLoggedUserEmail(state) {
       return state.loggedUser[0].email
+    },
+    getLoggedUserPassword(state) {
+      return state.loggedUser[0].password
     }
   }
 });

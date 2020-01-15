@@ -3,7 +3,7 @@
     <!--Navbar-->
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand text-left" href="/">
-        <img src="../assets/logo.eshtEvents.png" class="img-fluid"  id="logoText" alt />
+        <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
       </a>
 
       <ul class="navbar-nav mr-auto">
@@ -12,42 +12,31 @@
         </li>
       </ul>
 
-      <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a>
+      <!-- <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a> -->
+     <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button>
+ -->  <router-link to="/login"  v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
+      <a id="logout" @click="logout()"  v-if="this.$store.state.loggedUser.length != 0">LOGOUT</a>
 
-      <a id="logout" @click="logout()">LOGOUT</a>
 
-      <b-modal id="modal-1" centered size="m" title="Iniciar Sessão" hide-header-close hide-footer>
-        <b-img src="../assets/noun_X_2290001.png" id="x1"></b-img>
-        <b-img src="../assets/noun_X_2290001.png" id="x2"></b-img>
+<!-- 
+      <b-modal id="modal-1" hide-footer hide-header-close title="Iniciar Sessão">
         <div class="form-group">
+          <b-button @click="hideModal" id="x1" style="background-color:transparent" class="border-0"><b-img src="../assets/noun_X_2290001.png" style="width: 30px"> </b-img></b-button>
+          <b-button @click="hideModal" id="x2" style="background-color:transparent" class="border-0"><b-img src="../assets/noun_X_2290001.png" style="width: 30px"> </b-img></b-button>
           <form v-on:submit.prevent="login()">
             <label for="txtEmailLogin" class="emailLogin">E-mail:</label>
-            <input
-              type="email"
-              class="form-control"
-              id="txtEmailLogin"
-              placeholder="Insira o seu e-mail"
-              v-model="email"
-              required
-            />
+            <input type="email" class="form-control" id="txtEmailLogin" placeholder="Insira o seu e-mail"
+              v-model="email" required />
             <label for="txtPasswordLogin" class="passLogin">Palavra-Chave:</label>
-            <input
-              type="password"
-              class="form-control"
-              id="txtPasswordLogin"
-              placeholder="Insira a sua palavra-chave"
-              v-model="password"
-              required
-            />
+            <input type="password" class="form-control" id="txtPasswordLogin" placeholder="Insira a sua palavra-chave"
+              v-model="password" required />
             <b-button type="submit" class="btn btn-primary float-right" id="btnLogin">Entrar</b-button>
-            <router-link
-              tag="a"
-              id="join"
-              :to="{ name: 'register' }"
-            >Ainda não estás registado? Junta-te a nós!</router-link>
+            <router-link tag="a" id="join" :to="{ name: 'register' }">Ainda não estás registado? Junta-te a nós!
+            </router-link>
           </form>
         </div>
-      </b-modal>
+      </b-modal> -->
+
     </nav>
     <!--/.Navbar-->
     <!--Navbar-->
@@ -83,160 +72,188 @@
 </template>
 
 <script>
-export default {
-  name: "Login",
-  data: () => ({
-    email: "",
-    password: ""
-  }),
-  created: function() {
-    if (localStorage.getItem("users")) {
-      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    }
-    if (localStorage.getItem("loggedUser")) {
-      this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser") );
-    }
-    localStorage.setItem("foodMenus", JSON.stringify(this.$store.state.foodMenus));
-    localStorage.setItem("workshops", JSON.stringify(this.$store.state.workshops));
+  export default {
+    name: "Login",
+    data: () => ({
+      email: "",
+      password: ""
+    }),
+    created: function () {
+      if (localStorage.getItem("users")) {
+        this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+      }
+      if (localStorage.getItem("loggedUser")) {
+        this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      }
+      localStorage.setItem("foodMenus", JSON.stringify(this.$store.state.foodMenus));
+      localStorage.setItem("workshops", JSON.stringify(this.$store.state.workshops));
 
-  
-  },
-  methods: {
-    /**VER SE EXISTE UM USER COM O EMAIL E PASS */
-    login() {
-      this.$store.commit("LOGIN", {
-        email: this.email,
-        password: this.password
-      });
-     location.reload()
+
+
     },
-    logout() {
-      this.$store.commit("LOGOUT");
-    },
-    getTypeUser() {
-      return this.$store.getters.getTypeUser;
+    methods: {
+      /**VER SE EXISTE UM USER COM O EMAIL E PASS */
+      logout() {
+        this.$store.commit("LOGOUT");
+      },
+      getTypeUser() {
+        return this.$store.getters.getTypeUser;
+      },
+      showModal() {
+        this.$root.$emit('bv::show::modal', 'modal-1', '#btnShow')
+      },
+      hideModal() {
+        this.$root.$emit('bv::hide::modal', 'modal-1', '#btnShow')
+      },
+      toggleModal() {
+        this.$root.$emit('bv::toggle::modal', 'modal-1', '#btnToggle')
+      }
     }
-  }
-};
+  };
 </script>
 
 <style>
-.navbar-light {
-  background-color: white !important;
-}
-#navBar2 {
-  background-color: #232323;
-  height: 40px;
-}
-.modal-title {
-  font-family: Channel;
-  margin-left: 130px;
-}
-.modal-header {
-  border: none;
-}
-#logoText {
-  width: 40%;
-  height: auto;
-}
-#join {
-  font-size: 80%;
-  font-family: GeosansLight;
-  color: #000;
-}
-#x1 {
-  position: relative;
-  width: 30px;
-  height: auto;
-  top: -65px;
-}
-#x2 {
-  position: relative;
-  width: 30px;
-  height: auto;
-  top: -65px;
-  left: 405px;
-}
-#txtEmailLogin {
-  position: relative;
-  width: 250px;
-  left: 130px;
-  top: -43px;
-}
-#txtPasswordLogin {
-  position: relative;
-  width: 250px;
-  left: 130px;
-  top: -45px;
-}
-.emailLogin {
-  font-family: GeosansLight;
-  margin-left: 80px;
-}
-.passLogin {
-  font-family: GeosansLight;
-  margin-left: 30px;
-}
-#btnLogin {
-  position: relative;
-  width: 80px;
-  height: 30px;
-  font-size: 70%;
-  color: white;
-  white-space: nowrap;
-  padding: 2px;
-  left: -10px;
-  background-color: #232323;
-  font-family: GeosansLight;
-}
-#btnLogin:hover {
-  color: white;
-  border: 2px solid;
-  border-color: #daaa29;
-  background-color: #000;
-}
-#camp {
-  width: 10%;
-  height: auto;
-}
-.container {
-  padding: 20px;
-  padding-bottom: 0;
-  padding-top: 0;
-  font-family: GeosansLight;
-}
-#eventsLink {
-  color: white;
-  text-decoration: none;
-}
-#eventsLink:hover {
-  color: #daaa29;
-}
-#roomsLink {
-  color: white;
-  text-decoration: none;
-}
-#roomsLink:hover {
-  color: #daaa29;
-}
-#workshopsLink {
-  color: white;
-  text-decoration: none;
-}
-#workshopsLink:hover {
-  color: #daaa29;
-}
-#menusLink {
-  color: white;
-  text-decoration: none;
-}
-#menusLink:hover {
-  color: #daaa29;
-}
-span {
-  color: #232323;
-}
-#login{
-  color: black !important;
-}
+  .navbar-light {
+    background-color: white !important;
+  }
+
+  #navBar2 {
+    background-color: #232323;
+    height: 40px;
+  }
+
+  .modal-title {
+    font-family: Channel;
+    margin-left: 130px;
+  }
+
+  .modal-header {
+    border: none;
+  }
+
+  #logoText {
+    width: 40%;
+    height: auto;
+  }
+
+  #join {
+    font-size: 80%;
+    font-family: GeosansLight;
+    color: #000;
+  }
+
+  #x1 {
+    position: relative;
+    width: 30px;
+    height: auto;
+    top: -65px;
+  }
+
+  #x2 {
+    position: relative;
+    width: 30px;
+    height: auto;
+    top: -65px;
+    left: 405px;
+  }
+
+  #txtEmailLogin {
+    position: relative;
+    width: 250px;
+    left: 130px;
+    top: -43px;
+  }
+
+  #txtPasswordLogin {
+    position: relative;
+    width: 250px;
+    left: 130px;
+    top: -45px;
+  }
+
+  .emailLogin {
+    font-family: GeosansLight;
+    margin-left: 80px;
+  }
+
+  .passLogin {
+    font-family: GeosansLight;
+    margin-left: 30px;
+  }
+
+  #btnLogin {
+    position: relative;
+    width: 80px;
+    height: 30px;
+    font-size: 70%;
+    color: white;
+    white-space: nowrap;
+    padding: 2px;
+    left: -10px;
+    background-color: #232323;
+    font-family: GeosansLight;
+  }
+
+  #btnLogin:hover {
+    color: white;
+    border: 2px solid;
+    border-color: #daaa29;
+    background-color: #000;
+  }
+
+  #camp {
+    width: 10%;
+    height: auto;
+  }
+
+  .container {
+    padding: 20px;
+    padding-bottom: 0;
+    padding-top: 0;
+    font-family: GeosansLight;
+  }
+
+  #eventsLink {
+    color: white;
+    text-decoration: none;
+  }
+
+  #eventsLink:hover {
+    color: #daaa29;
+  }
+
+  #roomsLink {
+    color: white;
+    text-decoration: none;
+  }
+
+  #roomsLink:hover {
+    color: #daaa29;
+  }
+
+  #workshopsLink {
+    color: white;
+    text-decoration: none;
+  }
+
+  #workshopsLink:hover {
+    color: #daaa29;
+  }
+
+  #menusLink {
+    color: white;
+    text-decoration: none;
+  }
+
+  #menusLink:hover {
+    color: #daaa29;
+  }
+
+  span {
+    color: #232323;
+  }
+
+  #login {
+    color: black !important;
+  }
 </style>
