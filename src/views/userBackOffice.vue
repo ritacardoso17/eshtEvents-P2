@@ -1,6 +1,6 @@
 <template>
   <div class="bckUsers">
-    <b-table bordered   hover :items="this.items" :fields="this.fields">
+    <b-table bordered hover :items="this.items" :fields="this.fields">
       <!-- <template v-slot:cell(typeUser)="row">
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>

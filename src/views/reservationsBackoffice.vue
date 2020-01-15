@@ -19,6 +19,7 @@ export default {
         { key: "user", lable: "user" },
         { key: "day", lable: "day" },
         { key: "place", lable: "place" },
+        { key: "state", lable: "state", sortable: "true" },
         { key: "options" }
       ]
     };
