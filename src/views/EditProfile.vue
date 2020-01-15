@@ -9,24 +9,21 @@
 
       <h3 id="name">{{loggedUser[0].name}}</h3>
       <form v-on:submit.prevent="changePassword()">
-        <label for="password" class="password">
-          <p>Palavra-passe:</p>
-        </label>
+        <label for="password" class="password">Palavra-passe:</label>
         <input type="password" class="form-control" id="password" v-model="password" required />
 
-        <label for="password" class="newPassword">
-          <p>Nova palavra-passe:</p>
-        </label>
+        <label for="password" class="newPassword">Nova palavra-passe:</label>
         <input type="password" class="form-control" id="newPassword" v-model="newPassword" required />
 
-        <label for="password" class="confirmPassword">
-          <p>Confirmar palavra-passe:</p>
-        </label>
-        <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required/>
-
-        <router-link to="/Profile">
-          <button type="submit" id="edit" @click="changePassword()">Confirmar</button>
-        </router-link>
+        <label for="password" class="confirmPassword">Confirmar palavra-passe:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          v-model="confirmPassword"
+          required
+        />
+        <button type="submit" id="edit">Confirmar</button>
       </form>
     </div>
   </div>
@@ -37,37 +34,30 @@ export default {
   name: "editProfile",
   data() {
     return {
-      loggedUser: this.$store.state.loggedUser,
+      loggedUser: [],
+      users: [],
       password: "",
       newPassword: "",
-      confirmPassword: "",
+      confirmPassword: ""
     };
   },
   methods: {
-    getUser() {
-      return this.$store.state.loggedUser;
-    },
     changePassword() {
-      for (const loggedUsers of this.loggedUser) {
-        if (this.password != "" && this.newPassword != "" && this.confirmPassword != "") {
-          if (loggedUsers.password == this.password && this.newPassword == this.confirmPassword) {
-            loggedUsers.push({
-              password: this.newPassword
-            });
-            alert("Palavra-Passe alterada! "/* , this.password */);
-            localStorage.setItem("users", JSON.stringify(this.users));
-          } else if (loggedUsers.password != this.password) {
-            alert("A palavra-passe não coincide com a atual!");
-          } else if (this.newPassword != this.confirmPassword) {
-            alert("As palavras-passe estão diferentes!");
+      for (let i of this.loggedUser) {
+        if (this.loggedUser[0].password == this.password) {
+          if (this.newPassword == this.confirmPassword) {
+            alert(this.newPassword + "    -   " + this.confirmPassword);
+            alert("HEYHEY");
+            this.loggedUser[0].push(this.loggedUser[i].password = this.newPassword)
+            alert("Palavra-Passe alterada! ");
+            localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
           }
-          alert("entrei")
-        } else {
-          alert("Preencha todos os campos!");
+        } else if (this.loggedUser.password != this.password) {
+          alert("A palavra-passe não coincide com a atual!");
+        } else if (this.newPassword != this.confirmPassword) {
+          alert("As palavras-passe estão diferentes!");
         }
       }
-      
-      
     }
   },
   created() {
@@ -75,6 +65,19 @@ export default {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
       );
+    }
+    if (localStorage.getItem("users")) {
+      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+    }
+    this.users = this.$store.state.users;
+    this.loggedUser = this.$store.state.loggedUser
+  },
+  computed: {
+    getUserLogged() {
+      return this.$store.state.loggedUser;
+    },
+    getUser() {
+      return this.$store.state.users;
     }
   }
 };
