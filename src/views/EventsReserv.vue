@@ -51,8 +51,8 @@
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" required v-model="day"/>
-              <input type="time" class="form-control" id="txtTime" required v-model="time"/>
+              <input type="date" class="form-control" id="txtDate" required v-model="day" />
+              <input type="time" class="form-control" id="txtTime" required v-model="time" />
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -60,13 +60,22 @@
                 id="txtPersons"
                 required
                 placeholder="0"
-                min="0" v-model="persons"
+                min="0"
+                v-model="persons"
               />
               <label for class="durationLabel">▶ Tempo de duração</label>
-              <input type="number" max="12" min="1" class="form-control" id="txtDuration" required v-model="duration" />
+              <input
+                type="number"
+                max="12"
+                min="1"
+                class="form-control"
+                id="txtDuration"
+                required
+                v-model="duration"
+              />
 
               <label for class="locationLabel">▶ Localização</label>
-              <select id="sltLocation"  v-model="location">
+              <select id="sltLocation" v-model="location">
                 <option value="esht">ESHT</option>
                 <option value="esmad">ESMAD</option>
                 <option value="isep">ISEP</option>
@@ -119,7 +128,13 @@
           <b-button id="btn10"></b-button>
           <b-button id="btn11"></b-button>
           <p class="guide5">▶ Observações</p>
-          <textarea id="textArea" cols="80" rows="3" placeholder="Escreva aqui..." v-model="observation"></textarea>
+          <textarea
+            id="textArea"
+            cols="80"
+            rows="3"
+            placeholder="Escreva aqui..."
+            v-model="observation"
+          ></textarea>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
@@ -134,7 +149,8 @@
                   class="form-check-input"
                   name
                   id="check1"
-                  value="checkedValue"
+                  value="checkedValue1"
+                  v-model="extra"
                   unchecked
                 />Música Ambiente
               </label>
@@ -144,7 +160,8 @@
                   class="form-check-input"
                   name
                   id="check2"
-                  value="checkedValue"
+                  value="checkedValue2"
+                  v-model="extra"
                   unchecked
                 />Flores
               </label>
@@ -154,7 +171,8 @@
                   class="form-check-input"
                   name
                   id="check3"
-                  value="checkedValue"
+                  value="checkedValue3"
+                  v-model="extra"
                   unchecked
                 />Babysitting
               </label>
@@ -164,7 +182,8 @@
                   class="form-check-input"
                   name
                   id="check4"
-                  value="checkedValue"
+                  value="checkedValue4"
+                  v-model="extra"
                   unchecked
                 />Música Ambiente
               </label>
@@ -174,7 +193,8 @@
                   class="form-check-input"
                   name
                   id="check5"
-                  value="checkedValue"
+                  value="checkedValue5"
+                  v-model="extra"
                   unchecked
                 />Música Ambiente
               </label>
@@ -184,14 +204,21 @@
                   class="form-check-input"
                   name
                   id="check6"
-                  value="checkedValue"
+                  value="checkedValue6"
+                  v-model="extra"
                   unchecked
                 />Música Ambiente
               </label>
             </div>
           </form>
           <p class="observ">▶ Observações</p>
-          <textarea id="textArea2" cols="130" rows="5" placeholder="Escreva aqui..." v-model="observations"></textarea>
+          <textarea
+            id="textArea2"
+            cols="130"
+            rows="5"
+            placeholder="Escreva aqui..."
+            v-model="observations"
+          ></textarea>
         </b-tab>
         <!-- TAB RESUMO -->
         <b-tab title="Resumo">
@@ -221,13 +248,23 @@
           <p id="observ2">
             <b>Observações</b>
           </p>
-          <p id="observMade2">▶ {{observation}} <br> ▶ {{observations}}
+          <p id="observMade2">
+            ▶ {{observation}}
+            <br />
+            ▶ {{observations}}
           </p>
           <p id="extras2">
             <b>Extras</b>
           </p>
-          <p id="choiseExtras2">▶ Extra ▶ Extra ▶ Extra ▶ Extra</p>
-          <a name id="confirm2" class="btn btn-primary" href="#" role="button" @click="eventsReserv()">Confirmar</a>
+          <p id="choiseExtras2">▶ {{extra[0]}} ▶ {{extra[1]}} ▶ {{extra[2]}} ▶ {{extra[3]}}</p>
+          <a
+            name
+            id="confirm2"
+            class="btn btn-primary"
+            href="#"
+            role="button"
+            @click="eventsReserv()"
+          >Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="#" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
@@ -247,6 +284,17 @@
 export default {
   data() {
     return {
+      id: 0,
+      type: "",
+      day: "",
+      time: "",
+      people: "",
+      duration: "",
+      place: "",
+      observation: "",
+      extra: [],
+      user: "",
+      state: 0,
       tabIndex: 1,
       title: "",
       menus: []
@@ -266,19 +314,26 @@ export default {
         this.filter = "coffeebreak";
       } else if (k === "almoço") {
         this.title = "Almoço";
-        this.filter="almoço"
+        this.filter = "almoço";
       }
       if (k === "jantar") {
         this.title = "Jantar";
-        this.filter="jantar"
+        this.filter = "jantar";
       }
       if (k === "porto de honra") {
         this.title = "Porto de Honra";
-        this.filter="portodehonra"
+        this.filter = "portodehonra";
       }
+    },
+    getLastIdEvents() {
+      return this.$store.getters.getLastIdEvents;
+    },
+    getLoggedUserEmail() {
+      return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
       this.$store.commit("ADD_RESERVATION", {
+        id: this.getLastIdEvents() + 1,
         type: this.type,
         day: this.day,
         time: this.time,
@@ -288,10 +343,15 @@ export default {
         observation: this.observation,
         extra: this.extra,
         user: this.getLoggedUserEmail(),
+        state: 0
       });
+      alert("adicionei reserva de evento");
     },
     saveStorage() {
-      localStorage.setItem("reservations", JSON.stringify(this.$store.state.reservations));
+      localStorage.setItem(
+        "reservations",
+        JSON.stringify(this.$store.state.reservations)
+      );
     }
   },
   computed: {
@@ -317,7 +377,7 @@ export default {
 }
 #lineLeft {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: -15px;
@@ -325,7 +385,7 @@ export default {
 }
 #lineRight {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: -30px;
