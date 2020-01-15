@@ -12,7 +12,7 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { id:0,user:"Rita",type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: ""}
+      { id:0, user:"Rita", type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: ""}
     ],
     workshops: [
       {
@@ -228,17 +228,20 @@ export default new Vuex.Store({
     },
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
+        id: payload.id,
         type: payload.type,
         day: payload.day,
         time: payload.time,
         duration: payload.duration,
-        user: state.loggedUser
+        user: state.loggedUser,
+        state: 0,
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
       alert("state.rooms")
     },
     ADD_RESERVATION: (state, payload) => {
       state.reservations.push({
+        id: payload.id,
         day: payload.day,
         time: payload.time,
         people: payload.people,
@@ -246,7 +249,8 @@ export default new Vuex.Store({
         place: payload.place,
         observation: payload.observation,
         extra: payload.extra,
-        user: state.user
+        user: state.user,
+        state: 0,
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)
@@ -258,17 +262,24 @@ export default new Vuex.Store({
     },
     getLastId(state) {
       return state.users.length ? state.users[state.users.length - 1].id : 0
-
     },
     getLastIdWorkshops(state) {
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
-
+    },
+    getLastIdEvents(state) {
+      return state.reservas.length ? state.reservas[state.reservas.length - 1].id : 0
+    },
+    getLastIdRooms(state) {
+      return state.rooms.length ? state.rooms[state.rooms.length - 1].id : 0
     },
     getLoggedUserEmail(state) {
       return state.loggedUser[0].email
     },
     getLoggedUserPassword(state) {
       return state.loggedUser[0].password
-    }
+    },
+    getUser(state) {
+      return state.loggedUser[0];
+    },
   }
 });

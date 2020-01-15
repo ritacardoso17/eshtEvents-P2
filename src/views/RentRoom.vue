@@ -75,28 +75,34 @@
 export default {
   name: "rentRoom",
   data: () => ({
+    id: 0,
     type: "",
     day: "",
     time: "",
     duration: "",
     user: "",
-    state: "Pendente"
+    state: 0
   }),
   methods: {
-    getUser() {
-      return this.$store.state.loggedUser;
+    getLoggedUserEmail(){
+      return this.$store.getters.getLoggedUserEmail;
     },
     getTypeById(type) {
       return this.rooms.filter(room => room.type === type)[0].name;
     },
+    getLastIdRooms(){
+      return this.$store.getters.getLastIdRooms;
+    },
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
+        id: this.getLastIdRooms() + 1,
         type: this.type,
         day: this.day,
         time: this.time,
         duration: this.duration,
-        user: this.loggedUser
+        user: this.getLoggedUserEmail()
       });
+      alert("adicionei reserva de espaço")
     },
 
     saveStorage() {
