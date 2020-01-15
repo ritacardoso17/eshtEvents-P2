@@ -250,53 +250,6 @@ export default new Vuex.Store({
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)
     },
-    CHANGE_PASSWORD: (state, payload) => {
-      for (const loggedUsers of state.loggedUser) {
-        if (payload.password != 0 || payload.newPassword != 0 || payload.confirmPassword != 0) {
-          if (loggedUsers.password == payload.password && payload.newPassword == payload.confirmPassword) {
-            state.loggedUsers.push({
-              id: loggedUsers.id,
-              name: loggedUsers.name,
-              school: loggedUsers.school,
-              typeUser: loggedUsers.typeUser,
-              email: loggedUsers.email,
-              password: payload.newPassword,
-              contact: loggedUsers.contact,
-              birth: loggedUsers.birth
-            })
-            alert("Palavra-Passe alterada!")
-          }
-          else if (loggedUsers.password != payload.password) {
-            alert("A palavra-passe não coincide com a atual!")
-          }
-          else if (payload.newPassword !== payload.confirmPassword) {
-            alert("As palavras-passe estão diferentes!")
-          }
-        } else {
-          alert("Preencha todos os campos!")
-        }
-      }
-      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
-      alert(state.loggedUser.password)
-
-      /* for (const users of state.user) {
-        if (users.password == payload.password && payload.newPassword == payload.confirmPassword) {
-          state.users.push({
-            id: users.id,
-            name: users.name,
-            school: users.school,
-            typeUser: users.typeUser,
-            email: users.email,
-            password: payload.newPassword,
-            contact: users.contact,
-            birth: users.birth
-          })
-        }
-      }
-      localStorage.setItem("users", JSON.stringify(state.user)) */
-
-    }
-
   },
   getters: {
     getTypeUser(state) {

@@ -1,61 +1,83 @@
 <template>
   <div class="editProfile">
     <h1 id="title">Alterar Palavra-passe</h1>
-    <div id="container" >
-      <div id="linha1"></div>
-      <div id="linha2"></div>
+    <div id="container">
       <div id="picture">
         <img id="picture" />
       </div>
       <a id="editPhoto">Editar Foto</a>
 
       <h3 id="name">{{loggedUser[0].name}}</h3>
+      <form v-on:submit.prevent="changePassword()">
+        <label for="password" class="password">
+          <p>Palavra-passe:</p>
+        </label>
+        <input type="password" class="form-control" id="password" v-model="password" required />
 
-      <label for="password" class="password"><p>Palavra-passe:</p></label>
-      <input type="password" class="form-control" id="password" v-model="password" required/>
+        <label for="password" class="newPassword">
+          <p>Nova palavra-passe:</p>
+        </label>
+        <input type="password" class="form-control" id="newPassword" v-model="newPassword" required />
 
-      <label for="password" class="newPassword"><p>Nova palavra-passe:</p></label>
-      <input type="password" class="form-control" id="newPassword" v-model="newPassword" required/>
+        <label for="password" class="confirmPassword">
+          <p>Confirmar palavra-passe:</p>
+        </label>
+        <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required/>
 
-      <label for="password" class="confirmPassword"><p>Confirmar palavra-passe:</p></label>
-      <input type="password" class="form-control" id="confirmPassword" v-model="confirmPassword" required/>
-
-      <router-link to="/Profile"><button type="submit" id="edit" @click="changePassword()">Confirmar</button></router-link>
-      
+        <router-link to="/Profile">
+          <button type="submit" id="edit" @click="changePassword()">Confirmar</button>
+        </router-link>
+      </form>
     </div>
   </div>
 </template>
 
 <script>
-  export default{
+export default {
   name: "editProfile",
-  data(){
+  data() {
     return {
-      loggedUser: [],
-    }
+      loggedUser: this.$store.state.loggedUser,
+      password: "",
+      newPassword: "",
+      confirmPassword: "",
+    };
   },
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
     },
-    changePassword(){
-      this.$store.commit("CHANGE_PASSWORD",{
-        id: this.id,
-        name: this.name,
-        school: this.school,
-        typeUser: this.typeUser,
-        email: this.email,
-        password: this.password,
-        contact: this.contact,
-        birth: this.birth,
-      });
-    },
-
+    changePassword() {
+      for (const loggedUsers of this.loggedUser) {
+        if (this.password != "" && this.newPassword != "" && this.confirmPassword != "") {
+          if (loggedUsers.password == this.password && this.newPassword == this.confirmPassword) {
+            loggedUsers.push({
+              password: this.newPassword
+            });
+            alert("Palavra-Passe alterada! "/* , this.password */);
+            localStorage.setItem("users", JSON.stringify(this.users));
+          } else if (loggedUsers.password != this.password) {
+            alert("A palavra-passe não coincide com a atual!");
+          } else if (this.newPassword != this.confirmPassword) {
+            alert("As palavras-passe estão diferentes!");
+          }
+          alert("entrei")
+        } else {
+          alert("Preencha todos os campos!");
+        }
+      }
+      
+      
+    }
   },
   created() {
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    if (localStorage.getItem("loggedUser")) {
+      this.$store.state.loggedUser = JSON.parse(
+        localStorage.getItem("loggedUser")
+      );
+    }
   }
-}
+};
 </script>
 
 <style>
@@ -145,7 +167,7 @@ h1 {
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
   border-width: thick;
 }
