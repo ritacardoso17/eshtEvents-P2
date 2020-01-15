@@ -14,7 +14,7 @@
 export default {
   data() {
     return {
-      workshops:  this.$store.state.workshops,
+      workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
         { key: "id", lable: "id" },
@@ -27,6 +27,7 @@ export default {
   created() {
     if (localStorage.getItem("workshops")) {
       this.$store.state.workshops = JSON.parse(localStorage.getItem("workshops"));
+      this.workshops =  this.$store.state.workshops
     }
   },
   methods: {

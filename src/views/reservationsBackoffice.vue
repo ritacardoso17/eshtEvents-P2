@@ -13,7 +13,7 @@
 export default {
   data() {
     return {
-      reservations: this.$store.state.reservations,
+      reservations:[],
       fields: [
         { key: "id", lable: "id" },
         { key: "user", lable: "user" },
@@ -27,6 +27,7 @@ export default {
   created() {
     if (localStorage.getItem("reservations")) {
       this.$store.state.reservations = JSON.parse(localStorage.getItem("reservations"));
+      this.reservations =  this.$store.state.reservations
     }
   }, methods:{
     acceptReservation(){
