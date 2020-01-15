@@ -12,7 +12,7 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "", user: "" }
+      { id:0,user:"Rita",type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: ""}
     ],
     workshops: [
       {
@@ -122,7 +122,7 @@ export default new Vuex.Store({
     ],
     eventType: [],
     reservations: [
-      { type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "", user: "" }
+      { id:0,user:"Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "",state:0 }
     ],
   },
 

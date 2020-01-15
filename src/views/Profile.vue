@@ -36,16 +36,16 @@
     <b-tabs align="center" id="profileTabs">
       <b-tab title="Eventos" id="profileEvents">
         <div class="yourEvents" id="yourEvents">
-          <b-table striped hover :objects="this.objects" :camps="this.camps"></b-table>
+          <b-table striped hover :items="this.objects" :fields="this.fields"></b-table>
         </div>
       </b-tab>
       <b-tab title="Espaços" id="profileRooms">
         <div class="yourRooms" id="yourRooms">
-          <b-table striped hover :objects="this.objects" :camps="this.camps">
-            <template v-slot:cell(Alterar)="row">
+          <b-table striped hover :items="this.objects" :fields="this.fields">
+            <template v-slot:cell(change)="row">
               <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
             </template>
-            <template v-slot:cell(Avaliações)="row">
+            <template v-slot:cell(rate)="row">
               <img src="/assets/star.svg" id="star1" @click="editStars()" alt="">
               <img src="/assets/star.svg" id="star2" @click="editStars()" alt="">
               <img src="/assets/star.svg" id="star3" @click="editStars()" alt="">
@@ -61,18 +61,25 @@
 
 <script>
 export default {
-  name: "Profile",
   data() {
     return {
       objects: [],
-      camps: [
-        { key: "Evento", lable: "type", sortable: true },
-        { key: "Data", lable: "day", sortable: true },
-        { key: "Estado", lable: "state", sortable: true },
-        { key: "Alterar" },
-        { key: "Avaliações"}
+      fields: [
+        { key: "type", lable: "type", sortable: true },
+        { key: "day", lable: "day", sortable: true },
+        { key: "change" },
+        { key: "rate" }
       ]
     };
+  },
+  created() {
+    
+    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
+    if (localStorage.getItem("rooms")) {
+      this.objects = JSON.parse(localStorage.getItem("rooms"));
+    }
+
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
   methods: {
     getUser() {
@@ -82,40 +89,29 @@ export default {
       return this.$store.state.rooms;
     },
     editStars() {
-      let star1 = document.addEventListener("click")
-      let star2 = document.addEventListener("click")
-      let star3 = document.addEventListener("click")
-      let star4 = document.addEventListener("click")
-      let star5 = document.addEventListener("click")
+      let star1 = document.addEventListener("click");
+      let star2 = document.addEventListener("click");
+      let star3 = document.addEventListener("click");
+      let star4 = document.addEventListener("click");
+      let star5 = document.addEventListener("click");
       if (star1) {
         /* src da primeira estrela mudar para preenchido */
-      }
-      else if (star2) {
+      } else if (star2) {
         /* src da 1 e 2 estrelas mudar para preenchido */
-      }
-      else if (star3) {
+      } else if (star3) {
         /* src da 1, 2 e 3 estrelas mudar para preenchido */
-      }
-      else if (star4) {
+      } else if (star4) {
         /* src da 1, 2, 3 e 4 estrelas mudar para preenchido */
-      }
-      else if (star5) {
+      } else if (star5) {
         /* src da 1, 2, 3, 4 e 5 estrelas mudar para preenchido */
       }
-    }
-  },
-  created() {
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
-    if (localStorage.getItem("rooms")) {
-      this.objects = JSON.parse(localStorage.getItem("rooms"));
     }
   }
 };
 </script>
 
 <style>
-#title{
+#title {
   font-family: Channel;
   color: #000;
   position: absolute;
@@ -129,21 +125,21 @@ export default {
   height: 350px;
   width: 1050px;
 } */
-#linha1{
+#linha1 {
   position: absolute;
-  left:100px;
+  left: 100px;
   top: 200px;
   height: 500px;
   width: 2px;
-  background-color:#000; 
+  background-color: #000;
 }
-#linha2{
+#linha2 {
   position: absolute;
   top: 200px;
   right: 100px;
   height: 500px;
   width: 2px;
-  background-color:#000; 
+  background-color: #000;
 }
 #picture {
   position: absolute;
@@ -190,32 +186,32 @@ export default {
   position: relative;
   margin-left: 600px;
   color: white;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
   border-width: thick;
 }
-#profileLinks{
+#profileLinks {
   position: relative;
   top: 100px;
   font-size: 35px;
   font-family: GeosansLight;
   color: black;
 }
-#subtitle{
+#subtitle {
   position: relative;
   top: 150px;
 }
-#line1{
+#line1 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: 187px;
   margin-left: 350px;
 }
-#line2{
+#line2 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: 117px;
@@ -227,12 +223,11 @@ export default {
   top: 50px;
   left: 500px;
 }
-.yourEvents{
+.yourEvents {
   /* background-color: #232323;
   color: white; */
   position: absolute;
   top: 1000px;
   width: 1000px;
 }
-
 </style>
