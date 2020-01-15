@@ -40,7 +40,8 @@ export default {
   name: "Api",
   components: {
     api
-  }
+  },
+
 };
 </script>
 

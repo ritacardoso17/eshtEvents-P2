@@ -24,7 +24,7 @@
         </p>
       </div>
     </div>
-    <router-link tag="button" class="btnAboutUs" :to="{ name: 'about' }">Descobre mais sobre nós</router-link>
+    <button class="btnAboutUs" @click="location()">Descobre mais sobre nós</button>
     <router-link to="/profile">
       <button type="submit" class="btnAboutUs">Profile</button>
       <!--PARA TIRAR-->
@@ -141,7 +141,12 @@
 
 export default {
   name: "home",
-  components: {}
+  components: {},
+  methods:{
+    location(){
+          window.location = './About'
+    }
+  }
 };
 </script>
 

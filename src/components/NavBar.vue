@@ -13,12 +13,12 @@
       </ul>
 
       <!-- <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a> -->
-     <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button>
- -->  <router-link to="/login"  v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
-      <a id="logout" @click="logout()"  v-if="this.$store.state.loggedUser.length != 0">LOGOUT</a>
+      <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button> -->
+      <router-link to="/login" v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
+      <a id="logout" @click="logout()" v-if="this.$store.state.loggedUser.length != 0">LOGOUT</a>
 
 
-<!-- 
+      <!-- 
       <b-modal id="modal-1" hide-footer hide-header-close title="Iniciar Sessão">
         <div class="form-group">
           <b-button @click="hideModal" id="x1" style="background-color:transparent" class="border-0"><b-img src="../assets/noun_X_2290001.png" style="width: 30px"> </b-img></b-button>
