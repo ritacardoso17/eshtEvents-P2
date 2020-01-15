@@ -1,5 +1,7 @@
 <template>
   <div class="bckMenus">
+        <b-button class="btnAdd" size="sm">Adicionar Menu</b-button>
+<br> <br> 
     <b-table bordered hover :items="this.menus" :fields="this.fields">
       <!-- <template v-slot:cell(typeUser)="row">
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">

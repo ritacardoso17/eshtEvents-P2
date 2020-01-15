@@ -8,7 +8,7 @@
     <button class="btn100" id="btnMenus">MENUS</button> </router-link>
 
     <!-- <span> ///// </span> -->
-    <router-link to="/"> 
+    <router-link to="/reservationsBackoffice"> 
     <button class="btn100" id="btnReservations">RESERVAS</button> </router-link>
 
     <!-- <span> ///// </span> -->

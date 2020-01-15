@@ -94,6 +94,11 @@ const routes = [
     name: "menusBackoffice",
     component: () => import("../views/menusBackoffice.vue")
   },
+  {
+    path: "/reservationsBackoffice",
+    name: "reservationsBackoffice",
+    component: () => import("../views/reservationsBackoffice.vue")
+  },
 ];
 
 const router = new VueRouter({
