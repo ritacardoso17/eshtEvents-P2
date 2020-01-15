@@ -94,6 +94,11 @@ const routes = [
     name: "menusBackoffice",
     component: () => import("../views/menusBackoffice.vue")
   },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../views/Login.vue")
+  },
 ];
 
 const router = new VueRouter({

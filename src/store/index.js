@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import router from "vue-router";
-
+/* import router from "vue-router";
+ */
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -168,7 +168,8 @@ export default new Vuex.Store({
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           alert("USER LOGGADO")
           state.userExist = true
-          router.push({ name: 'home' })
+          window.location = "./"
+
         }
       }
       if (!state.userExist) {
