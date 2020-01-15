@@ -33,9 +33,13 @@
     </p>
 
     <router-link tag="a" class="menus" :to="{ name: 'menu' }"><b>Ver menus</b></router-link>
-    <router-link tag="button" id="btnReserve" :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
+    <router-link tag="button" id="btnReserve" v-if="this.$store.state.loggedUser.length == 0" :to="{ name: 'login' }">Fazer Reserva</router-link>
+    <router-link tag="button" id="btnReserve" v-else :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
+
   </div>
 </template>
+
+
 
 <style>
 .catering {

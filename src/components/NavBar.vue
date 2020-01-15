@@ -43,28 +43,21 @@
     <nav class="navbar" id="navBar2">
       <div class="container" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
-        <li class="nav-item">
+        <div class="nav-item">
           <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
-            <router-link to="/menuAdmin">Area Administrador</router-link>
-            <span>/////</span>
-            <router-link to="/events" id="eventsLink">Eventos e Catering</router-link>
-            <span>/////</span>
-            <router-link to="/room" id="roomsLink">Espaços</router-link>
-            <span>/////</span>
-            <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
-            <span>/////</span>
-            <router-link to="/menu" id="menusLink">Menus</router-link>
+            <router-link class="link" to="/menuAdmin">Area Administrador</router-link>
+            <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
+            <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
+            <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
+            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
           </span>
           <span v-else>
-            <router-link to="/events" id="eventsLink">Eventos e Catering</router-link>
-            <span>/////</span>
-            <router-link to="/room" id="roomsLink">Espaços</router-link>
-            <span>/////</span>
-            <router-link to="/workshops" id="workshopsLink">Workshops</router-link>
-            <span>/////</span>
-            <router-link to="/menu" id="menusLink">Menus</router-link>
+            <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
+            <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
+            <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
+            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
           </span>
-        </li>
+        </div>
       </div>
     </nav>
     <!--/.Navbar-->
@@ -255,5 +248,9 @@
 
   #login {
     color: black !important;
+  }
+
+  .link{
+    padding: 20px;
   }
 </style>

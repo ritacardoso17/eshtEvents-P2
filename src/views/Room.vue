@@ -39,12 +39,9 @@
     </p>
     <b-img class="kitchen2" src="../assets/cozinha.jpg"></b-img>
 
-    <span v-if="this.$store.state.loggedUser.length != 0">
-      <router-link tag="button" id="btnRent" :to="{ name: 'rentRoom' }">Alugar</router-link>
-    </span>
-     <span v-else>
-      <router-link tag="button" id="btnRent" :to="{ name: 'register' }">Alugar</router-link>
-    </span>
+      <router-link tag="button" id="btnRent"  v-if="this.$store.state.loggedUser.length != 0" :to="{ name: 'rentRoom' }">Alugar</router-link>
+      <router-link tag="button" id="btnRent"  v-else :to="{ name: 'login' }">Alugar</router-link>
+    
     <br />
     <br />
   </div>

@@ -57,7 +57,9 @@
                 das expectativas dos clientes.
               </b-card-text>
               <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver Mais</router-link>
-              <router-link tag="button" id="reserve" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
+              <router-link tag="button" id="reserve"  v-if="this.$store.state.loggedUser.length == 0" :to="{ name: 'login' }">Reservar Agora</router-link>
+              <router-link tag="button" id="reserve"  v-else :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
+
             </b-card-body>
           </b-col>
         </b-row>
@@ -91,7 +93,8 @@
                 das expectativas dos clientes.
               </b-card-text>
               <router-link tag="button" id="seeMore2" :to="{ name: 'events' }">Ver mais</router-link>
-              <router-link tag="button" id="reserve2" :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
+              <router-link tag="button" id="reserve2"  v-if="this.$store.state.loggedUser.length == 0" :to="{ name: 'login' }">Reservar Agora</router-link>
+              <router-link tag="button" id="reserve2"  v-else :to="{ name: 'eventsReserv' }">Reservar Agora</router-link>
             </b-card-body>
           </b-col>
         </b-row>
