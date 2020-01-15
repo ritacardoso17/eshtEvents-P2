@@ -59,13 +59,13 @@
       © 2019 Copyright:
       <a href="#">eshtEvents</a>
     </div>
+
     <!-- Copyright -->
   </footer>
   <!-- Footer -->
 </template>
 
 <script>
-export default {};
 </script>
 
 <style>

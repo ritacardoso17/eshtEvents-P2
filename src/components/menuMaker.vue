@@ -15,9 +15,9 @@
           >
             <b-card-text>{{menu.type}}</b-card-text>
             <p>{{menu.id}}</p>
-            <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
+            <b-button v-b-modal="menu.id.toString()" id="cardBtn">Ver mais</b-button>
             <div>
-              <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
+              <b-modal :id="menu.id.toString()" :title="menu.name" ok-only ok-title="cancel">
                 <b-img :src="menu.image" id="imgModal"/>
                 <p class="my-4">{{menu.ingredients}}</p>
               </b-modal>
@@ -38,7 +38,9 @@ export default {
     };
   },
   created() {
-    this.menus = JSON.parse(localStorage.getItem("foodMenus"));
+    this.$store.state.foodMenus = JSON.parse(localStorage.getItem("foodMenus"));
+    this.menus =  this.$store.state.foodMenus
+
   }
 };
 </script>
