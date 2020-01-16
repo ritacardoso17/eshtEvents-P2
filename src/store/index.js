@@ -180,6 +180,10 @@ export default new Vuex.Store({
       }
 
     },
+    /* SET_LOGGED_USER: (state, payload) =>{
+      $store.state.loggedUser() = payload.loggedUser
+      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
+    }, */
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))

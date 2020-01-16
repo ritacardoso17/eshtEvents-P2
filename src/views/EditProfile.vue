@@ -48,7 +48,7 @@ export default {
           if (this.newPassword == this.confirmPassword) {
             alert(this.newPassword + "    -   " + this.confirmPassword);
             alert("HEYHEY");
-            this.loggedUser[0].push(this.loggedUser[i].password = this.newPassword)
+            this.loggedUser[i].push(this.loggedUser[0].password = this.newPassword)
             alert("Palavra-Passe alterada! ");
             localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
           }
