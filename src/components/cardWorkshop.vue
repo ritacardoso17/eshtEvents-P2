@@ -23,7 +23,7 @@
           <b-button href="#" v-bind:style="{display: show}" id="workInscp" variant="primary" @click="sign(workshop.id)">
             Inscrever-me</b-button>
           <!-- por este b-button como router link para o login mas manter o v-bind  -->
-          <b-button href="#" v-bind:style="{display: show2}" id="workInscp" variant="primary">Inscrever-me</b-button>
+          <b-button href="#" v-bind:style="{display: show2}" id="workInscp" variant="primary">In screver-me</b-button>
         </b-card>
         <br />
         <br />

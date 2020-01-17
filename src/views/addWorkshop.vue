@@ -1,11 +1,13 @@
   <template>
   <div>
+    <br> 
+    <h2>Adicionar Workshop</h2>
     <form v-on:submit.prevent="addWorkshop()">
       <div class="form-group">
         <label for="txtTitle" class="nameLabel">Titulo do Workshop:</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control-center"
           id="txtTitle"
           placeholder="Insira o seu titulo"
           v-model="title"
@@ -15,7 +17,7 @@
         <label for="txtVacancies" class="nameLabel">Imagem do Workshop:</label>
         <input
           type="url"
-          class="form-control"
+          class="form-control-center"
           id="txtVacancies"
           placeholder="Insira a imagem para o Workshop"
           v-model="img"
@@ -25,7 +27,7 @@
         <label for="txtdate" class="nameLabel">Data do Workshop:</label>
         <input
           type="date"
-          class="form-control"
+          class="form-control-center"
           id="txtdate"
           placeholder="Insira a data"
           v-model="date"
@@ -35,7 +37,7 @@
         <label for="txtPlace" class="nameLabel">Lugar do Workshop:</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control-center"
           id="txtLugar"
           placeholder="Insira o lugar "
           v-model="place"
@@ -45,7 +47,7 @@
         <label for="txtTeacher" class="nameLabel">Locutor do Workshop:</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control-center"
           id="txtTeacher"
           placeholder="Insira o nome do locutor"
           v-model="teacher"
@@ -55,7 +57,7 @@
         <label for="txtVacancies" class="nameLabel">Numero de Vagas do Workshop:</label>
         <input
           type="number"
-          class="form-control"
+          class="form-control-center"
           id="txtVacancies"
           placeholder="Insira o numero maximo de vagas"
           v-model="vacancies"
@@ -65,7 +67,7 @@
         <label for="txtDescription" class="nameLabel">Descrição:</label>
         <textarea
           type="text"
-          class="form-control"
+          class="form-control-center"
           id="txtDescription"
           style="resize:none;"
           placeholder="Insira uma descrição"
@@ -121,4 +123,8 @@ export default {
 </script>
 
 <style>
+.form-control-center{
+  width:300px;
+
+}
 </style>

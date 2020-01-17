@@ -61,6 +61,7 @@
             type="email"
             class="form-control"
             id="emailTxt"
+            pattern="[a-z0-9._%+-]+@+[a-z]+.ipp.pt"
             placeholder="Insira o seu email"
             required
             v-model="email"
@@ -115,8 +116,7 @@ export default {
     email: "",
     password: "",
     confPass: "",
-    contact:"",
-
+    contact: ""
   }),
   created: function() {
     window.addEventListener("unload", this.saveStorage);
@@ -134,21 +134,27 @@ export default {
     /***
      * FUNCTION CREATED TO ADD NEW USER
      */
+
     addUser() {
-      this.$store.commit("ADD_USER", {
-        id: this.getLastId() + 1,
-        name: this.name,
-        school: this.school,
-        email: this.email,
-        password: this.password,
-        confPass: this.confPass,
-        birth:this.birth,
-        contact:this.contact
-      });
+      if (this.email.includes((this.school).toLowerCase())) {
+        alert(this.school)
+        this.$store.commit("ADD_USER", {
+          id: this.getLastId() + 1,
+          name: this.name,
+          school: this.school,
+          email: this.email,
+          password: this.password,
+          confPass: this.confPass,
+          birth: this.birth,
+          contact: this.contact
+        });
+      }
     },
     saveStorage() {
       localStorage.setItem("users", JSON.stringify(this.$store.state.users));
-      localStorage.setItem("loggedUser", JSON.stringify(this.$store.state.loggedUser)
+      localStorage.setItem(
+        "loggedUser",
+        JSON.stringify(this.$store.state.loggedUser)
       );
     }
   }

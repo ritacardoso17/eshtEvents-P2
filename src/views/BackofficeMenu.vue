@@ -19,8 +19,8 @@
 
 <style>
 .btn100 {
-  width: 250px;
-  height: 250px;
+  width:150px;
+  height: 150px;
   position: relative;
   color: transparent;
   background-color: transparent;
