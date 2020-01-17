@@ -16,7 +16,7 @@
         <!-- TAB DA ESCOLHA DO ESPAÇO -->
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
-          <p class="guide7">▶ Escolha o espaço que pretende alugar</p>
+          <p class="guide7">▶ <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar</p>
           <b-img src="../assets/cozinha.jpg" id="butn1" value="Restaurant" @click="updatePhoto()"></b-img>
           <b-img src="../assets/cozinha.jpg" id="butn2" value="bar" @click="updatePhoto()"></b-img>
           <b-img src="../assets/cozinha.jpg" id="butn3" value="kitchen" @click="updatePhoto()"></b-img>
