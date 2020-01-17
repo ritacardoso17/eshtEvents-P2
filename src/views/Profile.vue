@@ -24,31 +24,35 @@
     </router-link>
     <!-- </div> -->
 
-
-    <espacos/>
-    <eventos/>
+    <hr id="line1" />
+    <h2 id="subtitle">As Tuas Reservas</h2>
+    <hr id="line2" />
+    <div class="espaços">
+      <b-tabs align="center" id="profileTabs">
+        <b-tab title="Eventos" id="profileEvents">
+          <div class="yourEvents" id="yourEvents">
+            <eventos/>
+          </div>
+        </b-tab>
+        <b-tab title="Espaços" id="profileRooms">
+          <div class="yourRooms" id="yourRooms">
+            <espacos/>
+          </div>
+        </b-tab>
+      </b-tabs>
+    </div>
   </div>
 </template>
 
 <script>
-import espacos from "../components/espacos.vue"
-import eventos from "../components/eventos.vue"
+import espacos from "../components/espacos.vue";
+import eventos from "../components/eventos.vue";
 export default {
-  components:{
+  components: {
     espacos,
     eventos
   },
   data() {
-    return {
-      objects: [],
-      fields: [
-        { key: "type", lable: "type", sortable: true },
-        { key: "day", lable: "day", sortable: true },
-        { key: "state", lable: "state", sortable: true },
-        { key: "change" },
-        { key: "rate" }
-      ]
-    };
   },
   created() {
     localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));

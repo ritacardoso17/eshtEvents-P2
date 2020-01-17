@@ -312,6 +312,7 @@ export default {
       if (k === "coffee break") {
         this.title = "Coffee Break";
         this.filter = "coffeebreak";
+        
       } else if (k === "almoço") {
         this.title = "Almoço";
         this.filter = "almoço";

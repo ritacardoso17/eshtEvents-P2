@@ -51,73 +51,73 @@ export default new Vuex.Store({
         id: 1,
         img: require('../assets/transferir.jpg'),
         name: "Menu A",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 2,
         img: require('../assets/transferir.jpg'),
         name: "Menu B",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 3,
         img: require('../assets/transferir.jpg'),
         name: "Menu C",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 4,
         img: require('../assets/transferir.jpg'),
         name: "Menu A",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 5,
         img: require('../assets/transferir.jpg'),
         name: "Menu B",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 6,
         img: require('../assets/transferir.jpg'),
         name: "Menu C",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 7,
         img: require('../assets/transferir.jpg'),
         name: "Menu A",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 8,
         img: require('../assets/transferir.jpg'),
         name: "Menu B",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 9,
         img: require('../assets/transferir.jpg'),
         name: "Menu C",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 10,
         img: require('../assets/transferir.jpg'),
         name: "Menu A",
-        type: "coffebreak"
+        type: "coffeebreak"
       },
       {
         id: 11,
         img: require('../assets/transferir.jpg'),
         name: "Menu B",
-        type: "coffebreak"
+        type: "jantar"
       },
       {
         id: 12,
         img: require('../assets/transferir.jpg'),
         name: "Menu C",
-        type: "coffebreak"
+        type: "jantar"
       },
     ],
     eventType: [],
@@ -146,6 +146,7 @@ export default new Vuex.Store({
           });
           localStorage.setItem("users", JSON.stringify(state.users))
           alert("REGISTADO")
+          window.location = "./login"
         }
       } else {
         alert("EMAIL JA EXISTENTE")

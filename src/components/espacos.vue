@@ -1,32 +1,17 @@
 <template>
-  <div class="espaços">
-    <hr id="line1" />
-    <h2 id="subtitle">Os Teus Espaços</h2>
-    <hr id="line2" />
-
-    <b-tabs align="center" id="profileTabs">
-      <b-tab title="Eventos" id="profileEvents">
-        <div class="yourEvents" id="yourEvents">
-          <b-table striped hover :items="this.objects" :fields="this.fields"></b-table>
-        </div>
-      </b-tab>
-      <b-tab title="Espaços" id="profileRooms">
-        <div class="yourRooms" id="yourRooms">
-          <b-table striped hover :items="this.objects" :fields="this.fields">
-            <template v-slot:cell(change)="row">
-              <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
-            </template>
-            <template v-slot:cell(rate)="row">
-              <img src="/assets/star.svg" id="star1" @click="editStars()" alt />
-              <img src="/assets/star.svg" id="star2" @click="editStars()" alt />
-              <img src="/assets/star.svg" id="star3" @click="editStars()" alt />
-              <img src="/assets/star.svg" id="star4" @click="editStars()" alt />
-              <img src="/assets/star.svg" id="star5" @click="editStars()" alt />
-            </template>
-          </b-table>
-        </div>
-      </b-tab>
-    </b-tabs>
+  <div>
+    <b-table striped hover :items="this.objects" :fields="this.fields">
+      <template v-slot:cell(change)="row">
+        <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
+      </template>
+      <template v-slot:cell(rate)="row">
+        <img src="/assets/star.svg" id="star1" @click="editStars()" alt />
+        <img src="/assets/star.svg" id="star2" @click="editStars()" alt />
+        <img src="/assets/star.svg" id="star3" @click="editStars()" alt />
+        <img src="/assets/star.svg" id="star4" @click="editStars()" alt />
+        <img src="/assets/star.svg" id="star5" @click="editStars()" alt />
+      </template>
+    </b-table>
   </div>
 </template>
 
@@ -77,11 +62,11 @@ export default {
         /* src da 1, 2, 3, 4 e 5 estrelas mudar para preenchido */
       }
     }
-  }
-  ,computed:{
-      row(){
-          return this.objects.length
-      }
+  },
+  computed: {
+    row() {
+      return this.objects.length;
+    }
   }
 };
 </script>
