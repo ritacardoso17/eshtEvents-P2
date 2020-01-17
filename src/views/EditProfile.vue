@@ -43,20 +43,25 @@ export default {
   },
   methods: {
     changePassword() {
-      for (let i of this.loggedUser) {
-        if (this.loggedUser[0].password == this.password) {
-          if (this.newPassword == this.confirmPassword) {
-            alert(this.newPassword + "    -   " + this.confirmPassword);
-            alert("HEYHEY");
-            this.loggedUser[i].push(this.loggedUser[0].password = this.newPassword)
-            alert("Palavra-Passe alterada! ");
-            localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
+      if (
+        this.loggedUser[0].password === this.password &&
+        this.newPassword === this.confirmPassword
+      ) {
+        this.loggedUser[0].password = this.newPassword;
+        localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
+        this.$store.state.loggedUser = this.loggedUser;
+        for (let i in this.users) {
+          if (this.users[i].id == this.loggedUser[0].id) {
+            this.users[i].password = this.newPassword;
+            localStorage.setItem("users", JSON.stringify(this.users));
+            this.$store.state.users = this.users;
           }
-        } else if (this.loggedUser.password != this.password) {
-          alert("A palavra-passe não coincide com a atual!");
-        } else if (this.newPassword != this.confirmPassword) {
-          alert("As palavras-passe estão diferentes!");
         }
+        alert("Palavra-Passe alterada!");
+      } else if (this.loggedUser[0].password !== this.password) {
+        alert("A palavra-passe não coincide com a atual!");
+      } else {
+        alert("As palavras-passe estão diferentes!");
       }
     }
   },
@@ -70,7 +75,7 @@ export default {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     }
     this.users = this.$store.state.users;
-    this.loggedUser = this.$store.state.loggedUser
+    this.loggedUser = this.$store.state.loggedUser;
   },
   computed: {
     getUserLogged() {
