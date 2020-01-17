@@ -122,8 +122,17 @@ export default new Vuex.Store({
     ],
     eventType: [],
     reservations: [
-      { id:0,user:"Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: "",state:0 }
+      { id:0,user:"Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: [],state:0 }
     ],
+    extras:[{
+      id:0,
+      name: "fg"
+    }
+    ,
+    {
+      id:1,
+      name: "fsssg"
+    }]
   },
 
 
@@ -256,6 +265,7 @@ export default new Vuex.Store({
         extra: payload.extra,
         user: state.user,
         state: 0,
+        curMenu:payload.curMenu
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)

@@ -28,7 +28,7 @@ export default {
     if (localStorage.getItem("reservations")) {
       this.$store.state.reservations = JSON.parse(localStorage.getItem("reservations"));
       this.reservations =  this.$store.state.reservations
-    }
+      }
   }, methods:{
     acceptReservation(){
       alert(this.reservations[0].day)

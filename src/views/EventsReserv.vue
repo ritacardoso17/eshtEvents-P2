@@ -256,7 +256,12 @@
           <p id="extras2">
             <b>Extras</b>
           </p>
-          <p id="choiseExtras2">▶ {{extra[0]}} ▶ {{extra[1]}} ▶ {{extra[2]}} ▶ {{extra[3]}}</p>
+          <div  v-for="extra in extras" :key="extra.id">
+ <p id="choiseExtras2">
+            ▶ {{extra.name}}
+            </p>
+          </div>
+         
           <a
             name
             id="confirm2"
@@ -282,7 +287,7 @@
 
 <script>
 export default {
-  data() {
+  data: () => {
     return {
       id: 0,
       type: "",
@@ -292,8 +297,9 @@ export default {
       duration: "",
       place: "",
       observation: "",
-      extra: [],
+      extras: [],
       user: "",
+      curMenu:"",
       state: 0,
       tabIndex: 1,
       title: "",
@@ -301,9 +307,13 @@ export default {
     };
   },
   created() {
-    window.addEventListener("unload", this.saveStorage);
+     window.addEventListener("unload", this.saveStorage);
+    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras))
     if (localStorage.getItem("foodMenus")) {
       this.menus = JSON.parse(localStorage.getItem("foodMenus"));
+    }
+    if (localStorage.getItem("extras")) {
+      this.extras = JSON.parse(localStorage.getItem("extras"));
     }
   },
 
@@ -312,8 +322,8 @@ export default {
       if (k === "coffee break") {
         this.title = "Coffee Break";
         this.filter = "coffeebreak";
-        
-      } else if (k === "almoço") {
+      }
+       else if (k === "almoço") {
         this.title = "Almoço";
         this.filter = "almoço";
       }
@@ -335,7 +345,6 @@ export default {
     eventsReserv() {
       this.$store.commit("ADD_RESERVATION", {
         id: this.getLastIdEvents() + 1,
-        type: this.type,
         day: this.day,
         time: this.time,
         people: this.persons,
@@ -344,7 +353,8 @@ export default {
         observation: this.observation,
         extra: this.extra,
         user: this.getLoggedUserEmail(),
-        state: 0
+        state: 0,
+        curMenu:this.curMenu
       });
       alert("adicionei reserva de evento");
     },
