@@ -17,34 +17,76 @@
           <br />
           <br />
           <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
-          <b-button id="btn1" @click="x('coffee break')" value="coffee break">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b id="coffee break">Coffee Break</b>
-              </h1>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-6" style="padding-bottom: 50px">
+                <b-button id="btn1" @click="x('coffee break')" value="coffee break">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b id="coffee break">Coffee Break</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm-6" style="padding-bottom: 50px">
+                <b-button id="btn2" @click="x('porto de honra')" value="porto de honra">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Porto de Honra</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm-6" style="padding-bottom: 50px">
+                <b-button id="btn3" @click="x('almoço')" value="almoço">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Almoço</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm-6" style="padding-bottom: 50px">
+                <b-button id="btn4" @click="x('jantar')" value="jantar">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Jantar</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
             </div>
-          </b-button>
-          <b-button id="btn2" @click="x('porto de honra')" value="porto de honra">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Porto de Honra</b>
-              </h1>
+          </div>
+        </b-tab>
+        <!-- TAB MENU -->
+        <b-tab title="Menu">
+          <div class="row">
+            <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
+              <b-card
+                :title="menu.name"
+                :img-src="menu.image"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 15rem;"
+                class="mb-2"
+                id="cards"
+              >
+                <b-card-text>{{menu.ingredients}}</b-card-text>
+                <p>{{menu.id}}</p>
+                <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
+                <div>
+                  <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
+                    <img src alt />
+                    <p class="my-4">{{menu.ingredients}}</p>
+                  </b-modal>
+                </div>
+              </b-card>
             </div>
-          </b-button>
-          <b-button id="btn3" @click="x('almoço')" value="almoço">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Almoço</b>
-              </h1>
-            </div>
-          </b-button>
-          <b-button id="btn4" @click="x('jantar')" value="jantar">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Jantar</b>
-              </h1>
-            </div>
-          </b-button>
+          </div>
         </b-tab>
         <!-- TAB INFO -->
         <b-tab title="Informações">
@@ -88,52 +130,40 @@
           </form>
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
-        <!-- TAB MENU -->
-        <b-tab title="Menu">
-          <div class="row">
-            <div class="col-sm-4" v-for="menu in menuType" :key="menu.id">
-              <b-card
-                :title="menu.name"
-                :img-src="menu.image"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 15rem;"
-                class="mb-2"
-                id="cards"
-              >
-                <b-card-text>{{menu.ingredients}}</b-card-text>
-                <p>{{menu.id}}</p>
-                <b-button v-b-modal="menu.id" id="cardBtn">Ver mais</b-button>
-                <div>
-                  <b-modal :id="menu.id" :title="menu.name" ok-only ok-title="cancel">
-                    <img src alt />
-                    <p class="my-4">{{menu.ingredients}}</p>
-                  </b-modal>
-                </div>
-              </b-card>
-            </div>
-          </div>
-        </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
           <br />
-          <p class="guide3">▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
-          <b-button id="btn5"></b-button>
-          <b-button id="btn6"></b-button>
-          <b-button id="btn7"></b-button>
-          <b-button id="btn8"></b-button>
-          <p class="guide4">▶ Escolha a decoração que mais gosta para o seu evento</p>
-          <b-button id="btn9"></b-button>
-          <b-button id="btn10"></b-button>
-          <b-button id="btn11"></b-button>
+          <div class="container">
+            <div class="row">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
+              <div class="col-sm-4" v-for="uniform in this.uniforms" :key="uniform.id">
+                <b-button id="btn5" @click="unif('uniform1')" value="uniform1"></b-button>
+              </div>
+              <!-- <b-button id="btn5" @click="unif('uniform1')" value="uniform1"></b-button>
+              <b-button id="btn6" @click="unif('uniform2')" value="uniform2"></b-button>
+              <b-button id="btn7" @click="unif('uniform3')" value="uniform3"></b-button>
+              <b-button id="btn8" @click="unif('uniform4')" value="uniform4"></b-button>-->
+            </div>
+            <div class="row">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para seu evento
+              <div class="col-sm-4" v-for="decoration in this.decorations" :key="decoration">
+                <b-button id="btn9" @click="decor('decoration1')" value="decoration1"></b-button>
+              </div>
+              <!-- <b-button id="btn9" @click="decor('decoration1')" value="decoration1"></b-button>
+              <b-button id="btn10" @click="decor('decoration2')" value="decoration2"></b-button>
+              <b-button id="btn11" @click="decor('decoration3')" value="decoration3"></b-button>-->
+            </div>
+          </div>
+
           <p class="guide5">▶ Observações</p>
           <textarea
             id="textArea"
             cols="80"
             rows="3"
             placeholder="Escreva aqui..."
-            v-model="observation"
+            v-model="obsUniform"
           ></textarea>
         </b-tab>
         <!-- TAB EXTRAS -->
@@ -142,73 +172,18 @@
           <p class="guide6">▶ Selecione os extras que pretenda</p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check1"
-                  value="checkedValue1"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check2"
-                  value="checkedValue2"
-                  v-model="extra"
-                  unchecked
-                />Flores
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check3"
-                  value="checkedValue3"
-                  v-model="extra"
-                  unchecked
-                />Babysitting
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check4"
-                  value="checkedValue4"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check5"
-                  value="checkedValue5"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check6"
-                  value="checkedValue6"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
+            <p>{{extra_reserv}}</p>
+            <div class="form-check" v-for="i in this.extras" :key="i.id">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name
+                id="check6"
+                :value="i.name"
+                unchecked
+                v-model="extra_reserv"
+              />
+              {{i.name}}
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -217,7 +192,7 @@
             cols="130"
             rows="5"
             placeholder="Escreva aqui..."
-            v-model="observations"
+            v-model="obsDecor"
           ></textarea>
         </b-tab>
         <!-- TAB RESUMO -->
@@ -226,42 +201,55 @@
             <b>{{title}}</b>
           </h3>
           <hr id="resumeLine2" />
-          <p id="inform2">
-            <b>Informações</b>
-          </p>
-          <p id="pDate2">▶ {{day}}</p>
-          <p id="pTime2">▶ {{time}}</p>
-          <p id="pDuration2">▶ {{duration}}</p>
-          <p id="pPersons2">▶ {{persons}}</p>
-          <p id="pLocation">▶ {{location}}</p>
-          <p id="components2">
-            <b>Componentes</b>
-          </p>
-          <p id="menu2">
-            <b>Menu</b>
-          </p>
-          <p id="choiseMenu2">▶ AQUI É O NOME DO MENU ESCOLHIDO</p>
-          <p id="addMenu2">
-            ▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
-            BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA
-          </p>
-          <p id="observ2">
-            <b>Observações</b>
-          </p>
-          <p id="observMade2">
-            ▶ {{observation}}
-            <br />
-            ▶ {{observations}}
-          </p>
-          <p id="extras2">
-            <b>Extras</b>
-          </p>
-          <div  v-for="extra in extras" :key="extra.id">
- <p id="choiseExtras2">
-            ▶ {{extra.name}}
-            </p>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4">
+                <b>Informações</b>
+                <p id="pDate2">▶ {{day}}</p>
+                <p id="pTime2">▶ {{time}}</p>
+                <p id="pDuration2">▶ {{duration}}</p>
+                <p id="pPersons2">▶ {{persons}}</p>
+                <p id="pLocation">▶ {{location}}</p>
+                <p id="components2"></p>
+              </div>
+
+              <div class="col-sm-4">
+                <b>Componentes</b>
+                {{decorations}}
+                {{uniforms}}
+              </div>
+
+              <div class="col-sm-4">
+                <p id="menu2">
+                  <b>Menu</b>
+                </p>
+                <p id="choiseMenu2">▶ {{}}</p>
+                <p id="addMenu2">
+                  ▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
+                  BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA
+                </p>
+                <p id="observ2"></p>
+              </div>
+
+              <div class="col-sm-4">
+                <b>Observações</b>
+                <p id="observMade2">
+                  ▶ {{obsUniform}}
+                  <br />
+                  ▶ {{obsDecor}}
+                </p>
+              </div>
+
+              <div class="col-sm-4">
+                <b>Extras</b>
+                <div v-for="extra in this.extra_reserv" :key="extra">
+                  <p>{{extra}}</p>
+                </div>
+              </div>
+            </div>
           </div>
-         
+
           <a
             name
             id="confirm2"
@@ -289,17 +277,22 @@
 export default {
   data: () => {
     return {
+      reservations: [],
       id: 0,
       type: "",
       day: "",
       time: "",
       people: "",
       duration: "",
+      decorations: "",
+      uniforms: "",
       place: "",
-      observation: "",
+      obsUniform: "",
+      obsDecor: "",
+      extra_reserv: [],
       extras: [],
-      user: "",
-      curMenu:"",
+      userMail: "",
+      curMenu: "",
       state: 0,
       tabIndex: 1,
       title: "",
@@ -307,23 +300,34 @@ export default {
     };
   },
   created() {
-     window.addEventListener("unload", this.saveStorage);
-    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras))
+    window.addEventListener("unload", this.saveStorage);
+    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
     if (localStorage.getItem("foodMenus")) {
       this.menus = JSON.parse(localStorage.getItem("foodMenus"));
     }
     if (localStorage.getItem("extras")) {
       this.extras = JSON.parse(localStorage.getItem("extras"));
     }
+    if (localStorage.getItem("reservations")) {
+      this.$store.state.reservations = JSON.parse(
+        localStorage.getItem("reservations")
+      );
+      this.reservations = this.$store.state.reservations;
+    }
   },
 
   methods: {
+    decor(d) {
+      this.decoration = d;
+    },
+    unif(u) {
+      this.uniform = u;
+    },
     x(k) {
       if (k === "coffee break") {
         this.title = "Coffee Break";
         this.filter = "coffeebreak";
-      }
-       else if (k === "almoço") {
+      } else if (k === "almoço") {
         this.title = "Almoço";
         this.filter = "almoço";
       }
@@ -343,18 +347,21 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
+      alert(this.extra_reserv[0].name);
       this.$store.commit("ADD_RESERVATION", {
         id: this.getLastIdEvents() + 1,
         day: this.day,
         time: this.time,
         people: this.persons,
+        uniforms: this.uniforms,
+        decorations: this.decorations,
         duration: this.duration,
         place: this.location,
-        observation: this.observation,
-        extra: this.extra,
-        user: this.getLoggedUserEmail(),
+        obsUniform: this.obsUniform,
+        extra_reserv: this.extra_reserv,
+        userMail: this.$store.getters.getLoggedUserEmail,
         state: 0,
-        curMenu:this.curMenu
+        curMenu: this.curMenu
       });
       alert("adicionei reserva de evento");
     },
