@@ -16,13 +16,17 @@
         <!-- TAB DA ESCOLHA DO ESPAÇO -->
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <br />
-            <div class="row">
-              ▶
-              <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar
-              <div class="col-sm-4" v-for="type in this.types" :key="type.id">
-                <b-button id="btn5" @click="updatePhoto(type)" value="type"></b-button>
-              </div>
-            </div>
+          <p class="guide7">▶ <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar</p>
+          <b-img src="../assets/cozinha.jpg" id="butn1" value="Restaurant" @click="updatePhoto()"></b-img>
+          <b-img src="../assets/cozinha.jpg" id="butn2" value="bar" @click="updatePhoto()"></b-img>
+          <b-img src="../assets/cozinha.jpg" id="butn3" value="kitchen" @click="updatePhoto()"></b-img>
+          <b-img
+            src="../assets/cozinha.jpg"
+            id="butn4"
+            value="newRestaurant"
+            @click="updatePhoto()"
+            disabled
+          ></b-img>
         </b-tab>
         <!-- TAB DA INFO -->
         <b-tab title="Informação">
@@ -58,9 +62,7 @@
           <p id="room">
             <b>Espaço</b>
           </p>
-          <p>▶ Espaço: {{types}}</p>
-
-          <img :src="types" alt="HEY" />
+          <img :src="type" alt="HEY" />
           <a id="confirm" class="btn btn-primary" @click="rentRoom()" role="button">Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
         </b-tab>
@@ -74,7 +76,7 @@ export default {
   name: "rentRoom",
   data: () => ({
     id: 0,
-    types: "",
+    type: "",
     day: "",
     time: "",
     duration: "",
@@ -82,28 +84,25 @@ export default {
     state: 0
   }),
   methods: {
-    updatePhoto(p) {
-      this.type = p;
-    },
-    getLoggedUserEmail() {
+    getLoggedUserEmail(){
       return this.$store.getters.getLoggedUserEmail;
     },
     getTypeById(type) {
       return this.rooms.filter(room => room.type === type)[0].name;
     },
-    getLastIdRooms() {
+    getLastIdRooms(){
       return this.$store.getters.getLastIdRooms;
     },
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
         id: this.getLastIdRooms() + 1,
-        type: this.types,
+        type: this.type,
         day: this.day,
         time: this.time,
         duration: this.duration,
-        userMail: this.$store.getters.getLoggedUserEmail
+        user: this.getLoggedUserEmail()
       });
-      alert("adicionei reserva de espaço");
+      alert("adicionei reserva de espaço")
     },
 
     saveStorage() {
@@ -220,7 +219,7 @@ export default {
   left: 700px;
   font-size: 110%;
 }
-#rentDate {
+#rentDate{
   position: relative;
   width: 200px;
   left: 200px;
