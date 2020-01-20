@@ -1,11 +1,11 @@
 <template>
   <div class="bckAdmin">
     <router-link to="/usersadmin">
-    <button class="btn100" id="btnUsers" >USERS</button> </router-link>
+    <button class="btn100" id="btnUsers">USERS</button></router-link>
     
    <!-- <span> </span> -->
    <router-link to="/menusBackoffice"> 
-    <button class="btn100" id="btnMenus">MENUS</button> </router-link>
+    <button class="btn100" id="btnMenus">MENUS</button></router-link>
 
     <!-- <span> ///// </span> -->
     <router-link to="/reservationsBackoffice"> 
