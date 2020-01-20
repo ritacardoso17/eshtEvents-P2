@@ -12,7 +12,7 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [
-      { id:0, user:"Rita", type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: ""}
+      { id: 0, user: "Rita", type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "" }
     ],
     workshops: [
       {
@@ -122,17 +122,82 @@ export default new Vuex.Store({
     ],
     eventType: [],
     reservations: [
-      { id:0,user:"Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", observation: "Gosto de musica pop.", extra: [],state:0 }
+      { id: 0, user: "Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", extra: [], state: 0 }
     ],
-    extras:[{
-      id:0,
-      name: "fg"
-    }
-    ,
+    uniforms: [
+      {
+        id: 0,
+        img: '../assets/transferir.jpg',
+        name: "Farda1",
+      },
+      {
+        id: 1,
+        img: '../assets/transferir.jpg',
+        name: "Farda2",
+      },
+      {
+        id: 2,
+        img: '../assets/transferir.jpg',
+        name: "Farda3",
+      },
+      {
+        id: 3,
+        img: '../assets/transferir.jpg',
+        name: "Farda4",
+      },
+    ],
+    decorations: [
+      {
+        id: 0,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration1"
+      },
+      {
+        id: 1,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration1"
+      },
+      {
+        id: 2,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration1"
+      },
+    ],
+    types: [
+      {
+        id: 0,
+        img: "../assets/cozinha.jpg",
+        name: "Bar"
+      },
+      {
+        id: 1,
+        img: "../assets/cozinha.jpg",
+        name: "Restaurante"
+      },
+      {
+        id: 2,
+        img: "../assets/cozinha.jpg",
+        name: "Cozinha"
+      },
+      {
+        id: 3,
+        img: "../assets/cozinha.jpg",
+        name: "Novo Restaurante"
+      }
+    ],
+    extras: [{
+      id: 0,
+      name: "Musica Ambiente"
+    },
     {
-      id:1,
-      name: "fsssg"
-    }]
+      id: 1,
+      name: "Babyssiting"
+    },
+    {
+      id: 2,
+      name: "flores"
+    }
+    ]
   },
 
 
@@ -243,11 +308,11 @@ export default new Vuex.Store({
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
         id: payload.id,
-        type: payload.type,
+        types: payload.types,
         day: payload.day,
         time: payload.time,
         duration: payload.duration,
-        user: state.loggedUser,
+        userMail: payload.userMail,
         state: 0,
       });
       localStorage.setItem("rooms", JSON.stringify(state.rooms))
@@ -261,11 +326,12 @@ export default new Vuex.Store({
         people: payload.people,
         duration: payload.duration,
         place: payload.place,
-        observation: payload.observation,
-        extra: payload.extra,
-        user: state.user,
+        obsUniform: payload.obsUniform,
+        obsDecor: payload.obsDecor,
+        extra_reserv: payload.extra_reserv,
+        userMail: payload.userMail,
         state: 0,
-        curMenu:payload.curMenu
+        curMenu: payload.curMenu
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
       alert(state.reservations)
@@ -289,6 +355,7 @@ export default new Vuex.Store({
     },
     getLoggedUserEmail(state) {
       return state.loggedUser[0].email
+
     },
     getLoggedUserPassword(state) {
       return state.loggedUser[0].password

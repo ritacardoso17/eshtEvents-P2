@@ -17,34 +17,49 @@
           <br />
           <br />
           <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
-          <b-button id="btn1" @click="x('coffee break')" value="coffee break">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b id="coffee break">Coffee Break</b>
-              </h1>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm6">
+                <b-button id="btn1" @click="x('coffee break')" value="coffee break">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b id="coffee break">Coffee Break</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm6">
+                <b-button id="btn2" @click="x('porto de honra')" value="porto de honra">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Porto de Honra</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm6">
+                <b-button id="btn3" @click="x('almoço')" value="almoço">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Almoço</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
+
+              <div class="col-sm6">
+                <b-button id="btn4" @click="x('jantar')" value="jantar">
+                  <div id="bar2">
+                    <h1 id="eventType" class="centered">
+                      <b>Jantar</b>
+                    </h1>
+                  </div>
+                </b-button>
+              </div>
             </div>
-          </b-button>
-          <b-button id="btn2" @click="x('porto de honra')" value="porto de honra">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Porto de Honra</b>
-              </h1>
-            </div>
-          </b-button>
-          <b-button id="btn3" @click="x('almoço')" value="almoço">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Almoço</b>
-              </h1>
-            </div>
-          </b-button>
-          <b-button id="btn4" @click="x('jantar')" value="jantar">
-            <div id="bar2">
-              <h1 id="eventType" class="centered">
-                <b>Jantar</b>
-              </h1>
-            </div>
-          </b-button>
+          </div>
         </b-tab>
         <!-- TAB INFO -->
         <b-tab title="Informações">
@@ -119,21 +134,21 @@
         <b-tab title="Componentes">
           <br />
           <p class="guide3">▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
-          <b-button id="btn5"></b-button>
-          <b-button id="btn6"></b-button>
-          <b-button id="btn7"></b-button>
-          <b-button id="btn8"></b-button>
+          <b-button id="btn5" v-model="uniform" value="uniform1"></b-button>
+          <b-button id="btn6" v-model="uniform" value="uniform2"></b-button>
+          <b-button id="btn7" v-model="uniform" value="uniform3"></b-button>
+          <b-button id="btn8" v-model="uniform" value="uniform4"></b-button>
           <p class="guide4">▶ Escolha a decoração que mais gosta para o seu evento</p>
-          <b-button id="btn9"></b-button>
-          <b-button id="btn10"></b-button>
-          <b-button id="btn11"></b-button>
+          <b-button id="btn9" v-model="decoration" value="decoration1"></b-button>
+          <b-button id="btn10" v-model="decoration" value="decoration2"></b-button>
+          <b-button id="btn11" v-model="decoration" value="decoration3"></b-button>
           <p class="guide5">▶ Observações</p>
           <textarea
             id="textArea"
             cols="80"
             rows="3"
             placeholder="Escreva aqui..."
-            v-model="observation"
+            v-model="obsUniform"
           ></textarea>
         </b-tab>
         <!-- TAB EXTRAS -->
@@ -142,73 +157,18 @@
           <p class="guide6">▶ Selecione os extras que pretenda</p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check1"
-                  value="checkedValue1"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check2"
-                  value="checkedValue2"
-                  v-model="extra"
-                  unchecked
-                />Flores
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check3"
-                  value="checkedValue3"
-                  v-model="extra"
-                  unchecked
-                />Babysitting
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check4"
-                  value="checkedValue4"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check5"
-                  value="checkedValue5"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
-              <label class="form-check-label">
-                <input
-                  type="checkbox"
-                  class="form-check-input"
-                  name
-                  id="check6"
-                  value="checkedValue6"
-                  v-model="extra"
-                  unchecked
-                />Música Ambiente
-              </label>
+            <p>{{extra_reserv}}</p>
+            <div class="form-check" v-for="i in this.extras" :key="i.id">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name
+                id="check6"
+                :value="i.name"
+                unchecked
+                v-model="extra_reserv"
+              />
+              {{i.name}}
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -217,7 +177,7 @@
             cols="130"
             rows="5"
             placeholder="Escreva aqui..."
-            v-model="observations"
+            v-model="obsDecor"
           ></textarea>
         </b-tab>
         <!-- TAB RESUMO -->
@@ -226,6 +186,16 @@
             <b>{{title}}</b>
           </h3>
           <hr id="resumeLine2" />
+
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-4"></div>
+
+              <div class="col-sm-4"></div>
+
+              <div class="col-sm-4"></div>
+            </div>
+          </div>
           <p id="inform2">
             <b>Informações</b>
           </p>
@@ -236,11 +206,13 @@
           <p id="pLocation">▶ {{location}}</p>
           <p id="components2">
             <b>Componentes</b>
+            {{decoration}}
+            {{uniform}}
           </p>
           <p id="menu2">
             <b>Menu</b>
           </p>
-          <p id="choiseMenu2">▶ AQUI É O NOME DO MENU ESCOLHIDO</p>
+          <p id="choiseMenu2">▶ {{}}</p>
           <p id="addMenu2">
             ▶ COMPLEMENTOS ADICIONADOS H BLAH BLAH BLAH BLAH BLAHBLAH
             BLAH BLAHBLAH BLAH BLAH BLAH BLAH BLAH BLAH BLA
@@ -249,19 +221,17 @@
             <b>Observações</b>
           </p>
           <p id="observMade2">
-            ▶ {{observation}}
+            ▶ {{obsUniform}}
             <br />
-            ▶ {{observations}}
+            ▶ {{obsDecor}}
           </p>
           <p id="extras2">
             <b>Extras</b>
           </p>
-          <div  v-for="extra in extras" :key="extra.id">
- <p id="choiseExtras2">
-            ▶ {{extra.name}}
-            </p>
+          <div v-for="extra in this.extra_reserv" :key="extra">
+            <p>{{extra}}</p>
           </div>
-         
+
           <a
             name
             id="confirm2"
@@ -289,17 +259,22 @@
 export default {
   data: () => {
     return {
+      reservations: [],
       id: 0,
       type: "",
       day: "",
       time: "",
       people: "",
       duration: "",
+      decoration: "",
+      uniform: "",
       place: "",
-      observation: "",
+      obsUniform: "",
+      obsDecor: "",
+      extra_reserv: [],
       extras: [],
       user: "",
-      curMenu:"",
+      curMenu: "",
       state: 0,
       tabIndex: 1,
       title: "",
@@ -307,13 +282,19 @@ export default {
     };
   },
   created() {
-     window.addEventListener("unload", this.saveStorage);
-    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras))
+    window.addEventListener("unload", this.saveStorage);
+    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
     if (localStorage.getItem("foodMenus")) {
       this.menus = JSON.parse(localStorage.getItem("foodMenus"));
     }
     if (localStorage.getItem("extras")) {
       this.extras = JSON.parse(localStorage.getItem("extras"));
+    }
+    if (localStorage.getItem("reservations")) {
+      this.$store.state.reservations = JSON.parse(
+        localStorage.getItem("reservations")
+      );
+      this.reservations = this.$store.state.reservations;
     }
   },
 
@@ -322,8 +303,7 @@ export default {
       if (k === "coffee break") {
         this.title = "Coffee Break";
         this.filter = "coffeebreak";
-      }
-       else if (k === "almoço") {
+      } else if (k === "almoço") {
         this.title = "Almoço";
         this.filter = "almoço";
       }
@@ -343,6 +323,7 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
+      alert(this.extra_reserv[0].name);
       this.$store.commit("ADD_RESERVATION", {
         id: this.getLastIdEvents() + 1,
         day: this.day,
@@ -350,11 +331,11 @@ export default {
         people: this.persons,
         duration: this.duration,
         place: this.location,
-        observation: this.observation,
-        extra: this.extra,
+        obsUniform: this.obsUniform,
+        extra_reserv: this.extra_reserv,
         user: this.getLoggedUserEmail(),
         state: 0,
-        curMenu:this.curMenu
+        curMenu: this.curMenu
       });
       alert("adicionei reserva de evento");
     },
