@@ -90,11 +90,12 @@
             v-model="birth"
           />
         </div>
+        <input type="link" v-model="imgPerfil" :placeholder="imgPerfil">
         <div id="avatar">
-          <img id="avatar1" src="../assets/78457815_2435966936655734_3103731526311870464_n.png" />
+          <img id="avatar1" :src="imgPerfil" />
           <!-- FALTA UM INPUT PARA A IMAGEM DO USER -->
         </div>
-        <a href id="addAvatar">Adicionar Avatar</a>
+        <p href id="addAvatar">Pré-Visualizar Avatar</p>
         <button type="submit" class="btnConf">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
           <router-link to="/login">Login</router-link>
@@ -116,7 +117,10 @@ export default {
     email: "",
     password: "",
     confPass: "",
-    contact: ""
+    contact: "",
+    birth: "",
+    eventType: [],
+    imgPerfil: "",
   }),
   created: function() {
     window.addEventListener("unload", this.saveStorage);
@@ -146,7 +150,8 @@ export default {
           password: this.password,
           confPass: this.confPass,
           birth: this.birth,
-          contact: this.contact
+          contact: this.contact,
+          imgProfile: this.imgPerfil
         });
       }
     },
@@ -156,6 +161,7 @@ export default {
         "loggedUser",
         JSON.stringify(this.$store.state.loggedUser)
       );
+
     }
   }
 };
@@ -291,15 +297,13 @@ export default {
   position: absolute;
   top: 70px;
   width: 200px;
-  height: 300px;
+  height: 200px;
   left: -300px;
   border: 2px solid #232323;
 }
 #avatar1 {
-  position: absolute;
-  width: 100px;
-  left: 50px;
-  top: 100px;
+  width: 196px;
+  height: 196px;
 }
 #addAvatar {
   position: absolute;

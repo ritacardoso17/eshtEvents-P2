@@ -50,77 +50,77 @@ export default new Vuex.Store({
       {
         id: 1,
         img: require('../assets/transferir.jpg'),
-        name: "Menu A",
-        type: "coffeebreak"
+        name: "Menu L",
+        type: "Coffee Break"
       },
       {
         id: 2,
         img: require('../assets/transferir.jpg'),
-        name: "Menu B",
+        name: "Menu K",
         type: "coffeebreak"
       },
       {
         id: 3,
         img: require('../assets/transferir.jpg'),
-        name: "Menu C",
-        type: "coffeebreak"
+        name: "Menu J",
+        type: "Coffee Break"
       },
       {
         id: 4,
         img: require('../assets/transferir.jpg'),
-        name: "Menu A",
-        type: "coffeebreak"
+        name: "Menu I",
+        type: "Coffee Break"
       },
       {
         id: 5,
         img: require('../assets/transferir.jpg'),
-        name: "Menu B",
-        type: "coffeebreak"
+        name: "Menu H",
+        type: "Coffee Break"
       },
       {
         id: 6,
         img: require('../assets/transferir.jpg'),
-        name: "Menu C",
-        type: "coffeebreak"
+        name: "Menu G",
+        type: "Coffee Break"
       },
       {
         id: 7,
         img: require('../assets/transferir.jpg'),
-        name: "Menu A",
-        type: "coffeebreak"
+        name: "Menu F",
+        type: "Coffee Break"
       },
       {
         id: 8,
         img: require('../assets/transferir.jpg'),
-        name: "Menu B",
-        type: "coffeebreak"
+        name: "Menu E",
+        type: "Coffee Break"
       },
       {
         id: 9,
         img: require('../assets/transferir.jpg'),
-        name: "Menu C",
-        type: "coffeebreak"
+        name: "Menu D",
+        type: "Coffee Break"
       },
       {
         id: 10,
         img: require('../assets/transferir.jpg'),
         name: "Menu A",
-        type: "coffeebreak"
+        type: "Coffee Break"
       },
       {
         id: 11,
         img: require('../assets/transferir.jpg'),
         name: "Menu B",
-        type: "jantar"
+        type: "Jantar"
       },
       {
         id: 12,
         img: require('../assets/transferir.jpg'),
         name: "Menu C",
-        type: "jantar"
+        type: "Jantar"
       },
     ],
-    eventType: [],
+    eventType: ["Coffee Break","Almoço","Jantar","Porto de Honra"],
     reservations: [
       { id: 0, user: "Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", extra: [], state: 0 }
     ],
@@ -155,12 +155,12 @@ export default new Vuex.Store({
       {
         id: 1,
         img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration1"
+        name: "decoration2"
       },
       {
         id: 2,
         img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration1"
+        name: "decoration3"
       },
     ],
     types: [
@@ -216,7 +216,8 @@ export default new Vuex.Store({
             email: payload.email,
             password: payload.password,
             contact: payload.contact,
-            birth: payload.birth
+            birth: payload.birth,
+            imgProfile: payload.imgProfile
           });
           localStorage.setItem("users", JSON.stringify(state.users))
           alert("REGISTADO")
@@ -238,7 +239,8 @@ export default new Vuex.Store({
             email: user.email,
             password: user.password,
             contact: user.contact,
-            birth: user.birth
+            birth: user.birth,
+            imgProfile: user.imgProfile
           })
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           alert("USER LOGGADO")
@@ -323,18 +325,21 @@ export default new Vuex.Store({
         id: payload.id,
         day: payload.day,
         time: payload.time,
-        people: payload.people,
+        people: payload.persons,
         duration: payload.duration,
-        place: payload.place,
-        obsUniform: payload.obsUniform,
-        obsDecor: payload.obsDecor,
-        extra_reserv: payload.extra_reserv,
+        place: payload.location,
+        obs: payload.obs,
+        decor: payload.decor,
+        extra: payload.extra,
+        userName: payload.userName,
         userMail: payload.userMail,
-        state: 0,
-        curMenu: payload.curMenu
+        state: payload.state,
+        eventType: payload.eventType,
+        menu: payload.menu,
+        uniform: payload.uniform
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
-      alert(state.reservations)
+ 
     },
   },
   getters: {
@@ -348,7 +353,7 @@ export default new Vuex.Store({
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
     },
     getLastIdEvents(state) {
-      return state.reservas.length ? state.reservas[state.reservas.length - 1].id : 0
+      return state. reservations.length ? state. reservations[state. reservations.length - 1].id : 0
     },
     getLastIdRooms(state) {
       return state.rooms.length ? state.rooms[state.rooms.length - 1].id : 0

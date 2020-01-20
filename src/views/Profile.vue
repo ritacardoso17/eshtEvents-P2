@@ -5,7 +5,7 @@
     <hr id="linha1" />
     <hr id="linha2" />
     <div id="picture">
-      <img id="picture" />
+      <img id="picture" :src="loggedUser[0].imgProfile" />
     </div>
     <a id="editPhoto">Editar Foto</a>
 
@@ -41,6 +41,33 @@
         </b-tab>
       </b-tabs>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
   </div>
 </template>
 
@@ -126,7 +153,7 @@ export default {
   position: absolute;
   top: 100px;
   width: 200px;
-  height: 300px;
+  height: 200px;
   left: 100px;
 }
 #editPhoto {

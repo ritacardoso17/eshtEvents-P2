@@ -14,6 +14,9 @@
 
       <!-- <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a> -->
       <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button> -->
+  <a href="Profile">
+      <img :src="imgProfile" style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;" class="img-fluid" id="camp" alt />
+     </a>
       <router-link to="/login" v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
       <a id="logout" @click="logout()" v-if="this.$store.state.loggedUser.length != 0">LOGOUT</a>
 
@@ -52,10 +55,10 @@
             <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
           </span>
           <span v-else>
+             <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
             <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
             <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
             <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
-            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
           </span>
         </div>
       </div>
@@ -69,7 +72,8 @@
     name: "Login",
     data: () => ({
       email: "",
-      password: ""
+      password: "",
+      imgProfile: ""
     }),
     created: function () {
       if (localStorage.getItem("users")) {
@@ -77,6 +81,7 @@
       }
       if (localStorage.getItem("loggedUser")) {
         this.$store.state.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+        this.imgProfile = this.$store.state.loggedUser[0].imgProfile
       }
       localStorage.setItem("foodMenus", JSON.stringify(this.$store.state.foodMenus));
       localStorage.setItem("workshops", JSON.stringify(this.$store.state.workshops));
