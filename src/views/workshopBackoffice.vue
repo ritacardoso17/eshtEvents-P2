@@ -1,7 +1,7 @@
 <template>
   <div class="bckWorksjop">
-    <router-link tag="button" class="btnAdd" :to="{ path: '/addWorkshop' }">Adicionar</router-link>
-    <b-table bordered fixed hover :items="this.workshops" :fields="this.fields">
+    <router-link tag="button"  class="btnAdd" :to="{ path: '/addWorkshop' }">Adicionar</router-link>
+    <b-table  style="max-width: 900px; position:center;" bordered fixed hover :items="this.workshops" :fields="this.fields">
       <template v-slot:cell(options)="row">
         <b-button class="btnRemove" size="sm" @click="removeWorkshop(row.item.id)">Eliminar Workshop</b-button>
         <b-button class="btnChange" size="sm" @click="editWorkshop(row.item.id)">Editar</b-button>
@@ -17,7 +17,6 @@ export default {
       workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "id", lable: "id" },
         { key: "title", lable: "title", sortable: "true" },
         { key: "vacancies", lable: "vacancies" },
         { key: "options" }
