@@ -14,7 +14,7 @@
 
       <!-- <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a> -->
       <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button> -->
-  <a href="Profile">
+  <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
       <img :src="imgProfile" style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;" class="img-fluid" id="camp" alt />
      </a>
       <router-link to="/login" v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
