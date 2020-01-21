@@ -118,11 +118,11 @@
           <p id="inform2">
             <b>Informações</b>
           </p>
-          <p id="pDate2">▶ {{day}}</p>
-          <p id="pTime2">▶ {{time}}</p>
-          <p id="pDuration2">▶ {{duration}}</p>
-          <p id="pPersons2">▶ {{persons}}</p>
-          <p id="pLocation">▶ {{location}}</p>
+          <p id="pDate2">▶ Dia: {{day}}</p>
+          <p id="pTime2">▶ Hora: {{time}}h</p>
+          <p id="pDuration2">▶ Duração: {{duration}}h</p>
+          <p id="pPersons2">▶ Lugares: {{persons}}</p>
+          <p id="pLocation">▶ Local: {{location}}</p>
           <p id="components2">
             <b>Componentes</b>
             {{slctDecor}}
@@ -149,8 +149,8 @@
             <p>{{extra}}</p>
           </div>
 
-          <a name id="confirm2" class="btn btn-primary" href="#" role="button" @click="eventsReserv()">Confirmar</a>
-          <a name id="cancel2" class="btn btn-primary" href="#" role="button">Cancelar</a>
+          <a name id="confirm2" class="btn btn-primary" href="/events" role="button" @click="eventsReserv()">Confirmar</a>
+          <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
     </b-card>

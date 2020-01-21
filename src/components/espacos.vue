@@ -5,14 +5,14 @@
         <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
       </template>
       <template v-slot:cell(rate)="row">
-        <img src="/assets/star.svg" id="star1" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star2" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star3" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star4" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star5" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star1" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star2" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star3" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star4" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star5" @click="editStars()" alt />
       </template>
     </b-table>
-  </div>
+  </div>  
 </template>
 
 <script>
