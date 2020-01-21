@@ -26,7 +26,6 @@
     </div>
     <button class="btnAboutUs" @click="location()">Descobre mais sobre nós</button>
     <router-link to="/profile">
-      <button type="submit" class="btnAboutUs">Profile</button>
       <!--PARA TIRAR-->
     </router-link>
 
