@@ -81,7 +81,7 @@ export default new Vuex.Store({
         id: 2,
         img: require('../assets/transferir.jpg'),
         name: "Menu K",
-        type: "coffeebreak"
+        type: "Coffee Break"
       },
       {
         id: 3,
@@ -145,19 +145,11 @@ export default new Vuex.Store({
       },
     ],
     eventType: ["Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
-    reservations: [{
-      id: 0,
-      user: "Rita",
-      type: "",
-      day: "06-04-2020",
-      time: "19:45",
-      people: "20",
-      duration: "2",
-      place: "Esmad",
-      extra: [],
-      state: 0
-    }],
-    uniforms: [{
+    reservations: [
+      { id: 0, user: "Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", extra: [], state: 0 }
+    ],
+    uniforms: [
+      {
         id: 0,
         img: '../assets/transferir.jpg',
         name: "Farda1",
@@ -216,17 +208,22 @@ export default new Vuex.Store({
       }
     ],
     extras: [{
-        id: 0,
-        name: "Musica Ambiente"
-      },
-      {
-        id: 1,
-        name: "Babyssiting"
-      },
-      {
-        id: 2,
-        name: "flores"
-      }
+      id: 0,
+      name: "Musica Ambiente"
+    },
+    {
+      id: 1,
+      name: "Babyssiting"
+    },
+    {
+      id: 2,
+      name: "flores"
+    }
+    ],
+    componentMenu: [
+      { id: 1, name: "Leite" },
+      { id: 2, name: "Cafe" },
+      { id: 3, name: "Bolo de Laranja" }
     ]
   },
 
@@ -336,6 +333,20 @@ export default new Vuex.Store({
 
       }
     },
+    ADD_MENU: (state, payload) => {
+      if (!state.foodMenus.some(foodMenu => foodMenu.name === payload.name)) {
+        state.foodMenus.push({
+          id: payload.id,
+          name: payload.name,
+          components:payload.components
+        });
+        localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
+        alert("Menu Criado")
+      } else {
+        alert("Ja existe um menu com esse nome")
+
+      }
+    },
     RENT_ROOM: (state, payload) => {
       state.roomRents.push({
         id: payload.id,
@@ -380,6 +391,9 @@ export default new Vuex.Store({
     },
     getLastIdWorkshops(state) {
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
+    },
+    getLastIdMenu(state) {
+      return state.foodMenus.length ? state.foodMenus[state.foodMenus.length - 1].id : 0
     },
     getLastIdEvents(state) {
       return state.reservations.length ? state.reservations[state.reservations.length - 1].id : 0

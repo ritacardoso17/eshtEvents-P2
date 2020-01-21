@@ -1,6 +1,6 @@
 <template>
   <div class="bckMenus">
-    <b-button class="btnAdd" size="sm">Adicionar Menu</b-button>
+    <b-button class="btnAdd" size="sm" :to="{path: '/addMenu' }" >Adicionar Menu</b-button>
     <br> <br>
     <b-table bordered hover :items="this.menus" :fields="this.fields">
       <!-- <template v-slot:cell(typeUser)="row">
