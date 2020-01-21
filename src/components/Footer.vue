@@ -77,6 +77,7 @@
   font-size: 15px;
   margin-top: 30px;
   margin-left: -60px;
+  font-family: GeosansLight;
 }
 .logoFooter{
   width: 30%;

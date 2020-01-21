@@ -5,11 +5,7 @@
         <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
       </template>
       <template v-slot:cell(rate)="row">
-        <img src="/assets/star.svg" id="star1" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star2" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star3" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star4" @click="editStars()" alt />
-        <img src="/assets/star.svg" id="star5" @click="editStars()" alt />
+        <img src="../assets/star.png" id="star1" @click="editStars()" alt />
       </template>
     </b-table>
   </div>
@@ -44,23 +40,9 @@ export default {
     getReservations() {
       return this.$store.state.reservations;
     },
+
     editStars() {
-      let star1 = document.addEventListener("click");
-      let star2 = document.addEventListener("click");
-      let star3 = document.addEventListener("click");
-      let star4 = document.addEventListener("click");
-      let star5 = document.addEventListener("click");
-      if (star1) {
-        /* src da primeira estrela mudar para preenchido */
-      } else if (star2) {
-        /* src da 1 e 2 estrelas mudar para preenchido */
-      } else if (star3) {
-        /* src da 1, 2 e 3 estrelas mudar para preenchido */
-      } else if (star4) {
-        /* src da 1, 2, 3 e 4 estrelas mudar para preenchido */
-      } else if (star5) {
-        /* src da 1, 2, 3, 4 e 5 estrelas mudar para preenchido */
-      }
+      
     }
   },
   computed: {
@@ -70,3 +52,21 @@ export default {
   }
 };
 </script>
+
+<style>
+#star1{
+  height: 30px
+}
+#star2{
+  height: 30px
+}
+#star3{
+  height: 30px
+}
+#star4{
+  height: 30px
+}
+#star5{
+  height: 30px
+}
+</style>

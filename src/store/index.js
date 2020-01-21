@@ -6,16 +6,41 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    users: [
-      { id: 0, name: "Admin", school: "", typeUser: "admin", email: "admin@email.com", password: "123", birth: "", contact: "" }
-    ],
+    users: [{
+      id: 0,
+      name: "Admin",
+      school: "",
+      typeUser: "admin",
+      email: "admin@email.com",
+      password: "123",
+      birth: "",
+      contact: "",
+    }],
+    roomRents:[],
     userExist: false,
     loggedUser: [],
-    rooms: [
-      { id: 0, user: "Rita", type: "./assets/imgInicial.jpg", day: "06-04-2020", time: "19:45", duration: "2", extras: "" }
-    ],
-    workshops: [
+    rooms: [{
+        id: 0,
+        name: "cozinha",
+        img: require('../assets/imgInicial.jpg')
+      },
       {
+        id: 1,
+        name: "bar",
+        img: require('../assets/imgInicial.jpg')
+      },
+      {
+        id: 2,
+        name: "Novo restaurante",
+        img: require('../assets/imgInicial.jpg')
+      },
+      {
+        id: 3,
+        name: "Restaurante de App",
+        img: require('../assets/imgInicial.jpg')
+      },
+    ],
+    workshops: [{
         id: 1,
         title: "Workshop A",
         vacancies: 20,
@@ -46,8 +71,7 @@ export default new Vuex.Store({
         locutor: "Américo Andrade"
       }
     ],
-    foodMenus: [
-      {
+    foodMenus: [{
         id: 1,
         img: require('../assets/transferir.jpg'),
         name: "Menu L",
@@ -146,8 +170,7 @@ export default new Vuex.Store({
         name: "Farda4",
       },
     ],
-    decorations: [
-      {
+    decorations: [{
         id: 0,
         img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
         name: "decoration1"
@@ -163,8 +186,7 @@ export default new Vuex.Store({
         name: "decoration3"
       },
     ],
-    types: [
-      {
+    types: [{
         id: 0,
         img: "../assets/cozinha.jpg",
         name: "Bar"
@@ -256,8 +278,7 @@ export default new Vuex.Store({
       }
       if (!state.userExist) {
         alert("Conta não existe")
-      }
-      else {
+      } else {
         state.userExist === false
       }
 
@@ -327,17 +348,17 @@ export default new Vuex.Store({
       }
     },
     RENT_ROOM: (state, payload) => {
-      state.rooms.push({
+      state.roomRents.push({
         id: payload.id,
-        types: payload.types,
-        day: payload.day,
-        time: payload.time,
-        duration: payload.duration,
-        userMail: payload.userMail,
-        state: 0,
+          room: payload.room,
+          day: payload.day,
+          time: payload.time,
+          duration: payload.duration,
+          userName: payload.userName,
+          userMail: payload.userMail,
+        state: "Pendente",
       });
-      localStorage.setItem("rooms", JSON.stringify(state.rooms))
-      alert("state.rooms")
+      localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
     },
     ADD_RESERVATION: (state, payload) => {
       state.reservations.push({
@@ -378,7 +399,7 @@ export default new Vuex.Store({
       return state.reservations.length ? state.reservations[state.reservations.length - 1].id : 0
     },
     getLastIdRooms(state) {
-      return state.rooms.length ? state.rooms[state.rooms.length - 1].id : 0
+      return state.roomRents.length ? state.roomRents[state.roomRents.length - 1].id : 0
     },
     getLoggedUserEmail(state) {
       return state.loggedUser[0].email

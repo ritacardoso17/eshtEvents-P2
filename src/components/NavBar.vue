@@ -11,48 +11,26 @@
           <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
         </li>
       </ul>
-
-      <!-- <a class="nav-link" v-b-modal.modal-1 id="login">Iniciar Sessão</a> -->
-      <!--  <b-button @click="showModal" ref="btnShow" v-if="this.$store.state.loggedUser.length == 0">Iniciar Sessão</b-button> -->
-  <a href="Profile">
+  <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
       <img :src="imgProfile" style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;" class="img-fluid" id="camp" alt />
      </a>
-      <router-link to="/login" v-if="this.$store.state.loggedUser.length == 0">LOGIN</router-link>
-      <a id="logout" @click="logout()" v-if="this.$store.state.loggedUser.length != 0">LOGOUT</a>
-
-
-      <!-- 
-      <b-modal id="modal-1" hide-footer hide-header-close title="Iniciar Sessão">
-        <div class="form-group">
-          <b-button @click="hideModal" id="x1" style="background-color:transparent" class="border-0"><b-img src="../assets/noun_X_2290001.png" style="width: 30px"> </b-img></b-button>
-          <b-button @click="hideModal" id="x2" style="background-color:transparent" class="border-0"><b-img src="../assets/noun_X_2290001.png" style="width: 30px"> </b-img></b-button>
-          <form v-on:submit.prevent="login()">
-            <label for="txtEmailLogin" class="emailLogin">E-mail:</label>
-            <input type="email" class="form-control" id="txtEmailLogin" placeholder="Insira o seu e-mail"
-              v-model="email" required />
-            <label for="txtPasswordLogin" class="passLogin">Palavra-Chave:</label>
-            <input type="password" class="form-control" id="txtPasswordLogin" placeholder="Insira a sua palavra-chave"
-              v-model="password" required />
-            <b-button type="submit" class="btn btn-primary float-right" id="btnLogin">Entrar</b-button>
-            <router-link tag="a" id="join" :to="{ name: 'register' }">Ainda não estás registado? Junta-te a nós!
-            </router-link>
-          </form>
-        </div>
-      </b-modal> -->
+      <router-link to="/login" v-if="this.$store.state.loggedUser.length == 0" id="loginBtn">Iniciar Sessão</router-link>
+      <a id="logout" @click="logout()" v-if="this.$store.state.loggedUser.length != 0">Terminar Sessão</a>
 
     </nav>
     <!--/.Navbar-->
     <!--Navbar-->
     <nav class="navbar" id="navBar2">
-      <div class="container" style="justify-content: center">
+      <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
           <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
             <router-link class="link" to="/menuAdmin">Area Administrador</router-link>
+            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
             <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
             <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
             <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
-            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
+            
           </span>
           <span v-else>
              <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
@@ -134,77 +112,12 @@
     height: auto;
   }
 
-  #join {
-    font-size: 80%;
-    font-family: GeosansLight;
-    color: #000;
-  }
-
-  #x1 {
-    position: relative;
-    width: 30px;
-    height: auto;
-    top: -65px;
-  }
-
-  #x2 {
-    position: relative;
-    width: 30px;
-    height: auto;
-    top: -65px;
-    left: 405px;
-  }
-
-  #txtEmailLogin {
-    position: relative;
-    width: 250px;
-    left: 130px;
-    top: -43px;
-  }
-
-  #txtPasswordLogin {
-    position: relative;
-    width: 250px;
-    left: 130px;
-    top: -45px;
-  }
-
-  .emailLogin {
-    font-family: GeosansLight;
-    margin-left: 80px;
-  }
-
-  .passLogin {
-    font-family: GeosansLight;
-    margin-left: 30px;
-  }
-
-  #btnLogin {
-    position: relative;
-    width: 80px;
-    height: 30px;
-    font-size: 70%;
-    color: white;
-    white-space: nowrap;
-    padding: 2px;
-    left: -10px;
-    background-color: #232323;
-    font-family: GeosansLight;
-  }
-
-  #btnLogin:hover {
-    color: white;
-    border: 2px solid;
-    border-color: #daaa29;
-    background-color: #000;
-  }
-
   #camp {
     width: 10%;
     height: auto;
   }
 
-  .container {
+  #container1 {
     padding: 20px;
     padding-bottom: 0;
     padding-top: 0;
@@ -251,10 +164,14 @@
     color: #232323;
   }
 
-  #login {
+  #loginBtn {
     color: black !important;
+    font-family: geosanslight;
   }
-
+#logout{
+  color: black !important;
+    font-family: geosanslight;
+}
   .link{
     padding: 20px;
   }
