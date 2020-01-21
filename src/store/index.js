@@ -57,7 +57,7 @@ export default new Vuex.Store({
         id: 2,
         img: require('../assets/transferir.jpg'),
         name: "Menu K",
-        type: "coffeebreak"
+        type: "Coffee Break"
       },
       {
         id: 3,
@@ -120,7 +120,7 @@ export default new Vuex.Store({
         type: "Jantar"
       },
     ],
-    eventType: ["Coffee Break","Almoço","Jantar","Porto de Honra"],
+    eventType: ["Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
     reservations: [
       { id: 0, user: "Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", extra: [], state: 0 }
     ],
@@ -197,6 +197,11 @@ export default new Vuex.Store({
       id: 2,
       name: "flores"
     }
+    ],
+    componentMenu: [
+      { id: 1, name: "Leite" },
+      { id: 2, name: "Cafe" },
+      { id: 3, name: "Bolo de Laranja" }
     ]
   },
 
@@ -307,6 +312,20 @@ export default new Vuex.Store({
 
       }
     },
+    ADD_MENU: (state, payload) => {
+      if (!state.foodMenus.some(foodMenu => foodMenu.name === payload.name)) {
+        state.foodMenus.push({
+          id: payload.id,
+          name: payload.name,
+          components:payload.components
+        });
+        localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
+        alert("Menu Criado")
+      } else {
+        alert("Ja existe um menu com esse nome")
+
+      }
+    },
     RENT_ROOM: (state, payload) => {
       state.rooms.push({
         id: payload.id,
@@ -339,7 +358,7 @@ export default new Vuex.Store({
         uniform: payload.uniform
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
- 
+
     },
   },
   getters: {
@@ -352,8 +371,11 @@ export default new Vuex.Store({
     getLastIdWorkshops(state) {
       return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
     },
+    getLastIdMenu(state) {
+      return state.foodMenus.length ? state.foodMenus[state.foodMenus.length - 1].id : 0
+    },
     getLastIdEvents(state) {
-      return state. reservations.length ? state. reservations[state. reservations.length - 1].id : 0
+      return state.reservations.length ? state.reservations[state.reservations.length - 1].id : 0
     },
     getLastIdRooms(state) {
       return state.rooms.length ? state.rooms[state.rooms.length - 1].id : 0
