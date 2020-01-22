@@ -3,10 +3,10 @@
     <b-form>
       <div class="form-group">
         <input type="search" v-model="searchTxt" id="filterTxt" placeholder="Escreve aqui..." />
-        <b-button id="btnFilter">Pesquisar</b-button>
+        <!-- <b-button id="btnFilter">Pesquisar</b-button> -->
       </div>
       <div class="form-group">
-        <select class="custom-select" id="sltFilter" v-model="filterSlt"> 
+        <select class="custom-select" id="sltFilter" v-model="filterSlt">
           <option value="todos" selected>Todos</option>
           <option value="coffee break">Coffee Break</option>
           <option value="almoço">Almoço</option>
@@ -60,8 +60,7 @@ export default {
   },
   computed: {
     filterMenus() {
-      return this.menus.filter(
-        menu => {
+      return this.menus.filter(menu => {
         let filterResult = true;
 
         if (this.searchTxt == "") {
@@ -83,6 +82,9 @@ export default {
 }
 #cards {
   margin: 50px;
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
 }
 #cardBtn {
   position: relative;

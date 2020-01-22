@@ -333,23 +333,26 @@ export default {
   left: 590px;
 }
 #header1 {
-  background-color: #000;
+  background-color: #232323;
   color: white;
   height: 50px;
   text-align: justify;
+  font-family: GeosansLight;
   font-size: 150%;
 }
 #header2 {
-  background-color: #000;
+  background-color: #232323;
   color: white;
   height: 50px;
+  font-family: GeosansLight;
   text-align: end;
   font-size: 150%;
 }
 #header3 {
-  background-color: #000;
+  background-color: #232323;
   color: white;
   height: 50px;
+  font-family: GeosansLight;
   text-align: justify;
   font-size: 150%;
 }

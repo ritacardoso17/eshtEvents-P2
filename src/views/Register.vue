@@ -90,12 +90,11 @@
             v-model="birth"
           />
         </div>
-        <input type="link" v-model="imgPerfil" :placeholder="imgPerfil">
+        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil">
         <div id="avatar">
           <img id="avatar1" :src="imgPerfil" />
-          <!-- FALTA UM INPUT PARA A IMAGEM DO USER -->
         </div>
-        <p href id="addAvatar">Pré-Visualizar Avatar</p>
+        <p href id="addAvatar">Insira Url do avatar</p>
         <button type="submit" class="btnConf">Confirmar</button>
         <!-- <button type="button" class="btn btn-link float-right">
           <router-link to="/login">Login</router-link>
@@ -176,6 +175,25 @@ export default {
   /* -webkit-filter: blur(2px);
   filter: blur(2px); */
 }
+#registerPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Channel;
+  font-size: 210%;
+  color: black;
+}
+#bar {
+  position: absolute;
+  opacity: 0.6;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1263px;
+  height: 90px;
+  background-color: white;
+}
 .form-control {
   border-top-style: hidden;
   border-right-style: hidden;
@@ -192,7 +210,7 @@ export default {
   background-color: #000;
   font-family: GeosansLight;
   top: 50px;
-  left: 490px;
+  left: 380px;
 }
 .btn:hover {
   color: white;
@@ -308,9 +326,14 @@ export default {
 #addAvatar {
   position: absolute;
   color: #000;
-  left: -265px;
-  top: 390px;
+  left: -275px;
+  top: 300px;
   font-size: 120%;
   font-family: GeosansLight;
+}
+#urlAvatar{
+  position: absolute;
+  left: -300px;
+  top: 340px;
 }
 </style>

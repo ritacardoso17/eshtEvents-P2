@@ -25,6 +25,7 @@
           <br />
           <br />
           <api />
+          <br><br>
         </div>
         <div class="col-sm-4">
           <b-img src="../assets/bandeja.preto.png" class="bandeja2"></b-img>
