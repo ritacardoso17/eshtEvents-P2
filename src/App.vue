@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <div v-if="this.$route.name !== 'inicialPage' && this.$route.name !== 'login'">
+    <div v-if="this.$route.name !== 'inicialPage' && this.$route.name !== 'login' && this.$route.name !== 'about'">
       <NavBar />
       <router-view></router-view>
       <Footer />
     </div>
-    <div v-else-if="this.$route.name === 'login'">
+    <div v-else-if="this.$route.name === 'login'" >
       <NavBar />
-            <router-view></router-view>
+      <router-view></router-view>
+    </div>
+    <div v-else-if=" this.$route.name === 'about'">
+      <NavBar />
+      <router-view></router-view>
     </div>
     <div v-else>
       <router-view></router-view>

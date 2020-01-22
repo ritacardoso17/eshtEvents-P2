@@ -121,6 +121,7 @@ export default {
   border: 2px solid black;
   margin-right: 175px;
   margin-top: 40px;
+  
 }
 #btnLogin:hover {
   color: white;

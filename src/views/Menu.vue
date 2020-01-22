@@ -8,7 +8,8 @@
     <h3 id="titleMenu">Menus</h3>
     <hr id="lineRight2" />
 
-    <menuMaker/>
+    
+    <menuMaker />
   </div>
 </template>
 
@@ -16,17 +17,17 @@
 import menuMaker from "@/components/menuMaker.vue";
 
 export default {
-    name: "menus",
-    components: {
+  name: "menus",
+  components: {
     menuMaker
   }
-}
+};
 </script>
 
 <style>
 #lineLeft2 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: -15px;
@@ -34,7 +35,7 @@ export default {
 }
 #lineRight2 {
   position: relative;
-  background-color: #DAAA29;
+  background-color: #daaa29;
   height: 0.5px;
   width: 150px;
   top: -30px;
@@ -49,4 +50,5 @@ export default {
   position: relative;
   width: 1263px;
 }
+
 </style>

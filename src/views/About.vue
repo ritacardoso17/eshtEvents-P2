@@ -8,28 +8,34 @@
     <h3 id="titule">Sobre Nós</h3>
     <hr id="lineRightW" />
 
-    <p id="whatIs">
-      O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas.
-      Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.
-    </p>
-    <p id="whereIs">
-      Escola Superior de Hotelaria e Turismo <br>
-      Rua D. Sancho I, n.º 981 <br>
-      4480-876 Vila do Conde Portugal <br>
-      T. +351 252 291 700 <br>
-      E. geral@esht.ipp.pt
-    </p>
-    <div class="row">
-        <b-img src="../assets/bandeja.preto.png" class="bandeja2"></b-img>
-      </div>
+    <div class="container">
       <div class="row">
-        <b-img src="../assets/eshtEvents.dourado.png" class="douradoLogo2" />
-      </div>
-      <div id="subTitle2">
-        <h5>Eventos & Catering</h5>
-      </div>
+        <div class="col">
+          <p id="whatIs">
+            O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas.
+            Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.
+          </p>
+          <p id="whereIs">
+            Escola Superior de Hotelaria e Turismo
+            <br />Rua D. Sancho I, n.º 981
+            <br />4480-876 Vila do Conde Portugal
+            <br />T. +351 252 291 700
+            <br />E. geral@esht.ipp.pt
+          </p>
+          <br />
+          <br />
+          <api />
+        </div>
+        <div class="col-sm-4">
+          <b-img src="../assets/bandeja.preto.png" class="bandeja2"></b-img>
+          <b-img src="../assets/eshtEvents.dourado.png" class="douradoLogo2" />
 
-    <api/>
+          <div id="subTitle2">
+            <h5>Eventos & Catering</h5>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -40,8 +46,7 @@ export default {
   name: "Api",
   components: {
     api
-  },
-
+  }
 };
 </script>
 
@@ -71,7 +76,7 @@ export default {
   font-family: Channel;
   color: black;
 }
-#whatIs{
+#whatIs {
   font-family: GeosansLight;
   font-size: 110%;
   text-align: justify;
@@ -79,7 +84,7 @@ export default {
   padding-top: 20px;
   padding-left: 100px;
 }
-#whereIs{
+#whereIs {
   font-family: GeosansLight;
   font-size: 110%;
   text-align: justify;
@@ -91,24 +96,21 @@ export default {
   text-align: center;
   font-family: GeosansLight;
   position: relative;
-  top: -290px;
-  right: -270px;
-
+  top: 150px;
+  right: 120px;
 }
 .bandeja2 {
   width: 100px;
   height: auto;
   position: relative;
   display: block;
-  top: -300px;
-  right: -850px;
+  top: 150px;
 }
 .douradoLogo2 {
   width: 250px;
   position: relative;
   height: auto;
-  display: block;
-  top: -290px;
-  right: -780px;
+  top: 150px;
+  right: 120px;
 }
 </style>
