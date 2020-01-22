@@ -11,7 +11,7 @@
         v-model="title"
       />
 
-      <b-form-label for="txtVacancies" class="nameLabel">Imagem do Workshop:</b-form-label>
+      <b-form-label for="txtImage" class="nameLabel">Imagem do Workshop:</b-form-label>
       <b-form-input
         type="url"
         class="form-control-center"
@@ -77,7 +77,7 @@
 export default {
   name: "Add",
   data: () => ({
-    id: 0,
+    id: this. getLastIdWorkshops() + 1,
     title: "",
     img: "",
     date: "",

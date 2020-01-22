@@ -42,7 +42,12 @@ export default {
     },
 
     editStars() {
-      
+      /* if (src = "../assets/star.png") {
+        src="../assets/paintedStar.png"
+
+        this.reservation =  JSON.parse(localStorage.getItem("reservations"));
+
+      } */
     }
   },
   computed: {
@@ -55,18 +60,6 @@ export default {
 
 <style>
 #star1{
-  height: 30px
-}
-#star2{
-  height: 30px
-}
-#star3{
-  height: 30px
-}
-#star4{
-  height: 30px
-}
-#star5{
-  height: 30px
-}
+  height: 40px
+  }
 </style>
