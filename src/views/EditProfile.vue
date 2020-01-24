@@ -23,7 +23,7 @@
           v-model="confirmPassword"
           required
         />
-        <button type="submit" id="edit">Confirmar</button>
+        <button type="submit" id="edit" href="Profile">Confirmar</button>
       </form>
     </div>
   </div>

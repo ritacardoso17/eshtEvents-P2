@@ -15,6 +15,7 @@
       <b-tabs align="center" small card id="tab1">
         <!-- TAB DA ESCOLHA DO ESPAÇO -->
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
+          <b-progress id="progress" :value="33" variant="warning" :striped="striped"></b-progress>
           <br />
           <p class="guide7">
             ▶
@@ -31,6 +32,7 @@
         <!-- TAB DA INFO -->
         <b-tab title="Informação">
           <form action>
+            <b-progress id="progress" :value="66" variant="warning" :striped="striped"></b-progress>
             <div class="form-check">
               <p class="guide8">▶ Data e hora para o aluguer</p>
               <b-form-input v-model="day" type="date" id="rentDate" required></b-form-input>
@@ -68,6 +70,7 @@
         </b-tab>
         <!-- TAB DO RESUMO -->
         <b-tab title="Resumo">
+          <b-progress id="progress" :value="100" variant="warning" :striped="striped"></b-progress>
           <h3 class="resume">
             <b>Resumo</b>
           </h3>
@@ -177,6 +180,11 @@ export default {
 .catering {
   position: relative;
   width: 1263px;
+}
+
+#progress{
+  width: 400px;
+  margin-left: 400px;
 }
 
 #lineLeftR {

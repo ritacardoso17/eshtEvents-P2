@@ -9,9 +9,16 @@
       </template>
     </b-table>
 
-    <b-modal id="modalRooms" centered size="m" title="Sua opinião" hide-header-close>
+    <b-modal id="modalRooms" centered size="m" title="Sua opinião" hide-header-close hide-footer>
       <div class="form-group">
-        <textarea name="Opinião" id="txtOpinion" cols="60" rows="5" placeholder="Escreva a sua opinião"></textarea>
+        <textarea
+          name="Opinião"
+          id="txtOpinion"
+          cols="60"
+          rows="5"
+          placeholder="Escreva a sua opinião"
+        ></textarea>
+        <button id="sendOpinion" @click="sendOpinion()">Enviar Opinião</button>
       </div>
     </b-modal>
   </div>
@@ -25,7 +32,7 @@ export default {
       fields: [
         { key: "room", label: "Espaço", sortable: true },
         { key: "day", label: "Dia", sortable: true },
-        { key: "time", label: "Hora"},
+        { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
         { key: "remove", label: "Remover" },
         { key: "opinion", label: "Opinião" }
@@ -33,7 +40,10 @@ export default {
     };
   },
   created() {
-    localStorage.setItem("roomRents", JSON.stringify(this.$store.state.roomRents));
+    localStorage.setItem(
+      "roomRents",
+      JSON.stringify(this.$store.state.roomRents)
+    );
     if (localStorage.getItem("roomRents")) {
       this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
     }
@@ -42,22 +52,37 @@ export default {
   },
   methods: {
     getUser() {
-      return this.$store.state.loggedUser;
+      return this.$store.getters.getUser;
+    },
+    getUserMail() {
+      return this.$store.getters.getLoggedUserEmail;
     },
     getRooms() {
       return this.$store.state.rooms;
     },
     removeRooms(id) {
-        for (let i in this.tbRooms) {
-          if (this.tbRooms[i].id === id) {
-            this.tbRooms = this.tbRooms.filter(tbRooms => this.tbRooms[i].id !== tbRooms.id)
-            localStorage.setItem("roomRents", JSON.stringify(this.tbRooms))
-            this.$store.state.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
-            this.tbRooms = this.$store.state.roomRents
-            alert("Removeu")
-          }
+      for (let i in this.tbRooms) {
+        if (this.tbRooms[i].id === id) {
+          this.tbRooms = this.tbRooms.filter(
+            tbRooms => this.tbRooms[i].id !== tbRooms.id
+          );
+          localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
+          this.$store.state.tbRooms = JSON.parse(
+            localStorage.getItem("roomRents")
+          );
+          this.tbRooms = this.$store.state.roomRents;
+          alert("Removeu");
         }
       }
+    },
+    sendOpinion() {
+      this.$store.commit("ADD_OPINION", {
+        id: this.getLastIdRooms() + 1,
+        userMail: this.getLoggedUserEmail(),
+        opinions: this.opinions
+      });
+      alert("Mandei uma opinião");
+    }
   },
   computed: {
     row() {

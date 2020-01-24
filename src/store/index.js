@@ -227,7 +227,7 @@ export default new Vuex.Store({
       { id: 2, name: "Cafe" },
       { id: 3, name: "Bolo de Laranja" }
     ],
-    opinion: []
+    opinions: []
   },
 
 
@@ -399,6 +399,14 @@ export default new Vuex.Store({
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
 
     },
+    ADD_OPINION: (state, payload) => {
+      state.reservations.push({
+        id: payload.id,
+        userMail: payload.userMail,
+        opinions: payload.opinions,
+      });
+      localStorage.setItem("opinions", JSON.stringify(state.opinions))
+    },
   },
   getters: {
     getTypeUser(state) {
@@ -432,7 +440,7 @@ export default new Vuex.Store({
       return state.loggedUser[0];
     },
     getOpinion(state){
-      return state.opinion.length ? state.opinion[state.opinion.length - 1].id : 0
-    }
+      return state.opinions.length ? state.opinions[state.opinions.length - 1].id : 0
+    },
   }
 });
