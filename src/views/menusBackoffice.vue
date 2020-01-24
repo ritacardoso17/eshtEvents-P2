@@ -1,14 +1,30 @@
 <template>
   <div class="bckMenus">
+    <h1>Gestão dos Menus</h1>
     <b-button class="btnAdd" size="sm" :to="{path: '/addMenu' }" >Adicionar Menu</b-button>
     <br> <br>
+     <!--GERA TABELA COM DADOS DOS MENUS-->
     <b-table bordered hover :items="this.menus" :fields="this.fields">
-      <!-- <template v-slot:cell(typeUser)="row">
-        <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
-      </b-form-select>
-      </template>-->
       <template v-slot:cell(options)="row">
-        <b-button class="btnRemove" size="sm" @click="removeMenu(row.item.id)">Eliminar Menu</b-button>
+         <b-button variant="info" class="btnShow" size="sm" @click="row.toggleDetails" style="left:30px; margin:7px">Mostrar Menu</b-button>
+         <b-button variant="danger" class="btnRemove" size="sm" @click="removeMenu(row.item.id)">Eliminar Menu</b-button>
+        
+      </template>
+      <!-- Mostar Detalhes do MENU -->
+       <template v-slot:row-details="row">
+        <b-card>
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right"><b>Componentes:</b>
+            <li>{{ row.item.components}}</li></b-col>
+          </b-row>
+
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right"><b>Nome:</b>{{ row.item.name }}</b-col>
+            <b-col></b-col>
+          </b-row>
+
+          <!-- <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button> -->
+        </b-card>
       </template>
     </b-table>
   </div>
@@ -19,13 +35,10 @@
     data() {
       return {
         menus: [],
-        fields: [{
-            key: "id",
-            lable: "id"
-          },
+        fields: [
           {
             key: "name",
-            lable: "name",
+            lable: "nome",
             sortable: "true"
           },
           {
@@ -52,7 +65,7 @@
             this.menus = this.menus.filter(menus => this.menus[i].id !== menus.id)
             localStorage.setItem("foodMenus", JSON.stringify(this.menus))
             this.$store.state.menus = JSON.parse(localStorage.getItem("foodMenus"));
-            this.menus = this.$store.state.foodMenus
+            alert("MENU REMOVIDO")
           }
         }
       }
