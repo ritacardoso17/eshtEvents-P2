@@ -88,10 +88,10 @@ export default {
       );
     }
     
-    if (!localStorage.getItem("rentRooms")) {
+    if (!localStorage.getItem("roomRents")) {
       localStorage.setItem(
-        "rentRooms",
-        JSON.stringify(this.$store.state.workshops)
+        "roomRents",
+        JSON.stringify(this.$store.state.roomRents)
       );
     }
   },
