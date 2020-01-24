@@ -44,6 +44,25 @@
                 id="rentDuration"
                 required
               ></b-form-input>
+              <p class="guide10">▶ Motivo da reserva</p>
+              <textarea id="rentReason" cols="30" rows="2" v-model="reason"></textarea>
+
+              <!-- <b-form-textarea
+                id="textarea"
+                v-model="text"
+                placeholder="Enter something..."
+                rows="2"
+                max-rows="6"
+              ></b-form-textarea>
+
+              <pre class="mt-3 mb-0">{{ text }}</pre> 
+              
+              data(){
+                return{
+                  text: ''
+                }
+              } -->
+
             </div>
           </form>
         </b-tab>
@@ -61,7 +80,12 @@
           <p id="pDuration">▶ Duração: {{duration}}h</p>
           <p id="room">
             <b>Espaço</b>
+            <br />
             {{slctRoom}}
+          </p>
+          <p id="pReason">
+            <b>Motivo</b><br>
+            {{reason}}
           </p>
           <a
             id="confirm"
@@ -90,10 +114,11 @@ export default {
     state: 0,
     slctRoom: "",
     rooms: [],
-    roomRents:[]
+    roomRents: [],
+    reason: "",
   }),
   created() {
-    window.addEventListener("unload", this.saveStorage)
+    window.addEventListener("unload", this.saveStorage);
 
     localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
     if (localStorage.getItem("rooms")) {
@@ -106,18 +131,16 @@ export default {
       );
       this.roomRents = this.$store.state.roomRents;
     }
-
-    
   },
   methods: {
     saveStorage() {
-        localStorage.setItem(
-          "roomRents",
-          JSON.stringify(this.$store.state.roomRents)
-        );
-      },
+      localStorage.setItem(
+        "roomRents",
+        JSON.stringify(this.$store.state.roomRents)
+      );
+    },
 
-      getLoggedUserEmail() {
+    getLoggedUserEmail() {
       return this.$store.getters.getLoggedUserEmail;
     },
     getTypeById(type) {
@@ -141,7 +164,8 @@ export default {
         time: this.time,
         duration: this.duration,
         userName: this.$store.state.loggedUser[0].name,
-        userMail: this.getLoggedUserEmail()
+        userMail: this.getLoggedUserEmail(),
+        reason: this.reason
       });
       alert("adicionei reserva de espaço");
     }
@@ -265,6 +289,15 @@ export default {
   font-size: 110%;
 }
 
+.guide10 {
+  font-family: GeosansLight;
+  text-align: justify;
+  position: relative;
+  top: -70px;
+  left: 700px;
+  font-size: 110%;
+}
+
 #rentDate {
   position: relative;
   width: 200px;
@@ -283,6 +316,13 @@ export default {
   position: relative;
   left: 700px;
   top: -117px;
+}
+
+#rentCause {
+  width: 200px;
+  position: relative;
+  left: 200px;
+  top: -80px;
 }
 
 /* RESUMO TAB */

@@ -226,7 +226,8 @@ export default new Vuex.Store({
       { id: 1, name: "Leite" },
       { id: 2, name: "Cafe" },
       { id: 3, name: "Bolo de Laranja" }
-    ]
+    ],
+    opinion: []
   },
 
 
@@ -373,6 +374,7 @@ export default new Vuex.Store({
         userName: payload.userName,
         userMail: payload.userMail,
         state: "Pendente",
+        reason: payload.reason,
       });
       localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
     },
@@ -422,7 +424,6 @@ export default new Vuex.Store({
     },
     getLoggedUserEmail(state) {
       return state.loggedUser[0].email
-
     },
     getLoggedUserPassword(state) {
       return state.loggedUser[0].password
@@ -430,5 +431,8 @@ export default new Vuex.Store({
     getUser(state) {
       return state.loggedUser[0];
     },
+    getOpinion(state){
+      return state.opinion.length ? state.opinion[state.opinion.length - 1].id : 0
+    }
   }
 });

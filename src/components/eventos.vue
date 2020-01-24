@@ -29,8 +29,9 @@ export default {
     return {
       tbEvents: [],
       fields: [
-        { key: "type", label: "Tipo", sortable: true },
+        { key: "eventType", label: "Tipo", sortable: true },
         { key: "day", label: "Dia", sortable: true },
+        { key: "time", label: "Hora"},
         { key: "state", label: "Estado", sortable: true },
         { key: "remove", label: "Remover" },
         { key: "opinion", label: "Opinião" }

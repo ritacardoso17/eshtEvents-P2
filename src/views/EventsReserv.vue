@@ -39,7 +39,7 @@
               <input type="date" class="form-control" id="txtDate" required v-model="day" />
               <input type="time" class="form-control" id="txtTime" required v-model="time" />
               <label for class="personsLabel">▶ Número de Pessoas</label>
-              <input type="number" class="form-control" id="txtPersons" required placeholder="0" min="0"
+              <input type="number" class="form-control" id="txtPersons" required placeholder="0" min="0" max="100"
                 v-model="persons" />
               <label for class="durationLabel">▶ Tempo de duração</label>
               <input type="number" max="12" min="1" class="form-control" id="txtDuration" required v-model="duration" />

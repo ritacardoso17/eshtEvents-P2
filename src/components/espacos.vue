@@ -23,8 +23,9 @@ export default {
     return {
       tbRooms: [],
       fields: [
-        { key: "type", label: "Tipo", sortable: true },
+        { key: "room", label: "Espaço", sortable: true },
         { key: "day", label: "Dia", sortable: true },
+        { key: "time", label: "Hora"},
         { key: "state", label: "Estado", sortable: true },
         { key: "remove", label: "Remover" },
         { key: "opinion", label: "Opinião" }
