@@ -190,7 +190,7 @@
         extras: [],
         user: "",
         curMenu: "",
-        state: 0,
+        state: "Pendente",
         tabIndex: 1,
         title: "",
         menus: []
@@ -199,6 +199,7 @@
     created() {
       window.addEventListener("unload", this.saveStorage);
       localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
+
       if (localStorage.getItem("foodMenus")) {
         this.menus = JSON.parse(localStorage.getItem("foodMenus"));
       }
@@ -227,6 +228,9 @@
         );
         this.reservations = this.$store.state.reservations;
       }
+    },
+    updated:{
+      
     },
 
     methods: {
@@ -272,7 +276,7 @@
       },
       eventsReserv() {
         this.$store.commit("ADD_RESERVATION", {
-          id: this.getLastIdEvents() + 1,
+          id: this.getLastIdEvents() +1,
           day: this.day,
           time: this.time,
           people: this.persons,
