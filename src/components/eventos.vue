@@ -1,13 +1,25 @@
 <template>
   <div>
-    <b-table striped hover :items="this.objects" :fields="this.fields">
-      <template v-slot:cell(change)="row">
-        <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
+    <b-table striped hover :items="this.tbEvents" :fields="this.fields">
+      <template v-slot:cell(remove)="row">
+        <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Remover</b-button>
       </template>
-      <template v-slot:cell(rate)="row">
-        <img src="../assets/star.png" id="star1" @click="editStars()" alt />
+      <template v-slot:cell(opinion)="row">
+        <b-button id="opinion" v-b-modal.modalEvents>Opinião</b-button>
       </template>
     </b-table>
+
+    <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close>
+      <div class="form-group">
+        <textarea
+          name="Opinião"
+          id="txtOpinion"
+          cols="60"
+          rows="5"
+          placeholder="Escreva a sua opinião"
+        ></textarea>
+      </div>
+    </b-modal>
   </div>
 </template>
 
@@ -15,20 +27,23 @@
 export default {
   data() {
     return {
-      objects: [],
+      tbEvents: [],
       fields: [
-        { key: "type", lable: "type", sortable: true },
-        { key: "day", lable: "day", sortable: true },
-        { key: "state", lable: "state", sortable: true },
-        { key: "change" },
-        { key: "rate" }
+        { key: "type", label: "Tipo", sortable: true },
+        { key: "day", label: "Dia", sortable: true },
+        { key: "state", label: "Estado", sortable: true },
+        { key: "remove", label: "Remover" },
+        { key: "opinion", label: "Opinião" }
       ]
     };
   },
   created() {
-    localStorage.setItem("reservations", JSON.stringify(this.$store.state.reservations));
+    localStorage.setItem(
+      "reservations",
+      JSON.stringify(this.$store.state.reservations)
+    );
     if (localStorage.getItem("reservations")) {
-      this.objects = JSON.parse(localStorage.getItem("reservations"));
+      this.tbEvents = JSON.parse(localStorage.getItem("reservations"));
     }
 
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
@@ -40,26 +55,26 @@ export default {
     getReservations() {
       return this.$store.state.reservations;
     },
-
-    editStars() {
-      /* if (src = "../assets/star.png") {
-        src="../assets/paintedStar.png"
-
-        this.reservation =  JSON.parse(localStorage.getItem("reservations"));
-
-      } */
+    removeEvents(id) {
+      for (let i in this.tbEvents) {
+        if (this.tbEvents[i].id === id) {
+          this.tbEvents = this.tbEvents.filter(
+            tbEvents => this.tbEvents[i].id !== tbEvents.id
+          );
+          localStorage.setItem("reservations", JSON.stringify(this.tbEvents));
+          this.$store.state.tbEvents = JSON.parse(
+            localStorage.getItem("reservations")
+          );
+          this.tbEvents = this.$store.state.reservations;
+          alert("Removeu");
+        }
+      }
     }
   },
   computed: {
     row() {
-      return this.objects.length;
+      return this.tbEvents.length;
     }
   }
 };
 </script>
-
-<style>
-#star1{
-  height: 40px
-  }
-</style>

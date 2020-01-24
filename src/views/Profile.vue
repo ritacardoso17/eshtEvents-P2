@@ -95,24 +95,6 @@ export default {
     },
     getRooms() {
       return this.$store.state.rooms;
-    },
-    editStars() {
-      let star1 = document.addEventListener("click");
-      let star2 = document.addEventListener("click");
-      let star3 = document.addEventListener("click");
-      let star4 = document.addEventListener("click");
-      let star5 = document.addEventListener("click");
-      if (star1) {
-        /* src da primeira estrela mudar para preenchido */
-      } else if (star2) {
-        /* src da 1 e 2 estrelas mudar para preenchido */
-      } else if (star3) {
-        /* src da 1, 2 e 3 estrelas mudar para preenchido */
-      } else if (star4) {
-        /* src da 1, 2, 3 e 4 estrelas mudar para preenchido */
-      } else if (star5) {
-        /* src da 1, 2, 3, 4 e 5 estrelas mudar para preenchido */
-      }
     }
   }
 };

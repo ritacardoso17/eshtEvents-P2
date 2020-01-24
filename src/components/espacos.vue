@@ -1,34 +1,40 @@
 <template>
   <div>
-    <b-table striped hover :items="this.objects" :fields="this.fields">
-      <template v-slot:cell(change)="row">
-        <b-button class="btnRemove" size="sm" @click="editRoom()">Alterar</b-button>
+    <b-table striped hover :items="this.tbRooms" :fields="this.fields">
+      <template v-slot:cell(remove)="row">
+        <b-button class="btnRemove" size="sm" @click="removeRooms(row.item.id)">Remover</b-button>
       </template>
-      <template v-slot:cell(rate)="row">
-        <img src="../assets/star.png" id="star1" @click="editStars()" alt />
+      <template v-slot:cell(opinion)="row">
+        <b-button id="opinion" v-b-modal.modalRooms>Opinião</b-button>
       </template>
     </b-table>
-  </div>  
+
+    <b-modal id="modalRooms" centered size="m" title="Sua opinião" hide-header-close>
+      <div class="form-group">
+        <textarea name="Opinião" id="txtOpinion" cols="60" rows="5" placeholder="Escreva a sua opinião"></textarea>
+      </div>
+    </b-modal>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      objects: [],
+      tbRooms: [],
       fields: [
-        { key: "type", lable: "type", sortable: true },
-        { key: "day", lable: "day", sortable: true },
-        { key: "state", lable: "state", sortable: true },
-        { key: "change" },
-        { key: "rate" }
+        { key: "type", label: "Tipo", sortable: true },
+        { key: "day", label: "Dia", sortable: true },
+        { key: "state", label: "Estado", sortable: true },
+        { key: "remove", label: "Remover" },
+        { key: "opinion", label: "Opinião" }
       ]
     };
   },
   created() {
-    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
-    if (localStorage.getItem("rooms")) {
-      this.objects = JSON.parse(localStorage.getItem("rooms"));
+    localStorage.setItem("roomRents", JSON.stringify(this.$store.state.roomRents));
+    if (localStorage.getItem("roomRents")) {
+      this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
     }
 
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
@@ -40,14 +46,21 @@ export default {
     getRooms() {
       return this.$store.state.rooms;
     },
-    
-    editStars() {
-      
-    }
+    removeRooms(id) {
+        for (let i in this.tbRooms) {
+          if (this.tbRooms[i].id === id) {
+            this.tbRooms = this.tbRooms.filter(tbRooms => this.tbRooms[i].id !== tbRooms.id)
+            localStorage.setItem("roomRents", JSON.stringify(this.tbRooms))
+            this.$store.state.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
+            this.tbRooms = this.$store.state.roomRents
+            alert("Removeu")
+          }
+        }
+      }
   },
   computed: {
     row() {
-      return this.objects.length;
+      return this.tbRooms.length;
     }
   }
 };
