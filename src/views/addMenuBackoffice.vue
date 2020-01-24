@@ -3,7 +3,7 @@
     <br />
     <h2>Adicionar Menu</h2>
 
-    <b-form  v-on:submit.prevent="addMenu()">
+    <b-form v-on:submit.prevent="addMenu()">
       <!-- NOME -->
       <b-form-group id="input-group-1" label="Nome do Menu:" label-for="input-1"></b-form-group>
       <input type="text" v-model="name" style=" width: 300px;" placeholder="Insira o titulo" />
@@ -16,7 +16,7 @@
 
       <!-- TIPO EVENTO -->
       <b-form-group id="input-group-1" label="Tipo de Evento:" label-for="input-1"></b-form-group>
-      <select>
+      <select v-model="typeEE">
         <option v-for="typeE in eventType" :key="typeE" @click="typeEvent(typeE)">{{typeE}}</option>
       </select>
 
@@ -29,6 +29,17 @@
 
       <b-button type="submit" class="btnConf">Confirmar</b-button>
     </b-form>
+
+    <br />
+    <h2>Adicionar Complemento</h2>
+
+    <b-form v-on:submit.prevent="addComponent()">
+      <!-- NOME -->
+      <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
+      <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
+      <br />
+      <b-button type="submit" class="btnConf">Confirmar</b-button>
+    </b-form>
   </div>
 </template>
 
@@ -39,9 +50,10 @@ export default {
       id: this.getLastIdMenu() + 1,
       name: "",
       img: "",
-      type: "",
+      typeEE: "",
       componentsNew: [],
 
+      nameComponent: "",
       components: [],
       eventType: []
     };
@@ -52,20 +64,24 @@ export default {
       this.$store.state.foodMenus = JSON.parse(
         localStorage.getItem("foodMenus")
       );
-      if (localStorage.getItem("componentMenu")) {
-        this.components = JSON.parse(localStorage.getItem("componentMenu"));
+      if (localStorage.getItem("componentMenus")) {
+        this.components = JSON.parse(localStorage.getItem("componentMenus"));
       }
-      localStorage.setItem("componentMenu",JSON.stringify(this.$store.state.componentMenu));
-     
+      localStorage.setItem(
+        "componentMenus",
+        JSON.stringify(this.$store.state.componentMenus)
+      );
+
       if (localStorage.getItem("eventType")) {
         this.eventType = JSON.parse(localStorage.getItem("eventType"));
       }
-       localStorage.setItem("eventType",JSON.stringify(this.$store.state.eventType));
+      localStorage.setItem(
+        "eventType",
+        JSON.stringify(this.$store.state.eventType)
+      );
     }
   },
-  updated(){
-    alert(this.type)
-  },
+ 
   methods: {
     saveStorage() {
       localStorage.setItem(
@@ -76,21 +92,31 @@ export default {
     getLastIdMenu() {
       return this.$store.getters.getLastIdMenu;
     },
+    getLastIdComponent() {
+      return this.$store.getters.getLastIdComponents;
+    },
     addMenu() {
       this.$store.commit("ADD_MENU", {
         id: this.getLastIdMenu() + 1,
         name: this.name,
         img: this.img,
-        type: this.type,
+        type: this.typeEE,
         components: this.componentsNew
       });
     },
-    typeEvent(tipo){
-        for(let e in this.eventType){
-          if(tipo==this.eventType[e]){
-            this.type=tipo;
-          }
+    typeEvent(tipo) {
+      for (let e in this.eventType) {
+        if (tipo == this.eventType[e]) {
+          this.type = tipo;
+          alert(tipo);
         }
+      }
+    },
+    addComponent() {
+      this.$store.commit("ADD_COMPONENT", {
+        id: this.getLastIdComponent() + 1,
+        name: this.nameComponent
+      });
     }
   }
 };

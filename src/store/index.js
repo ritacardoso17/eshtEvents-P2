@@ -15,134 +15,136 @@ export default new Vuex.Store({
       password: "123",
       birth: "",
       contact: "",
+      imgProfile: "../assets/star.png"
     }],
-    roomRents:[],
+    roomRents: [],
     userExist: false,
     loggedUser: [],
     rooms: [{
-        id: 0,
-        name: "cozinha",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 1,
-        name: "bar",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 2,
-        name: "Novo restaurante",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 3,
-        name: "Restaurante de App",
-        img: require('../assets/imgInicial.jpg')
-      },
+      id: 0,
+      name: "cozinha",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 1,
+      name: "bar",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 2,
+      name: "Novo restaurante",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 3,
+      name: "Restaurante de App",
+      img: require('../assets/imgInicial.jpg')
+    },
     ],
     workshops: [{
-        id: 1,
-        title: "Workshop A",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      },
-      {
-        id: 2,
-        title: "Workshop B",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      },
-      {
-        id: 3,
-        title: "Workshop C",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      }
+      id: 1,
+      title: "Workshop A",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    },
+    {
+      id: 2,
+      title: "Workshop B",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    },
+    {
+      id: 3,
+      title: "Workshop C",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    }
     ],
     foodMenus: [{
-        id: 1,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu L",
-        type: "Coffee Break"
-      },
-      {
-        id: 2,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu K",
-        type: "Coffee Break"
-      },
-      {
-        id: 3,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu J",
-        type: "Coffee Break"
-      },
-      {
-        id: 4,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu I",
-        type: "Coffee Break"
-      },
-      {
-        id: 5,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu H",
-        type: "Coffee Break"
-      },
-      {
-        id: 6,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu G",
-        type: "Coffee Break"
-      },
-      {
-        id: 7,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu F",
-        type: "Coffee Break"
-      },
-      {
-        id: 8,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu E",
-        type: "Coffee Break"
-      },
-      {
-        id: 9,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu D",
-        type: "Coffee Break"
-      },
-      {
-        id: 10,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu A",
-        type: "Coffee Break"
-      },
-      {
-        id: 11,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu B",
-        type: "Jantar"
-      },
-      {
-        id: 12,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu C",
-        type: "Jantar"
-      },
+      id: 1,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu L",
+      type: "Coffee Break",
+      components:["Cafe","Leite"]
+    },
+    {
+      id: 2,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu K",
+      type: "Coffee Break"
+    },
+    {
+      id: 3,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu J",
+      type: "Coffee Break"
+    },
+    {
+      id: 4,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu I",
+      type: "Coffee Break"
+    },
+    {
+      id: 5,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu H",
+      type: "Coffee Break"
+    },
+    {
+      id: 6,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu G",
+      type: "Coffee Break"
+    },
+    {
+      id: 7,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu F",
+      type: "Coffee Break"
+    },
+    {
+      id: 8,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu E",
+      type: "Coffee Break"
+    },
+    {
+      id: 9,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu D",
+      type: "Coffee Break"
+    },
+    {
+      id: 10,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu A",
+      type: "Coffee Break"
+    },
+    {
+      id: 11,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu B",
+      type: "Jantar"
+    },
+    {
+      id: 12,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu C",
+      type: "Jantar"
+    },
     ],
     eventType: ["Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
     reservations: [
@@ -171,41 +173,41 @@ export default new Vuex.Store({
       },
     ],
     decorations: [{
-        id: 0,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration1"
-      },
-      {
-        id: 1,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration2"
-      },
-      {
-        id: 2,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration3"
-      },
+      id: 0,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration1"
+    },
+    {
+      id: 1,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration2"
+    },
+    {
+      id: 2,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration3"
+    },
     ],
     types: [{
-        id: 0,
-        img: "../assets/cozinha.jpg",
-        name: "Bar"
-      },
-      {
-        id: 1,
-        img: "../assets/cozinha.jpg",
-        name: "Restaurante"
-      },
-      {
-        id: 2,
-        img: "../assets/cozinha.jpg",
-        name: "Cozinha"
-      },
-      {
-        id: 3,
-        img: "../assets/cozinha.jpg",
-        name: "Novo Restaurante"
-      }
+      id: 0,
+      img: "../assets/cozinha.jpg",
+      name: "Bar"
+    },
+    {
+      id: 1,
+      img: "../assets/cozinha.jpg",
+      name: "Restaurante"
+    },
+    {
+      id: 2,
+      img: "../assets/cozinha.jpg",
+      name: "Cozinha"
+    },
+    {
+      id: 3,
+      img: "../assets/cozinha.jpg",
+      name: "Novo Restaurante"
+    }
     ],
     extras: [{
       id: 0,
@@ -217,10 +219,10 @@ export default new Vuex.Store({
     },
     {
       id: 2,
-      name: "flores"
+      name: "Flores"
     }
     ],
-    componentMenu: [
+    componentMenus: [
       { id: 1, name: "Leite" },
       { id: 2, name: "Cafe" },
       { id: 3, name: "Bolo de Laranja" }
@@ -290,7 +292,7 @@ export default new Vuex.Store({
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
-      window.location.reload()
+      location.href="./"
       alert("Concluido")
     },
     REMOVE_USER: (state, payload) => {
@@ -338,7 +340,9 @@ export default new Vuex.Store({
         state.foodMenus.push({
           id: payload.id,
           name: payload.name,
-          components:payload.components
+          img: payload.img,
+          type:payload.type,
+          components: payload.components
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
         alert("Menu Criado")
@@ -347,15 +351,27 @@ export default new Vuex.Store({
 
       }
     },
+    ADD_COMPONENT: (state, payload) => {
+      if (!state.componentMenus.some(componentMenu => componentMenu.name === payload.name)) {
+        state.componentMenus.push({
+          id: payload.id,
+          name: payload.name,
+       
+          components: payload.components
+        });
+        localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
+        alert("Menu Criado")
+      }
+    },
     RENT_ROOM: (state, payload) => {
       state.roomRents.push({
         id: payload.id,
-          room: payload.room,
-          day: payload.day,
-          time: payload.time,
-          duration: payload.duration,
-          userName: payload.userName,
-          userMail: payload.userMail,
+        room: payload.room,
+        day: payload.day,
+        time: payload.time,
+        duration: payload.duration,
+        userName: payload.userName,
+        userMail: payload.userMail,
         state: "Pendente",
       });
       localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
@@ -400,6 +416,9 @@ export default new Vuex.Store({
     },
     getLastIdRooms(state) {
       return state.roomRents.length ? state.roomRents[state.roomRents.length - 1].id : 0
+    },
+    getLastIdComponents(state) {
+      return state.componentMenus.length ? state.componentMenus[state.componentMenus.length - 1].id : 0
     },
     getLoggedUserEmail(state) {
       return state.loggedUser[0].email

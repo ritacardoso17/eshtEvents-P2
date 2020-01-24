@@ -6,12 +6,8 @@
         <!-- <b-button id="btnFilter">Pesquisar</b-button> -->
       </div>
       <div class="form-group">
-        <select class="custom-select" id="sltFilter" v-model="filterSlt">
-          <option value="todos" selected>Todos</option>
-          <option value="coffee break">Coffee Break</option>
-          <option value="almoço">Almoço</option>
-          <option value="jantar">Jantar</option>
-          <option value="porto de honra">Porto de Honra</option>
+        <select v-model="selectE">
+          <option v-for="typeE in eventType" :key="typeE" @change="filterMenus()">{{typeE}}</option>
         </select>
       </div>
     </b-form>
@@ -51,25 +47,36 @@ export default {
   data: function() {
     return {
       menus: [],
-      searchTxt: ""
+      searchTxt: "",
+      selectE: "",
+      eventType: []
     };
   },
   created() {
     this.$store.state.foodMenus = JSON.parse(localStorage.getItem("foodMenus"));
     this.menus = this.$store.state.foodMenus;
+
+    if (localStorage.getItem("eventType")) {
+      this.eventType = JSON.parse(localStorage.getItem("eventType"));
+    }
+    localStorage.setItem(
+      "eventType",
+      JSON.stringify(this.$store.state.eventType)
+    );
   },
   computed: {
     filterMenus() {
       return this.menus.filter(menu => {
         let filterResult = true;
+        let filterResultType = true;
 
-        if (this.searchTxt == "") {
-          return filterResult;
+        if (this.searchTxt !== "") {
+            filterResult = menu.name.includes(this.searchTxt);
         }
-        if (menu.name.includes(this.searchTxt)) {
-          filterResult = menu.name.includes(this.searchTxt);
-          return filterResult;
+        if (this.selectE !== "") {
+          filterResultType = menu.type.includes(this.selectE);
         }
+        return filterResultType && filterResult;
       });
     }
   }

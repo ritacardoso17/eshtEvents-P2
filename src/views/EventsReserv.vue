@@ -280,7 +280,7 @@
           place: this.location,
           obs: this.obsDecor,
           decor: this.slctDecor,
-          extra: this.extra,
+          extra: this.extra_reserv,
           userName: this.$store.state.loggedUser[0].name,
           userMail: this.getLoggedUserEmail(),
           state: "Pendente",
