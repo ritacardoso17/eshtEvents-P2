@@ -41,43 +41,54 @@ export default new Vuex.Store({
       img: require('../assets/imgInicial.jpg')
     },
     ],
-    workshops: [{
-      id: 1,
-      title: "Workshop A",
-      vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "6 de Abril de 2020",
-      room: "B204",
-      locutor: "Américo Andrade"
-    },
-    {
-      id: 2,
-      title: "Workshop B",
-      vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "6 de Abril de 2020",
-      room: "B204",
-      locutor: "Américo Andrade"
-    },
-    {
-      id: 3,
-      title: "Workshop C",
-      vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "6 de Abril de 2020",
-      room: "B204",
-      locutor: "Américo Andrade"
-    }
+    workshops: [
+      {
+        id: 0,
+        title: "ZENAS",
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      },
+      {
+        id: 1,
+        title: "Workshop A",
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      },
+      {
+        id: 2,
+        title: "Workshop B",
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      },
+      {
+        id: 3,
+        title: "Workshop C",
+        vacancies: 20,
+        img: require('../assets/CatePessoas.jpg'),
+        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+        date: "6 de Abril de 2020",
+        room: "B204",
+        locutor: "Américo Andrade"
+      }
     ],
     foodMenus: [{
       id: 1,
       img: require('../assets/transferir.jpg'),
       name: "Menu L",
       type: "Coffee Break",
-      components:["Cafe","Leite"]
+      components: ["Cafe", "Leite"]
     },
     {
       id: 2,
@@ -293,7 +304,7 @@ export default new Vuex.Store({
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
-      location.href="./"
+      location.href = "./"
       alert("Concluido")
     },
     REMOVE_USER: (state, payload) => {
@@ -342,7 +353,7 @@ export default new Vuex.Store({
           id: payload.id,
           name: payload.name,
           img: payload.img,
-          type:payload.type,
+          type: payload.type,
           components: payload.components
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
@@ -357,7 +368,7 @@ export default new Vuex.Store({
         state.componentMenus.push({
           id: payload.id,
           name: payload.name,
-       
+
           components: payload.components
         });
         localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
@@ -439,7 +450,7 @@ export default new Vuex.Store({
     getUser(state) {
       return state.loggedUser[0];
     },
-    getOpinion(state){
+    getOpinion(state) {
       return state.opinions.length ? state.opinions[state.opinions.length - 1].id : 0
     },
   }
