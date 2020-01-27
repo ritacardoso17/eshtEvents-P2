@@ -338,6 +338,7 @@ export default new Vuex.Store({
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
+          userEmail:payload.userEmail,
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
@@ -396,7 +397,7 @@ export default new Vuex.Store({
         time: payload.time,
         people: payload.persons,
         duration: payload.duration,
-        place: payload.location,
+        location: payload.location,
         obs: payload.obs,
         decor: payload.decor,
         extra: payload.extra,

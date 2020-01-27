@@ -1,12 +1,45 @@
 <template>
   <div class="bckUsers">
+    <br />
+    <h2>Gestão de Utilizadores</h2>
+
     <b-table bordered hover :items="this.items" :fields="this.fields">
       <!-- <template v-slot:cell(typeUser)="row">
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>
       </template>-->
+       <template v-slot:cell(details)="row">
+        <b-button variant="info" class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+      </template> 
+          <template v-slot:row-details="row">
+        <b-card>
+          <!-- Escola -->
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right">
+              <b>Escola:</b>
+              {{ row.item.school }}
+            </b-col>
+            <b-col></b-col>
+          </b-row>
+          <!-- Menu -->
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right">
+              <b>Email:</b>
+              {{ row.item.email}}
+            </b-col>
+          </b-row>
+          <!-- Contacto -->
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-right">
+              <b>Contacto:</b>
+              {{ row.item.contact }}
+            </b-col>
+            <b-col></b-col>
+          </b-row>
+        </b-card>
+      </template>
       <template v-slot:cell(options)="row">
-        <b-button class="btnRemove" size="sm" @click="removeUser(row.item.id)">Eliminar Utilizador</b-button>
+        <b-button variant="danger" class="btnRemove" size="sm" @click="removeUser(row.item.id)" style="margin:5px">Eliminar Utilizador</b-button>
         <b-button class="btnChange" size="sm"  @click="changeUser(row.item.id)" >Mudar tipo de utilizador</b-button>
       </template>
     </b-table>
@@ -19,9 +52,9 @@ export default {
     return {
       items: [],
       fields: [
-        { key: "id", lable: "id" },
         { key: "name", lable: "name", sortable: "true" },
         { key: "typeUser", lable: "typeUser",sortable: "true" },
+         { key: "details", label: "Detalhes" },
         { key: "options" }
       ]
     };
@@ -54,7 +87,6 @@ export default {
           else{
              this.items[index].typeUser = "user";
           }
-
           localStorage.setItem("users", JSON.stringify(this.items));
           this.$store.state.users = localStorage.setItem("users", JSON.stringify(this.items));
         }
