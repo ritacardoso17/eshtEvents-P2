@@ -3,10 +3,9 @@
     <b-form>
       <div class="form-group">
         <input type="search" v-model="searchTxt" id="filterTxt" placeholder="Escreve aqui..." />
-        <!-- <b-button id="btnFilter">Pesquisar</b-button> -->
       </div>
       <div class="form-group">
-        <select v-model="selectE">
+        <select v-model="selectE" id="sltFilter">
           <option v-for="typeE in eventType" :key="typeE" @change="filterMenus()">{{typeE}}</option>
         </select>
       </div>
@@ -25,12 +24,16 @@
             id="cards"
           >
             <b-card-text>{{menu.type}}</b-card-text>
-            <p>{{menu.id}}</p>
             <b-button v-b-modal="menu.id.toString()" id="cardBtn">Ver mais</b-button>
             <div>
               <b-modal :id="menu.id.toString()" :title="menu.name" ok-only ok-title="cancel">
-                <b-img :src="menu.image" id="imgModal" />
-                <p class="my-4">{{menu.ingredients}}</p>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-6" v-for="component in menu.components" :key="component">
+                      <p>{{component}}</p>
+                    </div>
+                  </div>
+                </div>
               </b-modal>
             </div>
           </b-card>
@@ -48,7 +51,7 @@ export default {
     return {
       menus: [],
       searchTxt: "",
-      selectE: "",
+      selectE: "Todos",
       eventType: []
     };
   },
@@ -70,11 +73,15 @@ export default {
         let filterResult = true;
         let filterResultType = true;
 
-        if (this.searchTxt !== "Todos") {
-            filterResult = menu.name.includes(this.searchTxt);
+        if (this.searchTxt !== "") {
+          filterResult = menu.name.includes(this.searchTxt);
         }
-        if (this.selectE !== "") {
+        
+        if (this.selectE !== "" && this.selectE !== "Todos") {
           filterResultType = menu.type.includes(this.selectE);
+        }
+        if(this.selectE === "Todos"){
+           filterResult = menu
         }
         return filterResultType && filterResult;
       });
@@ -116,24 +123,11 @@ export default {
   width: 200px;
   height: 28px;
   position: relative;
-  left: -400px;
+  left: -120px;
   top: 25px;
   font-family: GeosansLight;
 }
-#btnFilter {
-  position: absolute;
-  width: 80px;
-  height: 30px;
-  left: 340px;
-  top: 584px;
-  white-space: nowrap;
-  padding: 4px;
-  font-size: 70%;
-  color: white;
-  background-color: black;
-  font-family: GeosansLight;
-  border: 2px solid black;
-}
+
 #btnFilter:hover {
   color: white;
   border: 2px solid;
@@ -142,10 +136,11 @@ export default {
 }
 #sltFilter {
   width: 200px;
-  height: 33px;
+  height: 28px;
   position: relative;
   font-family: GeosansLight;
-  left: -401px;
-  top: 28px;
+  left: 100px;
+  top: -20px;
 }
+
 </style>

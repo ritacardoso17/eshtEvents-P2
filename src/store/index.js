@@ -21,28 +21,27 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [{
-      id: 0,
-      name: "cozinha",
-      img: require('../assets/imgInicial.jpg')
-    },
-    {
-      id: 1,
-      name: "bar",
-      img: require('../assets/imgInicial.jpg')
-    },
-    {
-      id: 2,
-      name: "Novo restaurante",
-      img: require('../assets/imgInicial.jpg')
-    },
-    {
-      id: 3,
-      name: "Restaurante de App",
-      img: require('../assets/imgInicial.jpg')
-    },
-    ],
-    workshops: [
+        id: 0,
+        name: "cozinha",
+        img: require('../assets/imgInicial.jpg')
+      },
       {
+        id: 1,
+        name: "bar",
+        img: require('../assets/imgInicial.jpg')
+      },
+      {
+        id: 2,
+        name: "Novo restaurante",
+        img: require('../assets/imgInicial.jpg')
+      },
+      {
+        id: 3,
+        name: "Restaurante de App",
+        img: require('../assets/imgInicial.jpg')
+      },
+    ],
+    workshops: [{
         id: 0,
         title: "ZENAS",
         vacancies: 20,
@@ -84,85 +83,114 @@ export default new Vuex.Store({
       }
     ],
     foodMenus: [{
-      id: 1,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu L",
-      type: "Coffee Break",
-      components: ["Cafe", "Leite"]
-    },
-    {
-      id: 2,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu K",
-      type: "Coffee Break"
-    },
-    {
-      id: 3,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu J",
-      type: "Coffee Break"
-    },
-    {
-      id: 4,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu I",
-      type: "Coffee Break"
-    },
-    {
-      id: 5,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu H",
-      type: "Coffee Break"
-    },
-    {
-      id: 6,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu G",
-      type: "Coffee Break"
-    },
-    {
-      id: 7,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu F",
-      type: "Coffee Break"
-    },
-    {
-      id: 8,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu E",
-      type: "Coffee Break"
-    },
-    {
-      id: 9,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu D",
-      type: "Coffee Break"
-    },
-    {
-      id: 10,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu A",
-      type: "Coffee Break"
-    },
-    {
-      id: 11,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu B",
-      type: "Jantar"
-    },
-    {
-      id: 12,
-      img: require('../assets/transferir.jpg'),
-      name: "Menu C",
-      type: "Jantar"
-    },
-    ],
-    eventType: ["Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
-    reservations: [
-      { id: 0, user: "Rita", type: "", day: "06-04-2020", time: "19:45", people: "20", duration: "2", place: "Esmad", extra: [], state: 0 }
-    ],
-    uniforms: [
+        id: 1,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Base",
+        type: "Coffee Break",
+        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
+      },
       {
+        id: 2,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Estudante",
+        type: "Coffee Break",
+        components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
+
+      },
+      {
+        id: 3,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Executivo",
+        type: "Coffee Break",
+        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada",  "Pastelaria Seca e Variada",
+         "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"]
+
+      },
+      {
+        id: 4,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Supremo",
+        type: "Coffee Break",
+        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada",  "Pastelaria Seca e Variada",
+         "Triângulos Mistos","Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"]
+      },
+      {
+        id: 5,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Italiano",
+        type: "Almoço",
+        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      },
+      {
+        id: 6,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Mexicano",
+        type: "Almoço",
+        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      },
+      {
+        id: 7,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Português",
+        type: "Almoço",
+        components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
+        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
+      },
+      {
+        id: 8,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Uva",
+        type: "Porto de Honra",
+        components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
+      },
+      {
+        id: 9,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Videira",
+        type: "Porto de Honra",
+        components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks" ]
+      },
+      {
+        id: 10,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Solar",
+        type: "Jantar",
+        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      },
+      {
+        id: 11,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Estrelado",
+        type: "Jantar",
+        components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
+        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
+      },
+      {
+        id: 12,
+        img: require('../assets/transferir.jpg'),
+        name: "Menu Noite",
+        type: "Jantar",
+        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      },
+    ],
+    eventType: ["Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
+    reservations: [{
+      id: 0,
+      user: "Rita",
+      type: "",
+      day: "06-04-2020",
+      time: "19:45",
+      people: "20",
+      duration: "2",
+      place: "Esmad",
+      extra: [],
+      state: 0
+    }],
+    uniforms: [{
         id: 0,
         img: '../assets/transferir.jpg',
         name: "Farda1",
@@ -184,59 +212,67 @@ export default new Vuex.Store({
       },
     ],
     decorations: [{
-      id: 0,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration1"
-    },
-    {
-      id: 1,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration2"
-    },
-    {
-      id: 2,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration3"
-    },
+        id: 0,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration1"
+      },
+      {
+        id: 1,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration2"
+      },
+      {
+        id: 2,
+        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+        name: "decoration3"
+      },
     ],
     types: [{
-      id: 0,
-      img: "../assets/cozinha.jpg",
-      name: "Bar"
-    },
-    {
-      id: 1,
-      img: "../assets/cozinha.jpg",
-      name: "Restaurante"
-    },
-    {
-      id: 2,
-      img: "../assets/cozinha.jpg",
-      name: "Cozinha"
-    },
-    {
-      id: 3,
-      img: "../assets/cozinha.jpg",
-      name: "Novo Restaurante"
-    }
+        id: 0,
+        img: "../assets/cozinha.jpg",
+        name: "Bar"
+      },
+      {
+        id: 1,
+        img: "../assets/cozinha.jpg",
+        name: "Restaurante"
+      },
+      {
+        id: 2,
+        img: "../assets/cozinha.jpg",
+        name: "Cozinha"
+      },
+      {
+        id: 3,
+        img: "../assets/cozinha.jpg",
+        name: "Novo Restaurante"
+      }
     ],
     extras: [{
-      id: 0,
-      name: "Musica Ambiente"
-    },
-    {
-      id: 1,
-      name: "Babyssiting"
-    },
-    {
-      id: 2,
-      name: "Flores"
-    }
+        id: 0,
+        name: "Musica Ambiente"
+      },
+      {
+        id: 1,
+        name: "Babyssiting"
+      },
+      {
+        id: 2,
+        name: "Flores"
+      }
     ],
-    componentMenus: [
-      { id: 1, name: "Leite" },
-      { id: 2, name: "Cafe" },
-      { id: 3, name: "Bolo de Laranja" }
+    componentMenus: [{
+        id: 1,
+        name: "Leite"
+      },
+      {
+        id: 2,
+        name: "Cafe"
+      },
+      {
+        id: 3,
+        name: "Bolo de Laranja"
+      }
     ],
     opinions: []
   },
@@ -285,12 +321,12 @@ export default new Vuex.Store({
           })
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           state.userExist = true
-          window.location = "./"
-
+         
         }
       }
       if (!state.userExist) {
-        alert("Conta não existe")
+        // alert("Conta não existe")
+
       } else {
         state.userExist === false
       }
@@ -337,7 +373,7 @@ export default new Vuex.Store({
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
-          userEmail:payload.userEmail,
+          userEmail: payload.userEmail,
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
@@ -411,7 +447,7 @@ export default new Vuex.Store({
 
     },
     ADD_OPINION: (state, payload) => {
-      state.reservations.push({
+      state.opinions.push({
         id: payload.id,
         userMail: payload.userMail,
         opinions: payload.opinions,
