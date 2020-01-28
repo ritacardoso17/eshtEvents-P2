@@ -296,7 +296,6 @@ export default new Vuex.Store({
        id:15,name:"Mini Croissants"
      }
     ],
-    opinions: []
   },
 
 
@@ -444,6 +443,7 @@ export default new Vuex.Store({
         userMail: payload.userMail,
         state: "Pendente",
         reason: payload.reason,
+        opinions: payload.opinions
       });
       localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
     },
@@ -463,18 +463,11 @@ export default new Vuex.Store({
         state: payload.state,
         eventType: payload.eventType,
         menu: payload.menu,
-        uniform: payload.uniform
+        uniform: payload.uniform,
+        opinions: payload.opinions
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
 
-    },
-    ADD_OPINION: (state, payload) => {
-      state.opinions.push({
-        id: payload.id,
-        userMail: payload.userMail,
-        opinions: payload.opinions,
-      });
-      localStorage.setItem("opinions", JSON.stringify(state.opinions))
     },
   },
   getters: {
@@ -507,9 +500,6 @@ export default new Vuex.Store({
     },
     getUser(state) {
       return state.loggedUser[0];
-    },
-    getOpinion(state) {
-      return state.opinions.length ? state.opinions[state.opinions.length - 1].id : 0
     },
   }
 });
