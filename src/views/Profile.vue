@@ -83,6 +83,19 @@ export default {
   },
   created() {
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    if (localStorage.getItem("reservations")) {
+      this.$store.state.reservations = JSON.parse(
+        localStorage.getItem("reservations")
+      );
+      this.reservations = this.$store.state.reservations;
+    }
+
+    if (localStorage.getItem("roomRents")) {
+      this.$store.state.roomRents = JSON.parse(
+        localStorage.getItem("roomRents")
+      );
+      this.roomRents = this.$store.state.roomRents;
+    }
   },
   methods: {
     getUser() {
