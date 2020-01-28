@@ -31,6 +31,7 @@
 </template>
 
 <script>
+
 export default {
   
   data: () => ({
@@ -62,7 +63,7 @@ export default {
         email: this.email,
         password: this.password
       });
-       Swal.fire('Test!', 'Hello test message','success');
+    
     }
   }
 };
