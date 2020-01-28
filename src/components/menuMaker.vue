@@ -18,6 +18,7 @@
             :img-src="menu.img"
             img-alt="Image"
             img-top
+            img-height="150px"
             tag="article"
             style="max-width: 15rem;"
             class="mb-2"
@@ -26,11 +27,23 @@
             <b-card-text>{{menu.type}}</b-card-text>
             <b-button v-b-modal="menu.id.toString()" id="cardBtn">Ver mais</b-button>
             <div>
-              <b-modal :id="menu.id.toString()" :title="menu.name" ok-only ok-title="cancel">
+              <b-modal
+                :id="menu.id.toString()"
+                :title="menu.name + ' - ' + menu.type "
+                ok-only
+                ok-title="cancel"
+              >
                 <div class="container">
-                  <div class="row">
-                    <div class="col-sm-6" v-for="component in menu.components" :key="component">
-                      <p>{{component}}</p>
+                  <h4 id="titleModal">Complementos</h4>
+                  <div class="row" style="margin: auto">
+                    <div
+                      class="col-sm-6"
+                      align="center"
+                      style=" margin: auto; margin-bottom: -15px"
+                      v-for="component in menu.components"
+                      :key="component"
+                    >
+                      <p id="components">{{component}}</p>
                     </div>
                   </div>
                 </div>
@@ -76,12 +89,12 @@ export default {
         if (this.searchTxt !== "") {
           filterResult = menu.name.includes(this.searchTxt);
         }
-        
+
         if (this.selectE !== "" && this.selectE !== "Todos") {
           filterResultType = menu.type.includes(this.selectE);
         }
-        if(this.selectE === "Todos"){
-           filterResult = menu
+        if (this.selectE === "Todos") {
+          filterResult = menu;
         }
         return filterResultType && filterResult;
       });
@@ -142,5 +155,30 @@ export default {
   left: 100px;
   top: -20px;
 }
-
+.btn-primary {
+  color: #fff;
+  background-color: black;
+  border-color: #daaa29;
+}
+.modal-title {
+  font-size: 25px;
+  margin-left: 100px;
+  font-family: GeosansLight;
+  font-weight: bold;
+}
+#components {
+  font-family: GeosansLight;
+  font-size: 16px;
+}
+.modal-footer {
+  display: none;
+}
+.modal-body {
+  height: 300px;
+}
+#titleModal {
+  color: #daaa29;
+  font-family: GeosansLight;
+  margin-left: 140px;
+}
 </style>
