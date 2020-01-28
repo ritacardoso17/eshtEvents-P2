@@ -320,11 +320,12 @@ export default new Vuex.Store({
           })
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           state.userExist = true
+          window.location = "./"
          
         }
       }
       if (!state.userExist) {
-        // alert("Conta não existe")
+        alert("Conta não existe")
 
       } else {
         state.userExist === false
