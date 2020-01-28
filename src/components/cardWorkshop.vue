@@ -42,7 +42,7 @@
             v-bind:style="{display: show2}"
             id="workInscp"
             variant="primary"
-          >In screver-me</b-button>
+          >Inscrever-me</b-button>
         </b-card>
         <br />
         <br />
@@ -126,27 +126,44 @@ export default {
     getLoggedUser() {
       return this.$store.getters.getLoggedUser;
     },
+    getUserEmail() {
+      return this.$store.getters.getLoggedUserEmail;
+    },
+
     sign(id) {
       //SEPARAR IF PARA POR ALERTS DIFERENTES!!!
       //COMO GUARDAR STORAGE??
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
-          this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
-          localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          this.$store.getters.getLoggedUser = this.workshops;
+         
+          if (this.workshops[i].vacancies > 0 && this.workshops[i].userEmail != this.getUserEmail()) {
+            this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
+             this.workshops[i].push =this.getUserEmail();
+            localStorage.setItem("workshops", JSON.stringify(this.workshops));
+            this.$store.getters.getLoggedUser = this.workshops;
+
+          } else if (this.workshops[i].vacancies > 0 && this.workshops[i].userEmail == this.getUserEmail()) {
+            alert("Não se pode inscrever mais do que uma vez!");
+
+          } else  {
+            alert("Não há mais vagas");
+          }
         }
       }
     },
+
     ascending(a, b) {
       if (a.title < b.title) return -1;
       if (a.title > b.title) return 1;
       else return 0;
     },
+
     descending(a, b) {
       if (a.title < b.title) return 1;
       if (a.title > b.title) return -1;
       else return 0;
     },
+
     orderByName() {
       if (this.compareName === true) {
         this.workshops = this.workshops.sort(this.ascending);
@@ -156,8 +173,9 @@ export default {
         this.compareName = true;
       }
     },
-    orderByDate(){
-       this.workshops.sort((a, b) => {
+
+    orderByDate() {
+      this.workshops.sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       });
       return this.workshops;
