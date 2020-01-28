@@ -21,22 +21,29 @@
             Diz-nos o que mais gostas e o que não queres de todo no teu evento.
             Quantas pessoas queres convidar e a localização ideal para o acontecimento.
           </p>
+          <div>
+          <router-link tag="button" id="btnReserve" class="menus" :to="{ name: 'menu' }">
+            <b>Ver menus</b>
+          </router-link>
+          <router-link
+            tag="button"
+            id="btnReserve"
+            v-if="this.$store.state.loggedUser[0].length == 0"
+            :to="{ name: 'login' }"
+          >Fazer Reserva</router-link>
+          <router-link
+            tag="button"
+            id="btnReserve"
+            v-else
+            :to="{ name: 'eventsReserv' }"
+          >Fazer Reserva</router-link>
+          </div>
         </div>
         <div class="col">
-          <b-img src="../assets/transferir.jpg" id="image"></b-img>
+          <b-img src="../assets/eventosImg.jpg" id="image"></b-img>
         </div>
       </div>
     </div>
-    <router-link tag="a" class="menus" :to="{ name: 'menu' }">
-      <b>Ver menus</b>
-    </router-link>
-    <router-link
-      tag="button"
-      id="btnReserve"
-      v-if="this.$store.state.loggedUser.length == 0"
-      :to="{ name: 'login' }"
-    >Fazer Reserva</router-link>
-    <router-link tag="button" id="btnReserve" v-else :to="{ name: 'eventsReserv' }">Fazer Reserva</router-link>
   </div>
 </template>
 
@@ -75,9 +82,9 @@
   margin-left: 60px;
 }
 #image {
-  /* position: relative;
-  top: -265px;
-  right: -320px; */
+  height: 400px;
+  width: auto;
+  padding-bottom: 50px;
 }
 #description2 {
   position: relative;
@@ -88,19 +95,15 @@
   left: 700px;
 }
 .menus {
-  position: relative;
   font-family: GeosansLight;
-  margin-left: -570px;
-  top: -455px;
 }
 #btnReserve {
-  position: relative;
-  width: 150px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
   font-size: 100%;
   color: white;
-  top: -380px;
-  left: -110px;
+  border: 2px solid black;
+  margin: 10px;
   background-color: #232323;
   font-family: GeosansLight;
 }

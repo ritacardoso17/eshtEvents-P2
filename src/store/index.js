@@ -119,24 +119,24 @@ export default new Vuex.Store({
       img: require('../assets/transferir.jpg'),
       name: "Menu Italiano",
       type: "Almoço",
-      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+        "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"]
     },
     {
       id: 6,
       img: require('../assets/transferir.jpg'),
       name: "Menu Mexicano",
       type: "Almoço",
-      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+        "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"]
     },
     {
       id: 7,
       img: require('../assets/transferir.jpg'),
       name: "Menu Português",
       type: "Almoço",
-      components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
-        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
+      components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
+        "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"]
     },
     {
       id: 8,
@@ -157,24 +157,24 @@ export default new Vuex.Store({
       img: require('../assets/transferir.jpg'),
       name: "Menu Solar",
       type: "Jantar",
-      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+        "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"]
     },
     {
       id: 11,
       img: require('../assets/transferir.jpg'),
       name: "Menu Estrelado",
       type: "Jantar",
-      components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
-        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
+      components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
+        "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"]
     },
     {
       id: 12,
       img: require('../assets/transferir.jpg'),
       name: "Menu Noite",
       type: "Jantar",
-      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+      components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+        "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"]
     },
     ],
     eventType: ["Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
@@ -254,11 +254,19 @@ export default new Vuex.Store({
     },
     {
       id: 1,
-      name: "Babyssiting"
+      name: "Babysitting"
     },
     {
       id: 2,
       name: "Flores"
+    },
+    {
+      id: 3,
+      name: "Balões"
+    },
+    {
+      id: 4,
+      name: "Palhaços"
     }
     ],
     componentMenus: [{
