@@ -10,7 +10,10 @@
         <b-button class="btnChange" size="sm" @click="editWorkshop(row.item.id)">Editar</b-button>
       </template>
     </b-table>
-     <b-button tag="button" style="margin:10px;"  class="btnAdd" :to="{path: '/addWorkshop' }"> Adicionar </b-button>
+     <b-button tag="button" style="margin:10px;"  class="btnAdd" 
+     
+     
+     > Adicionar </b-button>
   </div>
 </template>
 
