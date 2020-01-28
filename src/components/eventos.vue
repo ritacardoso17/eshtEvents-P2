@@ -2,14 +2,14 @@
   <div>
     <b-table striped hover :items="this.tbEvents" :fields="this.fields">
       <template v-slot:cell(remove)="row">
-        <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Remover</b-button>
+        <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Cancelar</b-button>
       </template>
-      <template v-slot:cell(opinion)="row">
-        <b-button id="opinion" v-b-modal.modalEvents @click="send(row.item.id)">Opinião</b-button>
+      <template v-slot:cell(opinions)="row">
+        <b-button id="opinions" v-b-modal.modalEvents>Opinião</b-button>
       </template>
     </b-table>
 
-    <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close>
+    <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close hide-footer>
       <div class="form-group">
         <textarea
           name="Opinião"
@@ -17,7 +17,9 @@
           cols="60"
           rows="5"
           placeholder="Escreva a sua opinião"
+          v-model="opinions"
         ></textarea>
+        <b-button @click="send">Enviar Opinião</b-button>
       </div>
     </b-modal>
   </div>
@@ -34,7 +36,7 @@ export default {
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
         { key: "remove", label: "Remover" },
-        { key: "opinion", label: "Opinião" }
+        { key: "opinions", label: "Opinião" }
       ]
     };
   },
@@ -43,19 +45,50 @@ export default {
       "reservations",
       JSON.stringify(this.$store.state.reservations)
     );
+
     if (localStorage.getItem("reservations")) {
       this.tbEvents = JSON.parse(localStorage.getItem("reservations"));
     }
-
+    for (const i in this.tbEvents) {
+      alert(this.tbEvents[i].userMail + this.getUserMail())
+      if (this.tbEvents[i].userMail === this.getUserMail()) {
+        this.tbEvents = this.tbEvents.filter( event => this.tbEvents[i].userMail != event.userMail )
+      }
+      else {
+        alert("topitos")
+      }
+    }
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
+  
+  destroyed() {
+
+  },
+
   methods: {
+    saveStorage() {
+      localStorage.setItem(
+        "reservations",
+        JSON.stringify(this.$store.state.opinions)
+      );
+    },
+
     getUser() {
       return this.$store.state.loggedUser;
     },
+
     getReservations() {
       return this.$store.state.reservations;
     },
+
+    getUserMail() {
+      return this.$store.getters.getLoggedUserEmail;
+    },
+
+    getLastIdEvents() {
+      return this.$store.getters.getLastIdEvents;
+    },
+
     removeEvents(id) {
       for (let i in this.tbEvents) {
         if (this.tbEvents[i].id === id) {
@@ -71,14 +104,13 @@ export default {
         }
       }
     },
-    send(id) {
-      for (let i in this.tbEvents) {
-        if (this.tbEvents[i].id === id) {
-          alert("oi")
-        }
-      }
+
+    send() {
+      localStorage.setItem("reservations", JSON.stringify(this.opinions))
+      alert("Mandei uma opinião");
     }
   },
+
   computed: {
     row() {
       return this.tbEvents.length;
