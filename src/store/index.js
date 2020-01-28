@@ -284,7 +284,6 @@ export default new Vuex.Store({
             imgProfile: user.imgProfile
           })
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
-          alert("USER LOGGADO")
           state.userExist = true
           window.location = "./"
 
