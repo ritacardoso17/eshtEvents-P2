@@ -58,7 +58,7 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     getRooms() {
-      return this.$store.state.rooms;
+      return this.$store.state.roomRents;
     },
     removeRooms(id) {
       for (let i in this.tbRooms) {
@@ -70,7 +70,7 @@ export default {
           this.$store.state.tbRooms = JSON.parse(
             localStorage.getItem("roomRents")
           );
-          this.tbRooms = this.$store.state.roomRents;
+          this.tbRooms = this.getRooms;
           alert("Removeu");
         }
       }

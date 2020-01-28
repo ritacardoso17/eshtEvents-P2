@@ -5,7 +5,7 @@
         <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Remover</b-button>
       </template>
       <template v-slot:cell(opinion)="row">
-        <b-button id="opinion" v-b-modal.modalEvents>Opinião</b-button>
+        <b-button id="opinion" v-b-modal.modalEvents @click="send(row.item.id)">Opinião</b-button>
       </template>
     </b-table>
 
@@ -31,7 +31,7 @@ export default {
       fields: [
         { key: "eventType", label: "Tipo", sortable: true },
         { key: "day", label: "Dia", sortable: true },
-        { key: "time", label: "Hora"},
+        { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
         { key: "remove", label: "Remover" },
         { key: "opinion", label: "Opinião" }
@@ -66,8 +66,15 @@ export default {
           this.$store.state.tbEvents = JSON.parse(
             localStorage.getItem("reservations")
           );
-          this.tbEvents = this.$store.state.reservations;
+          this.tbEvents = this.getReservations;
           alert("Removeu");
+        }
+      }
+    },
+    send(id) {
+      for (let i in this.tbEvents) {
+        if (this.tbEvents[i].id === id) {
+          alert("oi")
         }
       }
     }

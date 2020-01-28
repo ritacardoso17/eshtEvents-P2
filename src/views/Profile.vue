@@ -82,19 +82,11 @@ export default {
   data() {
   },
   created() {
-    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
-    if (localStorage.getItem("rooms")) {
-      this.objects = JSON.parse(localStorage.getItem("rooms"));
-    }
-
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
-    },
-    getRooms() {
-      return this.$store.state.rooms;
     }
   }
 };

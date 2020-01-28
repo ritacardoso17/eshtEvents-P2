@@ -1,7 +1,6 @@
 <template>
 <div>
-    <b-img src="../assets/noun_Waiter_1306700.png"> </b-img>
-
+    <b-img src="../assets/noun_Waiter_notFound.png"> </b-img>
     <b-button>
         Voltar
     </b-button>
