@@ -21,161 +21,161 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     rooms: [{
-        id: 0,
-        name: "cozinha",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 1,
-        name: "bar",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 2,
-        name: "Novo restaurante",
-        img: require('../assets/imgInicial.jpg')
-      },
-      {
-        id: 3,
-        name: "Restaurante de App",
-        img: require('../assets/imgInicial.jpg')
-      },
+      id: 0,
+      name: "cozinha",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 1,
+      name: "bar",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 2,
+      name: "Novo restaurante",
+      img: require('../assets/imgInicial.jpg')
+    },
+    {
+      id: 3,
+      name: "Restaurante de App",
+      img: require('../assets/imgInicial.jpg')
+    },
     ],
     workshops: [{
-        id: 0,
-        title: "ZENAS",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      },
-      {
-        id: 1,
-        title: "Workshop A",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      },
-      {
-        id: 2,
-        title: "Workshop B",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      },
-      {
-        id: 3,
-        title: "Workshop C",
-        vacancies: 20,
-        img: require('../assets/CatePessoas.jpg'),
-        description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-        date: "6 de Abril de 2020",
-        room: "B204",
-        locutor: "Américo Andrade"
-      }
+      id: 0,
+      title: "ZENAS",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    },
+    {
+      id: 1,
+      title: "Workshop A",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    },
+    {
+      id: 2,
+      title: "Workshop B",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    },
+    {
+      id: 3,
+      title: "Workshop C",
+      vacancies: 20,
+      img: require('../assets/CatePessoas.jpg'),
+      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
+      date: "6 de Abril de 2020",
+      room: "B204",
+      locutor: "Américo Andrade"
+    }
     ],
     foodMenus: [{
-        id: 1,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Base",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
-      },
-      {
-        id: 2,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Estudante",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
+      id: 1,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Base",
+      type: "Coffee Break",
+      components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
+    },
+    {
+      id: 2,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Estudante",
+      type: "Coffee Break",
+      components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
 
-      },
-      {
-        id: 3,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Executivo",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada",  "Pastelaria Seca e Variada",
-         "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"]
+    },
+    {
+      id: 3,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Executivo",
+      type: "Coffee Break",
+      components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
+        "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"]
 
-      },
-      {
-        id: 4,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Supremo",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada",  "Pastelaria Seca e Variada",
-         "Triângulos Mistos","Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"]
-      },
-      {
-        id: 5,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Italiano",
-        type: "Almoço",
-        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
-      },
-      {
-        id: 6,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Mexicano",
-        type: "Almoço",
-        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+    },
+    {
+      id: 4,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Supremo",
+      type: "Coffee Break",
+      components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
+        "Triângulos Mistos", "Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"]
+    },
+    {
+      id: 5,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Italiano",
+      type: "Almoço",
+      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
-      },
-      {
-        id: 7,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Português",
-        type: "Almoço",
-        components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
-        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
-      },
-      {
-        id: 8,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Uva",
-        type: "Porto de Honra",
-        components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
-      },
-      {
-        id: 9,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Videira",
-        type: "Porto de Honra",
-        components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks" ]
-      },
-      {
-        id: 10,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Solar",
-        type: "Jantar",
-        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+    },
+    {
+      id: 6,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Mexicano",
+      type: "Almoço",
+      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
-      },
-      {
-        id: 11,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Estrelado",
-        type: "Jantar",
-        components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
+    },
+    {
+      id: 7,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Português",
+      type: "Almoço",
+      components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
         "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
-      },
-      {
-        id: 12,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Noite",
-        type: "Jantar",
-        components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
-         "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
-      },
+    },
+    {
+      id: 8,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Uva",
+      type: "Porto de Honra",
+      components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
+    },
+    {
+      id: 9,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Videira",
+      type: "Porto de Honra",
+      components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks"]
+    },
+    {
+      id: 10,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Solar",
+      type: "Jantar",
+      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+    },
+    {
+      id: 11,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Estrelado",
+      type: "Jantar",
+      components: ["Salada: Cenoura e Rucula", "Entrada: Creme de Alheira com Crocante deCogumelos",
+        "Prato: Carne de Porco à Alentejana", "Sobremesa: Leite Creme à Portuguesa"]
+    },
+    {
+      id: 12,
+      img: require('../assets/transferir.jpg'),
+      name: "Menu Noite",
+      type: "Jantar",
+      components: ["Salada: Tomate e Milho", "Entrada: Creme de cenoura com Croutons aromatizados",
+        "Prato: Fusilli com molho de ricotta e nozes", "Sobremesa: Mousse de Frutos Vermelhos com Crocante de Chocolate"]
+    },
     ],
     eventType: ["Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
     reservations: [{
@@ -191,88 +191,110 @@ export default new Vuex.Store({
       state: 0
     }],
     uniforms: [{
-        id: 0,
-        img: '../assets/transferir.jpg',
-        name: "Farda1",
-      },
-      {
-        id: 1,
-        img: '../assets/transferir.jpg',
-        name: "Farda2",
-      },
-      {
-        id: 2,
-        img: '../assets/transferir.jpg',
-        name: "Farda3",
-      },
-      {
-        id: 3,
-        img: '../assets/transferir.jpg',
-        name: "Farda4",
-      },
+      id: 0,
+      img: '../assets/transferir.jpg',
+      name: "Farda1",
+    },
+    {
+      id: 1,
+      img: '../assets/transferir.jpg',
+      name: "Farda2",
+    },
+    {
+      id: 2,
+      img: '../assets/transferir.jpg',
+      name: "Farda3",
+    },
+    {
+      id: 3,
+      img: '../assets/transferir.jpg',
+      name: "Farda4",
+    },
     ],
     decorations: [{
-        id: 0,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration1"
-      },
-      {
-        id: 1,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration2"
-      },
-      {
-        id: 2,
-        img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-        name: "decoration3"
-      },
+      id: 0,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration1"
+    },
+    {
+      id: 1,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration2"
+    },
+    {
+      id: 2,
+      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      name: "decoration3"
+    },
     ],
     types: [{
-        id: 0,
-        img: "../assets/cozinha.jpg",
-        name: "Bar"
-      },
-      {
-        id: 1,
-        img: "../assets/cozinha.jpg",
-        name: "Restaurante"
-      },
-      {
-        id: 2,
-        img: "../assets/cozinha.jpg",
-        name: "Cozinha"
-      },
-      {
-        id: 3,
-        img: "../assets/cozinha.jpg",
-        name: "Novo Restaurante"
-      }
+      id: 0,
+      img: "../assets/cozinha.jpg",
+      name: "Bar"
+    },
+    {
+      id: 1,
+      img: "../assets/cozinha.jpg",
+      name: "Restaurante"
+    },
+    {
+      id: 2,
+      img: "../assets/cozinha.jpg",
+      name: "Cozinha"
+    },
+    {
+      id: 3,
+      img: "../assets/cozinha.jpg",
+      name: "Novo Restaurante"
+    }
     ],
     extras: [{
-        id: 0,
-        name: "Musica Ambiente"
-      },
-      {
-        id: 1,
-        name: "Babyssiting"
-      },
-      {
-        id: 2,
-        name: "Flores"
-      }
+      id: 0,
+      name: "Musica Ambiente"
+    },
+    {
+      id: 1,
+      name: "Babyssiting"
+    },
+    {
+      id: 2,
+      name: "Flores"
+    }
     ],
     componentMenus: [{
-        id: 1,
-        name: "Leite"
-      },
-      {
-        id: 2,
-        name: "Cafe"
-      },
-      {
-        id: 3,
-        name: "Bolo de Laranja"
-      }
+      id: 1,
+      name: "Leite"
+    },
+    {
+      id: 2,
+      name: "Cafe"
+    },
+    {
+      id: 3,
+      name: "Bolo de Laranja"
+    },
+    {
+      id: 4,
+      name: "Seleção de Chás e Infusões"
+    }, {
+      id: 5,
+      name: "Sumo de Laranja"
+    }, {
+      id: 6, name: "Água"
+    },
+    { id: 7, name: "Pastelaria Seca e Variada" },
+    { id: 8, name: "Triângulos Mistos" },
+    {
+      id: 9, name: "Fruta à peça"
+    }, {
+      id: 10, name: "Água Gaseificada"
+    }, {
+      id: 11, name: "Natinhas com Canela"
+    }, { id: 12, name: "Queijadinhas" },
+     { id: 13, name: "Sumo de Morango e Goiaba" }, 
+     { id: 14, name: "Iogurtes com Frescos e Secos" },{
+       id:15,name:"Mini Croissants"
+     }
     ],
     opinions: []
   },
@@ -321,7 +343,7 @@ export default new Vuex.Store({
           })
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           state.userExist = true
-         
+
         }
       }
       if (!state.userExist) {
@@ -430,7 +452,7 @@ export default new Vuex.Store({
         id: payload.id,
         day: payload.day,
         time: payload.time,
-        people: payload.persons,
+        people: payload.people,
         duration: payload.duration,
         location: payload.location,
         obs: payload.obs,

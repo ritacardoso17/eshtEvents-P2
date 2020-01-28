@@ -38,7 +38,7 @@
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
           <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
-            <router-link class="link" to="/menuAdmin">Area Administrador</router-link>
+            <router-link class="link" to="/menuAdmin" id="menusAdmin">Area Administrador</router-link>
             <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
             <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
             <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
@@ -157,6 +157,16 @@ export default {
   padding-top: 0;
   font-family: GeosansLight;
 }
+
+#menusAdmin {
+  color: white;
+  text-decoration: none;
+}
+
+#menusAdmin:hover {
+  color: #daaa29;
+}
+
 
 #eventsLink {
   color: white;
