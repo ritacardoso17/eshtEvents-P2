@@ -31,6 +31,7 @@
             v-model="password"
           />
         </div>
+
         <div class="form-group">
           <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
           <input
@@ -90,7 +91,7 @@
             v-model="birth"
           />
         </div>
-        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil">
+        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil" />
         <div id="avatar">
           <img id="avatar1" :src="imgPerfil" />
         </div>
@@ -119,7 +120,7 @@ export default {
     contact: "",
     birth: "",
     eventType: [],
-    imgPerfil: "",
+    imgPerfil: ""
   }),
   created: function() {
     window.addEventListener("unload", this.saveStorage);
@@ -139,8 +140,8 @@ export default {
      */
 
     addUser() {
-      if (this.email.includes((this.school).toLowerCase())) {
-        alert(this.school)
+      if (this.email.includes(this.school.toLowerCase())) {
+        alert(this.school);
         this.$store.commit("ADD_USER", {
           id: this.getLastId() + 1,
           name: this.name,
@@ -160,7 +161,6 @@ export default {
         "loggedUser",
         JSON.stringify(this.$store.state.loggedUser)
       );
-
     }
   }
 };
@@ -331,7 +331,7 @@ export default {
   font-size: 120%;
   font-family: GeosansLight;
 }
-#urlAvatar{
+#urlAvatar {
   position: absolute;
   left: -300px;
   top: 340px;

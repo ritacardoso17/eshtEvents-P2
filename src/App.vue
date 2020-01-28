@@ -24,6 +24,9 @@
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
 
+import swal from 'sweetalert2';
+window.Swal = swal;
+
 export default {
   name: "InicialPage",
   components: {

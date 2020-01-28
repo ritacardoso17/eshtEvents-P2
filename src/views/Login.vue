@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="container"
-    style=" margin: auto; width:500px; "
-  >
+  <div class="container" style=" margin: auto; width:500px; ">
     <h1 id="loginTitle">Iniciar Sessão</h1>
     <form v-on:submit.prevent="login()" id="formLogin">
       <label for="txtEmailLogin" class="emailLogin">E-mail:</label>
@@ -35,6 +32,7 @@
 
 <script>
 export default {
+  
   data: () => ({
     email: "",
     password: ""
@@ -58,11 +56,13 @@ export default {
     );
   },
   methods: {
+
     login() {
       this.$store.commit("LOGIN", {
         email: this.email,
         password: this.password
       });
+       Swal.fire('Test!', 'Hello test message','success');
     }
   }
 };
@@ -76,41 +76,48 @@ export default {
   padding-top: 60px;
   padding-bottom: 20px;
 }
+
 #join {
   font-size: 16px;
   font-family: GeosansLight;
   color: #000;
-    right: 520px;
+  right: 520px;
   position: absolute;
   margin-top: 50px;
 }
+
 .emailLogin {
   font-size: 16px;
   padding: 10px;
   margin-right: 250px;
   padding-bottom: 0px;
 }
+
 .passLogin {
   font-size: 16px;
   margin-right: 205px;
   padding: 10px;
   padding-bottom: 0px;
 }
+
 #txtEmailLogin {
   width: 300px;
   margin: auto;
   padding: 5px;
 }
+
 #txtPasswordLogin {
   width: 300px;
   margin: auto;
   padding: 5px;
 }
+
 #formLogin {
   padding: 10px;
   font-family: GeosansLight;
   position: relative;
 }
+
 #btnLogin {
   width: 110px;
   font-size: 16px;
@@ -121,8 +128,8 @@ export default {
   border: 2px solid black;
   margin-right: 175px;
   margin-top: 40px;
-  
 }
+
 #btnLogin:hover {
   color: white;
   border: 2px solid;
