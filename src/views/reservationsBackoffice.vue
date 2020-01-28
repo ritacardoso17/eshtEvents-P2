@@ -3,6 +3,7 @@
     <br>
     <h2>Reservas de Eventos</h2>
     <br>
+   
     <b-table bordered fixed hover :items="this.reservations" :fields="this.fields">
       <template v-slot:cell(details)="row">
         <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
