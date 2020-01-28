@@ -1,12 +1,12 @@
 <template>
   <div class="bckWorksjop">
-    <b-table  style="max-width: 900px; position:center;" bordered fixed hover :items="this.workshops" :fields="this.fields">
+    <b-table  style="max-width:900px; position:center;" bordered fixed hover :items="this.workshops" :fields="this.fields">
       <template v-slot:cell(options)="row">
-        <b-button class="btnRemove" size="sm" @click="removeWorkshop(row.item.id)">Eliminar Workshop</b-button>
+        <b-button class="btnRemove" variant="danger" size="sm" @click="removeWorkshop(row.item.id)" style="margin:10px;" >Eliminar Workshop</b-button>
         <b-button class="btnChange" size="sm" @click="editWorkshop(row.item.id)">Editar</b-button>
       </template>
     </b-table>
-     <b-button tag="button" style="padding:10px;"  class="btnAdd" :to="{path: '/addWorkshop' }"> Adicionar </b-button>
+     <b-button tag="button" style="margin:10px;"  class="btnAdd" :to="{path: '/addWorkshop' }"> Adicionar </b-button>
   </div>
 </template>
 

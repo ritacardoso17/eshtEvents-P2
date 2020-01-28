@@ -84,6 +84,7 @@ export default {
     place: "",
     teacher: "",
     vacancies: 0,
+    userEmail:[],
     description: ""
   }),
   created() {
@@ -113,6 +114,7 @@ export default {
         place: this.place,
         teacher: this.teacher,
         vacancies: this.vacancies,
+        userEmail:this.userEmail,
         description: this.description
       });
     }

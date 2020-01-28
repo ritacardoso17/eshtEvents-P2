@@ -339,7 +339,7 @@ export default {
         time: this.time,
         people: this.persons,
         duration: this.duration,
-        place: this.location,
+        location: this.location,
         obs: this.obsDecor,
         decor: this.slctDecor,
         extra: this.extra_reserv,

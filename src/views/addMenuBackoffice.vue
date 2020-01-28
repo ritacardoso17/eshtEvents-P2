@@ -32,12 +32,16 @@
 
     <br />
     <h2>Adicionar Complemento</h2>
-
     <b-form v-on:submit.prevent="addComponent()">
       <!-- NOME -->
       <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
+       <b-table bordered fixed hover :items="this.components" :fields="this.fields" style="max-width:500px;">
+      <template v-slot:cell(details)="row">
+        <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+      </template>
+       </b-table>
       <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
-      <br />
+      <br/>
       <b-button type="submit" class="btnConf">Confirmar</b-button>
     </b-form>
   </div>

@@ -70,7 +70,7 @@ export default {
         let filterResult = true;
         let filterResultType = true;
 
-        if (this.searchTxt !== "") {
+        if (this.searchTxt !== "Todos") {
             filterResult = menu.name.includes(this.searchTxt);
         }
         if (this.selectE !== "") {
