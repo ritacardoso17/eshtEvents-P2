@@ -31,9 +31,7 @@
 </template>
 
 <script>
-
 export default {
-  
   data: () => ({
     email: "",
     password: ""
@@ -57,13 +55,17 @@ export default {
     );
   },
   methods: {
-
     login() {
+      this.$fire({
+        title: "Title",
+        text: "text",
+        type: "success",
+        timer: 50000
+      });
       this.$store.commit("LOGIN", {
         email: this.email,
         password: this.password
       });
-    
     }
   }
 };
