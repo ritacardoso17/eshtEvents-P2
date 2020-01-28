@@ -52,10 +52,10 @@ export default {
     return {
       items: [],
       fields: [
-        { key: "name", lable: "name", sortable: "true" },
-        { key: "typeUser", lable: "typeUser",sortable: "true" },
+        { key: "name", label: "Nome utilizador", sortable: "true" },
+        { key: "typeUser", label: "Tipo de utilizador",sortable: "true" },
          { key: "details", label: "Detalhes" },
-        { key: "options" }
+        { key: "options", label: "Opções" }
       ]
     };
   },

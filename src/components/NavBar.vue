@@ -91,7 +91,13 @@ export default {
     if (!localStorage.getItem("roomRents")) {
       localStorage.setItem(
         "roomRents",
-        JSON.stringify(this.$store.state.roomRents)
+        JSON.stringify(this.$store.state.rentRooms)
+      );
+    }
+     if (!localStorage.getItem("componentMenus")) {
+      localStorage.setItem(
+        "componentMenus",
+        JSON.stringify(this.$store.state.componentMenus)
       );
     }
   },

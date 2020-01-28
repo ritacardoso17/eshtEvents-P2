@@ -72,7 +72,16 @@ const routes = [
   {
     path: "/menuadmin",
     name: "menuadmin",
-    component: () => import("../views/BackofficeMenu.vue")
+    component: () => import("../views/BackofficeMenu.vue"),
+    beforeEnter(to,from,next){
+      let userType = JSON.parse(localStorage.getItem("loggedUser"))
+      if(userType && userType[0].userType ==  "admin"){
+      next()
+      }
+      else{
+        next("/notFound")
+      }
+    }
   },
   {
     path: "/usersadmin",
@@ -108,6 +117,11 @@ const routes = [
     path: "/addMenu",
     name: "addMenu",
     component: () => import("../views/addMenuBackoffice.vue")
+  },
+  {
+    path: "/eventsBackoffice",
+    name: "eventsBackoffice",
+    component: () => import("../views/eventsBackoffice.vue")
   },
 ];
 

@@ -19,7 +19,7 @@
    <b-button variant="dark" class="btn100" size="lg" style="padding:20px;right:30px;">RESERVAS DE EVENTOS</b-button></router-link>
 
     <!-- <span> ///// </span> -->
-    <router-link to="/reservationsBackoffice"> 
+    <router-link to="/eventsBackoffice"> 
    <b-button variant="dark" class="btn100" size="lg" style="padding:20px;right:0px;">ALUGUER DE ESPAÇOS</b-button></router-link>
   </div>
 </template>

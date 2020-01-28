@@ -31,17 +31,30 @@
     </b-form>
 
     <br />
-    <h2>Adicionar Complemento</h2>
+    <h2>Componentes</h2>
     <b-form v-on:submit.prevent="addComponent()">
+        <b-table
+        bordered
+        fixed
+        hover
+        :items="this.components"
+        :fields="this.fields"
+        style="max-width:500px;"
+      >
+        <template v-slot:cell(remove)="row">
+          <b-button
+            variant="danger"
+            class="btnDetails"
+            size="sm"
+            @click="removeComponent(row.item.id)"
+          >X</b-button>
+        </template>
+      </b-table>
       <!-- NOME -->
+    <h2>Adicionar novo componente</h2>
       <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
-       <b-table bordered fixed hover :items="this.components" :fields="this.fields" style="max-width:500px;">
-      <template v-slot:cell(details)="row">
-        <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
-      </template>
-       </b-table>
       <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
-      <br/>
+      <br />
       <b-button type="submit" class="btnConf">Confirmar</b-button>
     </b-form>
   </div>
@@ -59,7 +72,16 @@ export default {
 
       nameComponent: "",
       components: [],
-      eventType: []
+      eventType: [],
+
+      fields: [
+        {
+          key: "name",
+          label: "Nome do componente",
+          sortable: "true"
+        },
+        { key: "remove", label: "Remover" }
+      ]
     };
   },
   created() {
@@ -85,7 +107,7 @@ export default {
       );
     }
   },
- 
+
   methods: {
     saveStorage() {
       localStorage.setItem(
@@ -121,6 +143,24 @@ export default {
         id: this.getLastIdComponent() + 1,
         name: this.nameComponent
       });
+    },
+    removeComponent(id) {
+      for (let i in this.components) {
+        if (this.components[i].id === id) {
+          this.components = this.components.filter(
+            component => this.components[i].id !== component.id
+          );
+
+          localStorage.setItem(
+            "componentMenus",
+            JSON.stringify(this.components)
+          );
+          this.$store.state.componentMenus = localStorage.setItem(
+            "componentMenus",
+            JSON.stringify(this.components)
+          );
+        }
+      }
     }
   }
 };

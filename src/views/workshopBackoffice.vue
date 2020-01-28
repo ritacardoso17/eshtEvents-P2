@@ -1,5 +1,9 @@
 <template>
   <div class="bckWorksjop">
+    <br>
+    <h2>Gestão dos workshops</h2>
+<br>
+
     <b-table  style="max-width:900px; position:center;" bordered fixed hover :items="this.workshops" :fields="this.fields">
       <template v-slot:cell(options)="row">
         <b-button class="btnRemove" variant="danger" size="sm" @click="removeWorkshop(row.item.id)" style="margin:10px;" >Eliminar Workshop</b-button>
@@ -17,9 +21,9 @@ export default {
       workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "title", lable: "title", sortable: "true" },
-        { key: "vacancies", lable: "vacancies" },
-        { key: "options" }
+        { key: "title", label: "Titulo", sortable: "true" },
+        { key: "vacancies", label: "Vagas" },
+        { key: "options",label:"Opções" }
       ]
     };
   },
