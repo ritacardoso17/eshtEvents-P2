@@ -27,13 +27,11 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Componentes:</b>
-              <div  class="text-sm-center"  v-for="component in row.item.components" :key="component">
+              <div class="text-sm-center" v-for="component in row.item.components" :key="component">
                 <li>{{component}}</li>
               </div>
             </b-col>
           </b-row>
-
-         
 
           <!-- <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button> -->
         </b-card>
@@ -50,16 +48,17 @@ export default {
       fields: [
         {
           key: "name",
-          lable: "nome",
+          label: "Nome",
           sortable: "true"
         },
         {
           key: "type",
-          lable: "type",
+          label: "Tipo de evento",
           sortable: "true"
         },
         {
-          key: "options"
+          key: "options",
+          label: "Opções"
         }
       ]
     };

@@ -38,13 +38,12 @@
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" required v-model="day" />
-              <input type="time" class="form-control" id="txtTime" required v-model="time" />
+              <input type="date" class="form-control" id="txtDate" v-model="day"/>
+              <input type="time" class="form-control" id="txtTime" v-model="time"/>
               <label for class="personsLabel">▶ Número de Pessoas</label>
-              <input type="number" class="form-control" id="txtPersons" required placeholder="0" min="0" max="100"
-                v-model="persons" />
+              <input type="number" class="form-control" id="txtPersons" placeholder="0" min="1" max="100" v-model="persons"/>
               <label for class="durationLabel">▶ Tempo de duração</label>
-              <input type="number" max="12" min="1" class="form-control" id="txtDuration" required v-model="duration" />
+              <input type="number" max="12" min="1" class="form-control" id="txtDuration" v-model="duration"/>
 
               <label for class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
@@ -151,7 +150,7 @@
             <p>{{extra}}</p>
           </div>
 
-          <a name id="confirm2" class="btn btn-primary" href="/events" role="button"
+          <a name id="confirm2" class="btn btn-primary" role="button"
             @click="eventsReserv()">Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
@@ -301,8 +300,15 @@
           eventType: this.title,
           menu: this.slctMenu,
           uniform: this.slctUniform
+
         });
-        alert("adicionei reserva de evento");
+        if (this.day == "" || this.time == "" || this.people == "" || this.duration == "" || this.location == "" || this.decor == "" || this.menu == "" || this.uniform == "") {
+          alert("Tem de preencher todos os Campos")
+        }
+        else{
+          location.href="./events";  
+          alert("adicionei reserva de evento");
+        }
       },
       saveStorage() {
         localStorage.setItem(

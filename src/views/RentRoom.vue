@@ -76,7 +76,6 @@
             id="confirm"
             class="btn btn-primary"
             @click="rentRoom()"
-            href="/room"
             role="button"
           >Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
@@ -154,7 +153,18 @@ export default {
         userMail: this.getLoggedUserEmail(),
         reason: this.reason
       });
-      alert("adicionei reserva de espaço");
+      if (
+        this.room == "" ||
+        this.day == "" ||
+        this.time == "" ||
+        this.duration == "" ||
+        this.reason == ""
+      ) {
+        alert("Tem de preencher todos os campos");
+      } else {
+        location.href="./room"
+        alert("adicionei reserva de espaço");
+      }
     }
   }
 };
