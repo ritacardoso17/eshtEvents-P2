@@ -2,6 +2,12 @@
   <div class="container">
     <b-button @click="orderByName()">Ordenar por nome</b-button>
     <b-button @click="orderByDate()">Ordenar por Data</b-button>
+
+    <!-- DROPDOWN  -->
+    <!-- <select v-model="selectE" id="sltFilter">
+          <option @change="orderByName()">Ordenar por nome AZ</option>
+          <option @change="orderByDate()">Ordenar por data mais</option>
+    </select>-->
     <div v-for="workshop in workshops" v-bind:key="workshop.id">
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id % 2 == 0">
@@ -28,21 +34,24 @@
             <br />
             Vagas: {{workshop.vacancies}}
           </b-card-text>
+          <!-- 
+            <b-button
+              href="#"
+              v-bind:style="{display: show}"
+              id="workInscp"
+              variant="primary"
+              @click="sign(workshop.id)"
+          >Inscrever-me</b-button>-->
 
-          <b-button
-            href="#"
-            v-bind:style="{display: show}"
-            id="workInscp"
-            variant="primary"
-            @click="sign(workshop.id)"
-          >Inscrever-me</b-button>
-          <!-- por este b-button como router link para o login mas manter o v-bind  -->
           <b-button
             href="#"
             v-bind:style="{display: show2}"
             id="workInscp"
             variant="primary"
+            @click="sign(workshop.id)"
           >Inscrever-me</b-button>
+
+          <!-- por este b-button como router link para o login mas manter o v-bind  -->
         </b-card>
         <br />
         <br />
@@ -74,19 +83,20 @@
             Vagas: {{workshop.vacancies}}
           </b-card-text>
 
-          <b-button
+          <!-- <b-button
             href="#"
             v-bind:style="{display: show}"
             id="workInscp2"
             variant="primary"
             @click="sign(workshop.id)"
-          >Inscrever-me</b-button>
+          >Inscrever-me</b-button>-->
           <b-button
             href="#"
             v-bind:style="{display: show2}"
             id="workInscp2"
             variant="primary"
-          >Inscrever-me</b-button>
+            @click="sign(workshop.id)"
+          >{{signMethefuckUp}}</b-button>
         </b-card>
         <br />
         <br />
@@ -102,7 +112,8 @@ export default {
     return {
       workshops: [],
       show: "none",
-      show2: "inline"
+      show2: "inline",
+      signMethefuckUp: "Inscrever-me",
     };
   },
   created() {
@@ -114,11 +125,12 @@ export default {
       );
       this.workshops = this.$store.state.workshops;
     }
-    if (!localStorage.getItem("loggedUser")) {
-      this.show = "none";
+    if (!localStorage.getItem("loggedUser") != 0) {
+      // this.show = "none";
       this.show2 = "inline";
-    } else if (localStorage.getItem("loggedUser") != 0) {
-      this.show = "inline";
+      this.signMethefuckUp = "BORA FDS";
+    } else if (localStorage.getItem("loggedUser") == 0) {
+      // this.show = "inline";
       this.show2 = "none";
     }
   },
@@ -135,51 +147,44 @@ export default {
       //COMO GUARDAR STORAGE??
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
-         
-          if (this.workshops[i].vacancies > 0 && this.workshops[i].userEmail != this.getUserEmail()) {
+          if (
+            this.workshops[i].vacancies > 0 &&
+            this.workshops[i].userEmail != this.getUserEmail()
+          ) {
             this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
-             this.workshops[i].userEmail = this.getUserEmail();
+            this.workshops[i].userEmail = this.getUserEmail();
+            //  this.show2 = "none";
+            this.signMethefuckUp = "Já se inscreveu";
+            
             localStorage.setItem("workshops", JSON.stringify(this.workshops));
             this.$store.getters.getLoggedUser = this.workshops;
-
-          } else if (this.workshops[i].vacancies > 0 && this.workshops[i].userEmail == this.getUserEmail()) {
-            
+          } else if (
+            this.workshops[i].vacancies > 0 &&
+            this.workshops[i].userEmail == this.getUserEmail()
+          ) {
             alert("Não se pode inscrever mais do que uma vez!");
-          } else{
-            
+            // this.lolitos = "false";
+          } else {
             alert("Não há mais vagas");
           }
         }
       }
     },
-
-    ascending(a, b) {
+    orderName(a, b) {
       if (a.title < b.title) return -1;
       if (a.title > b.title) return 1;
       else return 0;
     },
-
-    descending(a, b) {
-      if (a.title < b.title) return 1;
-      if (a.title > b.title) return -1;
+    orderByName() {
+      this.workshops = this.workshops.sort(this.orderName);
+    },
+    orderDate(date1, date2) {
+      if (date1.date < date2.date) return -1;
+      if (date1.date > date2.date) return 1;
       else return 0;
     },
-
-    orderByName() {
-      if (this.compareName === true) {
-        this.workshops = this.workshops.sort(this.ascending);
-        this.compareName = false;
-      } else if (this.compareName === false) {
-        this.workshops = this.workshops.sort(this.descending);
-        this.compareName = true;
-      }
-    },
-
     orderByDate() {
-      this.workshops.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-      });
-      return this.workshops;
+      this.workshops = this.workshops.sort(this.orderDate);
     }
   }
 };
