@@ -1,13 +1,12 @@
 <template>
   <div class="editProfile">
-    <h1 id="title">Alterar Palavra-passe</h1>
+    <br>
+    <h1 id="title">Editar Perfil</h1>
     <div id="container">
-      <div id="picture">
-        <img id="picture" />
+      <h3 style="color: #daaa29" id="name">{{loggedUser[0].name}}</h3>
+      <div>
+        <img  class="imgEdit" style="width:200px; height:auto" :src="loggedUser[0].imgProfile" />
       </div>
-      <a id="editPhoto">Editar Foto</a>
-
-      <h3 id="name">{{loggedUser[0].name}}</h3>
       <form v-on:submit.prevent="changePassword()">
         <label for="password" class="password">Palavra-passe:</label>
         <input type="password" class="form-control" id="password" v-model="password" required />
@@ -26,6 +25,8 @@
         <button type="submit" id="edit" href="Profile">Confirmar</button>
       </form>
     </div>
+    <br />
+    <br />
   </div>
 </template>
 
@@ -90,81 +91,76 @@ export default {
 
 <style>
 h1 {
-  font-family: ScriptMTBold;
+  font-family: Channel;
   margin-top: 30px;
   color: #000;
-  font-size: 50px;
+  font-size: 20px;
 }
 #container {
-  border-left: 6px solid black;
-  border-right: 6px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
   position: relative;
   margin-top: 50px;
   margin-left: 100px;
-  height: 350px;
+  height: 300px;
   width: 1050px;
   font-family: GeosansLight;
 }
-#picture {
-  position: absolute;
-  margin-top: 10px;
-  width: 200px;
-  height: 300px;
-  left: 100px;
-}
-#editPhoto {
-  position: absolute;
-  width: 200px;
-  height: 300px;
-  left: 200px;
-  top: 340px;
-  text-decoration: underline;
+#name {
+  text-align: justify;
+  margin-left: 50px;
 }
 #password {
   position: relative;
-  top: -50px;
-  left: 560px;
+  top: -90px;
+  left: 480px;
   height: 20px;
-  width: 100px;
+  width: 210px;
   font-family: GeosansLight;
 }
 .password {
-  right: 10px;
-  margin-top: 30px;
+  left: -100px;
+  top: -60px;
   position: relative;
   font-family: GeosansLight;
 }
 #newPassword {
   position: relative;
   font-family: GeosansLight;
-  bottom: 45px;
-  left: 600px;
+  top: -77px;
+  left: 520px;
   height: 20px;
-  width: 100px;
+  width: 170px;
 }
 .newPassword {
-  left: 10px;
+  left: -80px;
+  top: -50px;
   position: relative;
   font-family: GeosansLight;
 }
 #confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  bottom: 45px;
-  left: 620px;
+  top: -55px;
+  left: 540px;
   height: 20px;
-  width: 100px;
+  width: 150px;
 }
 .confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  left: 20px;
+  left: -70px;
+  top: -30px;
+}
+.imgEdit{
+  margin-left: -800px;
+  margin-top: 50px;
 }
 
 #edit {
   position: relative;
-  margin-left: 600px;
-  width: 150px;
+  margin-left: 40px;
+  width: 120px;
   color: white;
   background-color: #000;
   border-color: #0000;
@@ -172,11 +168,8 @@ h1 {
   font-family: GeosansLight;
 }
 #edit:hover {
-  position: relative;
-  margin-left: 600px;
   color: white;
   border-color: #daaa29;
   background-color: #000;
-  border-width: thick;
 }
 </style>

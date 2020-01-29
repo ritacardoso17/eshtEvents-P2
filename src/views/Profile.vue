@@ -1,8 +1,7 @@
 <template>
   <div class="profile">
-    
     <div class="container">
-      <h1 style="padding-top:20px; padding-bottom: 50px;">Perfil</h1>
+      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">Perfil</h1>
     </div>
 
     <div class="container perfilBanner">
@@ -11,10 +10,19 @@
           <div>
             <img style="width:200px; height:auto" :src="loggedUser[0].imgProfile" />
           </div>
-          <button id="editFoto">Editar Foto</button>
+          <div class="form-group">
+            <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
+            <form v-on:submit.prevent="changePhoto()">
+              <input type="link" id="urlAvatar2" v-model="newPhoto" />
+              <br />
+              <button type="submit" id="editFoto2">Editar Foto</button>
+            </form>
+          </div>
         </div>
         <div align="left" class="col-sm-4 infos">
-          <p><b>{{loggedUser[0].name}}</b></p>
+          <p class="userName">
+            <b>{{loggedUser[0].name}}</b>
+          </p>
           <p>Data de Nascimento: {{loggedUser[0].birth}}</p>
           <p>Contacto: {{loggedUser[0].contact}}</p>
           <p>Instituição: {{loggedUser[0].school}}</p>
@@ -34,7 +42,7 @@
     </div>
 
     <div class="container" style="padding-bottom: 60px; padding-top: 20px;">
-      <h2>As Tuas Reservas</h2>
+      <h2 style="font-family: Channel; font-size: 20px; color: black;">As Tuas Reservas</h2>
     </div>
 
     <div class="container tables">
@@ -51,7 +59,6 @@
         </b-tab>
       </b-tabs>
     </div>
-
   </div>
 </template>
 
@@ -63,8 +70,24 @@ export default {
     espacos,
     eventos
   },
-  data() {},
+  data() {
+    return {
+      newPhoto: "",
+      users: [],
+      loggedUser: []
+    };
+  },
   created() {
+    if (localStorage.getItem("loggedUser")) {
+      this.$store.state.loggedUser = JSON.parse(
+        localStorage.getItem("loggedUser")
+      );
+    }
+    if (localStorage.getItem("users")) {
+      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+    }
+    this.users = this.$store.state.users;
+    this.loggedUser = this.$store.state.loggedUser;
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     if (localStorage.getItem("reservations")) {
       this.$store.state.reservations = JSON.parse(
@@ -83,6 +106,20 @@ export default {
   methods: {
     getUser() {
       return this.$store.state.loggedUser;
+    },
+
+    changePhoto() {
+      for (let i in this.users) {
+        this.loggedUser[0].imgProfile = this.newPhoto;
+        localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
+        this.$store.state.loggedUser = this.loggedUser;
+        if (this.users[i].id == this.loggedUser[0].id) {
+          window.location ="./Profile"
+          this.users[i].imgProfile = this.newPhoto;
+          localStorage.setItem("users", JSON.stringify(this.users));
+          this.$store.state.users = this.users;
+        }
+      }
     }
   }
 };
@@ -99,27 +136,53 @@ export default {
   right: 0;
   height: 40px;
 }
-
+#profileTitle {
+  font-family: Channel;
+  color: black;
+  font-size: 20px;
+  margin-top: 25px;
+}
 .table {
   position: sticky;
   color: black;
   top: 50px;
   left: 500px;
 }
-
+.userName {
+  font-size: 25px;
+  color: #daaa29;
+}
 #editFoto {
   color: black;
   background-color: transparent;
   border: 0px;
 }
-
 .infos {
-  margin-left: -85px;
-  margin-right: 150px;
+  margin-left: -45px;
+  margin-right: 100px;
+  font-family: GeosansLight;
 }
-
 .fotoP {
   margin-left: -75px;
+}
+#urlAvatar2 {
+  margin-top: 150px;
+}
+#editFoto2 {
+  width: 90px;
+  margin-top: 10px;
+  font-size: 12px;
+  border: 2px solid black;
+  height: 30px;
+  color: white;
+  background-color: #000;
+  font-family: GeosansLight;
+}
+.justify-content-center {
+  -ms-flex-pack: center !important;
+  -webkit-box-pack: center !important;
+  justify-content: center !important;
+  /* border-bottom: 2px solid #daaa29; */
 }
 
 .perfilBanner {
@@ -128,7 +191,6 @@ export default {
   border-left: 2px solid black;
   border-right: 2px solid black;
 }
-
 .tables {
   padding-top: 50px;
   margin-bottom: 80px;

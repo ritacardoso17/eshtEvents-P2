@@ -11,8 +11,7 @@
     <p id="guideRoom">Complete as seguintes etapas para efetuar a sua reserva</p>
 
     <b-card no-body>
-      <!-- v-model="tabIndex" -->
-      <b-tabs align="center" small card id="tab1">
+      <b-tabs align="center" v-model="tabIndex" small card id="tab1">
         <!-- TAB DA ESCOLHA DO ESPAÇO -->
         <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
           <b-progress id="progress" :value="33" variant="warning" :striped="striped"></b-progress>
@@ -22,10 +21,14 @@
             <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar
           </p>
 
-          <div class="container">
-            <div v-for="r in this.rooms" :key="r.id">
-              <b-img :src="r.img" style="width:200px"></b-img>
-              <button @click="chooseRoom(r.name)">escolher</button>
+          <div class="container" align="center">
+            <div class="row">
+              <div v-for="r in this.rooms" :key="r.id">
+                <b-img :src="r.img" style="width:200px" class="roomImg"></b-img>
+                <div class="row">
+                  <button @click="chooseRoom(r.name)" id="btnChoose">{{r.name}}</button>
+                </div>
+              </div>
             </div>
           </div>
         </b-tab>
@@ -33,6 +36,7 @@
         <b-tab title="Informação">
           <form action>
             <b-progress id="progress" :value="66" variant="warning" :striped="striped"></b-progress>
+            <br />
             <div class="form-check">
               <p class="guide8">▶ Data e hora para o aluguer</p>
               <b-form-input v-model="day" type="date" id="rentDate" required></b-form-input>
@@ -48,29 +52,11 @@
               ></b-form-input>
               <p class="guide10">▶ Motivo da reserva</p>
               <textarea id="rentReason" cols="30" rows="2" v-model="reason"></textarea>
-
-              <!-- <b-form-textarea
-                id="textarea"
-                v-model="text"
-                placeholder="Enter something..."
-                rows="2"
-                max-rows="6"
-              ></b-form-textarea>
-
-              <pre class="mt-3 mb-0">{{ text }}</pre> 
-              
-              data(){
-                return{
-                  text: ''
-                }
-              } -->
-
             </div>
           </form>
         </b-tab>
         <!-- TAB DO RESUMO -->
         <b-tab title="Resumo">
-          <b-progress id="progress" :value="100" variant="warning" :striped="striped"></b-progress>
           <h3 class="resume">
             <b>Resumo</b>
           </h3>
@@ -81,15 +67,11 @@
           <p id="pDate">▶ Dia: {{day}}</p>
           <p id="pTime">▶ Hora: {{time}}h</p>
           <p id="pDuration">▶ Duração: {{duration}}h</p>
+          <p id="pReason">▶ Motivo: {{reason}}</p>
           <p id="room">
             <b>Espaço</b>
-            <br />
-            {{slctRoom}}
           </p>
-          <p id="pReason">
-            <b>Motivo</b><br>
-            {{reason}}
-          </p>
+          <p id="roomSlt">{{slctRoom}}</p>
           <a
             id="confirm"
             class="btn btn-primary"
@@ -117,8 +99,9 @@ export default {
     state: 0,
     slctRoom: "",
     rooms: [],
+    tabIndex: 1,
     roomRents: [],
-    reason: "",
+    reason: ""
   }),
   created() {
     window.addEventListener("unload", this.saveStorage);
@@ -158,6 +141,7 @@ export default {
           this.slctRoom = room;
         }
       }
+      this.tabIndex++;
     },
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
@@ -182,9 +166,10 @@ export default {
   width: 1263px;
 }
 
-#progress{
+#progress {
   width: 400px;
   margin-left: 400px;
+  height: 8px;
 }
 
 #lineLeftR {
@@ -242,41 +227,23 @@ export default {
   margin-left: 180px;
   font-size: 110%;
 }
-
-#butn1 {
-  border: 2px solid #232323;
-  position: relative;
-  width: 190px;
-  height: 130px;
-  left: -15px;
-  top: 0px;
+#btnChoose {
+  width: 120px;
+  font-size: 12px;
+  margin-top: 10px;
+  height: 30px;
+  margin-left: 125px;
+  color: white;
+  background-color: #000;
+  border: 2px solid black;
+  font-family: GeosansLight;
 }
-
-#butn2 {
-  border: 2px solid #232323;
-  position: relative;
-  width: 190px;
-  height: 130px;
-  left: 15px;
-  top: 0px;
+#btnChoose:hover {
+  background-color: #000;
+  border: 2px solid #daaa29;
 }
-
-#butn3 {
-  border: 2px solid #232323;
-  width: 190px;
-  position: relative;
-  height: 130px;
-  left: 45px;
-  top: 0px;
-}
-
-#butn4 {
-  border: 2px solid #232323;
-  position: relative;
-  width: 190px;
-  height: 130px;
-  left: 75px;
-  top: 0px;
+.roomImg {
+  margin-left: 70px;
 }
 
 /* INFO TAB */
@@ -294,6 +261,7 @@ export default {
   position: relative;
   top: -115px;
   left: 700px;
+  width: 300px;
   font-size: 110%;
 }
 
@@ -302,6 +270,7 @@ export default {
   text-align: justify;
   position: relative;
   top: -70px;
+  width: 300px;
   left: 700px;
   font-size: 110%;
 }
@@ -309,24 +278,27 @@ export default {
 #rentDate {
   position: relative;
   width: 200px;
+  height: 35px;
   left: 200px;
 }
 
 #rentTime {
   position: relative;
   width: 200px;
+  height: 35px;
   left: 200px;
   top: 80px;
 }
 
 #rentDuration {
   width: 200px;
+  height: 35px;
   position: relative;
   left: 700px;
   top: -117px;
 }
 
-#rentCause {
+#rentReason {
   width: 200px;
   position: relative;
   left: 200px;
@@ -339,14 +311,12 @@ export default {
   color: black;
   margin-top: 20px;
 }
-
 #resumeLine {
   width: 500px;
   height: 2px;
   background-color: #daaa29;
   border: none;
 }
-
 #inform {
   font-family: GeosansLight;
   text-align: justify;
@@ -354,50 +324,73 @@ export default {
   color: black;
   margin-left: 450px;
 }
-
 #room {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 20px;
   color: black;
   margin-left: 700px;
-  margin-top: -148px;
+  margin-top: -190px;
 }
 
 #pDate {
   font-family: GeosansLight;
   text-align: justify;
-  font-size: 12px;
+  font-size: 14px;
   color: black;
   margin-left: 425px;
 }
-
 #pTime {
   font-family: GeosansLight;
   text-align: justify;
-  font-size: 12px;
+  font-size: 14px;
   color: black;
   margin-left: 425px;
 }
-
 #pDuration {
   font-family: GeosansLight;
   text-align: justify;
-  font-size: 12px;
+  font-size: 14px;
   color: black;
   margin-left: 425px;
 }
-
+#pReason {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 14px;
+  color: black;
+  margin-left: 425px;
+}
+#roomSlt {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 14px;
+  color: black;
+  margin-left: 690px;
+}
 #confirm {
   position: relative;
   width: 90px;
   font-size: 12px;
   height: 30px;
   color: white;
+  border: 2px solid black;
   background-color: #000;
   font-family: GeosansLight;
-  top: 180px;
+  top: 160px;
   left: 100px;
+}
+#confirm:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
+}
+#cancel:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
 }
 
 #cancel {
@@ -406,9 +399,10 @@ export default {
   font-size: 12px;
   height: 30px;
   color: white;
+  border: 2px solid black;
   background-color: #000;
   font-family: GeosansLight;
-  top: 180px;
+  top: 160px;
   left: -100px;
 }
 </style>
