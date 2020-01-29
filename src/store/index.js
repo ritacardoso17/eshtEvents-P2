@@ -323,7 +323,8 @@ export default new Vuex.Store({
             password: payload.password,
             contact: payload.contact,
             birth: payload.birth,
-            imgProfile: payload.imgProfile
+            imgProfile: payload.imgProfile,
+            alerts:[]
           });
           localStorage.setItem("users", JSON.stringify(state.users))
           alert("REGISTADO")
@@ -473,7 +474,7 @@ export default new Vuex.Store({
         eventType: payload.eventType,
         menu: payload.menu,
         uniform: payload.uniform,
-        opinions: payload.opinions
+        opinions: ""
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
 

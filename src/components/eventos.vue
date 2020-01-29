@@ -1,15 +1,42 @@
 <template>
   <div>
     <b-table striped hover :items="this.tbEvents" :fields="this.fields">
-      <template v-slot:cell(remove)="row">
+      <!-- <template v-slot:cell(remove)="row">
         <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Cancelar</b-button>
-      </template>
+      </template>-->
       <template v-slot:cell(opinions)="row">
         <b-button id="opinions" v-b-modal.modalEvents>Opinião</b-button>
       </template>
+      <template v-slot:cell(details)="row">
+        <b-button
+          variant="info"
+          class="btnDetails"
+          size="sm"
+          @click="row.toggleDetails"
+        >Mostrar Detalhes</b-button>
+      </template>
+      <template v-slot:row-details="row">
+        <b-card>
+          <!-- Escola -->
+          <b-row class="mb-2">
+            <b-col class="text-sm-right">
+              <textarea
+                name="Opinião"
+                id="txtOpinion"
+                cols="60"
+                rows="5"
+                placeholder="Escreva a sua opinião"
+                v-model="opinion"
+              ></textarea>
+              <b-button @click="send(row.item.id)">Enviar Opinião</b-button>
+            </b-col>
+            <b-col></b-col>
+          </b-row>
+        </b-card>
+      </template>
     </b-table>
 
-    <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close hide-footer>
+    <!-- <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close hide-footer>
       <div class="form-group">
         <textarea
           name="Opinião"
@@ -17,11 +44,11 @@
           cols="60"
           rows="5"
           placeholder="Escreva a sua opinião"
-          v-model="opinions"
+          v-model="opinion"
         ></textarea>
         <b-button @click="send">Enviar Opinião</b-button>
       </div>
-    </b-modal>
+    </b-modal>-->
   </div>
 </template>
 
@@ -30,12 +57,14 @@ export default {
   data() {
     return {
       tbEvents: [],
+      reservations: [],
+      opinion: "",
       fields: [
         { key: "eventType", label: "Tipo", sortable: true },
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
-        { key: "remove", label: "Remover" },
+        { key: "details", label: "Remover" },
         { key: "opinions", label: "Opinião" }
       ]
     };
@@ -50,28 +79,26 @@ export default {
       this.tbEvents = JSON.parse(localStorage.getItem("reservations"));
     }
     for (const i in this.tbEvents) {
-      alert(this.tbEvents[i].userMail + this.getUserMail())
       if (this.tbEvents[i].userMail === this.getUserMail()) {
-        this.tbEvents = this.tbEvents.filter( event => this.tbEvents[i].userMail != event.userMail )
-      }
-      else {
-        alert("topitos")
+        this.tbEvents = this.tbEvents.filter(
+          event => this.tbEvents[i].userMail == event.userMail
+        );
       }
     }
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-  },
-  
-  destroyed() {
 
+    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },
+
+  destroyed() {},
 
   methods: {
-    saveStorage() {
-      localStorage.setItem(
-        "reservations",
-        JSON.stringify(this.$store.state.opinions)
-      );
-    },
+    // saveStorage() {
+    //   localStorage.setItem(
+    //     "reservations",
+    //     JSON.stringify(this.$store.state.opinions)
+    //   );
+    // },
 
     getUser() {
       return this.$store.state.loggedUser;
@@ -105,9 +132,16 @@ export default {
       }
     },
 
-    send() {
-      localStorage.setItem("reservations", JSON.stringify(this.opinions))
-      alert("Mandei uma opinião");
+    send(id) {
+      let reservations =  JSON.parse(localStorage.getItem("reservations"))
+      for (let i in reservations) {
+          if (reservations[i].id === id) {
+            reservations[i].opinions = this.opinion;
+          }
+      }
+      localStorage.setItem("reservations", JSON.stringify(reservations));
+      alert("Opinião Enviada!");
+      this.opinion = "";
     }
   },
 

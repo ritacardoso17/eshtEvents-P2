@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-table striped hover :items="this.tbRooms" :fields="this.fields">
-      <template v-slot:cell(remove)="row">
+      <!-- <template v-slot:cell(remove)="row">
         <b-button class="btnRemove" size="sm" @click="removeRooms(row.item.id)">Cancelar</b-button>
-      </template>
+      </template> -->
       <template v-slot:cell(opinion)="row">
         <b-button id="opinion" v-b-modal.modalRooms>Opinião</b-button>
       </template>
@@ -35,7 +35,7 @@ export default {
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
-        { key: "remove", label: "Remover" },
+        // { key: "remove", label: "Remover" },
         { key: "opinion", label: "Opinião" }
       ]
     };

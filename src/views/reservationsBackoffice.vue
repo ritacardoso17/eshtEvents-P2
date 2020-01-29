@@ -1,9 +1,9 @@
 <template>
   <div>
-    <br>
+    <br />
     <h2>Reservas de Eventos</h2>
-    <br>
-   
+    <br />
+
     <b-table bordered fixed hover :items="this.reservations" :fields="this.fields">
       <template v-slot:cell(details)="row">
         <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
@@ -14,7 +14,7 @@
           variant="success"
           class="btnRemove"
           size="sm"
-          @click="acceptReservation(row.item.id)"
+          @click="acceptReservation(row.item.id, row.item.userMail)"
           style="margin:5px,"
           v-bind:style="{display:show}"
         >Aceitar</b-button>
@@ -26,7 +26,7 @@
         >Recusar</b-button>
       </template>
 
-      <template v-slot:row-details="row" >
+      <template v-slot:row-details="row">
         <b-card>
           <!-- TIPO DE EVENTO -->
           <b-row class="mb-2">
@@ -67,6 +67,19 @@
             </b-col>
             <b-col></b-col>
           </b-row>
+
+          <b-row class="mb-2">
+            <b-col sm="3" class="text-sm-left">
+              <div v-if="row.item.opinions != 0">
+                <b>Opinião:</b>
+                {{ row.item.opinions }}
+              </div>
+              <div v-else>
+                <b>Opinião:O UTILIZADOR AINDA NAO DEU A SUA OPINIAO</b>
+              </div>
+            </b-col>
+            <b-col></b-col>
+          </b-row>
         </b-card>
       </template>
     </b-table>
@@ -78,6 +91,7 @@ export default {
   data() {
     return {
       reservations: [],
+      users: [],
       fields: [
         { key: "userName", label: "Nome do Utilizador" },
         { key: "day", label: "Dia" },
@@ -96,9 +110,13 @@ export default {
       );
       this.reservations = this.$store.state.reservations;
     }
+    if (localStorage.getItem("users")) {
+      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+      this.users = this.$store.state.users;
+    }
   },
   methods: {
-    acceptReservation(id) {
+    acceptReservation(id, mail) {
       for (let i in this.reservations) {
         if (this.reservations[i].id === id) {
           const index = this.reservations.findIndex(
@@ -110,11 +128,21 @@ export default {
             this.reservations[i].state == "Aceite"
           ) {
             this.reservations[index].state = "Aceite";
+            for (let u in this.users) {
+              if (this.users[u].email === mail) {
+                this.users[u].alerts.push;
+                // ({"YA ACEITE"})
+              }
+            }
             // this.show = "none";
           } else {
             alert("Ja tem uma reserva para este dia.");
           }
           alert("Reserva aceite");
+          localStorage.setItem(
+            "reservations",
+            JSON.stringify(this.reservations)
+          );
           localStorage.setItem(
             "reservations",
             JSON.stringify(this.reservations)
@@ -134,7 +162,7 @@ export default {
           );
           if (this.reservations[index].state == "Pendente") {
             this.reservations[index].state = "Recusado";
-          } 
+          }
           alert("recusou esta reserva");
           localStorage.setItem(
             "reservations",
