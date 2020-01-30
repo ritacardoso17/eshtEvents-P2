@@ -1,7 +1,7 @@
 <template>
   <div class="bckMenus">
     <br>
-    <h1>Gestão dos Menus</h1>
+    <h1 class="adminTitle">Gestão dos Menus</h1>
     <br>
     <b-button
       class="btnAdd"
@@ -101,8 +101,7 @@ export default {
   data() {
     return {
       menus: [],
-      id: "",
-      name: "",
+     
       fields: [
         {
           key: "name",
@@ -124,10 +123,13 @@ export default {
         }
       ],
       size: "",
+      size2: "none",
+      id: "",
+      name: "",
       components: [],
       componentsE: [],
       eventType: [],
-      size2: "none"
+     
     };
   },
   created() {
@@ -214,4 +216,10 @@ export default {
     }
   }
 };
-</script>>
+</script>
+<style>
+  .adminTitle{
+  font-family: GeosansLight;
+  color:black;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="bckAdmin">
     <br>
-    <h1>Menu Administrador</h1>
+    <h1 class="adminTitle">Menu Administrador</h1>
 
     <router-link to="/usersadmin">
      <b-button variant="dark" class="btn100"  size="lg" style="padding:20px;left: -30px;">USERS</b-button></router-link>
@@ -12,7 +12,7 @@
 
     <!-- <span> ///// </span> -->
     <router-link to="/workshopadmin"> 
-    <b-button variant="dark" class="btn100" size="lg" style="padding:20px; left:30px;">WORKSHOP</b-button> </router-link>
+    <b-button variant="dark" class="btn100" size="lg" style="padding:14px; left:30px;">WORKSHOPS</b-button> </router-link>
 <br><br><br>
     <!-- <span> ///// </span> -->
     <router-link to="/reservationsBackoffice"> 
@@ -28,7 +28,18 @@
 .btn100 {
   width:150px;
   height: 150px;
+  font-family: GeosansLight;
+  background-color: black;
   position: relative;
   top:5px;
+}
+.btn100:hover{
+  border: 3px solid #daaa29;
+  background-color: black;
+
+}
+.adminTitle{
+  font-family: GeosansLight;
+  color:black;
 }
 </style>

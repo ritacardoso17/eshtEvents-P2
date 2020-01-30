@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <h2>Reservas de Eventos</h2>
+    <h2 class="adminTitle">Reservas de Eventos</h2>
     <br />
     <div v-if="this.rooms == 0">
       <h5>Nao existe reserva de espaços</h5>
@@ -138,5 +138,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
+.adminTitle{
+  font-family: GeosansLight;
+  color:black;
+}
 </style>
