@@ -17,7 +17,7 @@
           <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
           <br />
           <br />
-          <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
+          <p class="guide2">▶<b style="color: #daaa29; font-size: 130% "> Escolha</b> o tipo de Evento que pretende realizar</p>
           <br />
           <div class="container">
             <div class="row" v-for="e in eventType" :key="e">
@@ -76,34 +76,38 @@
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
         <!-- TAB MENU -->
-        <b-tab
-          id="second"
-          
-          title="Menu"
-        >
-        <div class="container">
-          
-        
-        
-          <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
-          <div class="row">
-            <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
-              <b-card
-                id="cardMenu"
-                :title="menu.name"
-                :img-src="menu.img"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 10rem; margin-top: 20px"
-                class="mb-5 border-0"
-              >
-                <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
-                <div></div>
-              </b-card>
+        <b-tab id="second" title="Menu">
+          <div class="container">
+            <div v-if="title !== '' ">
+              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+              <div class="row">
+                <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
+                  <b-card
+                    id="cardMenu"
+                    :title="menu.name"
+                    :img-src="menu.img"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 10rem; margin-top: 20px"
+                    class="mb-5 border-0"
+                  >
+                    <b-button
+                      v-b-modal="menu.id"
+                      @click="chooseMenu(menu.name)"
+                      id="cardBtn"
+                    >Escolher</b-button>
+                    <div></div>
+                  </b-card>
+                </div> 
               </div>
+             
+            </div>
+            <div v-else>
+              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
             </div>
           </div>
+          
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
@@ -373,7 +377,7 @@ export default {
       }
 
       if (this.time < Date.now()) {
-        alert("Não pode fazer uma reserva antes da data atual")
+        alert("Não pode fazer uma reserva antes da data atual");
       }
     },
     saveStorage() {
@@ -459,12 +463,16 @@ export default {
 
 /* EVENTO TAB */
 #btn4 {
-  border: 2px solid #daaa29;
+  border: 2px solid black;
   background-color: black;
   width: 200px;
   margin: 10px;
   margin-left: 450px;
   margin-top: 20px;
+}
+#btn4:hover {
+  border: 3px solid #daaa29;
+
 }
 
 .guide2 {
@@ -570,6 +578,11 @@ export default {
 }
 
 /* MENUS TAB */
+.noEvent {
+  font-family: GeosansLight;
+  font-size: 25px;
+  margin-top: 50px;
+}
 /* COMPONENTES TAB */
 #btn5 {
   border: 2px solid #232323;
