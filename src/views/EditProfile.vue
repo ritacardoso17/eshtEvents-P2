@@ -58,11 +58,13 @@ export default {
             this.$store.state.users = this.users;
           }
         }
-        alert("Palavra-Passe alterada!");
+        this.$bvToast.toast('Palavra-Passe alterada!')
       } else if (this.loggedUser[0].password !== this.password) {
-        alert("A palavra-passe não coincide com a atual!");
+
+         this.$bvToast.toast('A palavra-passe não coincide com a atual!')
       } else {
-        alert("As palavras-passe estão diferentes!");
+         this.$bvToast.toast('Passwords diferentes')
+        
       }
     }
   },

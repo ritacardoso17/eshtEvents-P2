@@ -92,7 +92,7 @@
                     img-alt="Image"
                     img-top
                     tag="article"
-                      img-height="100px"
+                    img-height="100px"
                     style="max-width: 10rem; margin-top: 20px"
                     class="mb-5 border-0"
                   >
@@ -194,10 +194,14 @@
 
               <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="components2">
-                  <b>Componentes</b><br>
+                  <b>Componentes</b>
+                  <br />
                 </p>
-                <p  >{{slctDecor}}<br>
-                  {{slctUniform}}</p>
+                <p>
+                  {{slctDecor}}
+                  <br />
+                  {{slctUniform}}
+                </p>
               </div>
             </div>
             <div class="row">
@@ -379,9 +383,9 @@ export default {
         this.location == "" ||
         this.slctMenu == ""
       ) {
-        alert("Tem de preencher todos os Campos");
+        this.$bvToast.toast("Precisa de preencher todos os campos");
       } else if (this.time < this.curDay) {
-        alert("Não pode fazer uma reserva antes da data atual");
+        this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
       } else {
         this.$store.commit("ADD_RESERVATION", {
           id: this.getLastIdEvents() + 1,
@@ -401,12 +405,8 @@ export default {
           uniform: this.slctUniform
         });
         location.href = "./events";
-        alert("adicionei reserva de evento");
+        this.$bvToast.toast("Reserva efetuada com sucesso");
       }
-
-      // if (this.time < Date.now()) {
-      //   alert("Não pode fazer uma reserva antes da data atual");
-      // }
     },
     saveStorage() {
       localStorage.setItem(
@@ -421,7 +421,6 @@ export default {
         let menuTypeResult = true;
         if (this.title !== "") {
           menuTypeResult = menu.type.includes(this.filter);
-          // alert(this.menuTypeResult);
         }
         return menuTypeResult;
       });
@@ -471,12 +470,12 @@ export default {
   text-align: center;
   font-size: 150%;
 }
-#cardBtn{
+#cardBtn {
   background-color: black;
   font-family: GeosansLight;
   height: 35px;
 }
-#cardBtn:hover{
+#cardBtn:hover {
   border: 2px solid #daaa29;
 }
 
@@ -724,7 +723,7 @@ export default {
   border: none;
 }
 
- #inform2 {
+#inform2 {
   font-size: 20px;
   color: black;
 }

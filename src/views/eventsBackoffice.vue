@@ -54,7 +54,7 @@
               </b-col>
               <b-col></b-col>
             </b-row>
-              <!-- MENU -->
+            <!-- MENU -->
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Opinião:</b>
@@ -102,9 +102,10 @@ export default {
             this.rooms[index].state = "Aceite";
             // this.show = "none";
           } else {
-            alert("Ja tem uma reserva para este dia.");
+            this.$bvToast.toast('Ja tem uma reserva para este dia.');
           }
-          alert("Reserva aceite");
+          this.$bvToast.toast("Aceitou esta reserva");
+
           localStorage.setItem("roomRents", JSON.stringify(this.rooms));
           this.$store.state.roomRents = localStorage.setItem(
             "roomRents",
@@ -122,7 +123,7 @@ export default {
           if (this.reservations[index].state == "Pendente") {
             this.reservations[index].state = "Recusado";
           }
-          alert("recusou esta reserva");
+          this.$bvToast.toast("Recusou esta reserva");
           localStorage.setItem(
             "reservations",
             JSON.stringify(this.reservations)
@@ -139,8 +140,8 @@ export default {
 </script>
 
 <style>
-.adminTitle{
+.adminTitle {
   font-family: GeosansLight;
-  color:black;
+  color: black;
 }
 </style>

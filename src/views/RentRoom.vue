@@ -160,10 +160,10 @@ export default {
         this.duration == "" ||
         this.reason == ""
       ) {
-        alert("Tem de preencher todos os campos");
+        this.$bvToast.toast('Tem de preencher todos os campos')
       } else {
         location.href="./room"
-        alert("adicionei reserva de espaço");
+         this.$bvToast.toast('Alguer de Espaço efetuado com sucesso')
       }
     }
   }

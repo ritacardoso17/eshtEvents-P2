@@ -136,9 +136,9 @@ export default {
             }
             // this.show = "none";
           } else {
-            alert("Ja tem uma reserva para este dia.");
+             this.$bvToast.toast('Ja tem uma reserva para este dia.')
           }
-          alert("Reserva aceite");
+           this.$bvToast.toast('Reserva aceite')
           localStorage.setItem(
             "reservations",
             JSON.stringify(this.reservations)
@@ -163,7 +163,7 @@ export default {
           if (this.reservations[index].state == "Pendente") {
             this.reservations[index].state = "Recusado";
           }
-          alert("recusou esta reserva");
+           this.$bvToast.toast('Recusou esta reserva')
           localStorage.setItem(
             "reservations",
             JSON.stringify(this.reservations)

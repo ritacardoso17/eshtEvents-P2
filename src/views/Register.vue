@@ -141,7 +141,6 @@ export default {
 
     addUser() {
       if (this.email.includes(this.school.toLowerCase())) {
-        alert(this.school);
         this.$store.commit("ADD_USER", {
           id: this.getLastId() + 1,
           name: this.name,

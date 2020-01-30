@@ -171,7 +171,7 @@ export default {
           this.$store.state.menus = JSON.parse(
             localStorage.getItem("foodMenus")
           );
-          alert("MENU REMOVIDO");
+          this.$bvToast.toast('Menu removido com sucesso')
         }
       }
     },
@@ -194,7 +194,7 @@ export default {
           this.menus[m].img = this.img;
 
           localStorage.setItem("foodMenus", JSON.stringify(this.menus));
-          alert("Menu Editado");
+          this.$bvToast.toast('Menu editado com sucesso')
         }
       }
       this.size = "";
