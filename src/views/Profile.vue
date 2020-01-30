@@ -16,6 +16,7 @@
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />
               <button type="submit" id="editFoto2">Editar Foto</button>
+                <button type="button" id="editFoto3" @click="cancelFt()">X</button>
             </form>
           </div>
         </div>
@@ -47,7 +48,7 @@
 
     <div class="container tables">
       <b-tabs align="center">
-        <b-tab title="Eventos">
+        <b-tab title="Eventos" >
           <div class="container" style="padding:120px;">
             <eventos />
           </div>
@@ -120,6 +121,9 @@ export default {
           this.$store.state.users = this.users;
         }
       }this.newPhoto=""
+    },
+    cancelFt(){
+      this.newPhoto=""
     } 
   }
 };
@@ -165,12 +169,19 @@ export default {
 .fotoP {
   margin-left: -75px;
 }
-#urlAvatar2 {
-  margin-top: 150px;
-}
 #editFoto2 {
   width: 90px;
   margin-top: 10px;
+  font-size: 12px;
+  border: 2px solid black;
+  height: 30px;
+  color: white;
+  background-color: #000;
+  font-family: GeosansLight;
+}
+#editFoto3{
+  margin-top: 10px;
+   margin-left: 10px;
   font-size: 12px;
   border: 2px solid black;
   height: 30px;
@@ -196,4 +207,13 @@ export default {
   margin-bottom: 80px;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
 }
+ a {
+    color: black ;
+    text-decoration: none;
+    background-color: transparent;
+}
+/* .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    border-color:#daaa29;
+}  */
 </style>
