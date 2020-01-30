@@ -240,14 +240,6 @@
         </b-tab>
       </b-tabs>
     </b-card>
-
-    <!-- Control buttons-->
-    <!-- <div class="text-center">
-      <b-button-group class="mt-2">
-        <b-button @click="tabIndex--" id="btnPrevious">Anterior</b-button>
-        <b-button @click="tabIndex++" id="btnNext">Seguinte</b-button>
-      </b-button-group>
-    </div>-->
   </div>
 </template>
 
@@ -367,14 +359,6 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
-      /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
-      // let today = new Date();
-      // let dd = String(today.getDate()).padStart(2, '0');
-      // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      // let yyyy = today.getFullYear();
-
-      // today = mm + '/' + dd + '/' + yyyy;
-
       if (
         this.day == "" ||
         this.time == "" ||
@@ -383,9 +367,19 @@ export default {
         this.location == "" ||
         this.slctMenu == ""
       ) {
+        // let x = this.day.split("-");
+        // let dd = x[2];
+        // let mm = x[1];
+        // let yyyy = x[0];
+        
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      } else if (this.time < this.curDay) {
-        this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
+        // if (parseInt(yyyy) < new Date().getFullYear()) {
+        //   this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
+        // } else{
+        //   if (parseInt(dd) <= new Date().getDate() && parseInt(mm) == new Date().getMonth+1) {
+        //   this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
+        //   }
+        //}
       } else {
         this.$store.commit("ADD_RESERVATION", {
           id: this.getLastIdEvents() + 1,
