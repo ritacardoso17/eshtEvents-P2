@@ -90,11 +90,8 @@ export default {
           filterResult = menu.name.includes(this.searchTxt);
         }
 
-        if (this.selectE !== "" && this.selectE !== "Todos") {
+        if (this.selectE !== "" && this.selectE != "Todos") {
           filterResultType = menu.type.includes(this.selectE);
-        }
-        if (this.selectE === "Todos") {
-          filterResult = menu;
         }
         return filterResultType && filterResult;
       });

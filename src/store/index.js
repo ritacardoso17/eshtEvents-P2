@@ -43,7 +43,7 @@ export default new Vuex.Store({
       title: "Momentos entre amigas - VINHOS NO FEMININO",
       vacancies: 20,
       img: require('../assets/work1.jpg'),
-      description: "1. A presença da Mulher na Enologia 2.Guia prático: Seleção de Vinhos  3. Dos Brancos aos Tintos: Prova de Estilos",
+      description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
       date: "06/03/2020",
       place: "ESHT",
       teacher: "Américo Andrade"
@@ -53,7 +53,7 @@ export default new Vuex.Store({
       title: "Páscoa Vínica",
       vacancies: 20,
       img: require('../assets/work2.jpg'),
-      description: "1. Cocktails Vínicos 2. Serviço: Copos, Temperaturas 3. Prova de diferentes cocktails 4. Harmonização",
+      description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
       date: "03/04/2020",
       place: "ESHT",
       teacher: "Américo Andrade"
@@ -63,7 +63,7 @@ export default new Vuex.Store({
       title: "Vinhos e Conservas - As conservas estão na moda",
       vacancies: 20,
       img: require('../assets/work3.jpg'),
-      description: "1. Tipologias de Conservas 2. Os Vinhos do Atlântico 3. Empratamento 4. Prova: Petiscos com Conservas e Vinhos",
+      description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
       date: "08/05/2020",
       place: "Theatro",
       teacher: "Américo Andrade"
@@ -73,7 +73,7 @@ export default new Vuex.Store({
       title: "Piquenique Vínico - Monverde Wine Experience",
       vacancies: 20,
       img: require('../assets/work4.jpg'),
-      description: "1. Welcome drink 2. Passeio pela Vinha 3. Piquenique vínico",
+      description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
       date: "06/06/2020",
       place: "Amarante",
       teacher: "Américo Andrade"
