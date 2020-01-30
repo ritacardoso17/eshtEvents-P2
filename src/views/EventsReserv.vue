@@ -114,37 +114,28 @@
         <b-tab title="Componentes">
           <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
           <br />
-          <br />
+
           <div class="container">
             <p class="guide3">
               ▶
               <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
             </p>
-            <b-button
-              v-for="u in this.uniforms"
-              :key="u.id"
-              id="btn5"
-              @click="uni(u)"
-            >
-                  <b-img :src="u.img" style="width:150px"></b-img>
-          <p>{{u.name}}</p>
-</b-button>
+            <br />
+            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">
+              <b-img :src="u.img" style="width:150px"></b-img>
+              <p>{{u.name}}</p>
+            </b-button>
           </div>
 
           <div class="container">
+            <br />
             <p class="guide4">
               ▶
               <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
             </p>
-            <b-button
-              v-for="d in this.decorations"
-              :key="d.id"
-              id="btn9"
-              @click="decor(d.name)"
-            >
-          <b-img :src="d.img" style="width:200px"></b-img>
-          <p>{{d.name}}</p>
-
+            <b-button v-for="d in this.decorations" :key="d.id" id="btn9" @click="decor(d.name)">
+              <b-img :src="d.img" style="width:200px"></b-img>
+              <p>{{d.name}}</p>
             </b-button>
           </div>
         </b-tab>
@@ -189,42 +180,48 @@
 
           <div class="container">
             <div class="row">
-              <div class="col-sm-4"></div>
+              <div class="col" align="left" style="margin-left: 300px">
+                <p id="inform2">
+                  <b>Informações</b>
+                </p>
+                <p id="pDate2">▶ Dia: {{day}}</p>
+                <p id="pTime2">▶ Hora: {{time}}h</p>
+                <p id="pDuration2">▶ Duração: {{duration}}h</p>
+                <p id="pPersons2">▶ Lugares: {{persons}}</p>
+                <p id="pLocation">▶ Local: {{location}}</p>
+              </div>
 
-              <div class="col-sm-4"></div>
-
-              <div class="col-sm-4"></div>
+              <div class="col" align="left" style="margin-right: 50px">
+                <p id="components2">
+                  <b>Componentes</b>
+                  {{slctDecor}}
+                  {{slctUniform}}
+                </p>
+              </div>
             </div>
-          </div>
-          <p id="inform2">
-            <b>Informações</b>
-          </p>
-          <p id="pDate2">▶ Dia: {{day}}</p>
-          <p id="pTime2">▶ Hora: {{time}}h</p>
-          <p id="pDuration2">▶ Duração: {{duration}}h</p>
-          <p id="pPersons2">▶ Lugares: {{persons}}</p>
-          <p id="pLocation">▶ Local: {{location}}</p>
-          <p id="components2">
-            <b>Componentes</b>
-            {{slctDecor}}
-            {{slctUniform}}
-          </p>
-          <p id="menu2">
-            <b>Menu</b>
-          </p>
-          <p id="choiseMenu2">▶ {{slctMenu}}</p>
-          <p id="observ2">
-            <b>Observações</b>
-          </p>
-          <p id="observMade2">
-            ▶ {{obsDecor}}
-            <br />
-          </p>
-          <p id="extras2">
-            <b>Extras</b>
-          </p>
-          <div v-for="extra in this.extra_reserv" :key="extra">
-            <p>{{extra}}</p>
+            <div class="row">
+              <div class="col" align="left" style="margin-left: 300px">
+                <p id="menu2">
+                  <b>Menu</b>
+                </p>
+                <p id="choiseMenu2">▶ {{slctMenu}}</p>
+              </div>
+              <div class="col" align="left" style="margin-right: 50px">
+                <p id="extras2">
+                  <b>Extras</b>
+                </p>
+                <div v-for="extra in this.extra_reserv" :key="extra">
+                  <p>{{extra}}</p>
+                </div>
+                <p id="observ2">
+                  <b>Observações</b>
+                </p>
+                <p id="observMade2">
+                  ▶ {{obsDecor}}
+                  <br />
+                </p>
+              </div>
+            </div>
           </div>
 
           <a
@@ -372,7 +369,6 @@ export default {
       // let yyyy = today.getFullYear();
 
       // today = mm + '/' + dd + '/' + yyyy;
-
 
       if (
         this.day == "" ||
@@ -619,10 +615,10 @@ export default {
   background-color: transparent;
   color: #000;
   margin: 20px;
-   transition: all .2s ease-in-out; 
+  transition: all 0.2s ease-in-out;
+  font-family: GeosansLight;
 }
 #btn5:hover {
-  /* border: 3px solid #daaa29; */
   transform: scale(1.1);
 }
 .guide3 {
@@ -639,26 +635,19 @@ export default {
   font-size: 110%;
   position: absolute;
   left: 250px;
-  top: 350px;
+  top: 420px;
 }
 
 #btn9 {
-  border: 2px solid #232323;
-  background-color: #000;
+  border: 0px solid #232323;
+  background-color: transparent;
+  color: #000;
   margin: 20px;
-  margin-top: 50px;
+  transition: all 0.2s ease-in-out;
+  font-family: GeosansLight;
 }
 #btn9:hover {
-  border: 3px solid #daaa29;
-}
-
-.guide5 {
-  font-family: GeosansLight;
-  text-align: justify;
-  position: absolute;
-  font-size: 110%;
-  left: 250px;
-  top: 530px;
+  transform: scale(1.1);
 }
 
 #textArea {
@@ -726,7 +715,7 @@ export default {
   border: none;
 }
 
-#inform2 {
+/* #inform2 {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 20px;
@@ -854,7 +843,7 @@ export default {
   margin-left: 770px;
   top: 400px;
   width: 40px;
-}
+} */
 
 #confirm2 {
   position: relative;

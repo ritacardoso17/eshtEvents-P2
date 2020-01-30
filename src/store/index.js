@@ -188,38 +188,38 @@ export default new Vuex.Store({
     uniforms: [{
       id: 0,
       img: require('../assets/farda05.png'),
-      name: "Farda1",
+      name: "Farda Cozinha",
     },
     {
       id: 1,
-      img: require('../assets/deco1.jpg'),
-      name: "Farda2",
+      img: require('../assets/farda04.png'),
+      name: "Farda Semi-formal",
     },
     {
       id: 2,
-      img: require('../assets/deco1.jpg'),
-      name: "Farda3",
+      img: require('../assets/farda03.png'),
+      name: "Farda Formal",
     },
     {
       id: 3,
-      img: require('../assets/deco1.jpg'),
-      name: "Farda4",
+      img: require('../assets/farda02.png'),
+      name: "Farda Casual",
     },
     ],
     decorations: [{
       id: 0,
       img:  require('../assets/deco1.jpg'),
-      name: "decoration1"
+      name: "Decoração A"
     },
     {
       id: 1,
-      img: require('../assets/deco1.jpg'),
-      name: "decoration2"
+      img: require('../assets/deco2.jpg'),
+      name: "Decoração B"
     },
     {
       id: 2,
-      img: require('../assets/deco1.jpg'),
-      name: "decoration3"
+      img: require('../assets/deco3.jpg'),
+      name: "Decoração C"
     },
     ],
     types: [{
