@@ -349,7 +349,7 @@ export default {
         menu: this.slctMenu,
         uniform: this.slctUniform
       });
-      let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
+      /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
       if (
         this.day == "" ||
         this.time == "" ||
