@@ -1,15 +1,15 @@
 <template>
   <div>
     <b-table striped hover head-variant="dark" :items="this.tbRooms" :fields="this.fields">
-      <!-- <template v-slot:cell(remove)="row">
-        <b-button class="btnRemove" size="sm" @click="removeRooms(row.item.id)">Cancelar</b-button>
-      </template> -->
+      <template v-slot:cell(cancel)="row">
+        <b-button class="btnCancel" size="sm" @click="cancelRooms(row.item.id)">Cancelar</b-button>
+      </template>
       <template v-slot:cell(opinions)="row">
         <b-button
           class="btnDetails rounded-0"
           @click="row.toggleDetails"
           style="background-color:black; color:white; height:40px;"
-        > Dar opinião</b-button>
+        >Dar opinião</b-button>
       </template>
       <template v-slot:row-details="row">
         <b-card>
@@ -31,7 +31,6 @@
         </b-card>
       </template>
     </b-table>
-
   </div>
 </template>
 
@@ -40,13 +39,13 @@ export default {
   data() {
     return {
       tbRooms: [],
-      opinion:"",
+      opinion: "",
       fields: [
         { key: "room", label: "Espaço", sortable: true },
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
-        // { key: "remove", label: "Remover" },
+        { key: "cancel", label: "Cancelar" },
         { key: "opinions", label: "Opinião" }
       ]
     };
@@ -89,7 +88,7 @@ export default {
     getRooms() {
       return this.$store.state.roomRents;
     },
-    
+
     getLastIdRooms() {
       return this.$store.getters.getLastIdRooms;
     },
@@ -107,12 +106,32 @@ export default {
       }
     },
 
-   send(id) {
-      let rentRooms =  JSON.parse(localStorage.getItem("roomRents"))
-      for (let i in rentRooms) {
-          if (rentRooms[i].id === id) {
-            rentRooms[i].opinions = this.opinion;
+    cancelRooms(id) {
+      for (let i in this.tbRooms) {
+        if (this.tbRooms[i].id === id) {
+          const index = this.tbRooms.findIndex(
+            item => this.tbRooms[i].id === item.id
+          );
+          if (this.tbRooms[index].state != "Cancelado") {
+            this.tbRooms[index].state = "Cancelado";
+          } else {
+            alert("Reserva já cancelada");
           }
+          localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
+          this.$store.state.roomRents = localStorage.setItem(
+            "roomRents",
+            JSON.stringify(this.tbRooms)
+          );
+        }
+      }
+    },
+
+    send(id) {
+      let rentRooms = JSON.parse(localStorage.getItem("roomRents"));
+      for (let i in rentRooms) {
+        if (rentRooms[i].id === id) {
+          rentRooms[i].opinions = this.opinion;
+        }
       }
       localStorage.setItem("roomRents", JSON.stringify(rentRooms));
       alert("Opinião Enviada!");
@@ -126,3 +145,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.btnCancel {
+  background-color: black;
+  color: white;
+  height: 40px;
+}
+</style>
