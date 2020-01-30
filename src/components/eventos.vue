@@ -1,14 +1,11 @@
 <template>
   <div>
     <b-table striped hover head-variant="dark" :items="this.tbEvents" :fields="this.fields">
-      <!-- <template v-slot:cell(remove)="row">
-        <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Cancelar</b-button>
-      </template>-->
+      <template v-slot:cell(cancel)="row">
+        <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id)">Cancelar</b-button>
+      </template>
       <template v-slot:cell(opinions)="row">
-        <b-button
-          class="btnDetails rounded-0"
-          @click="row.toggleDetails"
-        > Dar opinião</b-button>
+        <b-button class="btnDetails rounded-0" @click="row.toggleDetails">Dar opinião</b-button>
       </template>
       <template v-slot:row-details="row">
         <b-card>
@@ -30,20 +27,6 @@
         </b-card>
       </template>
     </b-table>
-
-    <!-- <b-modal id="modalEvents" centered size="m" title="Sua opinião" hide-header-close hide-footer>
-      <div class="form-group">
-        <textarea
-          name="Opinião"
-          id="txtOpinion"
-          cols="60"
-          rows="5"
-          placeholder="Escreva a sua opinião"
-          v-model="opinion"
-        ></textarea>
-        <b-button @click="send">Enviar Opinião</b-button>
-      </div>
-    </b-modal>-->
   </div>
 </template>
 
@@ -59,7 +42,8 @@ export default {
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
-        { key: "opinions", label: "Opinião" },
+        { key: "cancel", label: "Cancelar" },
+        { key: "opinions", label: "Opinião" }
       ]
     };
   },
@@ -87,12 +71,9 @@ export default {
   destroyed() {},
 
   methods: {
-    // saveStorage() {
-    //   localStorage.setItem(
-    //     "reservations",
-    //     JSON.stringify(this.$store.state.opinions)
-    //   );
-    // },
+    saveStorage() {
+      localStorage.setItem("reservations", JSON.stringify(this.$store.state.state));
+    },
 
     getUser() {
       return this.$store.state.loggedUser;
@@ -110,28 +91,32 @@ export default {
       return this.$store.getters.getLastIdEvents;
     },
 
-    removeEvents(id) {
+    cancelEvents(id) {
       for (let i in this.tbEvents) {
         if (this.tbEvents[i].id === id) {
-          this.tbEvents = this.tbEvents.filter(
-            tbEvents => this.tbEvents[i].id !== tbEvents.id
+          const index = this.tbEvents.findIndex(
+            item => this.tbEvents[i].id === item.id
           );
+          if (this.tbEvents[index].state != "Cancelado") {
+            this.tbEvents[index].state = "Cancelado";
+          } else {
+            alert("Reserva já cancelada");
+          }
           localStorage.setItem("reservations", JSON.stringify(this.tbEvents));
-          this.$store.state.tbEvents = JSON.parse(
-            localStorage.getItem("reservations")
+          this.$store.state.reservations = localStorage.setItem(
+            "reservations",
+            JSON.stringify(this.tbEvents)
           );
-          this.tbEvents = this.getReservations;
-          alert("Removeu");
         }
       }
     },
 
     send(id) {
-      let reservations =  JSON.parse(localStorage.getItem("reservations"))
+      let reservations = JSON.parse(localStorage.getItem("reservations"));
       for (let i in reservations) {
-          if (reservations[i].id === id) {
-            reservations[i].opinions = this.opinion;
-          }
+        if (reservations[i].id === id) {
+          reservations[i].opinions = this.opinion;
+        }
       }
       localStorage.setItem("reservations", JSON.stringify(reservations));
       alert("Opinião Enviada!");
@@ -148,11 +133,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.btnDetails{
+.btnDetails {
   background-color: black;
   color: white;
   height: 40px;
 }
 
+.btnCancel {
+  background-color: black;
+  color: white;
+  height: 40px;
+}
 </style>
