@@ -76,15 +76,7 @@
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
         <!-- TAB MENU -->
-        <b-tab
-          id="second"
-          
-          title="Menu"
-        >
-        <div class="container">
-          
-        
-        
+        <b-tab id="second" title="Menu">
           <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
           <div class="row">
             <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
@@ -101,7 +93,6 @@
                 <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
                 <div></div>
               </b-card>
-              </div>
             </div>
           </div>
         </b-tab>
@@ -358,6 +349,7 @@ export default {
         menu: this.slctMenu,
         uniform: this.slctUniform
       });
+      let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/");
       if (
         this.day == "" ||
         this.time == "" ||
@@ -367,13 +359,12 @@ export default {
         this.slctMenu == ""
       ) {
         alert("Tem de preencher todos os Campos");
+        alert(this.curDay);
+      } else if (this.time < this.curDay) {
+        alert("Não pode fazer uma reserva antes da data atual");
       } else {
         location.href = "./events";
         alert("adicionei reserva de evento");
-      }
-
-      if (this.time < Date.now()) {
-        alert("Não pode fazer uma reserva antes da data atual")
       }
     },
     saveStorage() {
