@@ -2,6 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 /* import router from "vue-router";
  */
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -208,7 +210,7 @@ export default new Vuex.Store({
     ],
     decorations: [{
       id: 0,
-      img:  require('../assets/deco1.jpg'),
+      img: require('../assets/deco1.jpg'),
       name: "Decoração A"
     },
     {
@@ -294,10 +296,10 @@ export default new Vuex.Store({
     }, {
       id: 11, name: "Natinhas com Canela"
     }, { id: 12, name: "Queijadinhas" },
-     { id: 13, name: "Sumo de Morango e Goiaba" }, 
-     { id: 14, name: "Iogurtes com Frescos e Secos" },{
-       id:15,name:"Mini Croissants"
-     }
+    { id: 13, name: "Sumo de Morango e Goiaba" },
+    { id: 14, name: "Iogurtes com Frescos e Secos" }, {
+      id: 15, name: "Mini Croissants"
+    }
     ],
   },
 
@@ -319,7 +321,7 @@ export default new Vuex.Store({
             contact: payload.contact,
             birth: payload.birth,
             imgProfile: payload.imgProfile,
-            alerts:[]
+            alerts: []
           });
           localStorage.setItem("users", JSON.stringify(state.users))
           alert("REGISTADO")
@@ -347,7 +349,7 @@ export default new Vuex.Store({
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           state.userExist = true
           window.location = "./"
-         
+
         }
       }
       if (!state.userExist) {
@@ -395,7 +397,7 @@ export default new Vuex.Store({
         state.workshops.push({
           id: payload.id,
           title: payload.title,
-          img:payload.img,
+          img: payload.img,
           date: payload.date,
           place: payload.place,
           teacher: payload.teacher,
@@ -420,8 +422,11 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
+        VueSimpleAlert.fire('Menu adicionado!').then(() => {
+          window.location = "./menusBackoffice"
+        });;
       } else {
-        alert("Ja existe um menu com esse nome")
+        VueSimpleAlert.fire("Já existe um menu com esse nome!")
       }
     },
     ADD_COMPONENT: (state, payload) => {
@@ -433,8 +438,9 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
-        alert("Menu Criado")
+        VueSimpleAlert.fire("Complemento Criado")
       }
+      // else{}
     },
     RENT_ROOM: (state, payload) => {
       state.roomRents.push({
