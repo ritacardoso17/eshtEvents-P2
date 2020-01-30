@@ -309,7 +309,7 @@ export default new Vuex.Store({
       //SE ENCONTRAR ALGUM EMAIL IGUAL AO QUE ESTA A TENTAR CRIAR
       if (!state.users.some(user => user.email === payload.email)) {
         if (payload.password !== payload.confPass) {
-          alert("PASSWORDS DIFERENTES")
+          VueSimpleAlert.fire('Passwords diferentes')
         } else {
           state.users.push({
             id: payload.id,
@@ -324,12 +324,12 @@ export default new Vuex.Store({
             alerts: []
           });
           localStorage.setItem("users", JSON.stringify(state.users))
-          alert("REGISTADO")
+          VueSimpleAlert.fire('Conta criada')
           window.location = "./login"
         }
       } else {
-        alert("EMAIL JA EXISTENTE")
-
+       
+        VueSimpleAlert.fire('Email já existente')
       }
     },
     LOGIN: (state, payload) => {
@@ -360,15 +360,12 @@ export default new Vuex.Store({
       }
 
     },
-    /* SET_LOGGED_USER: (state, payload) =>{
-      $store.state.loggedUser() = payload.loggedUser
-      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
-    }, */
+    
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
       location.href = "./"
-      alert("Concluido")
+      VueSimpleAlert.fire('Sessão Terminada com sucesso')
     },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)
@@ -394,6 +391,7 @@ export default new Vuex.Store({
     },
     ADD_WORKSHOP: (state, payload) => {
       if (!state.workshops.some(workshop => workshop.title === payload.title)) {
+        alert("")
         state.workshops.push({
           id: payload.id,
           title: payload.title,
@@ -402,13 +400,15 @@ export default new Vuex.Store({
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
-          userEmail: payload.userEmail,
+          userEmail:[],
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
-        alert("Workshop Criado")
+        VueSimpleAlert.fire('Workshop adicionado!').then(() => {
+          window.location = "./workshopBackoffice"
+        });
       } else {
-        alert("Workshop com nome igual a um workshop criado")
+        VueSimpleAlert.fire('Workshop com nome igual a um workshop criado.')
 
       }
     },
@@ -424,7 +424,7 @@ export default new Vuex.Store({
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
         VueSimpleAlert.fire('Menu adicionado!').then(() => {
           window.location = "./menusBackoffice"
-        });;
+        });
       } else {
         VueSimpleAlert.fire("Já existe um menu com esse nome!")
       }
@@ -438,7 +438,9 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
-        VueSimpleAlert.fire("Complemento Criado")
+        VueSimpleAlert.fire("Complemento Criado").then(() => {
+          window.location = "./addMenuBackoffice"
+        })
       }
       // else{}
     },

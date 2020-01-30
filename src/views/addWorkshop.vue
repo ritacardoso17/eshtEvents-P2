@@ -4,7 +4,7 @@
     <h2 class="adminTitle">Adicionar Workshop</h2>
     <br />
     <div class="container" align="center" style="height: 600px">
-      <b-form-group v-on:submit.prevent="addWorkshop()">
+      <b-form @submit.prevent="addWorkshop()">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -74,29 +74,29 @@
                 placeholder="Insira uma descrição"
                 v-model="description"
               ></b-form-textarea>
-              <b-button type="submit" class="btnConf">Confirmar</b-button>
             </div>
           </div>
         </div>
-      </b-form-group>
+        <b-button type="submit">Enviar</b-button>
+      </b-form>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Add",
-  data: () => ({
-    id: this.getLastIdWorkshops() + 1,
-    title: "",
-    img: "",
-    date: "",
-    place: "",
-    teacher: "",
-    vacancies: 0,
-    userEmail: [],
-    description: ""
-  }),
+  data: function() {
+    return {
+      id: this.getLastIdWorkshops() + 1,
+      title: "",
+      img: "",
+      date: "",
+      place: "",
+      teacher: "",
+      vacancies: 0,
+      description: ""
+    };
+  },
   created() {
     window.addEventListener("unload", this.saveStorage);
     if (localStorage.getItem("workshops")) {
@@ -124,7 +124,6 @@ export default {
         place: this.place,
         teacher: this.teacher,
         vacancies: this.vacancies,
-        userEmail: this.userEmail,
         description: this.description
       });
     }
@@ -136,18 +135,17 @@ export default {
 .form-group {
   width: 550px;
 }
-.btnConf{
+.btnConf {
   background-color: black;
   color: white;
   margin-top: 20px;
 }
-.btnConf:hover{
+.btnConf:hover {
   border: 2px solid #daaa29;
   background-color: black;
-
 }
-.adminTitle{
+.adminTitle {
   font-family: GeosansLight;
-  color:black;
+  color: black;
 }
 </style>
