@@ -22,24 +22,19 @@ export default new Vuex.Store({
     loggedUser: [],
     rooms: [{
       id: 0,
-      name: "cozinha",
-      img: require('../assets/imgInicial.jpg')
+      name: "Restaurante Aplicação",
+      img: require('../assets/restApp.jpg')
     },
     {
       id: 1,
-      name: "bar",
-      img: require('../assets/imgInicial.jpg')
+      name: "Cozinha Aplicação",
+      img: require('../assets/img_cozinha.jpg')
     },
     {
       id: 2,
-      name: "Novo restaurante",
-      img: require('../assets/imgInicial.jpg')
-    },
-    {
-      id: 3,
-      name: "Restaurante de App",
-      img: require('../assets/imgInicial.jpg')
-    },
+      name: "Bar Aplicação",
+      img: require('../assets/img_bar.jpg')
+    }
     ],
     workshops: [{
       id: 0,
