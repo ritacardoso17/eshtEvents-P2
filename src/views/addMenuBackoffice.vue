@@ -129,6 +129,7 @@ export default {
         type: this.typeEE,
         components: this.componentsNew
       });
+      this.$bvToast.toast('Toast body content')
     },
     typeEvent(tipo) {
       for (let e in this.eventType) {
@@ -169,5 +170,8 @@ export default {
   .adminTitle{
   font-family: GeosansLight;
   color:black;
+}
+.toast-header{
+  background-color: #b3ff66;
 }
 </style>
