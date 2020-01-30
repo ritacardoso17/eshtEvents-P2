@@ -116,43 +116,23 @@ export default {
     }
   },
   methods: {
-    acceptReservation(id, mail) {
+    acceptReservation(id) {
       for (let i in this.reservations) {
         if (this.reservations[i].id === id) {
           const index = this.reservations.findIndex(
             reservation => this.reservations[i].id === reservation.id
           );
-          if (
-            this.reservations[index].state == "Pendente" &&
-            this.reservations[i].date != this.reservations[index].date &&
-            this.reservations[i].state == "Aceite"
-          ) {
+          if (this.reservations[index].state != "Aceite") {
             this.reservations[index].state = "Aceite";
-            for (let u in this.users) {
-              if (this.users[u].email === mail) {
-                this.users[u].alerts.push;
-                // ({"YA ACEITE"})
-              }
-            }
-            // this.show = "none";
-          } else {
-             this.$bvToast.toast('Ja tem uma reserva para este dia.')
           }
-           this.$bvToast.toast('Reserva aceite')
-          localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-          localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-          this.$store.state.reservations = localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
         }
       }
+      this.$bvToast.toast("Reserva aceite");
+      localStorage.setItem("reservations", JSON.stringify(this.reservations));
+      this.$store.state.reservations = localStorage.setItem(
+        "reservations",
+        JSON.stringify(this.reservations)
+      )
     },
     refuseReservation(id) {
       for (let i in this.reservations) {
@@ -160,10 +140,10 @@ export default {
           const index = this.reservations.findIndex(
             reservation => this.reservations[i].id === reservation.id
           );
-          if (this.reservations[index].state == "Pendente") {
+          if (this.reservations[index].state != "Recusado") {
             this.reservations[index].state = "Recusado";
           }
-           this.$bvToast.toast('Recusou esta reserva')
+          this.$bvToast.toast("Recusou esta reserva");
           localStorage.setItem(
             "reservations",
             JSON.stringify(this.reservations)
@@ -179,9 +159,8 @@ export default {
 };
 </script>
 <style>
-.adminTitle{
+.adminTitle {
   font-family: GeosansLight;
-  color:black;
+  color: black;
 }
-
 </style>

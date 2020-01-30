@@ -365,7 +365,7 @@ export default new Vuex.Store({
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
       location.href = "./"
-      VueSimpleAlert.fire('Sessão Terminada com sucesso')
+      VueSimpleAlert.fire('Sessão Terminada com Sucesso')
     },
     REMOVE_USER: (state, payload) => {
       state.users = state.users.filter((user) => payload.id !== user.id)
