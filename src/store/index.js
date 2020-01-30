@@ -48,8 +48,8 @@ export default new Vuex.Store({
       img: require('../assets/CatePessoas.jpg'),
       description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
       date: "06/10/2020",
-      room: "B204",
-      locutor: "Américo Andrade"
+      place: "B204",
+      teacher: "Américo Andrade"
     },
     {
       id: 1,
@@ -58,8 +58,8 @@ export default new Vuex.Store({
       img: require('../assets/CatePessoas.jpg'),
       description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
       date: "06/04/2020",
-      room: "B204",
-      locutor: "Américo Andrade"
+      place: "B204",
+      teacher: "Américo Andrade"
     },
     {
       id: 2,
@@ -68,8 +68,8 @@ export default new Vuex.Store({
       img: require('../assets/CatePessoas.jpg'),
       description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
       date: "06/04/2020",
-      room: "B204",
-      locutor: "Américo Andrade"
+      place: "B204",
+      teacher: "Américo Andrade"
     },
     {
       id: 3,
@@ -78,8 +78,8 @@ export default new Vuex.Store({
       img: require('../assets/CatePessoas.jpg'),
       description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
       date: "06/03/2020",
-      room: "B204",
-      locutor: "Américo Andrade"
+      place: "B204",
+      teacher: "Américo Andrade"
     }
     ],
     foodMenus: [{
@@ -400,6 +400,7 @@ export default new Vuex.Store({
         state.workshops.push({
           id: payload.id,
           title: payload.title,
+          img:payload.img,
           date: payload.date,
           place: payload.place,
           teacher: payload.teacher,

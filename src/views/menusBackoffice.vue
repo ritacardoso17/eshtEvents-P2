@@ -1,6 +1,8 @@
 <template>
   <div class="bckMenus">
+    <br>
     <h1>Gestão dos Menus</h1>
+    <br>
     <b-button
       class="btnAdd"
       size="sm"
@@ -47,6 +49,7 @@
         </b-card>
       </template>
     </b-table>
+    <!-- EDITAR MENU  -->
     <div class="container" v-bind:style="{display:size2}">
       <h2>Editar menu</h2>
       <b-form v-on:submit.prevent="saveMenu()">
