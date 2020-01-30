@@ -17,7 +17,10 @@
           <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
           <br />
           <br />
-          <p class="guide2">▶<b style="color: #daaa29; font-size: 130% "> Escolha</b> o tipo de Evento que pretende realizar</p>
+          <p class="guide2">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o tipo de Evento que pretende realizar
+          </p>
           <br />
           <div class="container">
             <div class="row" v-for="e in eventType" :key="e">
@@ -77,7 +80,6 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab id="second" title="Menu">
-<<<<<<< HEAD
           <div class="container">
             <div v-if="title !== '' ">
               <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
@@ -100,33 +102,13 @@
                     >Escolher</b-button>
                     <div></div>
                   </b-card>
-                </div> 
+                </div>
               </div>
-             
             </div>
             <div v-else>
               <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
-=======
-          <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
-          <div class="row">
-            <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
-              <b-card
-                id="cardMenu"
-                :title="menu.name"
-                :img-src="menu.img"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 10rem; margin-top: 20px"
-                class="mb-5 border-0"
-              >
-                <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
-                <div></div>
-              </b-card>
->>>>>>> 3fcf37d149ca6336f95cc6b4f943ef154292d801
             </div>
           </div>
-          
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
@@ -134,27 +116,46 @@
           <br />
           <br />
           <div class="container">
-            <p
-              class="guide3"
-            >▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
-            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">{{u.name}}</b-button>
+            <p class="guide3">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
+            </p>
+            <b-button
+              v-for="u in this.uniforms"
+              :key="u.id"
+              id="btn5"
+              @click="uni(u)"
+            >
+                  <b-img :src="u.img" style="width:150px"></b-img>
+          <p>{{u.name}}</p>
+</b-button>
           </div>
 
           <div class="container">
-            <p class="guide4">▶ Escolha a decoração que mais gosta para o seu evento</p>
+            <p class="guide4">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
+            </p>
             <b-button
               v-for="d in this.decorations"
               :key="d.id"
               id="btn9"
               @click="decor(d.name)"
-            >{{d.name}}</b-button>
+            >
+          <b-img :src="d.img" style="width:200px"></b-img>
+          <p>{{d.name}}</p>
+
+            </b-button>
           </div>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
           <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
           <br />
-          <p class="guide6">▶ Selecione os extras que pretenda</p>
+          <p class="guide6">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras que pretenda
+          </p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id">
@@ -364,24 +365,15 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
-      this.$store.commit("ADD_RESERVATION", {
-        id: this.getLastIdEvents() + 1,
-        day: this.day,
-        time: this.time,
-        people: this.persons,
-        duration: this.duration,
-        location: this.location,
-        obs: this.obsDecor,
-        decor: this.slctDecor,
-        extra: this.extra_reserv,
-        userName: this.$store.state.loggedUser[0].name,
-        userMail: this.getLoggedUserEmail(),
-        state: "Pendente",
-        eventType: this.title,
-        menu: this.slctMenu,
-        uniform: this.slctUniform
-      });
       /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
+      // let today = new Date();
+      // let dd = String(today.getDate()).padStart(2, '0');
+      // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      // let yyyy = today.getFullYear();
+
+      // today = mm + '/' + dd + '/' + yyyy;
+
+
       if (
         this.day == "" ||
         this.time == "" ||
@@ -391,17 +383,33 @@ export default {
         this.slctMenu == ""
       ) {
         alert("Tem de preencher todos os Campos");
-        alert(this.curDay);
       } else if (this.time < this.curDay) {
         alert("Não pode fazer uma reserva antes da data atual");
       } else {
+        this.$store.commit("ADD_RESERVATION", {
+          id: this.getLastIdEvents() + 1,
+          day: this.day,
+          time: this.time,
+          people: this.persons,
+          duration: this.duration,
+          location: this.location,
+          obs: this.obsDecor,
+          decor: this.slctDecor,
+          extra: this.extra_reserv,
+          userName: this.$store.state.loggedUser[0].name,
+          userMail: this.getLoggedUserEmail(),
+          state: "Pendente",
+          eventType: this.title,
+          menu: this.slctMenu,
+          uniform: this.slctUniform
+        });
         location.href = "./events";
         alert("adicionei reserva de evento");
       }
 
-      if (this.time < Date.now()) {
-        alert("Não pode fazer uma reserva antes da data atual");
-      }
+      // if (this.time < Date.now()) {
+      //   alert("Não pode fazer uma reserva antes da data atual");
+      // }
     },
     saveStorage() {
       localStorage.setItem(
@@ -495,7 +503,6 @@ export default {
 }
 #btn4:hover {
   border: 3px solid #daaa29;
-
 }
 
 .guide2 {
@@ -608,12 +615,15 @@ export default {
 }
 /* COMPONENTES TAB */
 #btn5 {
-  border: 2px solid #232323;
-  background-image: url("../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg");
-  width: 150px;
+  border: 0px solid #232323;
+  background-color: transparent;
+  color: #000;
   margin: 20px;
-  margin-top: 50px;
-  height: 150px;
+   transition: all .2s ease-in-out; 
+}
+#btn5:hover {
+  /* border: 3px solid #daaa29; */
+  transform: scale(1.1);
 }
 .guide3 {
   position: absolute;
@@ -634,12 +644,14 @@ export default {
 
 #btn9 {
   border: 2px solid #232323;
-  background-image: url("../assets/imgInicial.jpg");
-  width: 190px;
-  height: 130px;
+  background-color: #000;
   margin: 20px;
   margin-top: 50px;
 }
+#btn9:hover {
+  border: 3px solid #daaa29;
+}
+
 .guide5 {
   font-family: GeosansLight;
   text-align: justify;

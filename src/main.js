@@ -7,11 +7,15 @@ import router from "./router";
 import store from "./store";
 import 'bootstrap'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 Vue.config.productionTip = false;
 
 import VueSimpleAlert from "vue-simple-alert";
 
 Vue.use(VueSimpleAlert);
+
+
+
 
 new Vue({
   router,
