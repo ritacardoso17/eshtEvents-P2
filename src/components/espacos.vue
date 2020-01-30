@@ -101,7 +101,8 @@ export default {
           );
           localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
           this.tbRooms = this.getRooms;
-          alert("Removeu");
+         
+           this.$bvToast.toast('Removeu o espaço');
         }
       }
     },
@@ -115,7 +116,7 @@ export default {
           if (this.tbRooms[index].state != "Cancelado") {
             this.tbRooms[index].state = "Cancelado";
           } else {
-            alert("Reserva já cancelada");
+             this.$bvToast.toast('Reserva já cancelada');
           }
           localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
           this.$store.state.roomRents = localStorage.setItem(
@@ -134,7 +135,7 @@ export default {
         }
       }
       localStorage.setItem("roomRents", JSON.stringify(rentRooms));
-      alert("Opinião Enviada!");
+       this.$bvToast.toast('Opinião Enviada!');
       this.opinion = "";
     }
   },

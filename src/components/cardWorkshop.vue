@@ -126,18 +126,16 @@ export default {
             this.workshops[i].userEmail != this.getUserEmail()
           ) {
             this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
-            this.workshops[i].userEmail = this.getUserEmail();
-           
-            
+            this.workshops[i].userEmail.push (this.getUserEmail());
             localStorage.setItem("workshops", JSON.stringify(this.workshops));
             this.$store.getters.getLoggedUser = this.workshops;
           } else if (
             this.workshops[i].vacancies > 0 &&
             this.workshops[i].userEmail == this.getUserEmail()
           ) {
-            alert("Não se pode inscrever mais do que uma vez!");
+             this.$bvToast.toast('Não se pode inscrever mais do que uma vez!')
           } else {
-            alert("Não há mais vagas");
+             this.$bvToast.toast('Não ha mais vagas!')
           }
         }
       }

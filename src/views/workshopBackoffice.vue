@@ -231,7 +231,8 @@ export default {
           this.workshops[w].description = this.description;
 
           localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          alert("Workshop Editado");
+           this.$bvToast.toast('Workshop Editado')
+
         }
       }
       this.size = "";

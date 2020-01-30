@@ -72,7 +72,10 @@ export default {
 
   methods: {
     saveStorage() {
-      localStorage.setItem("reservations", JSON.stringify(this.$store.state.state));
+      localStorage.setItem(
+        "reservations",
+        JSON.stringify(this.$store.state.state)
+      );
     },
 
     getUser() {
@@ -100,7 +103,7 @@ export default {
           if (this.tbEvents[index].state != "Cancelado") {
             this.tbEvents[index].state = "Cancelado";
           } else {
-            alert("Reserva já cancelada");
+            this.$bvToast.toast("Reserva já cancelada");
           }
           localStorage.setItem("reservations", JSON.stringify(this.tbEvents));
           this.$store.state.reservations = localStorage.setItem(
@@ -119,7 +122,8 @@ export default {
         }
       }
       localStorage.setItem("reservations", JSON.stringify(reservations));
-      alert("Opinião Enviada!");
+      this.$bvToast.toast("Opinião Enviada!");
+
       this.opinion = "";
     }
   },

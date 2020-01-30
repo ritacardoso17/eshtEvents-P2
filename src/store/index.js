@@ -328,7 +328,7 @@ export default new Vuex.Store({
           window.location = "./login"
         }
       } else {
-       
+
         VueSimpleAlert.fire('Email já existente')
       }
     },
@@ -360,7 +360,7 @@ export default new Vuex.Store({
       }
 
     },
-    
+
     LOGOUT: (state) => {
       // state.loggedUser.pop()
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
@@ -400,12 +400,12 @@ export default new Vuex.Store({
           place: payload.place,
           teacher: payload.teacher,
           vacancies: payload.vacancies,
-          userEmail:[],
+          userEmail: [],
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops))
         VueSimpleAlert.fire('Workshop adicionado!').then(() => {
-          window.location = "./workshopBackoffice"
+        
         });
       } else {
         VueSimpleAlert.fire('Workshop com nome igual a um workshop criado.')
@@ -423,7 +423,7 @@ export default new Vuex.Store({
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
         VueSimpleAlert.fire('Menu adicionado!').then(() => {
-          window.location = "./menusBackoffice"
+        
         });
       } else {
         VueSimpleAlert.fire("Já existe um menu com esse nome!")
