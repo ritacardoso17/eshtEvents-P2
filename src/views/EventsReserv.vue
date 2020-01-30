@@ -17,7 +17,11 @@
           <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
           <br />
           <br />
-          <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p><br>
+          <p class="guide2">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o tipo de Evento que pretende realizar
+          </p>
+          <br />
           <div class="container">
             <div class="row" v-for="e in eventType" :key="e">
               <div class="col-sm-4" v-if="e !== 'Todos'">
@@ -38,12 +42,27 @@
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" v-model="day"/>
-              <input type="time" class="form-control" id="txtTime" v-model="time"/>
+              <input type="date" class="form-control" id="txtDate" v-model="day" />
+              <input type="time" class="form-control" id="txtTime" v-model="time" />
               <label for class="personsLabel">▶ Número de Pessoas</label>
-              <input type="number" class="form-control" id="txtPersons" placeholder="0" min="1" max="100" v-model="persons"/>
+              <input
+                type="number"
+                class="form-control"
+                id="txtPersons"
+                placeholder="0"
+                min="1"
+                max="100"
+                v-model="persons"
+              />
               <label for class="durationLabel">▶ Tempo de duração</label>
-              <input type="number" max="12" min="1" class="form-control" id="txtDuration" v-model="duration"/>
+              <input
+                type="number"
+                max="12"
+                min="1"
+                class="form-control"
+                id="txtDuration"
+                v-model="duration"
+              />
 
               <label for class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
@@ -60,47 +79,106 @@
           <b-img id="waiter" src="../assets/noun_Waiter_1306700.png"></b-img>
         </b-tab>
         <!-- TAB MENU -->
-        <b-tab class="container" id="second" style="padding-left:100px; padding-top:80px;" title="Menu">
-          <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
-          <div class="row">
-            <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
-              <b-card id="cardMenu" :title="menu.name" :img-src="menu.img" img-alt="Image" img-top tag="article"
-                style="max-width: 10rem;" class="mb-5 border-0">
-                <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
-                <div></div>
-              </b-card>
+        <b-tab id="second" title="Menu">
+          <div class="container">
+            <div v-if="title !== '' ">
+              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+              <div class="row">
+                <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
+                  <b-card
+                    id="cardMenu"
+                    :title="menu.name"
+                    :img-src="menu.img"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                    style="max-width: 10rem; margin-top: 20px"
+                    class="mb-5 border-0"
+                  >
+                    <b-button
+                      v-b-modal="menu.id"
+                      @click="chooseMenu(menu.name)"
+                      id="cardBtn"
+                    >Escolher</b-button>
+                    <div></div>
+                  </b-card>
+                </div>
+              </div>
+            </div>
+            <div v-else>
+              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
             </div>
           </div>
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
           <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
-          <br><br>
+          <br />
+          <br />
           <div class="container">
-            <p class="guide3">▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
-            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">{{u.name}}</b-button>
+            <p class="guide3">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
+            </p>
+            <b-button
+              v-for="u in this.uniforms"
+              :key="u.id"
+              id="btn5"
+              @click="uni(u)"
+            >
+                  <b-img :src="u.img" style="width:150px"></b-img>
+          <p>{{u.name}}</p>
+</b-button>
           </div>
 
           <div class="container">
-            <p class="guide4">▶ Escolha a decoração que mais gosta para o seu evento</p>
-            <b-button v-for="d in this.decorations" :key="d.id" id="btn9" @click="decor(d.name)">{{d.name}}</b-button>
+            <p class="guide4">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
+            </p>
+            <b-button
+              v-for="d in this.decorations"
+              :key="d.id"
+              id="btn9"
+              @click="decor(d.name)"
+            >
+          <b-img :src="d.img" style="width:200px"></b-img>
+          <p>{{d.name}}</p>
+
+            </b-button>
           </div>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
           <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
           <br />
-          <p class="guide6">▶ Selecione os extras que pretenda</p>
+          <p class="guide6">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras que pretenda
+          </p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id">
-              <input type="checkbox" class="form-check-input" name id="check6" :value="i.name" unchecked
-                v-model="extra_reserv" />
+              <input
+                type="checkbox"
+                class="form-check-input"
+                name
+                id="check6"
+                :value="i.name"
+                unchecked
+                v-model="extra_reserv"
+              />
               {{i.name}}
             </div>
           </form>
           <p class="observ">▶ Observações</p>
-          <textarea id="textArea2" cols="130" rows="5" placeholder="Escreva aqui..." v-model="obsDecor"></textarea>
+          <textarea
+            id="textArea2"
+            cols="130"
+            rows="5"
+            placeholder="Escreva aqui..."
+            v-model="obsDecor"
+          ></textarea>
         </b-tab>
         <!-- TAB RESUMO -->
         <b-tab title="Resumo">
@@ -135,7 +213,6 @@
             <b>Menu</b>
           </p>
           <p id="choiseMenu2">▶ {{slctMenu}}</p>
-          <p id="addMenu2">▶ COMPLEMENTOS ADICIONADOS:</p>
           <p id="observ2">
             <b>Observações</b>
           </p>
@@ -150,8 +227,13 @@
             <p>{{extra}}</p>
           </div>
 
-          <a name id="confirm2" class="btn btn-primary" role="button"
-            @click="eventsReserv()">Confirmar</a>
+          <a
+            name
+            id="confirm2"
+            class="btn btn-primary"
+            role="button"
+            @click="eventsReserv()"
+          >Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
@@ -168,122 +250,142 @@
 </template>
 
 <script>
-  export default {
-    data: () => {
-      return {
-        reservations: [],
-        id: 0,
-        type: "",
-        day: "",
-        time: "",
-        people: "",
-        duration: "",
-        location: "",
-        slctDecor: "",
-        slctMenu: "",
-        decoration: [],
-        uniforms: [],
-        slctUniform: "",
-        place: "",
-        obsUniform: "",
-        obsDecor: "",
-        extra_reserv: [],
-        eventType: [],
-        extras: [],
-        user: "",
-        curMenu: "",
-        state: "Pendente",
-        tabIndex: 1,
-        title: "",
-        menus: []
-      };
+export default {
+  data: () => {
+    return {
+      reservations: [],
+      id: 0,
+      type: "",
+      day: "",
+      time: "",
+      people: "",
+      duration: "",
+      location: "",
+      slctDecor: "",
+      slctMenu: "",
+      decoration: [],
+      uniforms: [],
+      slctUniform: "",
+      place: "",
+      obsUniform: "",
+      obsDecor: "",
+      extra_reserv: [],
+      eventType: [],
+      extras: [],
+      user: "",
+      curMenu: "",
+      state: "Pendente",
+      tabIndex: 1,
+      title: "",
+      menus: []
+    };
+  },
+  created() {
+    window.addEventListener("unload", this.saveStorage);
+    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
+
+    if (localStorage.getItem("foodMenus")) {
+      this.menus = JSON.parse(localStorage.getItem("foodMenus"));
+    }
+    localStorage.setItem(
+      "eventType",
+      JSON.stringify(this.$store.state.eventType)
+    );
+    if (localStorage.getItem("eventType")) {
+      this.eventType = JSON.parse(localStorage.getItem("eventType"));
+    }
+    localStorage.setItem(
+      "eventType",
+      JSON.stringify(this.$store.state.eventType)
+    );
+    if (localStorage.getItem("eventType")) {
+      this.eventType = JSON.parse(localStorage.getItem("eventType"));
+    }
+    localStorage.setItem(
+      "uniforms",
+      JSON.stringify(this.$store.state.uniforms)
+    );
+    if (localStorage.getItem("uniforms")) {
+      this.uniforms = JSON.parse(localStorage.getItem("uniforms"));
+    }
+    localStorage.setItem(
+      "decorations",
+      JSON.stringify(this.$store.state.decorations)
+    );
+    if (localStorage.getItem("decorations")) {
+      this.decorations = JSON.parse(localStorage.getItem("decorations"));
+    }
+    if (localStorage.getItem("extras")) {
+      this.extras = JSON.parse(localStorage.getItem("extras"));
+    }
+    if (localStorage.getItem("reservations")) {
+      this.$store.state.reservations = JSON.parse(
+        localStorage.getItem("reservations")
+      );
+      this.reservations = this.$store.state.reservations;
+    }
+  },
+
+  methods: {
+    x(event) {
+      for (let e in this.eventType) {
+        if (event === this.eventType[e]) {
+          this.title = event;
+          this.filter = event;
+        }
+      }
+      this.tabIndex++;
     },
-    created() {
-      window.addEventListener("unload", this.saveStorage);
-      localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
-
-      if (localStorage.getItem("foodMenus")) {
-        this.menus = JSON.parse(localStorage.getItem("foodMenus"));
-      }
-      localStorage.setItem(
-        "eventType",
-        JSON.stringify(this.$store.state.eventType)
-      );
-      if (localStorage.getItem("eventType")) {
-        this.eventType = JSON.parse(localStorage.getItem("eventType"));
-      }
-      localStorage.setItem(
-        "eventType",
-        JSON.stringify(this.$store.state.eventType)
-      );
-      if (localStorage.getItem("eventType")) {
-        this.eventType = JSON.parse(localStorage.getItem("eventType"));
-      }
-      localStorage.setItem(
-        "uniforms",
-        JSON.stringify(this.$store.state.uniforms)
-      );
-      if (localStorage.getItem("uniforms")) {
-        this.uniforms = JSON.parse(localStorage.getItem("uniforms"));
-      }
-      localStorage.setItem(
-        "decorations",
-        JSON.stringify(this.$store.state.decorations)
-      );
-      if (localStorage.getItem("decorations")) {
-        this.decorations = JSON.parse(localStorage.getItem("decorations"));
-      }
-      if (localStorage.getItem("extras")) {
-        this.extras = JSON.parse(localStorage.getItem("extras"));
-      }
-      if (localStorage.getItem("reservations")) {
-        this.$store.state.reservations = JSON.parse(
-          localStorage.getItem("reservations")
-        );
-        this.reservations = this.$store.state.reservations;
+    uni(uni) {
+      for (let u in this.uniforms) {
+        if (uni.name === this.uniforms[u].name) {
+          this.slctUniform = uni.name;
+        }
       }
     },
+    decor(decor) {
+      for (let d in this.decorations) {
+        if (decor === this.decorations[d].name) {
+          this.slctDecor = decor;
+        }
+      }
+    },
+    chooseMenu(menu) {
+      for (let m in this.menus) {
+        if (menu === this.menus[m].name) {
+          this.slctMenu = menu;
+        }
+      }
+      this.tabIndex++;
+    },
+    getLastIdEvents() {
+      return this.$store.getters.getLastIdEvents;
+    },
+    getLoggedUserEmail() {
+      return this.$store.getters.getLoggedUserEmail;
+    },
+    eventsReserv() {
+      /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
+      // let today = new Date();
+      // let dd = String(today.getDate()).padStart(2, '0');
+      // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      // let yyyy = today.getFullYear();
 
-    methods: {
-      x(event) {
-        for (let e in this.eventType) {
-          if (event === this.eventType[e]) {
-            this.title = event;
-            this.filter = event;
-          }
-        }
-        this.tabIndex++
-      },
-      uni(uni) {
-        for (let u in this.uniforms) {
-          if (uni.name === this.uniforms[u].name) {
-            this.slctUniform = uni.name;
-          }
-        }
-      },
-      decor(decor) {
-        for (let d in this.decorations) {
-          if (decor === this.decorations[d].name) {
-            this.slctDecor = decor;
-          }
-        }
-      },
-      chooseMenu(menu) {
-        for (let m in this.menus) {
-          if (menu === this.menus[m].name) {
-            this.slctMenu = menu;
-          }
-        }
-        this.tabIndex++
+      // today = mm + '/' + dd + '/' + yyyy;
 
-      },
-      getLastIdEvents() {
-        return this.$store.getters.getLastIdEvents;
-      },
-      getLoggedUserEmail() {
-        return this.$store.getters.getLoggedUserEmail;
-      },
-      eventsReserv() {
+
+      if (
+        this.day == "" ||
+        this.time == "" ||
+        this.persons == "" ||
+        this.duration == "" ||
+        this.location == "" ||
+        this.slctMenu == ""
+      ) {
+        alert("Tem de preencher todos os Campos");
+      } else if (this.time < this.curDay) {
+        alert("Não pode fazer uma reserva antes da data atual");
+      } else {
         this.$store.commit("ADD_RESERVATION", {
           id: this.getLastIdEvents() + 1,
           day: this.day,
@@ -300,494 +402,505 @@
           eventType: this.title,
           menu: this.slctMenu,
           uniform: this.slctUniform
+        });
+        location.href = "./events";
+        alert("adicionei reserva de evento");
+      }
 
-        });
-        if (this.day == "" || this.time == "" || this.people == "" || this.duration == "" || this.location == "" || this.decor == "" || this.menu == "" || this.uniform == "") {
-          alert("Tem de preencher todos os Campos")
-        }
-        else{
-          location.href="./events";  
-          alert("adicionei reserva de evento");
-        }
-      },
-      saveStorage() {
-        localStorage.setItem(
-          "reservations",
-          JSON.stringify(this.$store.state.reservations)
-        );
-      }
+      // if (this.time < Date.now()) {
+      //   alert("Não pode fazer uma reserva antes da data atual");
+      // }
     },
-    computed: {
-      menuType() {
-        return this.menus.filter(menu => {
-          let menuTypeResult = true;
-          if (this.title !== "") {
-            menuTypeResult = menu.type.includes(this.filter);
-            // alert(this.menuTypeResult);
-          }
-          return menuTypeResult;
-        });
-      }
+    saveStorage() {
+      localStorage.setItem(
+        "reservations",
+        JSON.stringify(this.$store.state.reservations)
+      );
     }
-  };
+  },
+  computed: {
+    menuType() {
+      return this.menus.filter(menu => {
+        let menuTypeResult = true;
+        if (this.title !== "") {
+          menuTypeResult = menu.type.includes(this.filter);
+          // alert(this.menuTypeResult);
+        }
+        return menuTypeResult;
+      });
+    }
+  }
+};
 </script>
 
 <style>
-  .catering {
-    position: relative;
-    width: 1263px;
-  }
-
-  #progress {
-    width: 400px;
-    margin-left: 400px;
-    height: 8px;
-  }
-
-  #lineLeft {
-    position: relative;
-    background-color: #daaa29;
-    height: 0.5px;
-    width: 150px;
-    top: -15px;
-    margin-left: 290px;
-  }
-
-  #lineRight {
-    position: relative;
-    background-color: #daaa29;
-    height: 0.5px;
-    width: 150px;
-    top: -30px;
-    margin-right: 290px;
-  }
-
-  #titule {
-    margin-top: -4%;
-    font-family: Channel;
-    color: black;
-  }
-
-  #guide {
-    font-family: GeosansLight;
-    text-align: center;
-    font-size: 150%;
-  }
-
-  .nav-link {
-    color: white !important;
-    font-family: GeosansLight;
-  }
-
-  .nav-link.active {
-    background-color: #232323 !important;
-  }
-
-  .card-header:first-child {
-    background-color: #232323;
-  }
-
-  .tab-content {
-    height: 650px;
-  }
-
-  /* EVENTO TAB */
-  #btn4 {
-    border: 2px solid #daaa29;
-    background-color: black;
-    width: 200px;
-    margin: 10px;
-    margin-left: 450px;
-    margin-top: 20px;
-
-  }
-
-  .guide2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 110%;
-    position: absolute;
-    left: 280px;
-    top: 100px;
-  }
-
-  #bar2 {
-    position: absolute;
-    opacity: 0.8;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 30px;
-    background-color: black;
-  }
-
-  #eventType {
-    font-size: 20px;
-    color: white;
-    font-family: Champagne;
-  }
-
-  /* INFO TAB*/
-  .dateLabel {
-    font-family: GeosansLight;
-    left: 280px;
-    top: 100px;
-    font-size: 110%;
-    position: absolute;
-  }
-
-  #txtDate {
-    width: 250px;
-    position: absolute;
-    top: 150px;
-    left: 280px;
-  }
-
-  #txtTime {
-    width: 250px;
-    position: absolute;
-    top: 250px;
-    left: 280px;
-  }
-
-  .personsLabel {
-    font-family: GeosansLight;
-    left: 750px;
-    top: 100px;
-    font-size: 110%;
-    position: absolute;
-  }
-
-  #txtPersons {
-    width: 250px;
-    position: absolute;
-    top: 150px;
-    left: 750px;
-  }
-
-  .durationLabel {
-    font-family: GeosansLight;
-    top: 260px;
-    left: 750px;
-    font-size: 110%;
-    position: absolute;
-  }
-
-  #txtDuration {
-    width: 250px;
-    position: absolute;
-    top: 310px;
-    left: 750px;
-  }
-
-  .locationLabel {
-    font-family: GeosansLight;
-    top: 420px;
-    left: 750px;
-    font-size: 110%;
-    position: absolute;
-  }
-
-  #sltLocation {
-    width: 250px;
-    position: absolute;
-    top: 480px;
-    left: 750px;
-  }
-
-  #waiter {
-    position: absolute;
-    width: 505px;
-    height: auto;
-    left: -65px;
-    top: 300px;
-  }
-
-  /* MENUS TAB */
-  /* COMPONENTES TAB */
-  #btn5 {
-    border: 2px solid #232323;
-    background-image: url("../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg");
-    width: 150px;
-    margin: 20px;
-    margin-top: 50px;
-    height: 150px;
-  }
-  .guide3 {
-    position: absolute;
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 110%;
-    left: 250px;
-  }
-
-  .guide4 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 110%;
-    position: absolute;
-    left: 250px;
-    top: 350px;
-  }
-
-  #btn9 {
-    border: 2px solid #232323;
-    background-image: url("../assets/imgInicial.jpg");
-    width: 190px;
-    height: 130px;
-    margin: 20px;
-    margin-top: 50px;
-  }
-  .guide5 {
-    font-family: GeosansLight;
-    text-align: justify;
-    position: absolute;
-    font-size: 110%;
-    left: 250px;
-    top: 530px;
-  }
-
-  #textArea {
-    color: grey;
-    font-family: GeosansLight;
-    position: absolute;
-    left: 250px;
-    top: 580px;
-  }
-
-  /* EXTRA TAB */
-  .guide6 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 110%;
-    left: 250px;
-    top: 100px;
-  }
-
-  #imgKids {
-    position: absolute;
-    width: 300px;
-    height: auto;
-    left: 250px;
-    top: 150px;
-  }
-  .form-check {
-    position: relative;
-    text-align: justify;
-    display: block;
-    padding-left: 700px;
-    padding-top: 10px;
-    top: 55px;
+.catering {
+  position: relative;
+  width: 1263px;
 }
 
-  .observ {
-    font-family: GeosansLight;
-    text-align: justify;
-    position: absolute;
-    font-size: 110%;
-    left: 250px;
-    top: 420px;
-  }
+#progress {
+  width: 400px;
+  margin: auto;
+  height: 8px;
+}
 
-  #textArea2 {
-    color: grey;
-    font-family: GeosansLight;
-    position: absolute;
-    left: 250px;
-    top: 480px;
-  }
+#lineLeft {
+  position: relative;
+  background-color: #daaa29;
+  height: 0.5px;
+  width: 150px;
+  top: -15px;
+  margin-left: 290px;
+}
 
-  /* RESUMO TAB */
-  .resume2 {
-    font-family: GeosansLight;
-    color: black;
-    margin-top: 20px;
-  }
+#lineRight {
+  position: relative;
+  background-color: #daaa29;
+  height: 0.5px;
+  width: 150px;
+  top: -30px;
+  margin-right: 290px;
+}
 
-  #resumeLine2 {
-    width: 800px;
-    height: 2px;
-    background-color: #daaa29;
-    border: none;
-  }
+#titule {
+  margin-top: -4%;
+  font-family: Channel;
+  color: black;
+}
 
-  #inform2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 20px;
-    color: black;
-    margin-left: 320px;
-  }
+#guide {
+  font-family: GeosansLight;
+  text-align: center;
+  font-size: 150%;
+}
 
-  #pDate2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-  }
+.nav-link {
+  color: white !important;
+  font-family: GeosansLight;
+}
 
-  #pTime2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-  }
+.nav-link.active {
+  background-color: #232323 !important;
+}
 
-  #pDuration2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-  }
+.card-header:first-child {
+  background-color: #232323;
+}
 
-  #pPersons2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-  }
+.tab-content {
+  height: 650px;
+}
 
-  #pLocation {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-  }
+/* EVENTO TAB */
+#btn4 {
+  border: 2px solid black;
+  background-color: black;
+  width: 200px;
+  margin: 10px;
+  margin-left: 450px;
+  margin-top: 20px;
+}
+#btn4:hover {
+  border: 3px solid #daaa29;
+}
 
-  #components2 {
-    font-family: GeosansLight;
-    text-align: justify;
-    font-size: 20px;
-    color: black;
-    margin-left: 770px;
-    margin-top: -180px;
-  }
+.guide2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 110%;
+  position: absolute;
+  left: 280px;
+  top: 100px;
+}
 
-  #menu2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 20px;
-    color: black;
-    margin-left: 320px;
-    top: 350px;
-  }
+#bar2 {
+  position: absolute;
+  opacity: 0.8;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 30px;
+  background-color: black;
+}
 
-  #choiseMenu2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-    top: 400px;
-  }
+#eventType {
+  font-size: 20px;
+  color: white;
+  font-family: Champagne;
+}
 
-  #addMenu2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-    top: 420px;
-    width: 300px;
-  }
+/* INFO TAB*/
+.dateLabel {
+  font-family: GeosansLight;
+  left: 280px;
+  top: 100px;
+  font-size: 110%;
+  position: absolute;
+}
 
-  #observ2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 20px;
-    color: black;
-    margin-left: 320px;
-    top: 500px;
-  }
+#txtDate {
+  width: 250px;
+  position: absolute;
+  top: 150px;
+  left: 280px;
+}
 
-  #observMade2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 12px;
-    color: black;
-    margin-left: 300px;
-    top: 550px;
-    width: 600px;
-  }
+#txtTime {
+  width: 250px;
+  position: absolute;
+  top: 250px;
+  left: 280px;
+}
 
-  #extras2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 20px;
-    color: black;
-    margin-left: 770px;
-    top: 350px;
-  }
+.personsLabel {
+  font-family: GeosansLight;
+  left: 750px;
+  top: 100px;
+  font-size: 110%;
+  position: absolute;
+}
 
-  #choiseExtras2 {
-    font-family: GeosansLight;
-    position: absolute;
-    text-align: justify;
-    font-size: 13px;
-    color: black;
-    margin-left: 770px;
-    top: 400px;
-    width: 40px;
-  }
+#txtPersons {
+  width: 250px;
+  position: absolute;
+  top: 150px;
+  left: 750px;
+}
 
-  #confirm2 {
-    position: relative;
-    width: 90px;
-    font-size: 12px;
-    height: 30px;
-    color: white;
-    background-color: #000;
-    font-family: GeosansLight;
-    border: 2px solid black;
-    top: 440px;
-    left: 100px;
-  }
+.durationLabel {
+  font-family: GeosansLight;
+  top: 260px;
+  left: 750px;
+  font-size: 110%;
+  position: absolute;
+}
 
-  #confirm2:hover {
-    color: white;
-    border: 2px solid;
-    border-color: #daaa29;
-    background-color: #000;
-  }
+#txtDuration {
+  width: 250px;
+  position: absolute;
+  top: 310px;
+  left: 750px;
+}
 
-  #cancel2 {
-    position: relative;
-    width: 90px;
-    font-size: 12px;
-    border: 2px solid black;
-    height: 30px;
-    color: white;
-    background-color: #000;
-    font-family: GeosansLight;
-    top: 440px;
-    left: -100px;
-  }
+.locationLabel {
+  font-family: GeosansLight;
+  top: 420px;
+  left: 750px;
+  font-size: 110%;
+  position: absolute;
+}
 
-  #cancel2:hover {
-    color: white;
-    border: 2px solid;
-    border-color: #daaa29;
-    background-color: #000;
-  }
+#sltLocation {
+  width: 250px;
+  position: absolute;
+  top: 480px;
+  left: 750px;
+}
 
-  #cardMenu {
-    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
-    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
-  }
+#waiter {
+  position: absolute;
+  width: 505px;
+  height: auto;
+  left: -65px;
+  top: 300px;
+}
 
-  /* --------------- */
+/* MENUS TAB */
+.noEvent {
+  font-family: GeosansLight;
+  font-size: 25px;
+  margin-top: 50px;
+}
+/* COMPONENTES TAB */
+#btn5 {
+  border: 0px solid #232323;
+  background-color: transparent;
+  color: #000;
+  margin: 20px;
+   transition: all .2s ease-in-out; 
+}
+#btn5:hover {
+  /* border: 3px solid #daaa29; */
+  transform: scale(1.1);
+}
+.guide3 {
+  position: absolute;
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 110%;
+  left: 250px;
+}
+
+.guide4 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 110%;
+  position: absolute;
+  left: 250px;
+  top: 350px;
+}
+
+#btn9 {
+  border: 2px solid #232323;
+  background-color: #000;
+  margin: 20px;
+  margin-top: 50px;
+}
+#btn9:hover {
+  border: 3px solid #daaa29;
+}
+
+.guide5 {
+  font-family: GeosansLight;
+  text-align: justify;
+  position: absolute;
+  font-size: 110%;
+  left: 250px;
+  top: 530px;
+}
+
+#textArea {
+  color: grey;
+  font-family: GeosansLight;
+  position: absolute;
+  left: 250px;
+  top: 580px;
+}
+
+/* EXTRA TAB */
+.guide6 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 110%;
+  left: 250px;
+  top: 100px;
+}
+
+#imgKids {
+  position: absolute;
+  width: 300px;
+  height: auto;
+  left: 250px;
+  top: 150px;
+}
+.form-check {
+  position: relative;
+  text-align: justify;
+  display: block;
+  padding-left: 700px;
+  padding-top: 10px;
+  top: 55px;
+}
+
+.observ {
+  font-family: GeosansLight;
+  text-align: justify;
+  position: absolute;
+  font-size: 110%;
+  left: 250px;
+  top: 420px;
+}
+
+#textArea2 {
+  color: grey;
+  font-family: GeosansLight;
+  position: absolute;
+  left: 250px;
+  top: 480px;
+}
+
+/* RESUMO TAB */
+.resume2 {
+  font-family: GeosansLight;
+  color: black;
+  margin-top: 20px;
+}
+
+#resumeLine2 {
+  width: 800px;
+  height: 2px;
+  background-color: #daaa29;
+  border: none;
+}
+
+#inform2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 320px;
+}
+
+#pDate2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+
+#pTime2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+
+#pDuration2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+
+#pPersons2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+
+#pLocation {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+}
+
+#components2 {
+  font-family: GeosansLight;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 770px;
+  margin-top: -180px;
+}
+
+#menu2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 320px;
+  top: 350px;
+}
+
+#choiseMenu2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 400px;
+}
+
+#addMenu2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 420px;
+  width: 300px;
+}
+
+#observ2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 320px;
+  top: 500px;
+}
+
+#observMade2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 12px;
+  color: black;
+  margin-left: 300px;
+  top: 550px;
+  width: 600px;
+}
+
+#extras2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 20px;
+  color: black;
+  margin-left: 770px;
+  top: 350px;
+}
+
+#choiseExtras2 {
+  font-family: GeosansLight;
+  position: absolute;
+  text-align: justify;
+  font-size: 13px;
+  color: black;
+  margin-left: 770px;
+  top: 400px;
+  width: 40px;
+}
+
+#confirm2 {
+  position: relative;
+  width: 90px;
+  font-size: 12px;
+  height: 30px;
+  color: white;
+  background-color: #000;
+  font-family: GeosansLight;
+  border: 2px solid black;
+  top: 440px;
+  left: 100px;
+}
+
+#confirm2:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
+}
+
+#cancel2 {
+  position: relative;
+  width: 90px;
+  font-size: 12px;
+  border: 2px solid black;
+  height: 30px;
+  color: white;
+  background-color: #000;
+  font-family: GeosansLight;
+  top: 440px;
+  left: -100px;
+}
+
+#cancel2:hover {
+  color: white;
+  border: 2px solid;
+  border-color: #daaa29;
+  background-color: #000;
+}
+
+#cardMenu {
+  -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+}
+
+/* --------------- */
 </style>

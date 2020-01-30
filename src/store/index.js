@@ -22,24 +22,19 @@ export default new Vuex.Store({
     loggedUser: [],
     rooms: [{
       id: 0,
-      name: "cozinha",
-      img: require('../assets/imgInicial.jpg')
+      name: "Restaurante Aplicação",
+      img: require('../assets/restApp.jpg')
     },
     {
       id: 1,
-      name: "bar",
-      img: require('../assets/imgInicial.jpg')
+      name: "Cozinha Aplicação",
+      img: require('../assets/img_cozinha.jpg')
     },
     {
       id: 2,
-      name: "Novo restaurante",
-      img: require('../assets/imgInicial.jpg')
-    },
-    {
-      id: 3,
-      name: "Restaurante de App",
-      img: require('../assets/imgInicial.jpg')
-    },
+      name: "Bar Aplicação",
+      img: require('../assets/img_bar.jpg')
+    }
     ],
     workshops: [{
       id: 0,
@@ -192,38 +187,38 @@ export default new Vuex.Store({
     }],
     uniforms: [{
       id: 0,
-      img: '../assets/transferir.jpg',
+      img: require('../assets/farda05.png'),
       name: "Farda1",
     },
     {
       id: 1,
-      img: '../assets/transferir.jpg',
+      img: require('../assets/deco1.jpg'),
       name: "Farda2",
     },
     {
       id: 2,
-      img: '../assets/transferir.jpg',
+      img: require('../assets/deco1.jpg'),
       name: "Farda3",
     },
     {
       id: 3,
-      img: '../assets/transferir.jpg',
+      img: require('../assets/deco1.jpg'),
       name: "Farda4",
     },
     ],
     decorations: [{
       id: 0,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      img:  require('../assets/deco1.jpg'),
       name: "decoration1"
     },
     {
       id: 1,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      img: require('../assets/deco1.jpg'),
       name: "decoration2"
     },
     {
       id: 2,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
+      img: require('../assets/deco1.jpg'),
       name: "decoration3"
     },
     ],
@@ -425,10 +420,8 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
-        alert("Menu Criado")
       } else {
         alert("Ja existe um menu com esse nome")
-
       }
     },
     ADD_COMPONENT: (state, payload) => {
