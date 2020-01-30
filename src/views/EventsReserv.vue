@@ -77,6 +77,7 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab id="second" title="Menu">
+<<<<<<< HEAD
           <div class="container">
             <div v-if="title !== '' ">
               <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
@@ -105,6 +106,24 @@
             </div>
             <div v-else>
               <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
+=======
+          <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+          <div class="row">
+            <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
+              <b-card
+                id="cardMenu"
+                :title="menu.name"
+                :img-src="menu.img"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 10rem; margin-top: 20px"
+                class="mb-5 border-0"
+              >
+                <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
+                <div></div>
+              </b-card>
+>>>>>>> 3fcf37d149ca6336f95cc6b4f943ef154292d801
             </div>
           </div>
           
@@ -362,6 +381,7 @@ export default {
         menu: this.slctMenu,
         uniform: this.slctUniform
       });
+      /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
       if (
         this.day == "" ||
         this.time == "" ||
@@ -371,6 +391,9 @@ export default {
         this.slctMenu == ""
       ) {
         alert("Tem de preencher todos os Campos");
+        alert(this.curDay);
+      } else if (this.time < this.curDay) {
+        alert("Não pode fazer uma reserva antes da data atual");
       } else {
         location.href = "./events";
         alert("adicionei reserva de evento");
