@@ -242,7 +242,7 @@ export default {
   font-size: 12px;
   margin-top: 10px;
   height: 30px;
-  margin-left: 125px;
+  margin-left: 195px;
   color: white;
   background-color: #000;
   border: 2px solid black;
@@ -253,7 +253,7 @@ export default {
   border: 2px solid #daaa29;
 }
 .roomImg {
-  margin-left: 70px;
+  margin-left: 140px;
 }
 
 /* INFO TAB */

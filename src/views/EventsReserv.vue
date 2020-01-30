@@ -92,6 +92,7 @@
                     img-alt="Image"
                     img-top
                     tag="article"
+                      img-height="100px"
                     style="max-width: 10rem; margin-top: 20px"
                     class="mb-5 border-0"
                   >
@@ -180,33 +181,33 @@
 
           <div class="container">
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px">
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
                 <p id="inform2">
                   <b>Informações</b>
                 </p>
-                <p id="pDate2">▶ Dia: {{day}}</p>
-                <p id="pTime2">▶ Hora: {{time}}h</p>
-                <p id="pDuration2">▶ Duração: {{duration}}h</p>
-                <p id="pPersons2">▶ Lugares: {{persons}}</p>
-                <p id="pLocation">▶ Local: {{location}}</p>
+                <p id="pDate2">Dia: {{day}}</p>
+                <p id="pTime2">Hora: {{time}}h</p>
+                <p id="pDuration2">Duração: {{duration}}h</p>
+                <p id="pPersons2">Lugares: {{persons}}</p>
+                <p id="pLocation">Local: {{location}}</p>
               </div>
 
-              <div class="col" align="left" style="margin-right: 50px">
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="components2">
-                  <b>Componentes</b>
-                  {{slctDecor}}
-                  {{slctUniform}}
+                  <b>Componentes</b><br>
                 </p>
+                <p  >{{slctDecor}}<br>
+                  {{slctUniform}}</p>
               </div>
             </div>
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px">
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
                 <p id="menu2">
                   <b>Menu</b>
                 </p>
-                <p id="choiseMenu2">▶ {{slctMenu}}</p>
+                <p id="choiseMenu2">{{slctMenu}}</p>
               </div>
-              <div class="col" align="left" style="margin-right: 50px">
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="extras2">
                   <b>Extras</b>
                 </p>
@@ -217,7 +218,7 @@
                   <b>Observações</b>
                 </p>
                 <p id="observMade2">
-                  ▶ {{obsDecor}}
+                  {{obsDecor}}
                   <br />
                 </p>
               </div>
@@ -470,6 +471,14 @@ export default {
   text-align: center;
   font-size: 150%;
 }
+#cardBtn{
+  background-color: black;
+  font-family: GeosansLight;
+  height: 35px;
+}
+#cardBtn:hover{
+  border: 2px solid #daaa29;
+}
 
 .nav-link {
   color: white !important;
@@ -715,135 +724,37 @@ export default {
   border: none;
 }
 
-/* #inform2 {
-  font-family: GeosansLight;
-  text-align: justify;
+ #inform2 {
   font-size: 20px;
   color: black;
-  margin-left: 320px;
 }
-
-#pDate2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pTime2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pDuration2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pPersons2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pLocation {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
 #components2 {
-  font-family: GeosansLight;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 770px;
-  margin-top: -180px;
 }
 
 #menu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 320px;
-  top: 350px;
+  margin-top: 40px;
 }
-
-#choiseMenu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 12px;
+#extras2 {
+  font-size: 20px;
   color: black;
-  margin-left: 300px;
-  top: 400px;
-}
-
-#addMenu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-  top: 420px;
-  width: 300px;
+  margin-top: -120px;
 }
 
 #observ2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 320px;
   top: 500px;
 }
 
 #observMade2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 300px;
   top: 550px;
-  width: 600px;
 }
-
-#extras2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 20px;
-  color: black;
-  margin-left: 770px;
-  top: 350px;
-}
-
-#choiseExtras2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 13px;
-  color: black;
-  margin-left: 770px;
-  top: 400px;
-  width: 40px;
-} */
 
 #confirm2 {
   position: relative;
@@ -854,7 +765,7 @@ export default {
   background-color: #000;
   font-family: GeosansLight;
   border: 2px solid black;
-  top: 440px;
+  top: 60px;
   left: 100px;
 }
 
@@ -874,7 +785,7 @@ export default {
   color: white;
   background-color: #000;
   font-family: GeosansLight;
-  top: 440px;
+  top: 60px;
   left: -100px;
 }
 
