@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <h2>Adicionar Menu</h2>
+    <h2 class="adminTitle">Adicionar Menu</h2>
 
     <b-form v-on:submit.prevent="addMenu()">
       <!-- NOME -->
@@ -165,3 +165,12 @@ export default {
   }
 };
 </script>
+<style>
+  .adminTitle{
+  font-family: GeosansLight;
+  color:black;
+}
+.toast-header{
+  background-color: #b3ff66;
+}
+</style>

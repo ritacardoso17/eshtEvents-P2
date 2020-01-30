@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <h2>Reservas de Eventos</h2>
+    <h2 class="adminTitle">Reservas de Eventos</h2>
     <br />
 
     <b-table bordered fixed hover :items="this.reservations" :fields="this.fields">
@@ -178,3 +178,10 @@ export default {
   }
 };
 </script>
+<style>
+.adminTitle{
+  font-family: GeosansLight;
+  color:black;
+}
+
+</style>

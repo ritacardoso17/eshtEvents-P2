@@ -17,7 +17,10 @@
           <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
           <br />
           <br />
-          <p class="guide2">▶ Escolha o tipo de Evento que pretende realizar</p>
+          <p class="guide2">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o tipo de Evento que pretende realizar
+          </p>
           <br />
           <div class="container">
             <div class="row" v-for="e in eventType" :key="e">
@@ -77,22 +80,34 @@
         </b-tab>
         <!-- TAB MENU -->
         <b-tab id="second" title="Menu">
-          <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
-          <div class="row">
-            <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
-              <b-card
-                id="cardMenu"
-                :title="menu.name"
-                :img-src="menu.img"
-                img-alt="Image"
-                img-top
-                tag="article"
-                style="max-width: 10rem; margin-top: 20px"
-                class="mb-5 border-0"
-              >
-                <b-button v-b-modal="menu.id" @click="chooseMenu(menu.name)" id="cardBtn">Escolher</b-button>
-                <div></div>
-              </b-card>
+          <div class="container">
+            <div v-if="title !== '' ">
+              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+              <div class="row">
+                <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
+                  <b-card
+                    id="cardMenu"
+                    :title="menu.name"
+                    :img-src="menu.img"
+                    img-alt="Image"
+                    img-top
+                    tag="article"
+                      img-height="100px"
+                    style="max-width: 10rem; margin-top: 20px"
+                    class="mb-5 border-0"
+                  >
+                    <b-button
+                      v-b-modal="menu.id"
+                      @click="chooseMenu(menu.name)"
+                      id="cardBtn"
+                    >Escolher</b-button>
+                    <div></div>
+                  </b-card>
+                </div>
+              </div>
+            </div>
+            <div v-else>
+              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
             </div>
           </div>
         </b-tab>
@@ -100,29 +115,39 @@
         <b-tab title="Componentes">
           <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
           <br />
-          <br />
+
           <div class="container">
-            <p
-              class="guide3"
-            >▶ Escolha a farda que pretende que seja usada pelos nossos colaboradores</p>
-            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">{{u.name}}</b-button>
+            <p class="guide3">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
+            </p>
+            <br />
+            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">
+              <b-img :src="u.img" style="width:150px"></b-img>
+              <p>{{u.name}}</p>
+            </b-button>
           </div>
 
           <div class="container">
-            <p class="guide4">▶ Escolha a decoração que mais gosta para o seu evento</p>
-            <b-button
-              v-for="d in this.decorations"
-              :key="d.id"
-              id="btn9"
-              @click="decor(d.name)"
-            >{{d.name}}</b-button>
+            <br />
+            <p class="guide4">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
+            </p>
+            <b-button v-for="d in this.decorations" :key="d.id" id="btn9" @click="decor(d.name)">
+              <b-img :src="d.img" style="width:200px"></b-img>
+              <p>{{d.name}}</p>
+            </b-button>
           </div>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
           <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
           <br />
-          <p class="guide6">▶ Selecione os extras que pretenda</p>
+          <p class="guide6">
+            ▶
+            <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras que pretenda
+          </p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id">
@@ -156,42 +181,48 @@
 
           <div class="container">
             <div class="row">
-              <div class="col-sm-4"></div>
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+                <p id="inform2">
+                  <b>Informações</b>
+                </p>
+                <p id="pDate2">Dia: {{day}}</p>
+                <p id="pTime2">Hora: {{time}}h</p>
+                <p id="pDuration2">Duração: {{duration}}h</p>
+                <p id="pPersons2">Lugares: {{persons}}</p>
+                <p id="pLocation">Local: {{location}}</p>
+              </div>
 
-              <div class="col-sm-4"></div>
-
-              <div class="col-sm-4"></div>
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+                <p id="components2">
+                  <b>Componentes</b><br>
+                </p>
+                <p  >{{slctDecor}}<br>
+                  {{slctUniform}}</p>
+              </div>
             </div>
-          </div>
-          <p id="inform2">
-            <b>Informações</b>
-          </p>
-          <p id="pDate2">▶ Dia: {{day}}</p>
-          <p id="pTime2">▶ Hora: {{time}}h</p>
-          <p id="pDuration2">▶ Duração: {{duration}}h</p>
-          <p id="pPersons2">▶ Lugares: {{persons}}</p>
-          <p id="pLocation">▶ Local: {{location}}</p>
-          <p id="components2">
-            <b>Componentes</b>
-            {{slctDecor}}
-            {{slctUniform}}
-          </p>
-          <p id="menu2">
-            <b>Menu</b>
-          </p>
-          <p id="choiseMenu2">▶ {{slctMenu}}</p>
-          <p id="observ2">
-            <b>Observações</b>
-          </p>
-          <p id="observMade2">
-            ▶ {{obsDecor}}
-            <br />
-          </p>
-          <p id="extras2">
-            <b>Extras</b>
-          </p>
-          <div v-for="extra in this.extra_reserv" :key="extra">
-            <p>{{extra}}</p>
+            <div class="row">
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+                <p id="menu2">
+                  <b>Menu</b>
+                </p>
+                <p id="choiseMenu2">{{slctMenu}}</p>
+              </div>
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+                <p id="extras2">
+                  <b>Extras</b>
+                </p>
+                <div v-for="extra in this.extra_reserv" :key="extra">
+                  <p>{{extra}}</p>
+                </div>
+                <p id="observ2">
+                  <b>Observações</b>
+                </p>
+                <p id="observMade2">
+                  {{obsDecor}}
+                  <br />
+                </p>
+              </div>
+            </div>
           </div>
 
           <a
@@ -332,24 +363,14 @@ export default {
       return this.$store.getters.getLoggedUserEmail;
     },
     eventsReserv() {
-      this.$store.commit("ADD_RESERVATION", {
-        id: this.getLastIdEvents() + 1,
-        day: this.day,
-        time: this.time,
-        people: this.persons,
-        duration: this.duration,
-        location: this.location,
-        obs: this.obsDecor,
-        decor: this.slctDecor,
-        extra: this.extra_reserv,
-        userName: this.$store.state.loggedUser[0].name,
-        userMail: this.getLoggedUserEmail(),
-        state: "Pendente",
-        eventType: this.title,
-        menu: this.slctMenu,
-        uniform: this.slctUniform
-      });
       /* let curDay = new Date().toJSON().slice(0, 10).replace(/-/g, "/"); */
+      // let today = new Date();
+      // let dd = String(today.getDate()).padStart(2, '0');
+      // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      // let yyyy = today.getFullYear();
+
+      // today = mm + '/' + dd + '/' + yyyy;
+
       if (
         this.day == "" ||
         this.time == "" ||
@@ -359,13 +380,33 @@ export default {
         this.slctMenu == ""
       ) {
         alert("Tem de preencher todos os Campos");
-        alert(this.curDay);
       } else if (this.time < this.curDay) {
         alert("Não pode fazer uma reserva antes da data atual");
       } else {
+        this.$store.commit("ADD_RESERVATION", {
+          id: this.getLastIdEvents() + 1,
+          day: this.day,
+          time: this.time,
+          people: this.persons,
+          duration: this.duration,
+          location: this.location,
+          obs: this.obsDecor,
+          decor: this.slctDecor,
+          extra: this.extra_reserv,
+          userName: this.$store.state.loggedUser[0].name,
+          userMail: this.getLoggedUserEmail(),
+          state: "Pendente",
+          eventType: this.title,
+          menu: this.slctMenu,
+          uniform: this.slctUniform
+        });
         location.href = "./events";
         alert("adicionei reserva de evento");
       }
+
+      // if (this.time < Date.now()) {
+      //   alert("Não pode fazer uma reserva antes da data atual");
+      // }
     },
     saveStorage() {
       localStorage.setItem(
@@ -430,6 +471,14 @@ export default {
   text-align: center;
   font-size: 150%;
 }
+#cardBtn{
+  background-color: black;
+  font-family: GeosansLight;
+  height: 35px;
+}
+#cardBtn:hover{
+  border: 2px solid #daaa29;
+}
 
 .nav-link {
   color: white !important;
@@ -450,12 +499,15 @@ export default {
 
 /* EVENTO TAB */
 #btn4 {
-  border: 2px solid #daaa29;
+  border: 2px solid black;
   background-color: black;
   width: 200px;
   margin: 10px;
   margin-left: 450px;
   margin-top: 20px;
+}
+#btn4:hover {
+  border: 3px solid #daaa29;
 }
 
 .guide2 {
@@ -561,14 +613,22 @@ export default {
 }
 
 /* MENUS TAB */
+.noEvent {
+  font-family: GeosansLight;
+  font-size: 25px;
+  margin-top: 50px;
+}
 /* COMPONENTES TAB */
 #btn5 {
-  border: 2px solid #232323;
-  background-image: url("../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg");
-  width: 150px;
+  border: 0px solid #232323;
+  background-color: transparent;
+  color: #000;
   margin: 20px;
-  margin-top: 50px;
-  height: 150px;
+  transition: all 0.2s ease-in-out;
+  font-family: GeosansLight;
+}
+#btn5:hover {
+  transform: scale(1.1);
 }
 .guide3 {
   position: absolute;
@@ -584,24 +644,19 @@ export default {
   font-size: 110%;
   position: absolute;
   left: 250px;
-  top: 350px;
+  top: 420px;
 }
 
 #btn9 {
-  border: 2px solid #232323;
-  background-image: url("../assets/imgInicial.jpg");
-  width: 190px;
-  height: 130px;
+  border: 0px solid #232323;
+  background-color: transparent;
+  color: #000;
   margin: 20px;
-  margin-top: 50px;
-}
-.guide5 {
+  transition: all 0.2s ease-in-out;
   font-family: GeosansLight;
-  text-align: justify;
-  position: absolute;
-  font-size: 110%;
-  left: 250px;
-  top: 530px;
+}
+#btn9:hover {
+  transform: scale(1.1);
 }
 
 #textArea {
@@ -669,134 +724,36 @@ export default {
   border: none;
 }
 
-#inform2 {
-  font-family: GeosansLight;
-  text-align: justify;
+ #inform2 {
   font-size: 20px;
   color: black;
-  margin-left: 320px;
 }
-
-#pDate2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pTime2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pDuration2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pPersons2 {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
-#pLocation {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-}
-
 #components2 {
-  font-family: GeosansLight;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 770px;
-  margin-top: -180px;
 }
 
 #menu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 320px;
-  top: 350px;
+  margin-top: 40px;
 }
-
-#choiseMenu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 12px;
+#extras2 {
+  font-size: 20px;
   color: black;
-  margin-left: 300px;
-  top: 400px;
-}
-
-#addMenu2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 12px;
-  color: black;
-  margin-left: 300px;
-  top: 420px;
-  width: 300px;
+  margin-top: -120px;
 }
 
 #observ2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 320px;
   top: 500px;
 }
 
 #observMade2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
   font-size: 12px;
   color: black;
-  margin-left: 300px;
   top: 550px;
-  width: 600px;
-}
-
-#extras2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 20px;
-  color: black;
-  margin-left: 770px;
-  top: 350px;
-}
-
-#choiseExtras2 {
-  font-family: GeosansLight;
-  position: absolute;
-  text-align: justify;
-  font-size: 13px;
-  color: black;
-  margin-left: 770px;
-  top: 400px;
-  width: 40px;
 }
 
 #confirm2 {
@@ -808,7 +765,7 @@ export default {
   background-color: #000;
   font-family: GeosansLight;
   border: 2px solid black;
-  top: 440px;
+  top: 60px;
   left: 100px;
 }
 
@@ -828,7 +785,7 @@ export default {
   color: white;
   background-color: #000;
   font-family: GeosansLight;
-  top: 440px;
+  top: 60px;
   left: -100px;
 }
 

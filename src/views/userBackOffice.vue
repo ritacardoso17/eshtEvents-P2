@@ -1,7 +1,7 @@
 <template>
   <div class="bckUsers">
     <br />
-    <h2>Gestão de Utilizadores</h2>
+    <h2 class="adminTitle">Gestão de Utilizadores</h2>
 
     <b-table bordered hover :items="this.items" :fields="this.fields">
       <!-- <template v-slot:cell(typeUser)="row">
@@ -112,5 +112,9 @@ export default {
   height: 40px;
   right: -12px;
   top: 3px;
+}
+.adminTitle{
+  font-family: GeosansLight;
+  color:black;
 }
 </style>

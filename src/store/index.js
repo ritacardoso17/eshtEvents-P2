@@ -2,6 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 /* import router from "vue-router";
  */
+import VueSimpleAlert from "vue-simple-alert";
+Vue.use(VueSimpleAlert);
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -38,42 +40,42 @@ export default new Vuex.Store({
     ],
     workshops: [{
       id: 0,
-      title: "ZENAS",
+      title: "Momentos entre amigas - VINHOS NO FEMININO",
       vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "06/10/2020",
-      place: "B204",
+      img: require('../assets/work1.jpg'),
+      description: "1. A presença da Mulher na Enologia 2.Guia prático: Seleção de Vinhos  3. Dos Brancos aos Tintos: Prova de Estilos",
+      date: "06/03/2020",
+      place: "ESHT",
       teacher: "Américo Andrade"
     },
     {
       id: 1,
-      title: "Workshop A",
+      title: "Páscoa Vínica",
       vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "06/04/2020",
-      place: "B204",
+      img: require('../assets/work2.jpg'),
+      description: "1. Cocktails Vínicos 2. Serviço: Copos, Temperaturas 3. Prova de diferentes cocktails 4. Harmonização",
+      date: "03/04/2020",
+      place: "ESHT",
       teacher: "Américo Andrade"
     },
     {
       id: 2,
-      title: "Workshop B",
+      title: "Vinhos e Conservas - As conservas estão na moda",
       vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "06/04/2020",
-      place: "B204",
+      img: require('../assets/work3.jpg'),
+      description: "1. Tipologias de Conservas 2. Os Vinhos do Atlântico 3. Empratamento 4. Prova: Petiscos com Conservas e Vinhos",
+      date: "08/05/2020",
+      place: "Theatro",
       teacher: "Américo Andrade"
     },
     {
       id: 3,
-      title: "Workshop C",
+      title: "Piquenique Vínico - Monverde Wine Experience",
       vacancies: 20,
-      img: require('../assets/CatePessoas.jpg'),
-      description: "O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.",
-      date: "06/03/2020",
-      place: "B204",
+      img: require('../assets/work4.jpg'),
+      description: "1. Welcome drink 2. Passeio pela Vinha 3. Piquenique vínico",
+      date: "06/06/2020",
+      place: "Amarante",
       teacher: "Américo Andrade"
     }
     ],
@@ -187,39 +189,39 @@ export default new Vuex.Store({
     }],
     uniforms: [{
       id: 0,
-      img: '../assets/transferir.jpg',
-      name: "Farda1",
+      img: require('../assets/farda05.png'),
+      name: "Farda Cozinha",
     },
     {
       id: 1,
-      img: '../assets/transferir.jpg',
-      name: "Farda2",
+      img: require('../assets/farda04.png'),
+      name: "Farda Semi-formal",
     },
     {
       id: 2,
-      img: '../assets/transferir.jpg',
-      name: "Farda3",
+      img: require('../assets/farda03.png'),
+      name: "Farda Formal",
     },
     {
       id: 3,
-      img: '../assets/transferir.jpg',
-      name: "Farda4",
+      img: require('../assets/farda02.png'),
+      name: "Farda Casual",
     },
     ],
     decorations: [{
       id: 0,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration1"
+      img: require('../assets/deco1.jpg'),
+      name: "Decoração A"
     },
     {
       id: 1,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration2"
+      img: require('../assets/deco2.jpg'),
+      name: "Decoração B"
     },
     {
       id: 2,
-      img: '../assets/85e4697e7b00c5269eb7fd36f29c0e8b.jpg',
-      name: "decoration3"
+      img: require('../assets/deco3.jpg'),
+      name: "Decoração C"
     },
     ],
     types: [{
@@ -294,10 +296,10 @@ export default new Vuex.Store({
     }, {
       id: 11, name: "Natinhas com Canela"
     }, { id: 12, name: "Queijadinhas" },
-     { id: 13, name: "Sumo de Morango e Goiaba" }, 
-     { id: 14, name: "Iogurtes com Frescos e Secos" },{
-       id:15,name:"Mini Croissants"
-     }
+    { id: 13, name: "Sumo de Morango e Goiaba" },
+    { id: 14, name: "Iogurtes com Frescos e Secos" }, {
+      id: 15, name: "Mini Croissants"
+    }
     ],
   },
 
@@ -319,7 +321,7 @@ export default new Vuex.Store({
             contact: payload.contact,
             birth: payload.birth,
             imgProfile: payload.imgProfile,
-            alerts:[]
+            alerts: []
           });
           localStorage.setItem("users", JSON.stringify(state.users))
           alert("REGISTADO")
@@ -347,7 +349,7 @@ export default new Vuex.Store({
           localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
           state.userExist = true
           window.location = "./"
-         
+
         }
       }
       if (!state.userExist) {
@@ -395,7 +397,7 @@ export default new Vuex.Store({
         state.workshops.push({
           id: payload.id,
           title: payload.title,
-          img:payload.img,
+          img: payload.img,
           date: payload.date,
           place: payload.place,
           teacher: payload.teacher,
@@ -420,10 +422,11 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
-        alert("Menu Criado")
+        VueSimpleAlert.fire('Menu adicionado!').then(() => {
+          window.location = "./menusBackoffice"
+        });;
       } else {
-        alert("Ja existe um menu com esse nome")
-
+        VueSimpleAlert.fire("Já existe um menu com esse nome!")
       }
     },
     ADD_COMPONENT: (state, payload) => {
@@ -435,8 +438,9 @@ export default new Vuex.Store({
           components: payload.components
         });
         localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
-        alert("Menu Criado")
+        VueSimpleAlert.fire("Complemento Criado")
       }
+      // else{}
     },
     RENT_ROOM: (state, payload) => {
       state.roomRents.push({
