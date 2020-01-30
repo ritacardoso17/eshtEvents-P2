@@ -35,7 +35,7 @@
               >
                 <div class="container">
                   <h4 id="titleModal">Complementos</h4>
-                  <div class="row" style="margin: auto">
+                  <div class="row" style="margin: auto ;margin-top: 30px">
                     <div
                       class="col-sm-6"
                       align="center"

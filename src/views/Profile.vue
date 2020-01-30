@@ -114,13 +114,13 @@ export default {
         localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
         this.$store.state.loggedUser = this.loggedUser;
         if (this.users[i].id == this.loggedUser[0].id) {
-          window.location ="./Profile"
+       
           this.users[i].imgProfile = this.newPhoto;
           localStorage.setItem("users", JSON.stringify(this.users));
           this.$store.state.users = this.users;
         }
-      }
-    }
+      }this.newPhoto=""
+    } 
   }
 };
 </script>

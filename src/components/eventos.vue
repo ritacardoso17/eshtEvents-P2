@@ -1,19 +1,14 @@
 <template>
   <div>
-    <b-table striped hover :items="this.tbEvents" :fields="this.fields">
+    <b-table striped hover head-variant="dark" :items="this.tbEvents" :fields="this.fields">
       <!-- <template v-slot:cell(remove)="row">
         <b-button class="btnRemove" size="sm" @click="removeEvents(row.item.id)">Cancelar</b-button>
       </template>-->
       <template v-slot:cell(opinions)="row">
-        <b-button id="opinions" v-b-modal.modalEvents>Opinião</b-button>
-      </template>
-      <template v-slot:cell(details)="row">
         <b-button
-          variant="info"
-          class="btnDetails"
-          size="sm"
+          class="btnDetails rounded-0"
           @click="row.toggleDetails"
-        >Mostrar Detalhes</b-button>
+        > Dar opinião</b-button>
       </template>
       <template v-slot:row-details="row">
         <b-card>
@@ -28,7 +23,7 @@
                 placeholder="Escreva a sua opinião"
                 v-model="opinion"
               ></textarea>
-              <b-button @click="send(row.item.id)">Enviar Opinião</b-button>
+              <b-button @click="send(row.item.id)">Enviar</b-button>
             </b-col>
             <b-col></b-col>
           </b-row>
@@ -64,8 +59,7 @@ export default {
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
-        { key: "details", label: "Remover" },
-        { key: "opinions", label: "Opinião" }
+        { key: "opinions", label: "Opinião" },
       ]
     };
   },
@@ -152,3 +146,13 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+
+.btnDetails{
+  background-color: black;
+  color: white;
+  height: 40px;
+}
+
+</style>

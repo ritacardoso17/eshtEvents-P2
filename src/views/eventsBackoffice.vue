@@ -54,6 +54,13 @@
               </b-col>
               <b-col></b-col>
             </b-row>
+              <!-- MENU -->
+            <b-row class="mb-2">
+              <b-col sm="3" class="text-sm-left">
+                <b>Opinião:</b>
+                {{ row.item.opinions}}
+              </b-col>
+            </b-row>
           </b-card>
         </template>
       </b-table>

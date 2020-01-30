@@ -453,7 +453,7 @@ export default new Vuex.Store({
         userMail: payload.userMail,
         state: "Pendente",
         reason: payload.reason,
-        opinions: payload.opinions
+        opinions: ""
       });
       localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
     },

@@ -1,27 +1,37 @@
 <template>
   <div>
-    <b-table striped hover :items="this.tbRooms" :fields="this.fields">
+    <b-table striped hover head-variant="dark" :items="this.tbRooms" :fields="this.fields">
       <!-- <template v-slot:cell(remove)="row">
         <b-button class="btnRemove" size="sm" @click="removeRooms(row.item.id)">Cancelar</b-button>
       </template> -->
-      <template v-slot:cell(opinion)="row">
-        <b-button id="opinion" v-b-modal.modalRooms>Opinião</b-button>
+      <template v-slot:cell(opinions)="row">
+        <b-button
+          class="btnDetails rounded-0"
+          @click="row.toggleDetails"
+          style="background-color:black; color:white; height:40px;"
+        > Dar opinião</b-button>
+      </template>
+      <template v-slot:row-details="row">
+        <b-card>
+          <!-- Escola -->
+          <b-row class="mb-2">
+            <b-col class="text-sm-right">
+              <textarea
+                name="Opinião"
+                id="txtOpinion"
+                cols="60"
+                rows="5"
+                placeholder="Escreva a sua opinião"
+                v-model="opinion"
+              ></textarea>
+              <b-button @click="send(row.item.id)">Enviar</b-button>
+            </b-col>
+            <b-col></b-col>
+          </b-row>
+        </b-card>
       </template>
     </b-table>
 
-    <b-modal id="modalRooms" centered size="m" title="Sua opinião" hide-header-close hide-footer>
-      <div class="form-group">
-        <textarea
-          name="Opinião"
-          id="txtOpinion"
-          cols="60"
-          rows="5"
-          v-model="opinions"
-          placeholder="Escreva a sua opinião"
-        ></textarea>
-        <b-button @click="sendOpinion()">Enviar Opinião</b-button>
-      </div>
-    </b-modal>
   </div>
 </template>
 
@@ -30,13 +40,14 @@ export default {
   data() {
     return {
       tbRooms: [],
+      opinion:"",
       fields: [
         { key: "room", label: "Espaço", sortable: true },
         { key: "day", label: "Dia", sortable: true },
         { key: "time", label: "Hora" },
         { key: "state", label: "Estado", sortable: true },
         // { key: "remove", label: "Remover" },
-        { key: "opinion", label: "Opinião" }
+        { key: "opinions", label: "Opinião" }
       ]
     };
   },
@@ -96,20 +107,16 @@ export default {
       }
     },
 
-    sendOpinion() {
-      for (const i in this.getRooms) {
-        alert("Alert 1");
-        if (this.getRooms[i].id === this.id) {
-          this.getRooms = this.getRooms.filter(
-            getRooms => this.getRooms[i].id == getRooms.id
-          );
-
-          localStorage.setItem("roomRents", JSON.stringify(this.getRooms));
-          this.opinions = this.getRooms;
-          alert("Alert 2");
-        }
+   send(id) {
+      let rentRooms =  JSON.parse(localStorage.getItem("roomRents"))
+      for (let i in rentRooms) {
+          if (rentRooms[i].id === id) {
+            rentRooms[i].opinions = this.opinion;
+          }
       }
-      alert("Mandei uma opinião");
+      localStorage.setItem("roomRents", JSON.stringify(rentRooms));
+      alert("Opinião Enviada!");
+      this.opinion = "";
     }
   },
   computed: {
