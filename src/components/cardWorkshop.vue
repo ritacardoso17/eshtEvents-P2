@@ -131,7 +131,7 @@ export default {
             this.$store.getters.getLoggedUser = this.workshops;
           } else if (
             this.workshops[i].vacancies > 0 &&
-            this.workshops[i].userEmail == this.getUserEmail()
+            this.workshops[i].userEmail.includes(this.getUserEmail()) 
           ) {
              this.$bvToast.toast('Não se pode inscrever mais do que uma vez!')
           } else {

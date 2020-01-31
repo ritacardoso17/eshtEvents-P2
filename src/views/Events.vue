@@ -28,7 +28,7 @@
           <router-link
             tag="button"
             id="btnReserve"
-            v-if="this.$store.state.loggedUser[0] == 0"
+            v-if="this.$store.state.loggedUser.length == 0"
             :to="{ name: 'login' }"
           >Fazer Reserva</router-link>
           <router-link

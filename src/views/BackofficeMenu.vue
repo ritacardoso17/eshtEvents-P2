@@ -4,7 +4,7 @@
     <h1 class="adminTitle">Menu Administrador</h1>
 
     <router-link to="/usersadmin">
-     <b-button variant="dark" class="btn100"  size="lg" style="padding:20px;left: -30px;">USERS</b-button></router-link>
+     <b-button variant="dark" class="btn100"  size="lg" style="padding:20px;left: -30px;">UTILIZADORES</b-button></router-link>
     
    <!-- <span> </span> -->
    <router-link to="/menusBackoffice"> 

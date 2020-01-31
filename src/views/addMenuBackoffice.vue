@@ -33,6 +33,14 @@
     <br />
     <h2>Componentes</h2>
     <b-form v-on:submit.prevent="addComponent()">
+    
+      <!-- NOME -->
+    <h2>Adicionar novo componente</h2>
+      <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
+      <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
+      <br />
+      <b-button type="submit" class="btnConf">Confirmar</b-button>
+    </b-form>
         <b-table
         bordered
         fixed
@@ -50,13 +58,6 @@
           >X</b-button>
         </template>
       </b-table>
-      <!-- NOME -->
-    <h2>Adicionar novo componente</h2>
-      <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
-      <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
-      <br />
-      <b-button type="submit" class="btnConf">Confirmar</b-button>
-    </b-form>
   </div>
 </template>
 
