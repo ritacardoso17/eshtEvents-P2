@@ -69,8 +69,15 @@ export default {
     };
   },
   created() {
-    this.$store.state.foodMenus = JSON.parse(localStorage.getItem("foodMenus"));
-    this.menus = this.$store.state.foodMenus;
+      localStorage.setItem(
+      "foodMenus",
+      JSON.stringify(this.$store.state.foodMenus)
+    );
+
+    if (localStorage.getItem("foodMenus")) {
+      this.menus = JSON.parse(localStorage.getItem("foodMenus"));
+    }
+
 
     if (localStorage.getItem("eventType")) {
       this.eventType = JSON.parse(localStorage.getItem("eventType"));
