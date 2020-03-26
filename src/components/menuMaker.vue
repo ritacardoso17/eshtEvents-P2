@@ -78,7 +78,6 @@ export default {
       this.menus = JSON.parse(localStorage.getItem("foodMenus"));
     }
 
-
     if (localStorage.getItem("eventType")) {
       this.eventType = JSON.parse(localStorage.getItem("eventType"));
     }
