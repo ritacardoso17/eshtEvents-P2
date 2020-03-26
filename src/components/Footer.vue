@@ -11,12 +11,10 @@
           <!-- Links -->
           <h5 class="font-weight-bold text-uppercase mt-3 mb-4"></h5>
 
-          <b-img src="../assets/bandeja.preto.png" class="logoFooter" />
-          <b-img src="../assets/logo.eshtEvents.png" class="logo1Footer"/>
+          <b-img src="../assets/bandejaTxt.png" class="logoFooter" />
         </div>
         <!-- Grid column -->
 
-        <hr class="clearfix w-100 d-md-none" />
 
         <!-- Grid column -->
         <div class="col-md-3 mx-auto">
@@ -29,30 +27,15 @@
             <br />E. geral@esht.ipp.pt
           </p>
         </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none" />
-
-        <!-- Grid column -->
-        <div class="col-md-3 mx-auto">
-          <!-- empty column -->
-          
-        </div>
-        <!-- Grid column -->
-
-        <hr class="clearfix w-100 d-md-none" />
-
-        <!-- Grid column -->
+       
         <div class="col-md-3 mx-auto">
           <!-- LOGO IPP -->
           <b-img src="../assets/p.porto.png" class="ipp"/>
         
         </div>
-        <!-- Grid column -->
       </div>
-      <!-- Grid row -->
     </div>
-    <!-- Footer Links -->
+        <hr class="clearfix w-100 d-md-none" />
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3" id="copyright">
@@ -76,11 +59,18 @@
 #textFooter {
   font-size: 15px;
   margin-top: 30px;
-  margin-left: -60px;
   font-family: GeosansLight;
 }
+
+@media screen and (max-width: 600px){
 .logoFooter{
   width: 30%;
+  height: auto;
+}
+} 
+
+.logoFooter{
+  width: 50%;
   height: auto;
 }
 .logo1Footer{
@@ -91,8 +81,6 @@
   left: -90px;
 }
 .ipp{
-  margin-bottom: -300px;
-  margin-left: 130px;
   width: 150px;
 }
 #copyright{

@@ -38,17 +38,17 @@
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
           <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
-            <router-link class="link" to="/menuAdmin" id="menusAdmin">Area Administrador</router-link>
-            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
-            <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
-            <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
-            <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
+            <router-link class="link" to="/menuAdmin" id="links">Area Administrador</router-link>
+            <router-link class="link" to="/menu" id="links">Menus</router-link>
+            <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
+            <router-link class="link" to="/room" id="links">Espaços</router-link>
+            <router-link class="link" to="/workshops" id="links">Workshops</router-link>
           </span>
           <span v-else>
-            <router-link class="link" to="/menu" id="menusLink">Menus</router-link>
-            <router-link class="link" to="/events" id="eventsLink">Eventos e Catering</router-link>
-            <router-link class="link" to="/room" id="roomsLink">Espaços</router-link>
-            <router-link class="link" to="/workshops" id="workshopsLink">Workshops</router-link>
+            <router-link class="link" to="/menu" id="links">Menus</router-link>
+            <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
+            <router-link class="link" to="/room" id="links">Espaços</router-link>
+            <router-link class="link" to="/workshops" id="links">Workshops</router-link>
           </span>
         </div>
       </div>
@@ -158,51 +158,15 @@ export default {
   font-family: GeosansLight;
 }
 
-#menusAdmin {
+#links {
   color: white;
   text-decoration: none;
 }
 
-#menusAdmin:hover {
+#links:hover {
   color: #daaa29;
 }
 
-
-#eventsLink {
-  color: white;
-  text-decoration: none;
-}
-
-#eventsLink:hover {
-  color: #daaa29;
-}
-
-#roomsLink {
-  color: white;
-  text-decoration: none;
-}
-
-#roomsLink:hover {
-  color: #daaa29;
-}
-
-#workshopsLink {
-  color: white;
-  text-decoration: none;
-}
-
-#workshopsLink:hover {
-  color: #daaa29;
-}
-
-#menusLink {
-  color: white;
-  text-decoration: none;
-}
-
-#menusLink:hover {
-  color: #daaa29;
-}
 
 span {
   color: #232323;

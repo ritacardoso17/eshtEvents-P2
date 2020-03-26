@@ -3,13 +3,18 @@
     <b-button  class="filterName" @click="orderByName()">Ver por nome</b-button>
     <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
 
-    <div v-for="workshop in workshops" v-bind:key="workshop.id">
+    <div  class="row" v-for="workshop in workshops" v-bind:key="workshop.id">
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id % 2 == 0">
         <div class="card-header" id="headerWork">
           {{workshop.title}}
           <hr id="lineCards" />
+
         </div>
+        <div class="card-header" id="lineCards">
+
+        </div>
+
         <b-card
           :img-src="workshop.img"
           img-alt="Image"
@@ -48,8 +53,11 @@
       <span v-else>
         <div class="card-header" id="headerWork">
           {{workshop.title}}
-          <hr id="lineCards" />
         </div>
+           <div class="card-header" id="lineCards">
+
+        </div>
+
         <b-card
           :img-src="workshop.img"
           img-alt="Image"
@@ -161,6 +169,11 @@ export default {
 </script>
 
 <style>
+
+.card-maker{
+max-width: 70vw;
+}
+
 #workCard {
   margin: 0 auto;
   float: none;
@@ -179,11 +192,7 @@ export default {
 }
 #lineCards {
   background-color: #daaa29;
-  height: 15px;
-  width: 1110px;
   position: relative;
-  left: -20px;
-  top: -20px;
 }
 #workDescrip {
   text-align: justify;
@@ -236,7 +245,6 @@ export default {
   padding: 4px;
   color: white;
   border: 1px solid black;
-  bottom: -80px;
   right: 65px;
   background-color: black;
   font-family: GeosansLight;
@@ -248,6 +256,35 @@ export default {
   border-color: #daaa29;
   background-color: #000;
 }
+
+@media screen and (max-width: 600px){
+
+#workInscp2 {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  font-size: 90%;
+  padding: 4px;
+  color: white;
+  border: 1px solid black;
+  background-color: black;
+  font-family: GeosansLight;
+}
+
+#workInscp{
+  position: relative;
+  width: 100px;
+  height: 30px;
+  font-size: 90%;
+  padding: 4px;
+  color: white;
+  border: 1px solid black;
+  background-color: black;
+  font-family: GeosansLight;
+}
+} 
+
+
 .filterName{
   font-family: GeosansLight;
   background-color: black;
@@ -269,4 +306,19 @@ export default {
   border: 2px solid #daaa29;
   background-color: black;
 }
+
+.row{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 50px;
+
+}
+
+.container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 </style>

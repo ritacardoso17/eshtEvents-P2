@@ -11,58 +11,84 @@
     <br />
     <div class="container">
       <div class="row">
-        <div class="col">
-          <h5 id="room1">Restaurante Aplicação</h5>
-          <br />
-          <p class="paragraph1">
-            Restaurante com capacidade para 50 pessoas,
+
+  <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+    <div class="card-header" id="header">
+            Restaurante Aplicação
+          </div>
+    <b-row no-gutters>
+      <b-col md="6">
+        <b-card-img :src="require('../assets/restApp.jpg')" class="rounded-0" style="margin-top: 5px;" img-right></b-card-img>
+      </b-col>
+      <b-col md="6">
+        <b-card-body>
+          <b-card-text>
+         Restaurante com capacidade para 50 pessoas,
             onde são aplicados os métodos de serviço leccionados
             nas UC de Práticas Hoteleiras.
-          </p>
-        </div>
-        <div class="col">
-          <b-img class="restaurant" src="../assets/restApp.jpg"></b-img>
-        </div>
+          </b-card-text>
+        </b-card-body>
+      </b-col>
+    </b-row>
+  </b-card>
+      </div>
+
+
+
+
+
+      <div class="row">
+
+
+        <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+    <div class="card-header" id="header">
+            Cozinha de Aplicação
+          </div>
+    <b-row no-gutters>
+      <b-col md="6">
+        <b-card-img :src="require('../assets/img_cozinha.jpg')" class="rounded-0" style="margin-top: 5px;" img-right></b-card-img>
+      </b-col>
+      <b-col md="6">
+        <b-card-body>
+          <b-card-text>
+         Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.
+          </b-card-text>
+        </b-card-body>
+      </b-col>
+    </b-row>
+  </b-card>
+
       </div>
       <div class="row">
-        <div class="col">
-          <b-img class="kitchen" src="../assets/img_cozinha.jpg"></b-img>
-        </div>
-        <div class="col">
-          <h5 id="room2">Cozinha Aplicação</h5>
-          <br />
-          <p
-            class="paragraph2"
-          >Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h5 id="room3">Bar Aplicação</h5>
-          <br />
-          <p class="paragraph3">
-            No Bar Aplicação,
+        <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+    <div class="card-header" id="header">
+            Bar de Aplicação
+          </div>
+    <b-row no-gutters>
+      <b-col md="6">
+        <b-card-img :src="require('../assets/img_bar.jpg')" class="rounded-0" style="margin-top: 5px;" img-right></b-card-img>
+      </b-col>
+      <b-col md="6">
+        <b-card-body>
+          <b-card-text>
+       No Bar Aplicação,
             os estudantes poêm em prática os conhecimentos de serviço de bar,
             obtidos nas aulas da Licenciatura. É um espaço agradável e acolhedor.
-          </p>
-        </div>
-        <div class="col">
-          <b-img class="barApp" src="../assets/img_bar.jpg"></b-img>
-        </div>
+          </b-card-text>
+        </b-card-body>
+      </b-col>
+    </b-row>
+  </b-card>
+
+
+
+
       </div>
-
-      <router-link
-        tag="button"
-        id="btnRent"
-        v-if="this.$store.state.loggedUser.length != 0"
-        :to="{ name: 'rentRoom' }"
-      >Alugar</router-link>
-      <router-link tag="button" id="btnRent" v-else :to="{ name: 'login' }">Alugar</router-link>
-
-      <br />
-      <br />
+<router-link tag="button" id="btnRent" v-if="this.$store.state.loggedUser.length != 0" :to="{ name: 'rentRoom' }">Alugar</router-link>
+<router-link tag="button" id="btnRent" v-else :to="{ name: 'login' }">Alugar</router-link>
+      
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -138,6 +164,16 @@ export default {};
   padding-left: 50px;
   margin-top: 50px;
 }
+
+#header {
+  background-color: white;
+  border: 0px transparent;
+  color: #daaa29;
+  height: 50px;
+  text-align: justify;
+  font-family: GeosansLight;
+  font-size: 150%;
+}
 .restaurant {
   margin-top: 10px;
 }
@@ -153,16 +189,29 @@ export default {};
   height: 30px;
   font-size: 100%;
   color: white;
-  bottom: 30px;
-  left: -445px;
+  margin-bottom:50px;
   background-color: #000;
   border-color: black;
   font-family: GeosansLight;
 }
 #btnRent:hover {
-  color: white;
   border: 2px solid;
   border-color: #daaa29;
   background-color: #000;
+}
+
+
+.row{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 50px;
+
+}
+
+.container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

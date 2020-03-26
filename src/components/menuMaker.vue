@@ -20,7 +20,7 @@
             img-top
             img-height="150px"
             tag="article"
-            style="max-width: 15rem;"
+            style="max-width: 15rem;min-width: 15rem;"
             class="mb-2"
             id="cards"
           >
@@ -111,7 +111,6 @@ export default {
   position: center;
 }
 #cards {
-  margin: 50px;
   -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
   box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
@@ -183,5 +182,14 @@ export default {
   color: #daaa29;
   font-family: GeosansLight;
   margin-left: 140px;
+}
+
+.col-sm-4{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 50px;
+
 }
 </style>
