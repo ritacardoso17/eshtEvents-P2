@@ -4,84 +4,138 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeftR" />
-    <h3 id="titule">Os nossos Espaços</h3>
-    <hr id="lineRightR" />
+    <div class="container-full title">
+      <h3 id="redTitle">Os nossos Espaços</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
+
 
     <p id="guideRoom">Complete as seguintes etapas para efetuar a sua reserva</p>
 
-    <b-card no-body>
-      <b-tabs align="center" v-model="tabIndex" small card id="tab1">
-        <!-- TAB DA ESCOLHA DO ESPAÇO -->
-        <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
-          <b-progress id="progress" :value="33" variant="warning" :striped="striped"></b-progress>
-          <br />
-          <p class="guide7">
-            ▶
-            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar
-          </p>
-
-          <div class="container" align="center">
-            <div class="row">
-              <div v-for="r in this.rooms" :key="r.id">
-                <b-img :src="r.img" style="width:200px" class="roomImg"></b-img>
-                <div class="row">
-                  <button @click="chooseRoom(r.name)" id="btnChoose">{{r.name}}</button>
+    <b-tabs align="center" v-model="tabIndex" small card id="tab1">
+      <!-- TAB DA ESCOLHA DO ESPAÇO -->
+      <b-tab title="Espaço" :title-link-class="'tab-title-class'" active>
+        <div class="container">
+          <div class="row" id="progressRow">
+            <b-progress
+              align="center"
+              id="progress"
+              :value="33"
+              variant="warning"
+              :striped="striped"
+            ></b-progress>
+          </div>
+          <div class="row">
+            <p class="guide7">
+              ▶
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-sm-4" v-for="r in this.rooms" :key="r.id">
+              <b-card
+                :img-src="r.img"
+                style="max-width: 20rem; border:0px solid transparent;"
+                img-alt="Image"
+                img-top
+                class="mb-2"
+              >
+                <button @click="chooseRoom(r.name)" id="btnChoose">{{r.name}}</button>
+              </b-card>
+            </div>
+          </div>
+        </div>
+      </b-tab>
+      <!-- TAB DA INFO -->
+      <b-tab title="Informação">
+        <div class="container">
+          <div class="row" id="progressRow">
+            <b-progress id="progress" :value="66" variant="warning" :striped="striped"></b-progress>
+          </div>
+          <form action>
+            <div class="container" style="margin-bottom:100px">
+              <div class="row">
+                <div class="col-sm-5">
+                  <label for="input1" style="margin-top:50px; float:left">▶Data</label>
+                  <b-form-input
+                    style="margin-bottom:50px"
+                    v-model="day"
+                    type="date"
+                    id="input1"
+                    required
+                  ></b-form-input>
+                  <label for="input2" style="float: left">▶ Tempo de duração</label>
+                  <b-form-input
+                    v-model="duration"
+                    type="number"
+                    max="12"
+                    min="1"
+                    id="input2"
+                    required
+                  ></b-form-input>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-5" style="margin-top:50px; margin-bottom:50px">
+                  <label for="input4" style="float: left">▶Hora</label>
+                  <b-form-input
+                    v-model="time"
+                    type="time"
+                    style="margin-bottom:50px"
+                    id="input4"
+                    required
+                  ></b-form-input>
+                  <label for="input3" style="float: left">▶ Motivo da reserva</label>
+                  <textarea
+                    cols="50"
+                    style="float: left; resize:none"
+                    rows="2"
+                    v-model="reason"
+                    id="input3"
+                  ></textarea>
                 </div>
               </div>
             </div>
-          </div>
-        </b-tab>
-        <!-- TAB DA INFO -->
-        <b-tab title="Informação">
-          <form action>
-            <b-progress id="progress" :value="66" variant="warning" :striped="striped"></b-progress>
-            <br />
-            <div class="form-check">
-              <p class="guide8">▶ Data e hora para o aluguer</p>
-              <b-form-input v-model="day" type="date" id="rentDate" required></b-form-input>
-              <b-form-input v-model="time" type="time" id="rentTime" required></b-form-input>
-              <p class="guide9">▶ Tempo de duração</p>
-              <b-form-input
-                v-model="duration"
-                type="number"
-                max="12"
-                min="1"
-                id="rentDuration"
-                required
-              ></b-form-input>
-              <p class="guide10">▶ Motivo da reserva</p>
-              <textarea id="rentReason" cols="30" rows="2" v-model="reason"></textarea>
-            </div>
           </form>
-        </b-tab>
-        <!-- TAB DO RESUMO -->
-        <b-tab title="Resumo">
-          <h3 class="resume">
-            <b>Resumo</b>
-          </h3>
-          <hr id="resumeLine" />
-          <p id="inform">
-            <b>Informações</b>
-          </p>
-          <p id="pDate">▶ Dia: {{day}}</p>
-          <p id="pTime">▶ Hora: {{time}}h</p>
-          <p id="pDuration">▶ Duração: {{duration}}h</p>
-          <p id="pReason">▶ Motivo: {{reason}}</p>
-          <p id="room">
-            <b>Espaço</b>
-          </p>
-          <p id="roomSlt">{{slctRoom}}</p>
-          <a
-            id="confirm"
-            class="btn btn-primary"
-            @click="rentRoom()"
-            role="button"
-          >Confirmar</a>
+        </div>
+      </b-tab>
+      <!-- TAB DO RESUMO -->
+      <b-tab title="Resumo">
+        <div class="container">
+          <div class="row" id="progressRow" >
+            <h3 class="resume">
+              <b>Resumo</b>
+            </h3>
+            <hr id="resumeLine" />
+          </div>
+          <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3">
+              <p id="inform">
+                <b>Informações</b>
+              </p>
+              <div>
+                <p id="pDate">▶ Dia: {{day}}</p>
+                <p id="pTime">▶ Hora: {{time}}h</p>
+                <p id="pDuration">▶ Duração: {{duration}}h</p>
+                <p id="pReason">▶ Motivo: {{reason}}</p>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <p id="room">
+                <b>Espaço</b>
+              </p>
+              <p id="roomSlt">{{slctRoom}}</p>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+
+          <a id="confirm" class="btn btn-primary" @click="rentRoom()" role="button">Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
-        </b-tab>
-      </b-tabs>
-    </b-card>
+        </div>
+      </b-tab>
+    </b-tabs>
   </div>
 </template>
 
@@ -160,10 +214,10 @@ export default {
         this.duration == "" ||
         this.reason == ""
       ) {
-        this.$bvToast.toast('Tem de preencher todos os campos')
+        this.$bvToast.toast("Tem de preencher todos os campos");
       } else {
-        location.href="./room"
-         this.$bvToast.toast('Alguer de Espaço efetuado com sucesso')
+        location.href = "./room";
+        this.$bvToast.toast("Alguer de Espaço efetuado com sucesso");
       }
     }
   }
@@ -174,12 +228,6 @@ export default {
 .catering {
   position: relative;
   width: 1263px;
-}
-
-#progress {
-  width: 400px;
-  margin-left: 400px;
-  height: 8px;
 }
 
 #lineLeftR {
@@ -225,24 +273,17 @@ export default {
   background-color: #232323;
 }
 
-#tab1 {
-  height: 450px;
-}
-
 /* ESPAÇO TAB */
 .guide7 {
   font-family: GeosansLight;
   text-align: justify;
   margin-top: 15px;
-  margin-left: 180px;
   font-size: 110%;
 }
 #btnChoose {
-  width: 120px;
   font-size: 12px;
   margin-top: 10px;
-  height: 30px;
-  margin-left: 195px;
+  height: 40px;
   color: white;
   background-color: #000;
   border: 2px solid black;
@@ -251,9 +292,6 @@ export default {
 #btnChoose:hover {
   background-color: #000;
   border: 2px solid #daaa29;
-}
-.roomImg {
-  margin-left: 140px;
 }
 
 /* INFO TAB */
@@ -332,15 +370,12 @@ export default {
   text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 450px;
 }
 #room {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 20px;
   color: black;
-  margin-left: 700px;
-  margin-top: -190px;
 }
 
 #pDate {
@@ -348,35 +383,30 @@ export default {
   text-align: justify;
   font-size: 14px;
   color: black;
-  margin-left: 425px;
 }
 #pTime {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 14px;
   color: black;
-  margin-left: 425px;
 }
 #pDuration {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 14px;
   color: black;
-  margin-left: 425px;
 }
 #pReason {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 14px;
   color: black;
-  margin-left: 425px;
 }
 #roomSlt {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 14px;
   color: black;
-  margin-left: 690px;
 }
 #confirm {
   position: relative;
@@ -387,8 +417,7 @@ export default {
   border: 2px solid black;
   background-color: #000;
   font-family: GeosansLight;
-  top: 160px;
-  left: 100px;
+    margin: 10px;
 }
 #confirm:hover {
   color: white;
@@ -412,7 +441,78 @@ export default {
   border: 2px solid black;
   background-color: #000;
   font-family: GeosansLight;
-  top: 160px;
-  left: -100px;
+  margin: 10px;
 }
+
+.col-sm-4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+
+.col-sm-12 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+.col-sm-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+.col-sm-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px;
+  margin-bottom: 50px;
+}
+#progress {
+  width: 400px;
+  height: 8px;
+}
+
+#progressRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  
+    padding-bottom: 50px;
+  }
+ 
+  #whiteRect {
+    background-color: white;
+    margin-top: -35px;
+    height: 35px;
+    width: 300px;
+    position: relative;
+    display: block;
+    z-index: 6
+  }
+  
+  .back-line {
+    background-color: #daaa29;
+    margin-top: -25px;
+    width: 70%;
+    display: block;
+    z-index: 5;
+    position: relative;
+    height: 1px;
+  }
+  #redTitle {
+    font-family: "Channel";
+    color: black;
+    display: block;
+    z-index: 7;
+    position: relative;
+  }
+
 </style>
