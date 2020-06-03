@@ -6,7 +6,11 @@
       </div>
       <div class="form-group">
         <select v-model="selectE" id="sltFilter">
-          <option v-for="typeE in eventType2" :key="typeE" @change="filterMenus()">{{typeE.descritivo}}</option>
+          <option
+            v-for="typeE in eventType2"
+            :key="typeE"
+            @change="filterMenus()"
+          >{{typeE.descritivo}}</option>
         </select>
       </div>
     </b-form>
@@ -45,7 +49,6 @@
                       <div v-if="component.id_menu.toString()==menu.id_menu.toString()">
                         <p id="components">-->{{component.descritivo}}</p>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -82,11 +85,6 @@ export default {
     // if (localStorage.getItem("foodMenus")) {
     //   this.menus = JSON.parse(localStorage.getItem("foodMenus"));
     // }
-
-    this.getAllMenus();
-    this.getAllComponents();
-    this.getAllEventTypes();
-
     // if (localStorage.getItem("eventType")) {
     //   this.eventType = JSON.parse(localStorage.getItem("eventType"));
     // }
@@ -94,6 +92,9 @@ export default {
     //   "eventType",
     //   JSON.stringify(this.$store.state.eventType)
     // );
+    this.getAllMenus();
+    this.getAllComponents();
+    this.getAllEventTypes();
   },
   computed: {
     ...mapGetters(["getMenus"]),
