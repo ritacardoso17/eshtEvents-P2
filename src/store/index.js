@@ -3,6 +3,7 @@ import Vuex from "vuex";
 /* import router from "vue-router";
  */
 import VueSimpleAlert from "vue-simple-alert";
+import apiService from "../eshtEventAPI/apiService";
 Vue.use(VueSimpleAlert);
 Vue.use(Vuex);
 
@@ -83,109 +84,110 @@ export default new Vuex.Store({
         userEmail:[]
       }
     ],
-    foodMenus: [{
-        id: 1,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Base",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
-      },
-      {
-        id: 2,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Estudante",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
+    foodMenus: [
+      // {
+    //     id: 1,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Base",
+    //     type: "Coffee Break",
+    //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
+    //   },
+    //   {
+    //     id: 2,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Estudante",
+    //     type: "Coffee Break",
+    //     components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
 
-      },
-      {
-        id: 3,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Executivo",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
-          "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"
-        ]
+    //   },
+    //   {
+    //     id: 3,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Executivo",
+    //     type: "Coffee Break",
+    //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
+    //       "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"
+    //     ]
 
-      },
-      {
-        id: 4,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Supremo",
-        type: "Coffee Break",
-        components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
-          "Triângulos Mistos", "Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"
-        ]
-      },
-      {
-        id: 5,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Italiano",
-        type: "Almoço",
-        components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-          "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-        ]
-      },
-      {
-        id: 6,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Mexicano",
-        type: "Almoço",
-        components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-          "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-        ]
-      },
-      {
-        id: 7,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Português",
-        type: "Almoço",
-        components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
-          "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
-        ]
-      },
-      {
-        id: 8,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Uva",
-        type: "Porto de Honra",
-        components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
-      },
-      {
-        id: 9,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Videira",
-        type: "Porto de Honra",
-        components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks"]
-      },
-      {
-        id: 10,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Solar",
-        type: "Jantar",
-        components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-          "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-        ]
-      },
-      {
-        id: 11,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Estrelado",
-        type: "Jantar",
-        components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
-          "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
-        ]
-      },
-      {
-        id: 12,
-        img: require('../assets/transferir.jpg'),
-        name: "Menu Noite",
-        type: "Jantar",
-        components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-          "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-        ]
-      },
-    ],
+    //   },
+    //   {
+    //     id: 4,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Supremo",
+    //     type: "Coffee Break",
+    //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
+    //       "Triângulos Mistos", "Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"
+    //     ]
+    //   },
+    //   {
+    //     id: 5,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Italiano",
+    //     type: "Almoço",
+    //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+    //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
+    //     ]
+    //   },
+    //   {
+    //     id: 6,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Mexicano",
+    //     type: "Almoço",
+    //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+    //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
+    //     ]
+    //   },
+    //   {
+    //     id: 7,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Português",
+    //     type: "Almoço",
+    //     components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
+    //       "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
+    //     ]
+    //   },
+    //   {
+    //     id: 8,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Uva",
+    //     type: "Porto de Honra",
+    //     components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
+    //   },
+    //   {
+    //     id: 9,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Videira",
+    //     type: "Porto de Honra",
+    //     components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks"]
+    //   },
+    //   {
+    //     id: 10,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Solar",
+    //     type: "Jantar",
+    //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+    //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
+    //     ]
+    //   },
+    //   {
+    //     id: 11,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Estrelado",
+    //     type: "Jantar",
+    //     components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
+    //       "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
+    //     ]
+    //   },
+    //   {
+    //     id: 12,
+    //     img: require('../assets/transferir.jpg'),
+    //     name: "Menu Noite",
+    //     type: "Jantar",
+    //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
+    //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
+    //     ]
+    //   }
+  ],
     eventType: ["Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
     reservations: [{
       id: 0,
@@ -278,60 +280,61 @@ export default new Vuex.Store({
         name: "Palhaços"
       }
     ],
-    componentMenus: [{
-        id: 1,
-        name: "Leite"
-      },
-      {
-        id: 2,
-        name: "Cafe"
-      },
-      {
-        id: 3,
-        name: "Bolo de Laranja"
-      },
-      {
-        id: 4,
-        name: "Seleção de Chás e Infusões"
-      }, {
-        id: 5,
-        name: "Sumo de Laranja"
-      }, {
-        id: 6,
-        name: "Água"
-      },
-      {
-        id: 7,
-        name: "Pastelaria Seca e Variada"
-      },
-      {
-        id: 8,
-        name: "Triângulos Mistos"
-      },
-      {
-        id: 9,
-        name: "Fruta à peça"
-      }, {
-        id: 10,
-        name: "Água Gaseificada"
-      }, {
-        id: 11,
-        name: "Natinhas com Canela"
-      }, {
-        id: 12,
-        name: "Queijadinhas"
-      },
-      {
-        id: 13,
-        name: "Sumo de Morango e Goiaba"
-      },
-      {
-        id: 14,
-        name: "Iogurtes com Frescos e Secos"
-      }, {
-        id: 15,
-        name: "Mini Croissants"
-      }
+    componentMenus: [
+      // {
+      //   id: 1,
+      //   name: "Leite"
+      // },
+      // {
+      //   id: 2,
+      //   name: "Cafe"
+      // },
+      // {
+      //   id: 3,
+      //   name: "Bolo de Laranja"
+      // },
+      // {
+      //   id: 4,
+      //   name: "Seleção de Chás e Infusões"
+      // }, {
+      //   id: 5,
+      //   name: "Sumo de Laranja"
+      // }, {
+      //   id: 6,
+      //   name: "Água"
+      // },
+      // {
+      //   id: 7,
+      //   name: "Pastelaria Seca e Variada"
+      // },
+      // {
+      //   id: 8,
+      //   name: "Triângulos Mistos"
+      // },
+      // {
+      //   id: 9,
+      //   name: "Fruta à peça"
+      // }, {
+      //   id: 10,
+      //   name: "Água Gaseificada"
+      // }, {
+      //   id: 11,
+      //   name: "Natinhas com Canela"
+      // }, {
+      //   id: 12,
+      //   name: "Queijadinhas"
+      // },
+      // {
+      //   id: 13,
+      //   name: "Sumo de Morango e Goiaba"
+      // },
+      // {
+      //   id: 14,
+      //   name: "Iogurtes com Frescos e Secos"
+      // }, {
+      //   id: 15,
+      //   name: "Mini Croissants"
+      // }
     ],
   },
 
@@ -513,6 +516,12 @@ export default new Vuex.Store({
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
 
     },
+    SET_MENUS:(state,foodMenus) => {
+      state.foodMenus = foodMenus
+    },
+    SET_COMPONENTS_MENUS:(state,componentMenus) => {
+      state.componentMenus = componentMenus
+    }
   },
   getters: {
     getTypeUser(state) {
@@ -545,5 +554,16 @@ export default new Vuex.Store({
     getUser(state) {
       return state.loggedUser[0];
     },
+    getMenus:state=>state.foodMenus.message,
+    getComponentsMenus:state=>state.componentMenus.message
+  },
+  actions:{
+    async getMenus({commit}){
+      commit("SET_MENUS", await apiService.getMenus())
+    },
+    async getComponentsMenus ({commit}){
+      commit("SET_COMPONENTS_MENUS", await apiService.getComponents())
+    }
+
   }
 });

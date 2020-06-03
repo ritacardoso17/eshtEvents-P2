@@ -12,10 +12,9 @@
     </b-form>
     <div class="container" id="cardsMenu">
       <div class="row">
-        <div class="col-sm-4" v-for="menu in filterMenus" :key="menu.id">
+        <div class="col-sm-4" v-for="menu in filterMenus" :key="menu.id_menu.toString()">
           <b-card
             :title="menu.name"
-            :img-src="menu.img"
             img-alt="Image"
             img-top
             img-height="150px"
@@ -24,12 +23,12 @@
             class="mb-2"
             id="cards"
           >
-            <b-card-text>{{menu.type}}</b-card-text>
-            <b-button v-b-modal="menu.id.toString()" id="cardBtn">Ver mais</b-button>
+            <b-card-text>{{menu.descritivo}}</b-card-text>
+            <b-button v-b-modal="menu.id_menu.toString()" id="cardBtn">Ver mais</b-button>
             <div>
               <b-modal
-                :id="menu.id.toString()"
-                :title="menu.name + ' - ' + menu.type "
+                :id="menu.id_menu.toString()"
+                :title="menu.name + ' - ' + menu.descritivo"
                 ok-only
                 ok-title="cancel"
               >
@@ -40,10 +39,13 @@
                       class="col-sm-6"
                       align="center"
                       style=" margin: auto; margin-bottom: -15px"
-                      v-for="component in menu.components"
-                      :key="component"
+                      v-for="component in components"
+                      :key="component.id_menu.toString()"
                     >
-                      <p id="components">{{component}}</p>
+                      <div v-if="component.id_menu.toString()==menu.id_menu.toString()">
+                        <p id="components">-->{{component.descritivo}}</p>
+                      </div>
+
                     </div>
                   </div>
                 </div>
@@ -58,6 +60,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Menu",
   data: function() {
@@ -65,18 +68,22 @@ export default {
       menus: [],
       searchTxt: "",
       selectE: "Todos",
-      eventType: []
+      eventType: [],
+      menus2: [],
+      components: []
     };
   },
   created() {
-      localStorage.setItem(
-      "foodMenus",
-      JSON.stringify(this.$store.state.foodMenus)
-    );
+    // localStorage.setItem(
+    //   "foodMenus",
+    //   JSON.stringify(this.$store.state.foodMenus)
+    // );
+    // if (localStorage.getItem("foodMenus")) {
+    //   this.menus = JSON.parse(localStorage.getItem("foodMenus"));
+    // }
 
-    if (localStorage.getItem("foodMenus")) {
-      this.menus = JSON.parse(localStorage.getItem("foodMenus"));
-    }
+    this.getAllMenus();
+    this.getAllComponents();
 
     if (localStorage.getItem("eventType")) {
       this.eventType = JSON.parse(localStorage.getItem("eventType"));
@@ -87,8 +94,10 @@ export default {
     );
   },
   computed: {
+    ...mapGetters(["getMenus"]),
+    ...mapGetters(["getComponentsMenus"]),
     filterMenus() {
-      return this.menus.filter(menu => {
+      return this.menus2.filter(menu => {
         let filterResult = true;
         let filterResultType = true;
 
@@ -97,10 +106,28 @@ export default {
         }
 
         if (this.selectE !== "" && this.selectE != "Todos") {
-          filterResultType = menu.type.includes(this.selectE);
+          filterResultType = menu.descritivo.includes(this.selectE);
         }
         return filterResultType && filterResult;
       });
+    }
+  },
+  methods: {
+    async getAllMenus() {
+      try {
+        await this.$store.dispatch("getMenus");
+        this.menus2 = this.getMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllComponents() {
+      try {
+        await this.$store.dispatch("getComponentsMenus");
+        this.components = this.getComponentsMenus;
+      } catch (err) {
+        alert(err);
+      }
     }
   }
 };
@@ -184,12 +211,11 @@ export default {
   margin-left: 140px;
 }
 
-.col-sm-4{
+.col-sm-4 {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px;
   margin-bottom: 50px;
-
 }
 </style>
