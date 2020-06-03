@@ -188,7 +188,7 @@ export default new Vuex.Store({
     //     ]
     //   }
   ],
-    eventType: ["Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra"],
+    eventType: [/* "Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra" */],
     reservations: [{
       id: 0,
       user: "João Alves",
@@ -521,6 +521,9 @@ export default new Vuex.Store({
     },
     SET_COMPONENTS_MENUS:(state,componentMenus) => {
       state.componentMenus = componentMenus
+    },
+    SET_EVENTYPES:(state,eventType) => {
+      state.eventType = eventType
     }
   },
   getters: {
@@ -555,7 +558,8 @@ export default new Vuex.Store({
       return state.loggedUser[0];
     },
     getMenus:state=>state.foodMenus.message,
-    getComponentsMenus:state=>state.componentMenus.message
+    getComponentsMenus:state=>state.componentMenus.message,
+    getEvenTypes:state=>state.eventType.message
   },
   actions:{
     async getMenus({commit}){
@@ -563,6 +567,9 @@ export default new Vuex.Store({
     },
     async getComponentsMenus ({commit}){
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents())
+    },
+    async getEvenTypes ({commit}){
+      commit("SET_EVENTYPES", await apiService.getEventypes())
     }
 
   }

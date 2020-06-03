@@ -26,6 +26,18 @@ const apiService = {
         else {
             throw Error(response)
         }
+    },
+    async getEventypes(){
+        const response = await fetch(`${API_URL}/evenTypes`, {
+            method: "GET",
+             })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
     }
 }
 

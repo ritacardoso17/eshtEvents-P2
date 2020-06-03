@@ -6,7 +6,7 @@
       </div>
       <div class="form-group">
         <select v-model="selectE" id="sltFilter">
-          <option v-for="typeE in eventType" :key="typeE" @change="filterMenus()">{{typeE}}</option>
+          <option v-for="typeE in eventType2" :key="typeE" @change="filterMenus()">{{typeE.descritivo}}</option>
         </select>
       </div>
     </b-form>
@@ -69,6 +69,7 @@ export default {
       searchTxt: "",
       selectE: "Todos",
       eventType: [],
+      eventType2: [],
       menus2: [],
       components: []
     };
@@ -84,18 +85,20 @@ export default {
 
     this.getAllMenus();
     this.getAllComponents();
+    this.getAllEventTypes();
 
-    if (localStorage.getItem("eventType")) {
-      this.eventType = JSON.parse(localStorage.getItem("eventType"));
-    }
-    localStorage.setItem(
-      "eventType",
-      JSON.stringify(this.$store.state.eventType)
-    );
+    // if (localStorage.getItem("eventType")) {
+    //   this.eventType = JSON.parse(localStorage.getItem("eventType"));
+    // }
+    // localStorage.setItem(
+    //   "eventType",
+    //   JSON.stringify(this.$store.state.eventType)
+    // );
   },
   computed: {
     ...mapGetters(["getMenus"]),
     ...mapGetters(["getComponentsMenus"]),
+    ...mapGetters(["getEvenTypes"]),
     filterMenus() {
       return this.menus2.filter(menu => {
         let filterResult = true;
@@ -125,6 +128,14 @@ export default {
       try {
         await this.$store.dispatch("getComponentsMenus");
         this.components = this.getComponentsMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllEventTypes() {
+      try {
+        await this.$store.dispatch("getEvenTypes");
+        this.eventType2 = this.getEvenTypes;
       } catch (err) {
         alert(err);
       }
