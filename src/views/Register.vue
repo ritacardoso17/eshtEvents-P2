@@ -46,14 +46,7 @@
         <div class="form-group">
           <label for="sltSchool" class="schoolLabel">Instituição:</label>
           <select id="sltSchool" v-model="school">
-            <option value="pick">Escolher Instituição</option>
-            <option value="esht">ESHT</option>
-            <option value="esmad">ESMAD</option>
-            <option value="isep">ISEP</option>
-            <option value="iscap">ISCAP</option>
-            <option value="ese">ESE</option>
-            <option value="esmae">ESMAE</option>
-            <option value="ess">ESS</option>
+            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{s.nome}}</option>
           </select>
         </div>
         <div class="form-group">
@@ -107,6 +100,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 // @ is an alias to /src
 export default {
   name: "Register",
@@ -120,39 +114,32 @@ export default {
     contact: "",
     birth: "",
     eventType: [],
-    imgPerfil: ""
+    imgPerfil: "",
+    schools: []
   }),
-  created: function() {
-    window.addEventListener("unload", this.saveStorage);
-    if (localStorage.getItem("users")) {
-      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    }
+  created() {
+      this.getAllSchools();
+  },
+  computed: {
+    ...mapGetters(["getSchools"])
   },
   methods: {
-    /**
-     * GET LAST ID
-     */
-    getLastId() {
-      return this.$store.getters.getLastId;
-    },
-    /***
-     * FUNCTION CREATED TO ADD NEW USER
-     */
 
-    addUser() {
-      if (this.email.includes(this.school.toLowerCase())) {
-        this.$store.commit("ADD_USER", {
-          id: this.getLastId() + 1,
+    async addUser() {
+      try {
+        await this.$store.dispatch("addUser", {
           name: this.name,
           school: this.school,
           email: this.email,
           password: this.password,
-          confPass: this.confPass,
           birth: this.birth,
           contact: this.contact,
           imgProfile: this.imgPerfil
         });
+      } catch (err) {
+        alert(err);
       }
+      
     },
     saveStorage() {
       localStorage.setItem("users", JSON.stringify(this.$store.state.users));
@@ -160,6 +147,14 @@ export default {
         "loggedUser",
         JSON.stringify(this.$store.state.loggedUser)
       );
+    },
+    async getAllSchools() {
+      try {
+        await this.$store.dispatch("getSchools");
+        this.schools = this.getSchools;
+      } catch (err) {
+        alert(err);
+      }
     }
   }
 };

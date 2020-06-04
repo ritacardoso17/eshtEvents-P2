@@ -336,36 +336,21 @@ export default new Vuex.Store({
       //   name: "Mini Croissants"
       // }
     ],
+    schools:[]
   },
 
 
   mutations: {
     ADD_USER: (state, payload) => {
       //SE ENCONTRAR ALGUM EMAIL IGUAL AO QUE ESTA A TENTAR CRIAR
-      if (!state.users.some(user => user.email === payload.email)) {
+     
         if (payload.password !== payload.confPass) {
           VueSimpleAlert.fire('Passwords diferentes')
         } else {
-          state.users.push({
-            // id: payload.id,
-            // name: payload.name,
-            // school: payload.school,
-            // typeUser: "user",
-            // email: payload.email,
-            // password: payload.password,
-            // contact: payload.contact,
-            // birth: payload.birth,
-            // imgProfile: payload.imgProfile,
-            // alerts: []
-          });
-          // localStorage.setItem("users", JSON.stringify(state.users))
           VueSimpleAlert.fire('Conta criada')
           window.location = "./login"
         }
-      } else {
-
-        VueSimpleAlert.fire('Email já existente')
-      }
+     
     },
     LOGIN: (state, payload) => {
       for (const user of state.users) {
@@ -524,7 +509,10 @@ export default new Vuex.Store({
     },
     SET_EVENTYPES: (state, eventType) => {
       state.eventType = eventType
-    }
+    },
+    SET_SCHOOLS: (state, schools) => {
+      state.schools = schools 
+    },
   },
   getters: {
     getTypeUser(state) {
@@ -560,6 +548,7 @@ export default new Vuex.Store({
     getMenus: state => state.foodMenus.message,
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
+    getSchools: state => state.schools.message,
 
   },
   actions: {
@@ -573,7 +562,7 @@ export default new Vuex.Store({
       commit("SET_EVENTYPES", await apiService.getEventypes())
     },
     async addMenus({ commit }, payload) {
-      commit("ADD_MENU", await apiService.addMenu(
+      commit("ADD_MENU", await apiService.addMenus(
         payload.name,
         payload.img,
         payload.type,
@@ -589,6 +578,9 @@ export default new Vuex.Store({
         payload.birth,
         payload.imgProfile,
       ))
-    }
+    },
+    async getSchools({ commit }) {
+      commit("SET_SCHOOLS", await apiService.getSchools())
+    },
   }
 });

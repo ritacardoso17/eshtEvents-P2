@@ -1,10 +1,25 @@
 import API_URL from './config.js'
 
 const apiService = {
-    async addUser(name, school, email, password, contact, birth, imgProfile) {
+    async addUser(name, school, email, password, contact,birth, imgProfile ) {
         const response = await fetch(`${API_URL}/register`, {
             method: "POST",
-            body: JSON.stringify({ name:name, pass:password, img:imgProfile, data:birth, telemovel:contact, idE:school, email:email, })
+            headers: {
+                'Content-type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({ name: name, pass: password, img: imgProfile, data: birth, telemovel: contact, idE: school, email: email, })
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async getSchools() {
+        const response = await fetch(`${API_URL}/schools`, {
+            method: "GET",
         })
 
         if (response.ok) {
