@@ -37,7 +37,7 @@
       <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
-          <span v-if="this.$store.state.loggedUser.length != 0 && getTypeUser() === 'admin'">
+          <span v-if="this.$store.state.loggedUser.length != 0 ">
             <router-link class="link" to="/menuAdmin" id="links">Area Administrador</router-link>
             <router-link class="link" to="/menu" id="links">Menus</router-link>
             <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>

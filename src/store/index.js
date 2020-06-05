@@ -23,6 +23,7 @@ export default new Vuex.Store({
     roomRents: [],
     userExist: false,
     loggedUser: [],
+    token:[],
     rooms: [{
       id: 0,
       name: "Restaurante Aplicação",
@@ -336,42 +337,29 @@ export default new Vuex.Store({
       //   name: "Mini Croissants"
       // }
     ],
-    schools:[]
+    schools: [],
   },
 
 
   mutations: {
     ADD_USER: (state, payload) => {
       //SE ENCONTRAR ALGUM EMAIL IGUAL AO QUE ESTA A TENTAR CRIAR
-     
-        if (payload.password !== payload.confPass) {
-          VueSimpleAlert.fire('Passwords diferentes')
-        } else {
-          VueSimpleAlert.fire('Conta criada')
-          window.location = "./login"
-        }
-     
-    },
-    LOGIN: (state, payload) => {
-      for (const user of state.users) {
-        if (user.email == payload.email && user.password == payload.password) {
-          state.loggedUser.push({
-            id: user.id,
-            name: user.name,
-            school: user.school,
-            typeUser: user.typeUser,
-            email: user.email,
-            password: user.password,
-            contact: user.contact,
-            birth: user.birth,
-            imgProfile: user.imgProfile
-          })
-          localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
-          state.userExist = true
-          window.location = "./"
 
-        }
+      if (payload.password !== payload.confPass) {
+        VueSimpleAlert.fire('Passwords diferentes')
+      } else {
+        VueSimpleAlert.fire('Conta criada')
+        window.location = "./login"
       }
+
+    },
+    LOGIN: (state, data) => {
+      state.loggedUser = data
+
+      //state.token = data.token
+      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
+      state.userExist = true
+      window.location = "./"
       if (!state.userExist) {
         alert("Conta não existe")
 
@@ -383,6 +371,10 @@ export default new Vuex.Store({
 
     LOGOUT: (state) => {
       // state.loggedUser.pop()
+      alert(state.loggedUser.token)
+      apiService.logout(state.loggedUser.token)
+      state.loggedUser=[]
+      state.token = []
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
       location.href = "./"
       VueSimpleAlert.fire('Sessão Terminada com Sucesso')
@@ -511,7 +503,7 @@ export default new Vuex.Store({
       state.eventType = eventType
     },
     SET_SCHOOLS: (state, schools) => {
-      state.schools = schools 
+      state.schools = schools
     },
   },
   getters: {
@@ -582,5 +574,13 @@ export default new Vuex.Store({
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools())
     },
+    async login({ commit }, payload) {
+      commit("LOGIN", await apiService.login(
+
+        payload.email,
+        payload.password,
+
+      ))
+    }
   }
 });

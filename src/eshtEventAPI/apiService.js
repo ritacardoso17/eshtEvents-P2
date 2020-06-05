@@ -67,7 +67,7 @@ const apiService = {
             throw Error(response)
         }
     },
-    async addMenu(name, img, type, components) {
+    async addMenus(name, img, type, components) {
         const response = await fetch(`${API_URL}/menus`, {
             method: "POST",
             body: JSON.stringify({ description: name, file: img, id_tipo_reserva: type, components: components })
@@ -79,7 +79,44 @@ const apiService = {
         else {
             throw Error(response)
         }
+    },
+
+    //LOGIN
+    async login(email, password) {
+        const response = await fetch(`${API_URL}/login `, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({ pass: password,email: email})
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+         
+            throw Error(response)
+        }
+    },
+    async logout(token) {
+        const response = await fetch(`${API_URL}/logout `, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json; charset=utf-8',
+                'x-access-token': token
+            }
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+         
+            throw Error(response)
+        }
     }
+
 }
 
 export default apiService
