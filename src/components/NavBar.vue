@@ -6,11 +6,9 @@
         <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
       </a>
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
-        </li>
-      </ul>
+        <a class="nav-item" id="bell">
+          <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt/>
+        </a>
       <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
         <img
           :src="imgProfile"
@@ -146,9 +144,14 @@ export default {
   height: auto;
 }
 
+#bell {
+  left: -9%;
+  position: relative;
+}
+
 #camp {
   width: 10%;
-  height: auto;
+  position: relative;
 }
 
 #container1 {
