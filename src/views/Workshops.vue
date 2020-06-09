@@ -4,10 +4,10 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeftW" />
-    <h3 id="titule">Workshops</h3>
-    <hr id="lineRightW" />
     <br />
+    <hr id="lineLeftW" />
+    <h3 id="title">Workshops</h3>
+    <hr id="lineRightW" />
     <br />
     <cardWorkshop />
   </div>
@@ -22,9 +22,7 @@ export default {
   components: {
     cardWorkshop
   },
-  methods: {
-   
-  },
+  methods: {}
 };
 </script>
 
@@ -35,23 +33,23 @@ export default {
   width: 1263px;
 }
 #lineLeftW {
-  position: relative;
+  position: absolute;
   background-color: #daaa29;
   height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 350px;
+  width: 20%;
+  top: 52%;
+  margin-left: 20%;
 }
 #lineRightW {
-  position: relative;
+  position: absolute;
   background-color: #daaa29;
   height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 350px;
+  width: 20%;
+  top: 52%;
+  margin-left: 60%;
 }
-#titule {
-  margin-top: -4%;
+#title {
+  margin-top: -2%;
   font-family: Channel;
   color: black;
 }

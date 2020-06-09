@@ -1,19 +1,18 @@
 <template>
   <div class="container">
-    <b-button  class="filterName" @click="orderByName()">Ver por nome</b-button>
+    <b-button class="filterName" @click="orderByName()">Ver por nome</b-button>
     <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
-
-    <div  class="row" v-for="workshop in workshops" v-bind:key="workshop.id">
+    <br />
+    <br />
+    <br />
+    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id">
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id % 2 == 0">
         <div class="card-header" id="headerWork">
           {{workshop.title}}
           <hr id="lineCards" />
-
         </div>
-        <div class="card-header" id="lineCards">
-
-        </div>
+        <div class="card-header" id="lineCards"></div>
 
         <b-card
           :img-src="workshop.img"
@@ -35,7 +34,7 @@
             Vagas: {{workshop.vacancies}}
           </b-card-text>
 
-            <b-button
+          <b-button
             href="#"
             v-bind:style="{display: show2}"
             id="workInscp2"
@@ -51,12 +50,8 @@
       </span>
       <!-- CARD WORKSHOPS À ESQUERDA -->
       <span v-else>
-        <div class="card-header" id="headerWork">
-          {{workshop.title}}
-        </div>
-           <div class="card-header" id="lineCards">
-
-        </div>
+        <div class="card-header" id="headerWork">{{workshop.title}}</div>
+        <div class="card-header" id="lineCards"></div>
 
         <b-card
           :img-src="workshop.img"
@@ -67,7 +62,7 @@
           class="mb-2"
           id="workCard"
         >
-          <b-card-text id="workDescrip">{{workshop.description}}</b-card-text>
+          <b-card-text id="workDescrip2">{{workshop.description}}</b-card-text>
           <b-card-text id="workInfo">
             {{workshop.date}}
             <br />
@@ -101,7 +96,7 @@ export default {
       workshops: [],
       show: "none",
       show2: "inline",
-      signMe: "Inscrever-me",
+      signMe: "Inscrever-me"
     };
   },
   created() {
@@ -113,7 +108,7 @@ export default {
     }
     if (this.getLoggedUser() !== "") {
       this.show2 = "inline";
-    }else{
+    } else {
       this.signMe = "nao podes pah";
     }
   },
@@ -126,7 +121,6 @@ export default {
     },
 
     sign(id) {
-
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
           if (
@@ -134,16 +128,16 @@ export default {
             this.workshops[i].userEmail != this.getUserEmail()
           ) {
             this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
-            this.workshops[i].userEmail.push (this.getUserEmail());
+            this.workshops[i].userEmail.push(this.getUserEmail());
             localStorage.setItem("workshops", JSON.stringify(this.workshops));
             this.$store.getters.getLoggedUser = this.workshops;
           } else if (
             this.workshops[i].vacancies > 0 &&
-            this.workshops[i].userEmail.includes(this.getUserEmail()) 
+            this.workshops[i].userEmail.includes(this.getUserEmail())
           ) {
-             this.$bvToast.toast('Não se pode inscrever mais do que uma vez!')
+            this.$bvToast.toast("Não se pode inscrever mais do que uma vez!");
           } else {
-             this.$bvToast.toast('Não ha mais vagas!')
+            this.$bvToast.toast("Não ha mais vagas!");
           }
         }
       }
@@ -169,9 +163,8 @@ export default {
 </script>
 
 <style>
-
-.card-maker{
-max-width: 70vw;
+.card-maker {
+  max-width: 70vw;
 }
 
 #workCard {
@@ -195,9 +188,18 @@ max-width: 70vw;
   position: relative;
 }
 #workDescrip {
+  text-align: right;
+  font-family: GeosansLight;
+  width: 250px;
+  right: 32%;
+  top: 2%;
+  position: absolute;
+}
+#workDescrip2 {
   text-align: justify;
   font-family: GeosansLight;
   width: 250px;
+  position: absolute;
 }
 #workInfo {
   text-align: justify;
@@ -208,24 +210,24 @@ max-width: 70vw;
   bottom: -10px;
 }
 #workInfo2 {
-  text-align: justify;
+  text-align: right;
   position: absolute;
   font-family: GeosansLight;
   width: 450px;
   font-size: 100%;
-  bottom: -10px;
-  left: 30px;
+  bottom: -5%;
+  right: 32%;
 }
 #workInscp {
-  position: relative;
+  position: absolute;
   width: 100px;
   height: 30px;
   font-size: 90%;
   padding: 4px;
   color: white;
+  top: 80%;
+  left: 85%;
   border: 1px solid black;
-  bottom: -80px;
-  left: -50px;
   background-color: black;
   font-family: GeosansLight;
 }
@@ -238,14 +240,15 @@ max-width: 70vw;
 }
 
 #workInscp2 {
-  position: relative;
+  position: absolute;
   width: 100px;
   height: 30px;
   font-size: 90%;
   padding: 4px;
   color: white;
+  top: 80%;
+  right: 85%;
   border: 1px solid black;
-  right: 65px;
   background-color: black;
   font-family: GeosansLight;
 }
@@ -257,68 +260,65 @@ max-width: 70vw;
   background-color: #000;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 600px) {
+  #workInscp2 {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    font-size: 90%;
+    padding: 4px;
+    color: white;
+    border: 1px solid black;
+    background-color: black;
+    font-family: GeosansLight;
+  }
 
-#workInscp2 {
-  position: relative;
-  width: 100px;
-  height: 30px;
-  font-size: 90%;
-  padding: 4px;
-  color: white;
-  border: 1px solid black;
-  background-color: black;
-  font-family: GeosansLight;
+  #workInscp {
+    position: relative;
+    width: 100px;
+    height: 30px;
+    font-size: 90%;
+    padding: 4px;
+    color: white;
+    border: 1px solid black;
+    background-color: black;
+    font-family: GeosansLight;
+  }
 }
 
-#workInscp{
-  position: relative;
-  width: 100px;
-  height: 30px;
-  font-size: 90%;
-  padding: 4px;
-  color: white;
-  border: 1px solid black;
-  background-color: black;
-  font-family: GeosansLight;
-}
-} 
-
-
-.filterName{
+.filterName {
   font-family: GeosansLight;
   background-color: black;
-  border-color:black;
-  margin: 20px;
-  margin-top: -50px;
+  border-color: black;
+  right: 43%;
+  position: absolute;
 }
-.filterName:hover{
+.filterName:hover {
   border: 2px solid #daaa29;
   background-color: black;
 }
-.filterDate{
+.filterDate {
   font-family: GeosansLight;
   background-color: black;
-  border-color:black;
-  margin-top: -70px;
+  border-color: black;
+  left: 42%;
+  position: absolute;
 }
-.filterDate:hover{
+.filterDate:hover {
   border: 2px solid #daaa29;
   background-color: black;
 }
 
-.row{
-  display:flex;
+.row {
+  display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 50px;
-
 }
 
-.container{
-  display:flex;
+.container {
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 </style>

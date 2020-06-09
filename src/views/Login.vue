@@ -83,9 +83,7 @@ export default {
   font-size: 16px;
   font-family: GeosansLight;
   color: #000;
-  right: 520px;
-  position: absolute;
-  margin-top: 50px;
+  position: relative;
 }
 
 .emailLogin {
@@ -123,13 +121,12 @@ export default {
 #btnLogin {
   width: 110px;
   font-size: 16px;
-  height: 30px;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
   border: 2px solid black;
-  margin-right: 175px;
-  margin-top: 40px;
+  margin-right: 35%;
+  margin-top: 5%;
 }
 
 #btnLogin:hover {
