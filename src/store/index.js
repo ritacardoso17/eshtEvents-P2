@@ -508,7 +508,7 @@ export default new Vuex.Store({
   },
   getters: {
     getTypeUser(state) {
-      return state.loggedUser[0].typeUser
+      return state.loggedUser[0].id_tipoUser
     },
     getLastId(state) {
       return state.users.length ? state.users[state.users.length - 1].id : 0
@@ -528,15 +528,15 @@ export default new Vuex.Store({
     getLastIdComponents(state) {
       return state.componentMenus.length ? state.componentMenus[state.componentMenus.length - 1].id : 0
     },
-    getLoggedUserEmail(state) {
-      return state.loggedUser[0].email
-    },
-    getLoggedUserPassword(state) {
-      return state.loggedUser[0].password
-    },
-    getUser(state) {
-      return state.loggedUser[0];
-    },
+    // getLoggedUserEmail(state) {
+    //   return state.loggedUser[0].email
+    // },
+    // getLoggedUserPassword(state) {
+    //   return state.loggedUser[0].password
+    // },
+    // getUser(state) {
+    //   return state.loggedUser[0];
+    // },
     getMenus: state => state.foodMenus.message,
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
@@ -576,10 +576,8 @@ export default new Vuex.Store({
     },
     async login({ commit }, payload) {
       commit("LOGIN", await apiService.login(
-
         payload.email,
         payload.password,
-
       ))
     }
   }

@@ -11,9 +11,10 @@
           <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
         </li>
       </ul>
+     
       <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
         <img
-          :src="imgProfile"
+          :src="foto_perfil"
           style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;"
           class="img-fluid"
           id="camp"
@@ -37,7 +38,7 @@
       <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
-          <span v-if="this.$store.state.loggedUser.length != 0 ">
+    <span v-if="this.$store.state.loggedUser.length != 0 && this.tipoUser != 2 ">
             <router-link class="link" to="/menuAdmin" id="links">Area Administrador</router-link>
             <router-link class="link" to="/menu" id="links">Menus</router-link>
             <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
@@ -63,9 +64,11 @@ export default {
   data: () => ({
     email: "",
     password: "",
-    imgProfile: ""
+    foto_perfil: "",
+    tipoUser:""
   }),
   created: function() {
+    
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     }
@@ -73,7 +76,10 @@ export default {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
       );
-      this.imgProfile = this.$store.state.loggedUser[0].imgProfile;
+      alert(this.$store.state.loggedUser.user[0].nome)
+      this.foto_perfil = this.$store.state.loggedUser.user[0].imgProfile;
+      this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser
+    
     }
     if (!localStorage.getItem("foodMenus")) {
       localStorage.setItem(
@@ -106,9 +112,9 @@ export default {
     logout() {
       this.$store.commit("LOGOUT");
     },
-    getTypeUser() {
-      return this.$store.getters.getTypeUser;
-    },
+    // getTypeUser() {
+    //   return this.$store.getters.getTypeUser;
+    // },
     showModal() {
       this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
     },

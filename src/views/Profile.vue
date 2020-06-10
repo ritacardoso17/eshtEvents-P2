@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img style="width:200px; height:auto" :src="loggedUser[0].imgProfile" />
+            <img style="width:200px; height:auto" :src="loggedUser.foto_perfil" />
           </div>
           <div class="form-group">
             <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
@@ -22,12 +22,12 @@
         </div>
         <div align="left" class="col-sm-4 infos">
           <p class="userName">
-            <b>{{loggedUser[0].name}}</b>
+            <b>{{this.nome}}</b>
           </p>
-          <p>Data de Nascimento: {{loggedUser[0].birth}}</p>
-          <p>Contacto: {{loggedUser[0].contact}}</p>
-          <p>Instituição: {{loggedUser[0].school}}</p>
-          <p>E-mail: {{loggedUser[0].email}}</p>
+          <p>Data de Nascimento: {{loggedUser.data_nascimento}}</p>
+          <p>Contacto: {{loggedUser.nome}}</p>
+          <p>Instituição: {{loggedUser.school}}</p>
+          <p>E-mail: {{loggedUser.email_ipp}}</p>
         </div>
         <div class="col-sm-4">
           <router-link to="/Profile/editProfile">
@@ -74,21 +74,24 @@ export default {
   data() {
     return {
       newPhoto: "",
-      users: [],
-      loggedUser: []
+      loggedUser: [],
+
+      nome:""
     };
   },
   created() {
-    if (localStorage.getItem("loggedUser")) {
-      this.$store.state.loggedUser = JSON.parse(
-        localStorage.getItem("loggedUser")
-      );
-    }
-    if (localStorage.getItem("users")) {
-      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    }
-    this.users = this.$store.state.users;
-    this.loggedUser = this.$store.state.loggedUser;
+    alert(this.loggedUser.user[0].nome)
+    // if (localStorage.getItem("loggedUser")) {
+    //   this.$store.state.loggedUser = JSON.parse(
+    //     localStorage.getItem("loggedUser")
+    //   );
+    // }
+    // if (localStorage.getItem("users")) {
+    //   this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+    // }
+    // this.users = this.$store.state.users;
+    
+    this.loggedUser = this.loggedUser.user[0]
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     if (localStorage.getItem("reservations")) {
       this.$store.state.reservations = JSON.parse(
