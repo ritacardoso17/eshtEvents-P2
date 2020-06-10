@@ -14,78 +14,78 @@
     <br />
     <div class="container">
       <div class="row">
-        <div class="col-sm-12"> 
-        <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
-          <div class="card-header" id="header">Restaurante Aplicação</div>
-          <b-row no-gutters>
-            <b-col md="6">
-              <b-card-img
-                :src="require('../assets/restApp.jpg')"
-                class="rounded-0"
-                style="margin-top: 5px;"
-                img-right
-              ></b-card-img>
-            </b-col>
-            <b-col md="6">
-              <b-card-body>
-                <b-card-text>
-                  Restaurante com capacidade para 50 pessoas,
-                  onde são aplicados os métodos de serviço leccionados
-                  nas UC de Práticas Hoteleiras.
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-      </div>
+        <div class="col-sm-12">
+          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+            <div class="card-header" id="header">Restaurante Aplicação</div>
+            <b-row no-gutters>
+              <b-col md="6">
+                <b-card-img
+                  :src="require('../assets/restApp.jpg')"
+                  class="rounded-0"
+                  style="margin-top: 5px;"
+                  img-right
+                ></b-card-img>
+              </b-col>
+              <b-col md="6">
+                <b-card-body>
+                  <b-card-text  id="text">
+                    Restaurante com capacidade para 50 pessoas,
+                    onde são aplicados os métodos de serviço leccionados
+                    nas UC de Práticas Hoteleiras.
+                  </b-card-text>
+                </b-card-body>
+              </b-col>
+            </b-row>
+          </b-card>
+        </div>
       </div>
 
       <div class="row">
-        <div class="col-sm-12"> 
-        <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
-          <div class="card-header" id="header">Cozinha de Aplicação</div>
-          <b-row no-gutters>
-            <b-col md="6">
-              <b-card-img
-                :src="require('../assets/img_cozinha.jpg')"
-                class="rounded-0"
-                style="margin-top: 5px;"
-                img-right
-              ></b-card-img>
-            </b-col>
-            <b-col md="6">
-              <b-card-body>
-                <b-card-text>Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
-      </div>
+        <div class="col-sm-12">
+          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+            <div class="card-header" id="header">Cozinha de Aplicação</div>
+            <b-row no-gutters>
+              <b-col md="6">
+                <b-card-img
+                  :src="require('../assets/img_cozinha.jpg')"
+                  class="rounded-0"
+                  style="margin-top: 5px;"
+                  img-right
+                ></b-card-img>
+              </b-col>
+              <b-col md="6">
+                <b-card-body>
+                  <b-card-text id="text">Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</b-card-text>
+                </b-card-body>
+              </b-col>
+            </b-row>
+          </b-card>
+        </div>
       </div>
       <div class="row">
-        <div class="col-sm-12"> 
-        <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
-          <div class="card-header" id="header">Bar de Aplicação</div>
-          <b-row no-gutters>
-            <b-col md="6">
-              <b-card-img
-                :src="require('../assets/img_bar.jpg')"
-                class="rounded-0"
-                style="margin-top: 5px;"
-                img-right
-              ></b-card-img>
-            </b-col>
-            <b-col md="6">
-              <b-card-body>
-                <b-card-text>
-                  No Bar Aplicação,
-                  os estudantes poêm em prática os conhecimentos de serviço de bar,
-                  obtidos nas aulas da Licenciatura. É um espaço agradável e acolhedor.
-                </b-card-text>
-              </b-card-body>
-            </b-col>
-          </b-row>
-        </b-card>
+        <div class="col-sm-12">
+          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+            <div class="card-header" id="header">Bar de Aplicação</div>
+            <b-row no-gutters>
+              <b-col md="6">
+                <b-card-img
+                  :src="require('../assets/img_bar.jpg')"
+                  class="rounded-0"
+                  style="margin-top: 5px;"
+                  img-right
+                ></b-card-img>
+              </b-col>
+              <b-col md="6">
+                <b-card-body>
+                  <b-card-text id="text">
+                    No Bar Aplicação,
+                    os estudantes poêm em prática os conhecimentos de serviço de bar,
+                    obtidos nas aulas da Licenciatura. É um espaço agradável e acolhedor.
+                  </b-card-text>
+                </b-card-body>
+              </b-col>
+            </b-row>
+          </b-card>
         </div>
       </div>
       <router-link
@@ -207,45 +207,47 @@ export default {};
 }
 
 .title {
-  
-    padding-bottom: 50px;
-  }
- 
-  #whiteRect {
-    background-color: white;
-    margin-top: -35px;
-    height: 35px;
-    width: 300px;
-    position: relative;
-    display: block;
-    z-index: 6
-  }
-  
-  .back-line {
-    background-color: #daaa29;
-    margin-top: -25px;
-    width: 70%;
-    display: block;
-    z-index: 5;
-    position: relative;
-    height: 1px;
-  }
-  #redTitle {
-    font-family: "Channel";
-    color: black;
-    display: block;
-    z-index: 7;
-    position: relative;
-  }
+  padding-bottom: 50px;
+}
 
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 300px;
+  position: relative;
+  display: block;
+  z-index: 6;
+}
 
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 70%;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
 
-.col-sm-12{
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  font-size: 150%;
+  z-index: 7;
+  position: relative;
+}
+
+.col-sm-12 {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px;
   margin-bottom: 50px;
+}
 
+.text{
+  font-family: GeosansLight;
 }
 </style>
