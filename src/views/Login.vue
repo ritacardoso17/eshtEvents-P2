@@ -37,22 +37,22 @@ export default {
     password: ""
   }),
   created: function() {
-    // if (localStorage.getItem("users")) {
-    //   this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    // }
-    // if (localStorage.getItem("loggedUser")) {
-    //   this.$store.state.loggedUser = JSON.parse(
-    //     localStorage.getItem("loggedUser")
-    //   );
-    // }
-    // localStorage.setItem(
-    //   "foodMenus",
-    //   JSON.stringify(this.$store.state.foodMenus)
-    // );
-    // localStorage.setItem(
-    //   "workshops",
-    //   JSON.stringify(this.$store.state.workshops)
-    // );
+    if (localStorage.getItem("users")) {
+      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
+    }
+    if (localStorage.getItem("loggedUser")) {
+      this.$store.state.loggedUser = JSON.parse(
+        localStorage.getItem("loggedUser")
+      );
+    }
+    localStorage.setItem(
+      "foodMenus",
+      JSON.stringify(this.$store.state.foodMenus)
+    );
+    localStorage.setItem(
+      "workshops",
+      JSON.stringify(this.$store.state.workshops)
+    );
   },
   methods: {
    async login() {
