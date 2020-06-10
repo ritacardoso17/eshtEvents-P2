@@ -139,21 +139,15 @@ export default {
   border: 0px;
   font-family: GeosansLight;
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 40px;
+  top: 0%;
+  right: 0%;
+  height: 23%;
 }
 #profileTitle {
   font-family: Channel;
   color: black;
   font-size: 20px;
-  margin-top: 25px;
-}
-.table {
-  position: sticky;
-  color: black;
-  top: 50px;
-  left: 500px;
+  margin-top: 3%;
 }
 .userName {
   font-size: 25px;
@@ -162,32 +156,32 @@ export default {
 #editFoto {
   color: black;
   background-color: transparent;
-  border: 0px;
+  border: 0%;
 }
 .infos {
-  margin-left: -45px;
-  margin-right: 100px;
+  margin-left: -3%;
+  margin-right: 9%;
   font-family: GeosansLight;
 }
 .fotoP {
-  margin-left: -75px;
+  margin-left: -6%;
 }
 #editFoto2 {
-  width: 90px;
-  margin-top: 10px;
+  width: 25%;
+  margin-top: 3%;
   font-size: 12px;
   border: 2px solid black;
-  height: 30px;
+  height: 1.5vw;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
 }
 #editFoto3{
-  margin-top: 10px;
-   margin-left: 10px;
+  margin-top: 3%;
+   margin-left: 3%;
   font-size: 12px;
   border: 2px solid black;
-  height: 30px;
+  height: 1.5vw;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
@@ -200,14 +194,14 @@ export default {
 }
 
 .perfilBanner {
-  padding-top: 10px;
-  padding-bottom: 50px;
+  padding-top: 1%;
+  padding-bottom: 2%;
   border-left: 2px solid black;
   border-right: 2px solid black;
 }
 .tables {
-  padding-top: 50px;
-  margin-bottom: 80px;
+  padding-top: 2%;
+  margin-bottom: 4%;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
 }
  a {

@@ -4,9 +4,11 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeftW" />
-    <h3 id="titule">Sobre Nós</h3>
-    <hr id="lineRightW" />
+
+    <h3 id="title">
+      <hr id="lineLeftW" />Sobre Nós
+      <hr id="lineRightW" />
+    </h3>
 
     <div class="container">
       <div class="row">
@@ -25,7 +27,8 @@
           <br />
           <br />
           <api />
-          <br><br>
+          <br />
+          <br />
         </div>
         <div class="col-sm-4">
           <b-img src="../assets/bandeja.preto.png" class="bandeja2"></b-img>
@@ -54,26 +57,27 @@ export default {
 <style>
 .catering {
   position: relative;
-  width: 1263px;
+  /* width: 1263px; */
+  width: 66.5%;
 }
 #lineLeftW {
-  position: relative;
+  position: absolute;
   background-color: #daaa29;
   height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 350px;
+  width: 20%;
+  top: 53%;
+  margin-left: 20%;
 }
 #lineRightW {
-  position: relative;
+  position: absolute;
   background-color: #daaa29;
   height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 350px;
+  width: 20%;
+  top: 53%; 
+  margin-left: 60%;
 }
-#titule {
-  margin-top: -4%;
+#title {
+  margin-top: 0%;
   font-family: Channel;
   color: black;
 }

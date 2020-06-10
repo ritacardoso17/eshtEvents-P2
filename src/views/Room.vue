@@ -28,7 +28,7 @@
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text  id="text">
+                  <b-card-text id="text">
                     Restaurante com capacidade para 50 pessoas,
                     onde são aplicados os métodos de serviço leccionados
                     nas UC de Práticas Hoteleiras.
@@ -55,7 +55,9 @@
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text id="text">Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</b-card-text>
+                  <b-card-text
+                    id="text"
+                  >Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</b-card-text>
                 </b-card-body>
               </b-col>
             </b-row>
@@ -105,7 +107,7 @@ export default {};
 <style>
 .catering {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
 }
 #lineLeftR {
   position: relative;
@@ -123,7 +125,7 @@ export default {};
   top: -15px;
   margin-right: 300px;
 }
-#titule {
+#title {
   margin-top: -4%;
   font-family: Channel;
   color: black;
@@ -247,7 +249,7 @@ export default {};
   margin-bottom: 50px;
 }
 
-.text{
+.text {
   font-family: GeosansLight;
 }
 </style>

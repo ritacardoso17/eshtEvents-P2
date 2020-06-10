@@ -10,7 +10,6 @@
       <div class="container" id="whiteRect"></div>
     </div>
 
-
     <p id="guideRoom">Complete as seguintes etapas para efetuar a sua reserva</p>
 
     <b-tabs align="center" v-model="tabIndex" small card id="tab1">
@@ -29,7 +28,7 @@
           <div class="row">
             <p class="guide7">
               ▶
-              <b style="color: #daaa29; font-size: 130% ">Escolha</b> o espaço que pretende alugar
+              <b style="color: #daaa29">Escolha</b> o espaço que pretende alugar
             </p>
           </div>
           <div class="row">
@@ -102,7 +101,7 @@
       <!-- TAB DO RESUMO -->
       <b-tab title="Resumo">
         <div class="container">
-          <div class="row" id="progressRow" >
+          <div class="row" id="progressRow">
             <h3 class="resume">
               <b>Resumo</b>
             </h3>
@@ -227,7 +226,7 @@ export default {
 <style>
 .catering {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
 }
 
 #lineLeftR {
@@ -276,10 +275,10 @@ export default {
 /* ESPAÇO TAB */
 .guide7 {
   font-family: GeosansLight;
-  text-align: justify;
   margin-top: 15px;
-  font-size: 110%;
+  font-size: 130%;
 }
+
 #btnChoose {
   font-size: 12px;
   margin-top: 10px;
@@ -289,6 +288,7 @@ export default {
   border: 2px solid black;
   font-family: GeosansLight;
 }
+
 #btnChoose:hover {
   background-color: #000;
   border: 2px solid #daaa29;
@@ -417,7 +417,7 @@ export default {
   border: 2px solid black;
   background-color: #000;
   font-family: GeosansLight;
-    margin: 10px;
+  margin: 10px;
 }
 #confirm:hover {
   color: white;
@@ -484,35 +484,33 @@ export default {
   align-items: center;
 }
 .title {
-  
-    padding-bottom: 50px;
-  }
- 
-  #whiteRect {
-    background-color: white;
-    margin-top: -35px;
-    height: 35px;
-    width: 300px;
-    position: relative;
-    display: block;
-    z-index: 6
-  }
-  
-  .back-line {
-    background-color: #daaa29;
-    margin-top: -25px;
-    width: 70%;
-    display: block;
-    z-index: 5;
-    position: relative;
-    height: 1px;
-  }
-  #redTitle {
-    font-family: "Channel";
-    color: black;
-    display: block;
-    z-index: 7;
-    position: relative;
-  }
+  padding-bottom: 50px;
+}
 
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 300px;
+  position: relative;
+  display: block;
+  z-index: 6;
+}
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 70%;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
+}
 </style>

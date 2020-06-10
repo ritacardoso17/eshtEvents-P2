@@ -30,7 +30,7 @@ export default {
 <style>
 .catering {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
 }
 #lineLeftW {
   position: absolute;

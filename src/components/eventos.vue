@@ -140,12 +140,12 @@ export default {
 .btnDetails {
   background-color: black;
   color: white;
-  height: 40px;
+  height: 2vw;
 }
 
 .btnCancel {
   background-color: black;
   color: white;
-  height: 40px;
+  height: 2vw;
 }
 </style>

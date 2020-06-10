@@ -4,11 +4,11 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeft2" />
-    <h3 id="titleMenu">Menus</h3>
-    <hr id="lineRight2" />
+    <h3 id="titleMenu">
+      <hr id="lineLeft2" />Menus
+      <hr id="lineRight2" />
+    </h3>
 
-    
     <menuMaker />
   </div>
 </template>
@@ -30,8 +30,8 @@ export default {
   background-color: #daaa29;
   height: 0.5px;
   width: 150px;
-  top: -15px;
-  margin-left: 380px;
+  top: 30px;
+  margin-left: 30%;
 }
 #lineRight2 {
   position: relative;
@@ -39,16 +39,15 @@ export default {
   height: 0.5px;
   width: 150px;
   top: -30px;
-  margin-right: 390px;
+  margin-right: 30%;
 }
 #titleMenu {
-  margin-top: -4%;
+  margin-top: -3%;
   font-family: Channel;
   color: black;
 }
 .catering {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
 }
-
 </style>

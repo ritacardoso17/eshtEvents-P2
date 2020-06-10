@@ -4,9 +4,10 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeft" />
-    <h3 id="titule">Eventos e Catering</h3>
-    <hr id="lineRight" />
+    <h3 id="title">
+      <hr id="lineLeft" />Eventos e Catering
+      <hr id="lineRight" />
+    </h3>
 
     <br />
     <br />
@@ -22,21 +23,21 @@
             Quantas pessoas queres convidar e a localização ideal para o acontecimento.
           </p>
           <div>
-          <router-link tag="button" id="btnReserve" class="menus" :to="{ name: 'menu' }">
-            <b>Ver menus</b>
-          </router-link>
-          <router-link
-            tag="button"
-            id="btnReserve"
-            v-if="this.$store.state.loggedUser.length == 0"
-            :to="{ name: 'login' }"
-          >Fazer Reserva</router-link>
-          <router-link
-            tag="button"
-            id="btnReserve"
-            v-else
-            :to="{ name: 'eventsReserv' }"
-          >Fazer Reserva</router-link>
+            <router-link tag="button" id="btnReserve" class="menus" :to="{ name: 'menu' }">
+              <b>Ver menus</b>
+            </router-link>
+            <router-link
+              tag="button"
+              id="btnReserve"
+              v-if="this.$store.state.loggedUser.length == 0"
+              :to="{ name: 'login' }"
+            >Fazer Reserva</router-link>
+            <router-link
+              tag="button"
+              id="btnReserve"
+              v-else
+              :to="{ name: 'eventsReserv' }"
+            >Fazer Reserva</router-link>
           </div>
         </div>
         <div class="col">
@@ -59,8 +60,8 @@
   background-color: #daaa29;
   height: 0.5px;
   width: 150px;
-  top: -15px;
-  margin-left: 290px;
+  top: 30px;
+  margin-left: 30%;
 }
 #lineRight {
   position: relative;
@@ -68,10 +69,10 @@
   height: 0.5px;
   width: 150px;
   top: -30px;
-  margin-right: 290px;
+  margin-right: 30%;
 }
-#titule {
-  margin-top: -4%;
+#title {
+  margin-top: -3%;
   font-family: Channel;
   color: black;
 }

@@ -54,7 +54,7 @@
 <style>
 #lineFooter {
   background-color: #232323;
-  height: 5px;
+  height: 0.25vw;
 }
 #textFooter {
   font-size: 15px;
@@ -81,7 +81,7 @@
   left: -90px;
 }
 .ipp{
-  width: 150px;
+  width: 58.5%;
 }
 #copyright{
   font-family: GeosansLight;

@@ -6,15 +6,16 @@
         <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
       </a>
 
-        <a class="nav-item" id="bell">
-          <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt/>
-        </a>
+      <a class="nav-item" id="bell" v-if="this.$store.state.loggedUser.length == 0">
+        <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
+      </a>
       <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
+        <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
         <img
           :src="foto_perfil"
           style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;"
           class="img-fluid"
-          id="camp"
+          id="camp2"
           alt
         />
       </a>
@@ -35,7 +36,7 @@
       <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
-    <span v-if="this.$store.state.loggedUser.length != 0 && this.tipoUser != 2 ">
+          <span v-if="this.$store.state.loggedUser.length != 0 && this.tipoUser != 2 ">
             <router-link class="link" to="/menuAdmin" id="links">Area Administrador</router-link>
             <router-link class="link" to="/menu" id="links">Menus</router-link>
             <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
@@ -62,10 +63,9 @@ export default {
     email: "",
     password: "",
     foto_perfil: "",
-    tipoUser:""
+    tipoUser: ""
   }),
   created: function() {
-    
     if (localStorage.getItem("users")) {
       this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     }
@@ -73,10 +73,9 @@ export default {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
       );
-      alert(this.$store.state.loggedUser.user[0].nome)
+      alert(this.$store.state.loggedUser.user[0].nome);
       this.foto_perfil = this.$store.state.loggedUser.user[0].imgProfile;
-      this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser
-    
+      this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser;
     }
     if (!localStorage.getItem("foodMenus")) {
       localStorage.setItem(
@@ -90,14 +89,14 @@ export default {
         JSON.stringify(this.$store.state.workshops)
       );
     }
-    
+
     if (!localStorage.getItem("roomRents")) {
       localStorage.setItem(
         "roomRents",
         JSON.stringify(this.$store.state.rentRooms)
       );
     }
-     if (!localStorage.getItem("componentMenus")) {
+    if (!localStorage.getItem("componentMenus")) {
       localStorage.setItem(
         "componentMenus",
         JSON.stringify(this.$store.state.componentMenus)
@@ -132,7 +131,7 @@ export default {
 
 #navBar2 {
   background-color: #232323;
-  height: 40px;
+  height: 30%;
 }
 
 .modal-title {
@@ -150,12 +149,24 @@ export default {
 }
 
 #bell {
-  left: -9%;
+  left: -2vw;
   position: relative;
 }
 
 #camp {
   width: 10%;
+  position: relative;
+}
+
+#camp1 {
+  width: 10%;
+  right: 34.5vw;
+  position: relative;
+}
+
+#camp2 {
+  width: 10%;
+  right: -4vw;
   position: relative;
 }
 
@@ -175,7 +186,6 @@ export default {
   color: #daaa29;
 }
 
-
 span {
   color: #232323;
 }
@@ -187,6 +197,8 @@ span {
 #logout {
   color: black !important;
   font-family: geosanslight;
+  position: absolute;
+  right: 1vw;
 }
 .link {
   padding: 20px;

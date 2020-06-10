@@ -5,7 +5,7 @@
     <br />
     <br />
     <hr id="lineLeft" />
-    <h3 id="titule">Eventos e Catering</h3>
+    <h3 id="title">Eventos e Catering</h3>
     <hr id="lineRight" />
 
     <p id="guide">Complete as seguintes etapas para efetuar a sua reserva</p>
@@ -371,7 +371,7 @@ export default {
         // let dd = x[2];
         // let mm = x[1];
         // let yyyy = x[0];
-        
+
         this.$bvToast.toast("Precisa de preencher todos os campos");
         // if (parseInt(yyyy) < new Date().getFullYear()) {
         //   this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
@@ -426,7 +426,7 @@ export default {
 <style>
 .catering {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
 }
 
 #progress {
@@ -441,7 +441,7 @@ export default {
   height: 0.5px;
   width: 150px;
   top: -15px;
-  margin-left: 290px;
+  margin-left: 30%;
 }
 
 #lineRight {
@@ -450,11 +450,11 @@ export default {
   height: 0.5px;
   width: 150px;
   top: -30px;
-  margin-right: 290px;
+  margin-right: 30%;
 }
 
-#titule {
-  margin-top: -4%;
+#title {
+  margin-top: -2%;
   font-family: Channel;
   color: black;
 }
@@ -508,7 +508,7 @@ export default {
   text-align: justify;
   font-size: 110%;
   position: absolute;
-  left: 280px;
+  left: 30vw;
   top: 100px;
 }
 
@@ -532,7 +532,7 @@ export default {
 /* INFO TAB*/
 .dateLabel {
   font-family: GeosansLight;
-  left: 280px;
+  left: 34%;
   top: 100px;
   font-size: 110%;
   position: absolute;
@@ -542,19 +542,19 @@ export default {
   width: 250px;
   position: absolute;
   top: 150px;
-  left: 280px;
+  left: 34%;
 }
 
 #txtTime {
   width: 250px;
   position: absolute;
   top: 250px;
-  left: 280px;
+  left: 34%;
 }
 
 .personsLabel {
   font-family: GeosansLight;
-  left: 750px;
+  left: 55%;
   top: 100px;
   font-size: 110%;
   position: absolute;
@@ -564,13 +564,13 @@ export default {
   width: 250px;
   position: absolute;
   top: 150px;
-  left: 750px;
+  left: 55%;
 }
 
 .durationLabel {
   font-family: GeosansLight;
   top: 260px;
-  left: 750px;
+  left: 55%;
   font-size: 110%;
   position: absolute;
 }
@@ -579,13 +579,13 @@ export default {
   width: 250px;
   position: absolute;
   top: 310px;
-  left: 750px;
+  left: 55%;
 }
 
 .locationLabel {
   font-family: GeosansLight;
   top: 420px;
-  left: 750px;
+  left: 55%;
   font-size: 110%;
   position: absolute;
 }
@@ -594,7 +594,7 @@ export default {
   width: 250px;
   position: absolute;
   top: 480px;
-  left: 750px;
+  left: 55%;
 }
 
 #waiter {
@@ -609,8 +609,9 @@ export default {
 .noEvent {
   font-family: GeosansLight;
   font-size: 25px;
-  margin-top: 50px;
+  margin-top: 2%;
 }
+
 /* COMPONENTES TAB */
 #btn5 {
   border: 0px solid #232323;
@@ -628,7 +629,7 @@ export default {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 110%;
-  left: 250px;
+  left: 29%;
 }
 
 .guide4 {
@@ -636,7 +637,7 @@ export default {
   text-align: justify;
   font-size: 110%;
   position: absolute;
-  left: 250px;
+  left: 29%;
   top: 420px;
 }
 
@@ -666,7 +667,7 @@ export default {
   position: absolute;
   text-align: justify;
   font-size: 110%;
-  left: 250px;
+  left: 30%;
   top: 100px;
 }
 
@@ -674,7 +675,7 @@ export default {
   position: absolute;
   width: 300px;
   height: auto;
-  left: 250px;
+  left: 30%;
   top: 150px;
 }
 .form-check {
@@ -683,6 +684,7 @@ export default {
   display: block;
   padding-left: 700px;
   padding-top: 10px;
+  left: 20%;
   top: 55px;
 }
 
@@ -691,7 +693,7 @@ export default {
   text-align: justify;
   position: absolute;
   font-size: 110%;
-  left: 250px;
+  left: 30%;
   top: 420px;
 }
 
@@ -699,7 +701,7 @@ export default {
   color: grey;
   font-family: GeosansLight;
   position: absolute;
-  left: 250px;
+  left: 30%;
   top: 480px;
 }
 
