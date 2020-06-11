@@ -7,8 +7,8 @@
     <br />
     <br />
     <hr class="line1" />
-    <div class="container col-sm-4">
-      <form v-on:submit.prevent="addUser()">
+    <div class="container col-sm-4" style="left: 15%">
+      <form v-on:submit.prevent="addUser()" id="form">
         <div class="form-group">
           <label for="txtName" class="nameLabel">Nome de Utilizador:</label>
           <input
@@ -19,8 +19,6 @@
             required
             v-model="name"
           />
-        </div>
-        <div class="form-group">
           <label for="passTxt" class="passLabel">Palavra-chave:</label>
           <input
             type="password"
@@ -30,9 +28,6 @@
             required
             v-model="password"
           />
-        </div>
-
-        <div class="form-group">
           <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
           <input
             type="password"
@@ -42,14 +37,6 @@
             required
             v-model="confPass"
           />
-        </div>
-        <div class="form-group">
-          <label for="sltSchool" class="schoolLabel">Instituição:</label>
-          <select id="sltSchool" v-model="school">
-            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{s.nome}}</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label for="emailTxt" class="emailLabel">E-mail:</label>
           <input
             type="email"
@@ -60,8 +47,6 @@
             required
             v-model="email"
           />
-        </div>
-        <div class="form-group">
           <label for="contactTxt" class="contactLabel">Contacto:</label>
           <input
             type="tel"
@@ -72,8 +57,6 @@
             required
             v-model="contact"
           />
-        </div>
-        <div class="form-group">
           <label for="birthTxt" class="birthLabel">Data de Nascimento:</label>
           <input
             type="date"
@@ -83,6 +66,10 @@
             required
             v-model="birth"
           />
+          <label for="sltSchool" class="schoolLabel">Instituição:</label>
+          <select id="sltSchool" v-model="school">
+            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{s.nome}}</option>
+          </select>
         </div>
         <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil" />
         <div id="avatar">
@@ -118,13 +105,12 @@ export default {
     schools: []
   }),
   created() {
-      this.getAllSchools();
+    this.getAllSchools();
   },
   computed: {
     ...mapGetters(["getSchools"])
   },
   methods: {
-
     async addUser() {
       try {
         await this.$store.dispatch("addUser", {
@@ -139,7 +125,6 @@ export default {
       } catch (err) {
         alert(err);
       }
-      
     },
     saveStorage() {
       localStorage.setItem("users", JSON.stringify(this.$store.state.users));
@@ -163,7 +148,7 @@ export default {
 <style>
 .imgRegister {
   position: relative;
-  width: 1263px;
+  width: 66.5%;
   height: auto;
   background-color: white;
   /* -webkit-filter: blur(2px);
@@ -171,21 +156,21 @@ export default {
 }
 #registerPage {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: Channel;
-  font-size: 210%;
+  font-size: 200%;
   color: black;
 }
 #bar {
   position: absolute;
   opacity: 0.6;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1263px;
-  height: 90px;
+  width: 66.5%;
+  height: 10%;
   background-color: white;
 }
 .form-control {
@@ -197,137 +182,139 @@ export default {
 }
 .btnConf {
   position: relative;
-  width: 120px;
-  font-size: 12px;
-  height: 30px;
+  width: 20%;
+  font-size: 0.8vw;
+  height: 2vw;
   color: white;
   background-color: #000;
   font-family: GeosansLight;
-  top: 50px;
-  left: 380px;
+  top: 2vw;
+  left: 20vw;
 }
-.btn:hover {
+.btnConf:hover {
   color: white;
   border-radius: 0;
   border-color: #daaa29;
   background-color: #000;
-  border-width: thick;
+  border-width: 0.35vw;
 }
 .line1 {
   position: relative;
   background-color: #000;
-  height: 3px;
-  width: 1100px;
+  height: 0.2vw;
+  width: 60%;
 }
 .line2 {
   position: relative;
   background-color: #000;
-  height: 3px;
-  width: 1100px;
-  margin-top: 80px;
+  height: 0.2vw;
+  width: 60%;
+  margin-top: 4%;
+}
+#form{
+  align-items: left;
+  text-align: left;
 }
 .nameLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -250px;
-  margin-top: 60px;
+  /* margin-left: -15vw; */
+  margin-top: 7%;
 }
 #txtName {
   position: relative;
-  left: 140px;
-  top: -45px;
+  left: 10vw;
+  width: 30%;
+  top: -2vw;
 }
 .passLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -280px;
-  margin-top: -60px;
 }
 #passTxt {
   position: relative;
-  left: 110px;
-  top: -45px;
-  width: 410px;
+  left: 32%;
+  top: -2vw;
+  width: 30%;
 }
 .confLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -220px;
-  margin-top: -60px;
 }
 #confirmarPassTxt {
   position: relative;
-  left: 170px;
-  top: -45px;
-  width: 350px;
-}
-.schoolLabel {
-  font-family: GeosansLight;
-  position: relative;
-  margin-left: -110px;
-  margin-top: -60px;
-}
-#sltSchool {
-  position: relative;
-  left: 10px;
-  width: 200px;
+  left: 32%;
+  top: -2vw;
+  width: 33%;
 }
 .emailLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -330px;
-  top: 45px;
+  margin-top: 2%;
 }
 #emailTxt {
   position: relative;
-  left: 60px;
-  width: 465px;
+  left: 32%;
+  width: 30%;
+  margin-top: -7%;
 }
 .contactLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -320px;
-  top: 45px;
+  margin-top: 7%;
 }
 #contactTxt {
   position: relative;
-  left: 70px;
-  width: 455px;
+  left: 32%;
+  width: 41%;
+  margin-top: -7%;
 }
 .birthLabel {
   font-family: GeosansLight;
   position: relative;
-  margin-left: -250px;
   top: 45px;
 }
 #birthTxt {
   position: relative;
-  left: 145px;
-  width: 380px;
+  left: 32%;
+  width: 30%;
+}
+.schoolLabel {
+  font-family: GeosansLight;
+  position: relative;
+  margin-top: 10%;
+}
+#sltSchool {
+  position: relative;
+  width: 200px;
+  left: 23%;
 }
 #avatar {
   position: absolute;
-  top: 70px;
-  width: 200px;
-  height: 200px;
-  left: -300px;
+  top: 10%;
+  width: 49%;
+  height: 37%;
+  left: -70%;
   border: 2px solid #232323;
+  
 }
 #avatar1 {
-  width: 196px;
-  height: 196px;
+  width: 48%;
+  height: 36%;
 }
 #addAvatar {
   position: absolute;
   color: #000;
-  left: -275px;
-  top: 300px;
+  left: -54.5%;
+  top: 52%;
   font-size: 120%;
   font-family: GeosansLight;
+  
 }
 #urlAvatar {
   position: absolute;
-  left: -300px;
-  top: 340px;
+  left: -60%;
+  top: 60%;
+  
 }
 </style>
