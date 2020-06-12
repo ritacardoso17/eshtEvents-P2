@@ -2,33 +2,27 @@
   <div class="navBar">
     <!--Navbar-->
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand text-left" href="/">
-        <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
-      </a>
-
       <a class="nav-item" id="bell" v-if="this.$store.state.loggedUser.length == 0">
-        <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
+        <a class="navbar-brand text-left" href="/">
+          <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
+        </a>
+        <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
+        <router-link to="/login" id="loginBtn">Iniciar Sessão</router-link>
       </a>
       <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
+        <a class="navbar-brand text-left" href="/">
+          <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText1" alt />
+        </a>
         <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
         <img
           :src="foto_perfil"
           style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;"
           class="img-fluid"
-          id="camp2"
+          id="photo"
           alt
         />
+        <a id="logout" @click="logout()">Terminar Sessão</a>
       </a>
-      <router-link
-        to="/login"
-        v-if="this.$store.state.loggedUser.length == 0"
-        id="loginBtn"
-      >Iniciar Sessão</router-link>
-      <a
-        id="logout"
-        @click="logout()"
-        v-if="this.$store.state.loggedUser.length != 0"
-      >Terminar Sessão</a>
     </nav>
     <!--/.Navbar-->
     <!--Navbar-->
@@ -144,7 +138,14 @@ export default {
 }
 
 #logoText {
-  width: 40%;
+  width: 35%;
+  margin-left: 2vw;
+  height: auto;
+}
+
+#logoText1 {
+  width: 9vw;
+  margin-left: 0vw;
   height: auto;
 }
 
@@ -154,19 +155,20 @@ export default {
 }
 
 #camp {
-  width: 10%;
+  width: 2vw;
+  right: -25vw;
   position: relative;
 }
 
 #camp1 {
-  width: 10%;
-  right: 34.5vw;
+  width: 2vw;
+  right: -38vw;
   position: relative;
 }
 
-#camp2 {
-  width: 10%;
-  right: -4vw;
+#photo {
+  width: 10vw;
+  left: 77vw;
   position: relative;
 }
 
@@ -193,13 +195,17 @@ span {
 #loginBtn {
   color: black !important;
   font-family: geosanslight;
+  margin-left: 67vw;
 }
+
 #logout {
   color: black !important;
   font-family: geosanslight;
   position: absolute;
   right: 1vw;
+  top: 1.5vw;
 }
+
 .link {
   padding: 20px;
 }
