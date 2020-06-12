@@ -19,6 +19,7 @@
         <div class="col-sm-4" v-for="menu in filterMenus" :key="menu.id_menu.toString()">
           <b-card
             :title="menu.name"
+            :img-src="menu.img"
             img-alt="Image"
             img-top
             img-height="150px"
@@ -105,7 +106,7 @@ export default {
         let filterResult = true;
         let filterResultType = true;
 
-        if (this.searchTxt !== "") {
+        if (this.searchTxt !== "") {                                              121
           filterResult = menu.name.includes(this.searchTxt);
         }
 

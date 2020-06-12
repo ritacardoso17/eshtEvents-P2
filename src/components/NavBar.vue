@@ -73,8 +73,8 @@ export default {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
       );
-      alert(this.$store.state.loggedUser.user[0].nome);
-      this.foto_perfil = this.$store.state.loggedUser.user[0].imgProfile;
+     
+      this.foto_perfil = this.$store.state.loggedUser.user[0].foto_perfil;
       this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser;
     }
     if (!localStorage.getItem("foodMenus")) {

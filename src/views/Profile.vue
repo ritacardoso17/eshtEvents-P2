@@ -8,7 +8,7 @@
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img style="width:200px; height:auto" :src="loggedUser.foto_perfil" />
+            <img style="width:200px; height:auto" :src="this.$store.state.loggedUser.user[0].foto_perfil" />
           </div>
           <div class="form-group">
             <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
@@ -22,12 +22,12 @@
         </div>
         <div align="left" class="col-sm-4 infos">
           <p class="userName">
-            <b>{{this.nome}}</b>
+            <b>{{this.$store.state.loggedUser.user[0].nome}}</b>
           </p>
-          <p>Data de Nascimento: {{loggedUser.data_nascimento}}</p>
-          <p>Contacto: {{loggedUser.nome}}</p>
-          <p>Instituição: {{loggedUser.school}}</p>
-          <p>E-mail: {{loggedUser.email_ipp}}</p>
+          <p>Data de Nascimento: {{this.$store.state.loggedUser.user[0].nome}}</p>
+          <p>Contacto: {{this.$store.state.loggedUser.user[0].nome}}</p>
+          <p>Instituição: {{this.$store.state.loggedUser.user[0].school}}</p>
+          <p>E-mail: {{this.$store.state.loggedUser.user[0].email_ipp}}</p>
         </div>
         <div class="col-sm-4">
           <router-link to="/Profile/editProfile">

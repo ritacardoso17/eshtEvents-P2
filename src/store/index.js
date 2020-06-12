@@ -23,7 +23,7 @@ export default new Vuex.Store({
     roomRents: [],
     userExist: false,
     loggedUser: [],
-    token:[],
+    token: [],
     rooms: [{
       id: 0,
       name: "Restaurante Aplicação",
@@ -373,7 +373,7 @@ export default new Vuex.Store({
       // state.loggedUser.pop()
       alert(state.loggedUser.token)
       apiService.logout(state.loggedUser.token)
-      state.loggedUser=[]
+      state.loggedUser = []
       state.token = []
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
       location.href = "./"
@@ -507,9 +507,9 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getTypeUser(state) {
-      return state.loggedUser[0].id_tipoUser
-    },
+    // getTypeUser(state) {
+    //   return state.loggedUser[0].id_tipoUser
+    // },
     getLastId(state) {
       return state.users.length ? state.users[state.users.length - 1].id : 0
     },
@@ -527,6 +527,12 @@ export default new Vuex.Store({
     },
     getLastIdComponents(state) {
       return state.componentMenus.length ? state.componentMenus[state.componentMenus.length - 1].id : 0
+    },
+    getTypeUser(state) {
+      return state.loggedUser.user[0].id_tipoUser
+    },
+    getUserName(state){
+      return state.loggedUser.user[0].nome
     },
     // getLoggedUserEmail(state) {
     //   return state.loggedUser[0].email
