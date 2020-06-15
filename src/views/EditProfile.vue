@@ -3,9 +3,9 @@
     <br>
     <h1 id="title">Editar Perfil</h1>
     <div id="container">
-      <h3 style="color: #daaa29" id="name">{{loggedUser[0].name}}</h3>
+      <h3 style="color: #daaa29" id="name">{{this.$store.state.loggedUser.user[0].nome}}</h3>
       <div>
-        <img  class="imgEdit" style="width:200px; height:auto" :src="loggedUser[0].imgProfile" />
+        <img  class="imgEdit" style="width:200px; height:auto" :src="this.$store.state.loggedUser.user[0].foto_perfil" />
       </div>
       <form v-on:submit.prevent="changePassword()">
         <label for="password" class="password">Palavra-passe:</label>

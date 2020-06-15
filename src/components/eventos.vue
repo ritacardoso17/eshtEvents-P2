@@ -51,7 +51,7 @@ export default {
   created() {
     this.id = this.getUserId();
     this.getAllEvents(this.getUserId());
-    alert(this.id);
+  
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     // this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },

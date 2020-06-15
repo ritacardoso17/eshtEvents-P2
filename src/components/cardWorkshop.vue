@@ -6,6 +6,7 @@
     <br />
     <br />
     <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
+      
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id_workshop % 2 == 0">
         <div class="card-header" id="headerWork">

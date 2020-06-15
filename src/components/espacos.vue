@@ -43,10 +43,10 @@ export default {
       id: "",
       opinion: "",
       fields: [
-        { key: "id_espaco", label: "Espaço", sortable: true },
+        { key: "tipo_espaco", label: "Espaço", sortable: true },
         { key: "data_hora_requirida", label: "Dia", sortable: true },
         { key: "data_hora_requirida", label: "Hora" },
-        { key: "id_estado", label: "Estado", sortable: true },
+        { key: "estado", label: "Estado", sortable: true },
         { key: "cancel", label: "Cancelar" },
         { key: "opinions", label: "Opinião" }
       ]
@@ -71,7 +71,7 @@ export default {
 
     this.id = this.getUserId();
     this.getAllRents(this.getUserId());
-    alert(this.id);
+    
 
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
