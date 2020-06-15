@@ -115,9 +115,15 @@ const apiService = {
             throw Error(response)
         }
     },
+<<<<<<< HEAD
     async getProfileEvent() {
         const response = await fetch(`${API_URL}/reservations`, {
             method: "GET",
+=======
+    async getUsersEvents(id) {
+        const response = await fetch(`${API_URL}/reservations/${id}`, {
+            method: "GET"
+>>>>>>> e77ffd9fbee0cddd7099355a91e11b2b39367f3a
         })
 
         if (response.ok) {
