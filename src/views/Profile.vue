@@ -106,6 +106,21 @@ export default {
       );
       this.roomRents = this.$store.state.roomRents;
     }
+    this.getPerfilEvent();
+  },
+  computed: {
+    ...mapGetters(["getEvents"]),
+    filterReservation() {
+      return this.myReservation.filter(reservations => {
+        let filterResult = true;
+        let filterResultType = true;
+
+        if (this.reservations.userId === loggedUser.id) {                                             
+          filterResult = reservations.id.includes(this.reservations.userId);
+        }
+        return filterResultType && filterResult;
+      });
+    }
   },
   methods: {
     getUser() {
@@ -128,7 +143,15 @@ export default {
     cancelFt(){
       this.newPhoto=""
     } 
-  }
+  },
+  async getPerfilEvent(){
+    try{
+      await this.$store.dispatch("getEvents");
+      this.myReservation = this.getEvents
+    } catch(err){
+      alert(err);
+    }
+  },
 };
 </script>
 
