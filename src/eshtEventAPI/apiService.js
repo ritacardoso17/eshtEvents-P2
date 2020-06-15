@@ -29,6 +29,54 @@ const apiService = {
             throw Error(response)
         }
     },
+    async getExtras() {
+        const response = await fetch(`${API_URL}/extras`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async getDecorations() {
+        const response = await fetch(`${API_URL}/decorations`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async getUniforms() {
+        const response = await fetch(`${API_URL}/uniforms`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async getStates() {
+        const response = await fetch(`${API_URL}/state`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
     //obter menus
     async getMenus() {
         const response = await fetch(`${API_URL}/menus`, {
@@ -67,8 +115,20 @@ const apiService = {
             throw Error(response)
         }
     },
-    async getPerfilEvent() {
+    async getProfileEvent() {
         const response = await fetch(`${API_URL}/reservations`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async getProfileRents() {
+        const response = await fetch(`${API_URL}/roomRents`, {
             method: "GET",
         })
 
@@ -95,6 +155,19 @@ const apiService = {
         const response = await fetch(`${API_URL}/menus`, {
             method: "POST",
             body: JSON.stringify({ description: name, file: img, id_tipo_reserva: type, components: components })
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async addReservations(id_extra, id_user, n_people, dateTime_reserv, dateTime_event, id_uniform, id_evenType, id_state, id_menu, id_local, id_decoration, opinion) {
+        const response = await fetch(`${API_URL}/reservations`, {
+            method: "POST",
+            body: JSON.stringify({ id_extra: id_extra, id_user: id_user, n_people: n_people, dateTime_reserv: dateTime_reserv, dateTime_event: dateTime_event, id_uniform: id_uniform, id_evenType: id_evenType, id_state: id_state, id_menu: id_menu, id_local: id_local, id_decoration: id_decoration, opinion: opinion })
         })
 
         if (response.ok) {

@@ -35,38 +35,41 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       tbRooms: [],
       opinion: "",
       fields: [
-        { key: "room", label: "Espaço", sortable: true },
-        { key: "day", label: "Dia", sortable: true },
-        { key: "time", label: "Hora" },
-        { key: "state", label: "Estado", sortable: true },
+        { key: "id_espaco", label: "Espaço", sortable: true },
+        { key: "data_hora_requirida", label: "Dia", sortable: true },
+        { key: "data_hora_requirida", label: "Hora" },
+        { key: "id_estado", label: "Estado", sortable: true },
         { key: "cancel", label: "Cancelar" },
         { key: "opinions", label: "Opinião" }
       ]
     };
   },
   created() {
-    localStorage.setItem(
-      "roomRents",
-      JSON.stringify(this.$store.state.roomRents)
-    );
-    if (localStorage.getItem("roomRents")) {
-      this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
-    }
+    // localStorage.setItem(
+    //   "roomRents",
+    //   JSON.stringify(this.$store.state.roomRents)
+    // );
+    // if (localStorage.getItem("roomRents")) {
+    //   this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
+    // }
 
+    alert("HEY HEY");
     for (const i in this.tbRooms) {
-      if (this.tbRooms[i].userMail === this.getUserMail()) {
+      alert("HEY HO");
+      if (this.tbRooms[i].id_utilizador === this.getUserId()) {
         this.tbRooms = this.tbRooms.filter(
-          event => this.tbRooms[i].userMail == event.userMail
+          event => this.tbRooms[i].id_utilizador == event.id_utilizador
         );
       }
     }
-
+    this.getPerfilR();
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
   methods: {
@@ -81,8 +84,8 @@ export default {
       return this.$store.getters.getUser;
     },
 
-    getUserMail() {
-      return this.$store.getters.getLoggedUserEmail;
+    getUserId() {
+      return this.$store.getters.getLoggedUserId;
     },
 
     getRooms() {
@@ -101,8 +104,8 @@ export default {
           );
           localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
           this.tbRooms = this.getRooms;
-         
-           this.$bvToast.toast('Removeu o espaço');
+
+          this.$bvToast.toast("Removeu o espaço");
         }
       }
     },
@@ -116,7 +119,7 @@ export default {
           if (this.tbRooms[index].state != "Cancelado") {
             this.tbRooms[index].state = "Cancelado";
           } else {
-             this.$bvToast.toast('Reserva já cancelada');
+            this.$bvToast.toast("Reserva já cancelada");
           }
           localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
           this.$store.state.roomRents = localStorage.setItem(
@@ -126,7 +129,14 @@ export default {
         }
       }
     },
-
+    async getPerfilR() {
+      try {
+        await this.$store.dispatch("getRents");
+        this.tbEvents = this.getRents;
+      } catch (err) {
+        alert(err);
+      }
+    },
     send(id) {
       let rentRooms = JSON.parse(localStorage.getItem("roomRents"));
       for (let i in rentRooms) {
@@ -135,11 +145,12 @@ export default {
         }
       }
       localStorage.setItem("roomRents", JSON.stringify(rentRooms));
-       this.$bvToast.toast('Opinião Enviada!');
+      this.$bvToast.toast("Opinião Enviada!");
       this.opinion = "";
     }
   },
   computed: {
+    ...mapGetters(["getRents"]),
     row() {
       return this.tbRooms.length;
     }

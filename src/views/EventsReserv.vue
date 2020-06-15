@@ -355,8 +355,8 @@ export default {
     getLastIdEvents() {
       return this.$store.getters.getLastIdEvents;
     },
-    getLoggedUserEmail() {
-      return this.$store.getters.getLoggedUserEmail;
+    getLoggedUserId() {
+      return this.$store.getters.getLoggedUserId;
     },
     eventsReserv() {
       if (
@@ -381,25 +381,27 @@ export default {
         //   }
         //}
       } else {
-        this.$store.commit("ADD_RESERVATION", {
-          id: this.getLastIdEvents() + 1,
-          day: this.day,
-          time: this.time,
-          people: this.persons,
-          duration: this.duration,
-          location: this.location,
-          obs: this.obsDecor,
-          decor: this.slctDecor,
-          extra: this.extra_reserv,
-          userName: this.$store.state.loggedUser[0].name,
-          userMail: this.getLoggedUserEmail(),
-          state: "Pendente",
-          eventType: this.title,
-          menu: this.slctMenu,
-          uniform: this.slctUniform
+        this.addReservation();
+      }
+    },
+    async addReservation() {
+      try {
+        await this.$store.dispatch("addReservation", {
+          id_extra: this.id_extra,
+          id_user: this.getLoggedUserId(),
+          n_people: this.n_people,
+          dateTime_reserv: this.dateTime_reserv,
+          dateTime_event: this.dateTime_event,
+          id_uniform: this.id_uniform,
+          id_evenType: this.id_evenType,
+          id_state: 1,
+          id_menu: this.id_menu,
+          id_local: this.id_local,
+          id_decoration: this.id_decoration,
+          opinion: this.opinion
         });
-        location.href = "./events";
-        this.$bvToast.toast("Reserva efetuada com sucesso");
+      } catch (err) {
+        alert(err);
       }
     },
     saveStorage() {

@@ -41,50 +41,50 @@ export default new Vuex.Store({
     }
     ],
     workshops: [
-    //   {
-    //   id: 0,
-    //   title: "Momentos entre amigas - VINHOS NO FEMININO",
-    //   vacancies: 20,
-    //   img: require('../assets/work1.jpg'),
-    //   description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
-    //   date: "06/03/2020",
-    //   place: "ESHT",
-    //   teacher: "Américo Andrade",
-    //   userEmail: []
-    // },
-    // {
-    //   id: 1,
-    //   title: "Páscoa Vínica",
-    //   vacancies: 20,
-    //   img: require('../assets/work2.jpg'),
-    //   description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
-    //   date: "03/04/2020",
-    //   place: "ESHT",
-    //   teacher: "Américo Andrade",
-    //   userEmail: []
-    // },
-    // {
-    //   id: 2,
-    //   title: "Vinhos e Conservas - As conservas estão na moda",
-    //   vacancies: 20,
-    //   img: require('../assets/work3.jpg'),
-    //   description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
-    //   date: "08/05/2020",
-    //   place: "Theatro",
-    //   teacher: "Américo Andrade",
-    //   userEmail: []
-    // },
-    // {
-    //   id: 3,
-    //   title: "Piquenique Vínico - Monverde Wine Experience",
-    //   vacancies: 20,
-    //   img: require('../assets/work4.jpg'),
-    //   description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
-    //   date: "06/06/2020",
-    //   place: "Amarante",
-    //   teacher: "Américo Andrade",
-    //   userEmail: []
-    // }
+      //   {
+      //   id: 0,
+      //   title: "Momentos entre amigas - VINHOS NO FEMININO",
+      //   vacancies: 20,
+      //   img: require('../assets/work1.jpg'),
+      //   description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
+      //   date: "06/03/2020",
+      //   place: "ESHT",
+      //   teacher: "Américo Andrade",
+      //   userEmail: []
+      // },
+      // {
+      //   id: 1,
+      //   title: "Páscoa Vínica",
+      //   vacancies: 20,
+      //   img: require('../assets/work2.jpg'),
+      //   description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
+      //   date: "03/04/2020",
+      //   place: "ESHT",
+      //   teacher: "Américo Andrade",
+      //   userEmail: []
+      // },
+      // {
+      //   id: 2,
+      //   title: "Vinhos e Conservas - As conservas estão na moda",
+      //   vacancies: 20,
+      //   img: require('../assets/work3.jpg'),
+      //   description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
+      //   date: "08/05/2020",
+      //   place: "Theatro",
+      //   teacher: "Américo Andrade",
+      //   userEmail: []
+      // },
+      // {
+      //   id: 3,
+      //   title: "Piquenique Vínico - Monverde Wine Experience",
+      //   vacancies: 20,
+      //   img: require('../assets/work4.jpg'),
+      //   description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
+      //   date: "06/06/2020",
+      //   place: "Amarante",
+      //   teacher: "Américo Andrade",
+      //   userEmail: []
+      // }
     ],
     foodMenus: [
       // {
@@ -339,6 +339,7 @@ export default new Vuex.Store({
       // }
     ],
     schools: [],
+    states:[],
   },
 
 
@@ -493,6 +494,8 @@ export default new Vuex.Store({
       });
       localStorage.setItem("reservations", JSON.stringify(state.reservations))
 
+      VueSimpleAlert.fire('Reserva adicionada')
+      window.location = "./Events"
     },
     SET_MENUS: (state, foodMenus) => {
       state.foodMenus = foodMenus
@@ -506,11 +509,26 @@ export default new Vuex.Store({
     SET_EVENTS: (state, reservations) => {
       state.reservations = reservations
     },
+    SET_RENTS: (state, roomRents) => {
+      state.roomRents = roomRents
+    },
     SET_SCHOOLS: (state, schools) => {
       state.schools = schools
     },
-    SET_WORKSHOPS:(state, workshops) =>{
+    SET_EXTRAS: (state, extras) => {
+      state.extras = extras
+    },
+    SET_DECORATIONS: (state, decorations) => {
+      state.decorations = decorations
+    },
+    SET_UNIFORMS: (state, uniforms) => {
+      state.uniforms = uniforms
+    },
+    SET_WORKSHOPS: (state, workshops) => {
       state.workshops = workshops
+    }
+    SET_STATES: (state, states) => {
+      state.states = states
     }
   },
   getters: {
@@ -538,7 +556,7 @@ export default new Vuex.Store({
     getTypeUser(state) {
       return state.loggedUser.user[0].id_tipoUser
     },
-    getUserName(state){
+    getUserName(state) {
       return state.loggedUser.user[0].nome
     },
     getLoggedUserId(state) {
@@ -554,8 +572,13 @@ export default new Vuex.Store({
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
     getEvents: state => state.reservations.message,
+    getRents: state => state.roomRents.message,
     getSchools: state => state.schools.message,
+    getExtras: state => state.extras.message,
+    getDecorations: state => state.decorations.message,
+    getUniforms: state => state.uniforms.message,
     getWorkshops: state => state.workshops.message,
+    getStates: state => state.states.message,
 
   },
   actions: {
@@ -572,7 +595,10 @@ export default new Vuex.Store({
       commit("SET_EVENTYPES", await apiService.getEventypes())
     },
     async getEvents({ commit }) {
-      commit("SET_EVENTS", await apiService.getPerfilEvent()) 
+      commit("SET_EVENTS", await apiService.getProfileEvent())
+    },
+    async getRents({ commit }) {
+      commit("SET_RENTS", await apiService.getProfileRents())
     },
     async addMenus({ commit }, payload) {
       commit("ADD_MENU", await apiService.addMenus(
@@ -592,8 +618,36 @@ export default new Vuex.Store({
         payload.imgProfile,
       ))
     },
+    async addReservations({ commit }, payload) {
+      commit("ADD_RESERVATION", await apiService.addReservations(
+        payload.id_extra,
+        payload.id_user,
+        payload.n_people,
+        payload.dateTime_reserv,
+        payload.dateTime_event,
+        payload.id_uniform,
+        payload.id_evenType,
+        payload.id_state,
+        payload.id_menu,
+        payload.id_local,
+        payload.id_decoration,
+        payload.opinion,
+      ))
+    },
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools())
+    },
+    async getExtras({ commit }) {
+      commit("SET_EXTRAS", await apiService.getExtras())
+    },
+    async getDecorations({ commit }) {
+      commit("SET_DECORATIONS", await apiService.getDecorations())
+    },
+    async getUniforms({ commit }) {
+      commit("SET_UNIFORMS", await apiService.getUniforms())
+    },
+    async getStates({ commit }) {
+      commit("SET_STATES", await apiService.getStates())
     },
     async login({ commit }, payload) {
       commit("LOGIN", await apiService.login(
