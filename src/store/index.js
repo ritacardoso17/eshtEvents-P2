@@ -191,7 +191,7 @@ export default new Vuex.Store({
       //   }
     ],
     eventType: [/* "Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra" */],
-    reservations: [{
+    reservations: [/* {
       id: 0,
       user: "João Alves",
       eventType: "Almoço",
@@ -202,7 +202,7 @@ export default new Vuex.Store({
       place: "esmad",
       extra: [],
       state: "Pendente"
-    }],
+    } */],
     uniforms: [{
       id: 0,
       img: require('../assets/farda05.png'),
@@ -503,6 +503,9 @@ export default new Vuex.Store({
     SET_EVENTYPES: (state, eventType) => {
       state.eventType = eventType
     },
+    SET_EVENTS: (state, reservations) => {
+      state.reservations = reservations
+    },
     SET_SCHOOLS: (state, schools) => {
       state.schools = schools
     },
@@ -538,8 +541,8 @@ export default new Vuex.Store({
     getUserName(state){
       return state.loggedUser.user[0].nome
     },
-    getLoggedUserEmail(state) {
-      return state.loggedUser.user[0].email_ipp
+    getLoggedUserId(state) {
+      return state.loggedUser.user[0].id_utilizador
     },
     // getLoggedUserPassword(state) {
     //   return state.loggedUser[0].password
@@ -550,6 +553,7 @@ export default new Vuex.Store({
     getMenus: state => state.foodMenus.message,
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
+    getEvents: state => state.reservations.message,
     getSchools: state => state.schools.message,
     getWorkshops: state => state.workshops.message,
 
@@ -566,6 +570,9 @@ export default new Vuex.Store({
     },
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes())
+    },
+    async getEvents({ commit }) {
+      commit("SET_EVENTS", await apiService.getPerfilEvent()) 
     },
     async addMenus({ commit }, payload) {
       commit("ADD_MENU", await apiService.addMenus(

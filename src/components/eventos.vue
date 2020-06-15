@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -38,34 +39,37 @@ export default {
       reservations: [],
       opinion: "",
       fields: [
-        { key: "eventType", label: "Tipo", sortable: true },
-        { key: "day", label: "Dia", sortable: true },
-        { key: "time", label: "Hora" },
-        { key: "state", label: "Estado", sortable: true },
+        { key: "id_tipo_reserva", label: "Tipo", sortable: true },
+        { key: "data_hora_evento", label: "Dia", sortable: true },
+        { key: "data_hora_evento", label: "Hora" },
+        { key: "id_estado", label: "Estado", sortable: true },
         { key: "cancel", label: "Cancelar" },
         { key: "opinions", label: "Opinião" }
       ]
     };
   },
   created() {
-    localStorage.setItem(
-      "reservations",
-      JSON.stringify(this.$store.state.reservations)
-    );
+    // localStorage.setItem(
+    //   "reservations",
+    //   JSON.stringify(this.$store.state.reservations)
+    // );
 
-    if (localStorage.getItem("reservations")) {
-      this.tbEvents = JSON.parse(localStorage.getItem("reservations"));
-    }
+    // if (localStorage.getItem("reservations")) {
+    //   this.tbEvents = JSON.parse(localStorage.getItem("reservations"));
+    // }
+
+    // alert("dsjhmzl," + this.tbEvents[0].id_utilizador);
     for (const i in this.tbEvents) {
-      if (this.tbEvents[i].userMail === this.getUserMail()) {
+          alert("apouajwnf,");
+      if (this.tbEvents[i].id_utilizador === this.getUserId()) {
         this.tbEvents = this.tbEvents.filter(
-          event => this.tbEvents[i].userMail == event.userMail
+          event => this.tbEvents[i].id_utilizador == event.id_utilizador
         );
       }
     }
-
+    this.getPerfilE();
     this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    this.reservations = JSON.parse(localStorage.getItem("reservations"));
+    // this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },
 
   destroyed() {},
@@ -86,8 +90,8 @@ export default {
       return this.$store.state.reservations;
     },
 
-    getUserMail() {
-      return this.$store.getters.getLoggedUserEmail;
+    getUserId() {
+      return this.$store.getters.getLoggedUserId;
     },
 
     getLastIdEvents() {
@@ -114,6 +118,15 @@ export default {
       }
     },
 
+    async getPerfilE() {
+      try {
+        await this.$store.dispatch("getEvents");
+        this.tbEvents = this.getEvents;
+      } catch (err) {
+        alert(err);
+      }
+    },
+
     send(id) {
       let reservations = JSON.parse(localStorage.getItem("reservations"));
       for (let i in reservations) {
@@ -129,6 +142,7 @@ export default {
   },
 
   computed: {
+    ...mapGetters(["getEvents"]),
     row() {
       return this.tbEvents.length;
     }

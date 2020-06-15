@@ -67,7 +67,18 @@ const apiService = {
             throw Error(response)
         }
     },
-    
+    async getPerfilEvent() {
+        const response = await fetch(`${API_URL}/reservations`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
     async getWorkshops() {
         const response = await fetch(`${API_URL}/workshops`, {
             method: "GET",
