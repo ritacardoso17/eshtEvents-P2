@@ -5,11 +5,11 @@
     <br />
     <br />
     <br />
-    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id">
+    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
       <!-- CARD WORKSHOPS À DIREITA -->
-      <span v-if="workshop.id % 2 == 0">
+      <span v-if="workshop.id_workshop % 2 == 0">
         <div class="card-header" id="headerWork">
-          {{workshop.title}}
+          {{workshop.nome}}
           <hr id="lineCards" />
         </div>
         <div class="card-header" id="lineCards"></div>
@@ -23,15 +23,17 @@
           class="mb-2"
           id="workCard"
         >
-          <b-card-text id="workDescrip">{{workshop.description}}</b-card-text>
+          <b-card-text id="workDescrip">{{workshop.descritivo}}</b-card-text>
           <b-card-text id="workInfo2">
-            {{workshop.date}}
+            {{workshop.data_hora}}
             <br />
-            Sala: {{workshop.place}}
+            <!-- Preço: {{workshop.preco}} -->
+            <br />
+            Sala: {{workshop.local}}
             <br />
             Locutor: {{workshop.teacher}}
             <br />
-            Vagas: {{workshop.vacancies}}
+            Vagas: {{workshop.nr_vagas}}
           </b-card-text>
 
           <b-button
@@ -39,7 +41,7 @@
             v-bind:style="{display: show2}"
             id="workInscp2"
             variant="primary"
-            @click="sign(workshop.id)"
+            @click="sign(workshop.id_workshop)"
           >{{signMe}}</b-button>
 
           <!-- por este b-button como router link para o login mas manter o v-bind  -->
@@ -62,15 +64,17 @@
           class="mb-2"
           id="workCard"
         >
-          <b-card-text id="workDescrip2">{{workshop.description}}</b-card-text>
+          <b-card-text id="workDescrip2">{{workshop.descritivo}}</b-card-text>
           <b-card-text id="workInfo">
-            {{workshop.date}}
+          {{workshop.data_hora}}
             <br />
-            Sala: {{workshop.place}}
+            <!-- Preço: {{workshop.preco}} -->
+            <br />
+            Sala: {{workshop.local}}
             <br />
             Locutor: {{workshop.teacher}}
             <br />
-            Vagas: {{workshop.vacancies}}
+            Vagas: {{workshop.nr_vagas}}
           </b-card-text>
 
           <b-button
@@ -78,7 +82,7 @@
             v-bind:style="{display: show2}"
             id="workInscp"
             variant="primary"
-            @click="sign(workshop.id)"
+            @click="sign(workshop.id_workshop)"
           >{{signMe}}</b-button>
         </b-card>
         <br />
@@ -90,6 +94,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -100,17 +105,21 @@ export default {
     };
   },
   created() {
-    if (localStorage.getItem("workshops")) {
-      this.$store.state.workshops = JSON.parse(
-        localStorage.getItem("workshops")
-      );
-      this.workshops = this.$store.state.workshops;
-    }
+    // if (localStorage.getItem("workshops")) {
+    //   this.$store.state.workshops = JSON.parse(
+    //     localStorage.getItem("workshops")
+    //   );
+    //   this.workshops = this.$store.state.workshops;
+    // }
+        this.getAllWorkshops();
     if (this.getLoggedUser() !== "") {
       this.show2 = "inline";
     } else {
       this.signMe = "nao podes pah";
     }
+  },
+  computed: {
+    ...mapGetters(["getWorkshops"])
   },
   methods: {
     getLoggedUser() {
@@ -124,7 +133,7 @@ export default {
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
           if (
-            this.workshops[i].vacancies > 0 &&
+            this.workshops[i].nr_vagas > 0 &&
             this.workshops[i].userEmail != this.getUserEmail()
           ) {
             this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
@@ -143,20 +152,30 @@ export default {
       }
     },
     orderName(a, b) {
-      if (a.title < b.title) return -1;
-      if (a.title > b.title) return 1;
+      if (a.nome < b.nome) return -1;
+      if (a.nome > b.nome) return 1;
       else return 0;
     },
     orderByName() {
       this.workshops = this.workshops.sort(this.orderName);
     },
     orderDate(date1, date2) {
-      if (date1.date < date2.date) return -1;
-      if (date1.date > date2.date) return 1;
+      if (date1.data_hora < date2.data_hora) return -1;
+      if (date1.data_hora > date2.data_hora) return 1;
       else return 0;
     },
     orderByDate() {
       this.workshops = this.workshops.sort(this.orderDate);
+    },
+
+    //get workshops
+    async getAllWorkshops() {
+      try {
+        await this.$store.dispatch("getWorkshops");
+        this.workshops = this.getWorkshops;
+      } catch (err) {
+        alert(err);
+      }
     }
   }
 };

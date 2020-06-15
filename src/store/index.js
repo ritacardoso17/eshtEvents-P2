@@ -40,50 +40,51 @@ export default new Vuex.Store({
       img: require('../assets/img_bar.jpg')
     }
     ],
-    workshops: [{
-      id: 0,
-      title: "Momentos entre amigas - VINHOS NO FEMININO",
-      vacancies: 20,
-      img: require('../assets/work1.jpg'),
-      description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
-      date: "06/03/2020",
-      place: "ESHT",
-      teacher: "Américo Andrade",
-      userEmail: []
-    },
-    {
-      id: 1,
-      title: "Páscoa Vínica",
-      vacancies: 20,
-      img: require('../assets/work2.jpg'),
-      description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
-      date: "03/04/2020",
-      place: "ESHT",
-      teacher: "Américo Andrade",
-      userEmail: []
-    },
-    {
-      id: 2,
-      title: "Vinhos e Conservas - As conservas estão na moda",
-      vacancies: 20,
-      img: require('../assets/work3.jpg'),
-      description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
-      date: "08/05/2020",
-      place: "Theatro",
-      teacher: "Américo Andrade",
-      userEmail: []
-    },
-    {
-      id: 3,
-      title: "Piquenique Vínico - Monverde Wine Experience",
-      vacancies: 20,
-      img: require('../assets/work4.jpg'),
-      description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
-      date: "06/06/2020",
-      place: "Amarante",
-      teacher: "Américo Andrade",
-      userEmail: []
-    }
+    workshops: [
+    //   {
+    //   id: 0,
+    //   title: "Momentos entre amigas - VINHOS NO FEMININO",
+    //   vacancies: 20,
+    //   img: require('../assets/work1.jpg'),
+    //   description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
+    //   date: "06/03/2020",
+    //   place: "ESHT",
+    //   teacher: "Américo Andrade",
+    //   userEmail: []
+    // },
+    // {
+    //   id: 1,
+    //   title: "Páscoa Vínica",
+    //   vacancies: 20,
+    //   img: require('../assets/work2.jpg'),
+    //   description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
+    //   date: "03/04/2020",
+    //   place: "ESHT",
+    //   teacher: "Américo Andrade",
+    //   userEmail: []
+    // },
+    // {
+    //   id: 2,
+    //   title: "Vinhos e Conservas - As conservas estão na moda",
+    //   vacancies: 20,
+    //   img: require('../assets/work3.jpg'),
+    //   description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
+    //   date: "08/05/2020",
+    //   place: "Theatro",
+    //   teacher: "Américo Andrade",
+    //   userEmail: []
+    // },
+    // {
+    //   id: 3,
+    //   title: "Piquenique Vínico - Monverde Wine Experience",
+    //   vacancies: 20,
+    //   img: require('../assets/work4.jpg'),
+    //   description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
+    //   date: "06/06/2020",
+    //   place: "Amarante",
+    //   teacher: "Américo Andrade",
+    //   userEmail: []
+    // }
     ],
     foodMenus: [
       // {
@@ -505,6 +506,9 @@ export default new Vuex.Store({
     SET_SCHOOLS: (state, schools) => {
       state.schools = schools
     },
+    SET_WORKSHOPS:(state, workshops) =>{
+      state.workshops = workshops
+    }
   },
   getters: {
     // getTypeUser(state) {
@@ -534,9 +538,9 @@ export default new Vuex.Store({
     getUserName(state){
       return state.loggedUser.user[0].nome
     },
-    // getLoggedUserEmail(state) {
-    //   return state.loggedUser[0].email
-    // },
+    getLoggedUserEmail(state) {
+      return state.loggedUser.user[0].email_ipp
+    },
     // getLoggedUserPassword(state) {
     //   return state.loggedUser[0].password
     // },
@@ -547,11 +551,15 @@ export default new Vuex.Store({
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
     getSchools: state => state.schools.message,
+    getWorkshops: state => state.workshops.message,
 
   },
   actions: {
     async getMenus({ commit }) {
       commit("SET_MENUS", await apiService.getMenus())
+    },
+    async getWorkshops({ commit }) {
+      commit("SET_WORKSHOPS", await apiService.getWorkshops())
     },
     async getComponentsMenus({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents())

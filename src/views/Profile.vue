@@ -80,7 +80,7 @@ export default {
     };
   },
   created() {
-    alert(this.loggedUser.user[0].nome)
+    
     // if (localStorage.getItem("loggedUser")) {
     //   this.$store.state.loggedUser = JSON.parse(
     //     localStorage.getItem("loggedUser")
@@ -91,14 +91,14 @@ export default {
     // }
     // this.users = this.$store.state.users;
     
-    this.loggedUser = this.loggedUser.user[0]
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    if (localStorage.getItem("reservations")) {
-      this.$store.state.reservations = JSON.parse(
-        localStorage.getItem("reservations")
-      );
-      this.reservations = this.$store.state.reservations;
-    }
+    // this.loggedUser = this.loggedUser.user[0]
+    // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    // if (localStorage.getItem("reservations")) {
+    //   this.$store.state.reservations = JSON.parse(
+    //     localStorage.getItem("reservations")
+    //   );
+    //   this.reservations = this.$store.state.reservations;
+    // }
 
     if (localStorage.getItem("roomRents")) {
       this.$store.state.roomRents = JSON.parse(
