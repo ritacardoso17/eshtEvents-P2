@@ -1,7 +1,7 @@
 import API_URL from './config.js'
 
 const apiService = {
-    async addUser(name, school, email, password, contact,birth, imgProfile ) {
+    async addUser(name, school, email, password, contact, birth, imgProfile) {
         const response = await fetch(`${API_URL}/register`, {
             method: "POST",
             headers: {
@@ -115,15 +115,9 @@ const apiService = {
             throw Error(response)
         }
     },
-<<<<<<< HEAD
-    async getProfileEvent() {
-        const response = await fetch(`${API_URL}/reservations`, {
-            method: "GET",
-=======
     async getUsersEvents(id) {
         const response = await fetch(`${API_URL}/reservations/${id}`, {
             method: "GET"
->>>>>>> e77ffd9fbee0cddd7099355a91e11b2b39367f3a
         })
 
         if (response.ok) {
@@ -133,8 +127,8 @@ const apiService = {
             throw Error(response)
         }
     },
-    async getProfileRents() {
-        const response = await fetch(`${API_URL}/roomRents`, {
+    async getUsersRents(id) {
+        const response = await fetch(`${API_URL}/roomRents/${id}`, {
             method: "GET",
         })
 
@@ -191,14 +185,14 @@ const apiService = {
             headers: {
                 'Content-type': 'application/json; charset=utf-8'
             },
-            body: JSON.stringify({ pass: password,email: email})
+            body: JSON.stringify({ pass: password, email: email })
         })
 
         if (response.ok) {
             return response.json()
         }
         else {
-         
+
             throw Error(response)
         }
     },
@@ -215,7 +209,7 @@ const apiService = {
             return response.json()
         }
         else {
-         
+
             throw Error(response)
         }
     }

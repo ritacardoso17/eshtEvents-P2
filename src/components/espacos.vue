@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-table striped hover head-variant="dark" :items="this.tbRooms" :fields="this.fields">
+    <b-table striped hover head-variant="dark" :items="this.rents" :fields="this.fields">
       <template v-slot:cell(cancel)="row">
         <b-button class="btnCancel" size="sm" @click="cancelRooms(row.item.id)">Cancelar</b-button>
       </template>
@@ -39,7 +39,8 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      tbRooms: [],
+      rents: [],
+      id: "",
       opinion: "",
       fields: [
         { key: "id_espaco", label: "Espaço", sortable: true },
@@ -60,17 +61,19 @@ export default {
     //   this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
     // }
 
-    alert("HEY HEY");
-    for (const i in this.tbRooms) {
-      alert("HEY HO");
-      if (this.tbRooms[i].id_utilizador === this.getUserId()) {
-        this.tbRooms = this.tbRooms.filter(
-          event => this.tbRooms[i].id_utilizador == event.id_utilizador
-        );
-      }
-    }
-    this.getPerfilR();
-    this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    // for (const i in this.tbRooms) {
+    //   if (this.tbRooms[i].id_utilizador === this.getUserId()) {
+    //     this.tbRooms = this.tbRooms.filter(
+    //       event => this.tbRooms[i].id_utilizador == event.id_utilizador
+    //     );
+    //   }
+    // }
+
+    this.id = this.getUserId();
+    this.getAllRents(this.getUserId());
+    alert(this.id);
+
+    // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
   methods: {
     saveStorage() {
@@ -129,10 +132,10 @@ export default {
         }
       }
     },
-    async getPerfilR() {
+    async getAllRents(ID) {
       try {
-        await this.$store.dispatch("getRents");
-        this.tbEvents = this.getRents;
+        await this.$store.dispatch("getRents", { id: ID });
+        this.rents = this.getRents;
       } catch (err) {
         alert(err);
       }
