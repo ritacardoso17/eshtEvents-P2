@@ -67,9 +67,9 @@ const apiService = {
             throw Error(response)
         }
     },
-    async getPerfilEvent() {
-        const response = await fetch(`${API_URL}/reservations`, {
-            method: "GET",
+    async getUsersEvents(id) {
+        const response = await fetch(`${API_URL}/reservations/${id}`, {
+            method: "GET"
         })
 
         if (response.ok) {

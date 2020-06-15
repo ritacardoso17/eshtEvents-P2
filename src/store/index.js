@@ -571,8 +571,8 @@ export default new Vuex.Store({
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes())
     },
-    async getEvents({ commit }) {
-      commit("SET_EVENTS", await apiService.getPerfilEvent()) 
+    async getEvents({ commit },payload) {
+      commit("SET_EVENTS", await apiService.getUsersEvents(payload.id))
     },
     async addMenus({ commit }, payload) {
       commit("ADD_MENU", await apiService.addMenus(
