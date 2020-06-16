@@ -115,6 +115,18 @@ const apiService = {
             throw Error(response)
         }
     },
+    async getEventypesId(id) {
+        const response = await fetch(`${API_URL}/menuTypesById/${id}`, {
+            method: "GET",
+        })
+
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
     async getUsersEvents(id) {
         const response = await fetch(`${API_URL}/reservations/${id}`, {
             method: "GET"
@@ -144,6 +156,23 @@ const apiService = {
             method: "GET",
         })
 
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+    async removeReservation(id){
+        let loggedUser = localStorage.getItem("loggedUser")
+        alert(id)
+        const response = await fetch(`${API_URL}/reservations/${id}`, {
+            method: "DELETE",
+            headers: {
+                'x-access-token': loggedUser.token
+            }
+        })
+ 
         if (response.ok) {
             return response.json()
         }

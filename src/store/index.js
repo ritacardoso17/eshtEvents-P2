@@ -340,13 +340,16 @@ export default new Vuex.Store({
     ],
     schools: [],
     states:[],
+    currentMenus: [],
   },
 
 
   mutations: {
+    REMOVE_RESERVATION: (state,reservations) => {
+      state.reservations = reservations
+      VueSimpleAlert.fire('Reserva Cancelada com Sucesso')
+    },
     ADD_USER: (state, payload) => {
-      //SE ENCONTRAR ALGUM EMAIL IGUAL AO QUE ESTA A TENTAR CRIAR
-
       if (payload.password !== payload.confPass) {
         VueSimpleAlert.fire('Passwords diferentes')
       } else {
@@ -512,8 +515,8 @@ export default new Vuex.Store({
     SET_RENTS: (state, roomRents) => {
       state.roomRents = roomRents
     },
-    SET_SCHOOLS: (state, schools) => {
-      state.schools = schools
+    SET_SCHOOLS: (state, data) => {
+      state.schools = data.message
     },
     SET_EXTRAS: (state, extras) => {
       state.extras = extras
@@ -529,6 +532,9 @@ export default new Vuex.Store({
     },
     SET_STATES: (state, states) => {
       state.states = states
+    },
+    SET_TYPEID: (state, data) => {
+      state.currentMenus = data.message.rows
     }
   },
   getters: {
@@ -573,15 +579,20 @@ export default new Vuex.Store({
     getEvenTypes: state => state.eventType.message,
     getEvents: state => state.reservations.message,
     getRents: state => state.roomRents.message,
-    getSchools: state => state.schools.message,
+    getSchools: state => state.schools,
     getExtras: state => state.extras.message,
     getDecorations: state => state.decorations.message,
     getUniforms: state => state.uniforms.message,
     getWorkshops: state => state.workshops.message,
     getStates: state => state.states.message,
+    getEventypesId: state => state.currentMenus,
 
   },
   actions: {
+    async removeReservation({ commit }, payload){
+      commit("REMOVE_RESERVATION", await apiService.removeReservation(payload.id))
+     alert(payload.id)
+    },
     async getMenus({ commit }) {
       commit("SET_MENUS", await apiService.getMenus())
     },
@@ -648,6 +659,9 @@ export default new Vuex.Store({
     },
     async getStates({ commit }) {
       commit("SET_STATES", await apiService.getStates())
+    },
+    async getEventypesId({ commit }, payload) {
+      commit("SET_TYPEID", await apiService.getEventypesId(payload.id)) 
     },
     async login({ commit }, payload) {
       commit("LOGIN", await apiService.login(

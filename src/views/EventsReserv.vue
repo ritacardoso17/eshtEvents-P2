@@ -23,12 +23,12 @@
           </p>
           <br />
           <div class="container">
-            <div class="row" v-for="e in eventType" :key="e">
+            <div class="row" v-for="e in eventType" :key="e.id_tipo_reserva">
               <div class="col-sm-4" v-if="e !== 'Todos'">
-                <b-button id="btn4" @click="x(e)">
+                <b-button id="btn4" @click="getMenuByType(e.id_tipo_reserva)">
                   <div style="background-color: black;">
                     <h1 id="eventType" class="centered">
-                      <b>{{e}}</b>
+                      <b>{{e.descritivo}}</b>
                     </h1>
                   </div>
                 </b-button>
@@ -64,15 +64,9 @@
                 v-model="duration"
               />
 
-              <label for class="locationLabel">▶ Localização</label>
+              <label for="sltLocation" class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
-                <option value="esht">ESHT</option>
-                <option value="esmad">ESMAD</option>
-                <option value="isep">ISEP</option>
-                <option value="iscap">ISCAP</option>
-                <option value="ese">ESE</option>
-                <option value="esmae">ESMAE</option>
-                <option value="ess">ESS</option>
+                <option v-for="l in schools" :value="l.id_ipp" :key="l.id_ipp">{{l.nome}}</option>
               </select>
             </div>
           </form>
@@ -81,10 +75,10 @@
         <!-- TAB MENU -->
         <b-tab id="second" title="Menu">
           <div class="container">
-            <div v-if="title !== '' ">
+            <div v-if="menus.length !== 0 ">
               <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
               <div class="row">
-                <div class="col-sm-3" v-for="menu in menuType" :key="menu.id">
+                <div class="col-sm-3" v-for="menu in this.menus" :key="menu.id">
                   <b-card
                     id="cardMenu"
                     :title="menu.name"
@@ -122,9 +116,9 @@
               <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
             </p>
             <br />
-            <b-button v-for="u in this.uniforms" :key="u.id" id="btn5" @click="uni(u)">
+            <b-button v-for="u in this.uniforms" :key="u.id_uniform" id="btn5" @click="uni(u)">
               <b-img :src="u.img" style="width:150px"></b-img>
-              <p>{{u.name}}</p>
+              <p>{{u.descritivo}}</p>
             </b-button>
           </div>
 
@@ -134,9 +128,14 @@
               ▶
               <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
             </p>
-            <b-button v-for="d in this.decorations" :key="d.id" id="btn9" @click="decor(d.name)">
+            <b-button
+              v-for="d in this.decorations"
+              :key="d.id_decoracao"
+              id="btn9"
+              @click="decor(d)"
+            >
               <b-img :src="d.img" style="width:200px"></b-img>
-              <p>{{d.name}}</p>
+              <p>{{d.descritivo}}</p>
             </b-button>
           </div>
         </b-tab>
@@ -150,17 +149,17 @@
           </p>
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
-            <div class="form-check" v-for="i in this.extras" :key="i.id">
+            <div class="form-check" v-for="i in this.extras" :key="i.id_extra">
               <input
                 type="checkbox"
                 class="form-check-input"
                 name
                 id="check6"
-                :value="i.name"
+                :value="i.descritivo"
                 unchecked
                 v-model="extra_reserv"
               />
-              {{i.name}}
+              {{i.descritivo}}
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -209,7 +208,7 @@
                 <p id="menu2">
                   <b>Menu</b>
                 </p>
-                <p id="choiseMenu2">{{slctMenu}}</p>
+                <p id="choiceMenu2">{{slctMenu}}</p>
               </div>
               <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="extras2">
@@ -244,6 +243,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data: () => {
     return {
@@ -254,7 +254,8 @@ export default {
       time: "",
       people: "",
       duration: "",
-      location: "",
+      location: [],
+      schools:[],
       slctDecor: "",
       slctMenu: "",
       decoration: [],
@@ -275,72 +276,34 @@ export default {
     };
   },
   created() {
-    window.addEventListener("unload", this.saveStorage);
-    localStorage.setItem("extras", JSON.stringify(this.$store.state.extras));
-
-    if (localStorage.getItem("foodMenus")) {
-      this.menus = JSON.parse(localStorage.getItem("foodMenus"));
-    }
-    localStorage.setItem(
-      "eventType",
-      JSON.stringify(this.$store.state.eventType)
-    );
-    if (localStorage.getItem("eventType")) {
-      this.eventType = JSON.parse(localStorage.getItem("eventType"));
-    }
-    localStorage.setItem(
-      "eventType",
-      JSON.stringify(this.$store.state.eventType)
-    );
-    if (localStorage.getItem("eventType")) {
-      this.eventType = JSON.parse(localStorage.getItem("eventType"));
-    }
-    localStorage.setItem(
-      "uniforms",
-      JSON.stringify(this.$store.state.uniforms)
-    );
-    if (localStorage.getItem("uniforms")) {
-      this.uniforms = JSON.parse(localStorage.getItem("uniforms"));
-    }
-    localStorage.setItem(
-      "decorations",
-      JSON.stringify(this.$store.state.decorations)
-    );
-    if (localStorage.getItem("decorations")) {
-      this.decorations = JSON.parse(localStorage.getItem("decorations"));
-    }
-    if (localStorage.getItem("extras")) {
-      this.extras = JSON.parse(localStorage.getItem("extras"));
-    }
-    if (localStorage.getItem("reservations")) {
-      this.$store.state.reservations = JSON.parse(
-        localStorage.getItem("reservations")
-      );
-      this.reservations = this.$store.state.reservations;
-    }
+    this.getAllEventTypes();
+    this.getAllComponents();
+    this.getAllUniforms();
+    this.getAllDecorations();
+    this.getAllExtras();
+    this.getAllSchools();
   },
 
   methods: {
-    x(event) {
-      for (let e in this.eventType) {
-        if (event === this.eventType[e]) {
-          this.title = event;
-          this.filter = event;
-        }
+    async getMenuByType(id) {
+      try {
+        await this.$store.dispatch("getEventypesId", { id: id });
+        this.menus = this.getEventypesId;
+      } catch (err) {
+        alert(err);
       }
-      this.tabIndex++;
     },
     uni(uni) {
       for (let u in this.uniforms) {
-        if (uni.name === this.uniforms[u].name) {
-          this.slctUniform = uni.name;
+        if (uni.descritivo === this.uniforms[u].descritivo) {
+          this.slctUniform = uni.descritivo;
         }
       }
     },
     decor(decor) {
       for (let d in this.decorations) {
-        if (decor === this.decorations[d].name) {
-          this.slctDecor = decor;
+        if (decor.descritivo === this.decorations[d].descritivo) {
+          this.slctDecor = decor.descritivo;
         }
       }
     },
@@ -367,21 +330,57 @@ export default {
         this.location == "" ||
         this.slctMenu == ""
       ) {
-        // let x = this.day.split("-");
-        // let dd = x[2];
-        // let mm = x[1];
-        // let yyyy = x[0];
-
         this.$bvToast.toast("Precisa de preencher todos os campos");
-        // if (parseInt(yyyy) < new Date().getFullYear()) {
-        //   this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
-        // } else{
-        //   if (parseInt(dd) <= new Date().getDate() && parseInt(mm) == new Date().getMonth+1) {
-        //   this.$bvToast.toast("Não pode fazer uma reserva antes da data atual");
-        //   }
-        //}
       } else {
         this.addReservation();
+      }
+    },
+    async getAllEventTypes() {
+      try {
+        await this.$store.dispatch("getEvenTypes");
+        this.eventType = this.getEvenTypes;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllComponents() {
+      try {
+        await this.$store.dispatch("getComponentsMenus");
+        this.components = this.getComponentsMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllUniforms() {
+      try {
+        await this.$store.dispatch("getUniforms");
+        this.uniforms = this.getUniforms;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllDecorations() {
+      try {
+        await this.$store.dispatch("getDecorations");
+        this.decoration = this.getDecorations;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllExtras() {
+      try {
+        await this.$store.dispatch("getExtras");
+        this.extras = this.getExtras;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getAllSchools() {
+      try {
+        await this.$store.dispatch("getSchools");
+        this.schools = this.getSchools;
+      } catch (err) {
+        alert(err);
       }
     },
     async addReservation() {
@@ -396,7 +395,7 @@ export default {
           id_evenType: this.id_evenType,
           id_state: 1,
           id_menu: this.id_menu,
-          id_local: this.id_local,
+          id_local: this.location,
           id_decoration: this.id_decoration,
           opinion: this.opinion
         });
@@ -412,15 +411,15 @@ export default {
     }
   },
   computed: {
-    menuType() {
-      return this.menus.filter(menu => {
-        let menuTypeResult = true;
-        if (this.title !== "") {
-          menuTypeResult = menu.type.includes(this.filter);
-        }
-        return menuTypeResult;
-      });
-    }
+    ...mapGetters(["getEvenTypes"]),
+    ...mapGetters(["getMenus"]),
+    ...mapGetters(["getComponentsMenus"]),
+    ...mapGetters(["getUniforms"]),
+    ...mapGetters(["getDecorations"]),
+    ...mapGetters(["getExtras"]),
+    ...mapGetters(["getSchools"]),
+    ...mapGetters(["getEventypesId"])
+
   }
 };
 </script>
