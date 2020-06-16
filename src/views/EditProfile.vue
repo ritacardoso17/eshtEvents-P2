@@ -3,7 +3,7 @@
     <br>
     <h1 id="title">Editar Perfil</h1>
     <div id="container">
-      <h3 style="color: #daaa29" id="name">{{this.$store.state.loggedUser.user[0].nome}}</h3>
+      <h3 style="color: #daaa29" id="name"><b>{{this.$store.state.loggedUser.user[0].nome}}</b></h3>
       <div>
         <img  class="imgEdit" style="width:200px; height:auto" :src="this.$store.state.loggedUser.user[0].foto_perfil" />
       </div>
@@ -25,6 +25,12 @@
         <button type="submit" id="edit" href="Profile">Confirmar</button>
       </form>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <br />
     <br />
   </div>
@@ -102,66 +108,66 @@ h1 {
   border-left: 2px solid black;
   border-right: 2px solid black;
   position: relative;
-  margin-top: 50px;
-  margin-left: 100px;
-  height: 300px;
-  width: 1050px;
+  top: 2vw;
+  left: 22vw;
+  height: 20vw;
+  width: 55vw;
   font-family: GeosansLight;
+}
+form{
+  position: relative;
+  margin-top: -20%;
+  left: 50%;
+  width: 15vw;
+  text-align: left;
 }
 #name {
   text-align: justify;
-  margin-left: 50px;
+  margin-left: 12%;
 }
 #password {
   position: relative;
-  top: -90px;
-  left: 480px;
-  height: 20px;
-  width: 210px;
+  top: -2.5vw;
+  left: 70%;
+  width: 75%;
   font-family: GeosansLight;
 }
 .password {
-  left: -100px;
-  top: -60px;
   position: relative;
   font-family: GeosansLight;
 }
 #newPassword {
   position: relative;
   font-family: GeosansLight;
-  top: -77px;
-  left: 520px;
-  height: 20px;
-  width: 170px;
+  top: -2.5vw;
+  left: 70%;
+  width: 75%;
+
 }
 .newPassword {
-  left: -80px;
-  top: -50px;
   position: relative;
   font-family: GeosansLight;
 }
 #confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  top: -55px;
-  left: 540px;
-  height: 20px;
-  width: 150px;
+  top: -2.5vw;
+  left: 70%;
+    width: 75%;
 }
 .confirmPassword {
   position: relative;
   font-family: GeosansLight;
-  left: -70px;
-  top: -30px;
 }
 .imgEdit{
-  margin-left: -800px;
-  margin-top: 50px;
+  margin-left: -35vw;
+  margin-top: 5%;
 }
 
 #edit {
   position: relative;
-  margin-left: 40px;
+  margin-left: 55%;
+  margin-top: 10%;
   width: 120px;
   color: white;
   background-color: #000;
