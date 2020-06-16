@@ -1,8 +1,8 @@
 <template>
   <div>
-     <b-table striped hover head-variant="dark" :items="this.reservations" :fields="this.fields">
+    <b-table striped hover head-variant="dark" :items="this.reservations" :fields="this.fields">
       <template v-slot:cell(cancel)="row">
-        <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id)">Cancelar</b-button>
+        <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id_reserva)">Cancelar</b-button>
       </template>
       <template v-slot:cell(opinions)="row">
         <b-button class="btnDetails rounded-0" @click="row.toggleDetails">Dar opinião</b-button>
@@ -36,7 +36,6 @@ export default {
   data: function() {
     return {
       reservations: [],
-      id: "",
       opinion: "",
       fields: [
         { key: "tipoReserva", label: "Tipo", sortable: true },
@@ -51,7 +50,6 @@ export default {
   created() {
     this.id = this.getUserId();
     this.getAllEvents(this.getUserId());
-  
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     // this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },
@@ -65,6 +63,13 @@ export default {
       try {
         await this.$store.dispatch("getEvents", { id: ID });
         this.reservations = this.getEvents;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async removeReservation(ID) {
+      try {
+        await this.$store.dispatch("removeReservation", { id: ID });
       } catch (err) {
         alert(err);
       }
@@ -86,43 +91,37 @@ export default {
 
     getUserId() {
       return this.$store.getters.getLoggedUserId;
-    }
+    },
 
     // getLastIdEvents() {
     //   return this.$store.getters.getLastIdEvents;
     // },
 
-    // cancelEvents(id) {
-    //   for (let i in this.reservations) {
-    //     if (this.reservations[i].id === id) {
-    //       const index = this.reservations.findIndex(
-    //         item => this.reservations[i].id === item.id
-    //       );
-    //       if (this.reservations[index].state != "Cancelado") {
-    //         this.reservations[index].state = "Cancelado";
-    //       } else {
-    //         this.$bvToast.toast("Reserva já cancelada");
-    //       }
-    //       localStorage.setItem("reservations", JSON.stringify(this.reservations));
-    //       this.$store.state.reservations = localStorage.setItem(
-    //         "reservations",
-    //         JSON.stringify(this.reservations)
-    //       );
-    //     }
-    //   }
-    // },
-    // send(id) {
-    //   let reservations = JSON.parse(localStorage.getItem("reservations"));
-    //   for (let i in reservations) {
-    //     if (reservations[i].id === id) {
-    //       reservations[i].opinions = this.opinion;
-    //     }
-    //   }
-    //   localStorage.setItem("reservations", JSON.stringify(reservations));
-    //   this.$bvToast.toast("Opinião Enviada!");
+    cancelEvents(idE) {
+     
+      for (let i in this.reservations) {
+        if (this.reservations[i].id_reserva === idE) {
+          this.removeReservation(idE);
+           alert(idE)
+        }
+      }
+    },
+    send(id) {
+     
+      let reservations = JSON.parse(localStorage.getItem("reservations"));
+       alert(id)
+      for (let i in reservations) {
+        if (reservations[i].id === id) {
+          
+          reservations[i].opinions = this.opinion;
+        }
+      }
+      localStorage.setItem("reservations", JSON.stringify(reservations));
+      this.$bvToast.toast("Opinião Enviada!");
 
-    //   this.opinion = "";
-    // }
+      this.opinion = "";
+    }
+    //
   }
 };
 </script>
