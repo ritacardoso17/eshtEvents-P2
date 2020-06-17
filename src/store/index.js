@@ -529,6 +529,9 @@ export default new Vuex.Store({
     SET_EXTRAS: (state, extras) => {
       state.extras = extras
     },
+    SET_ROOMS: (state, data) => {
+      state.rooms = data.message
+    },
     SET_DECORATIONS: (state, decorations) => {
       state.decorations = decorations
     },
@@ -594,7 +597,7 @@ export default new Vuex.Store({
     getWorkshops: state => state.workshops.message,
     getStates: state => state.states.message,
     getEventypesId: state => state.currentMenus,
-    getRooms: state => state.rooms.message,
+    getRooms: state => state.rooms,
 
 
 

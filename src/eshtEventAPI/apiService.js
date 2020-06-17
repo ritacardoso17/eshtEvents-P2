@@ -30,7 +30,7 @@ const apiService = {
         }
     },
     async getRooms() {
-        let loggedUser = localStorage.getItem("loggedUser")
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
         const response = await fetch(`${API_URL}/rooms`, {
             method: "GET",
             headers: {

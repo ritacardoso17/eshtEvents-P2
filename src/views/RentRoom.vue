@@ -32,7 +32,7 @@
             </p>
           </div>
           <div class="row">
-            <div class="col-sm-4" v-for="r in this.rooms" :key="r.id">
+            <div class="col-sm-4" v-for="r in this.rooms" :key="r.id_espaco">
               <b-card
                 :img-src="r.img"
                 style="max-width: 20rem; border:0px solid transparent;"
@@ -40,7 +40,7 @@
                 img-top
                 class="mb-2"
               >
-                <button @click="chooseRoom(r.name)" id="btnChoose">{{r.name}}</button>
+                <button @click="chooseRoom(r.descritivo, r.id_espaco)" id="btnChoose">{{r.descritivo}}</button>
               </b-card>
             </div>
           </div>
@@ -139,6 +139,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "rentRoom",
   data: () => ({
@@ -153,22 +154,27 @@ export default {
     rooms: [],
     tabIndex: 1,
     roomRents: [],
-    reason: ""
+    reason: "",
+    roomId: ""
   }),
   created() {
-    window.addEventListener("unload", this.saveStorage);
+    // window.addEventListener("unload", this.saveStorage);
 
-    localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
-    if (localStorage.getItem("rooms")) {
-      this.$store.state.rooms = JSON.parse(localStorage.getItem("rooms"));
-      this.rooms = this.$store.state.rooms;
-    }
-    if (localStorage.getItem("roomRents")) {
-      this.$store.state.roomRents = JSON.parse(
-        localStorage.getItem("roomRents")
-      );
-      this.roomRents = this.$store.state.roomRents;
-    }
+    // localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
+    // if (localStorage.getItem("rooms")) {
+    //   this.$store.state.rooms = JSON.parse(localStorage.getItem("rooms"));
+    //   this.rooms = this.$store.state.rooms;
+    // }
+    // if (localStorage.getItem("roomRents")) {
+    //   this.$store.state.roomRents = JSON.parse(
+    //     localStorage.getItem("roomRents")
+    //   );
+    //   this.roomRents = this.$store.state.roomRents;
+    // }
+    this.getAllRooms();
+  },
+  computed:{
+    ...mapGetters(["getRooms"]),
   },
   methods: {
     saveStorage() {
@@ -187,13 +193,23 @@ export default {
     getLastIdRooms() {
       return this.$store.getters.getLastIdRooms;
     },
-    chooseRoom(room) {
+    chooseRoom(room, id) {
+      alert(room)
       for (let r in this.rooms) {
-        if (room === this.rooms[r].name) {
+        if (room === this.rooms[r].descritivo) {
           this.slctRoom = room;
+          this.roomId = id;
         }
       }
       this.tabIndex++;
+    },
+    async getAllRooms() {
+      try {
+        await this.$store.dispatch("getRooms");
+        this.rooms = this.getRooms;
+      } catch (err) {
+        alert(err);
+      }
     },
     rentRoom() {
       this.$store.commit("RENT_ROOM", {
