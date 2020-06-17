@@ -2,7 +2,7 @@
   <div>
     <b-table striped hover head-variant="dark" :items="this.rents" :fields="this.fields">
       <template v-slot:cell(cancel)="row">
-        <b-button class="btnCancel" size="sm" @click="cancelRooms(row.item.id)">Cancelar</b-button>
+        <b-button class="btnCancel" size="sm" @click="cancelRooms(row.item.id_aluguer)">Cancelar</b-button>
       </template>
       <template v-slot:cell(opinions)="row">
         <b-button
@@ -24,7 +24,7 @@
                 placeholder="Escreva a sua opinião"
                 v-model="opinion"
               ></textarea>
-              <b-button @click="send(row.item.id)">Enviar</b-button>
+              <b-button @click="send(row.item.id_aluguer)">Enviar</b-button>
             </b-col>
             <b-col></b-col>
           </b-row>
@@ -53,82 +53,45 @@ export default {
     };
   },
   created() {
-    // localStorage.setItem(
-    //   "roomRents",
-    //   JSON.stringify(this.$store.state.roomRents)
-    // );
-    // if (localStorage.getItem("roomRents")) {
-    //   this.tbRooms = JSON.parse(localStorage.getItem("roomRents"));
-    // }
-
-    // for (const i in this.tbRooms) {
-    //   if (this.tbRooms[i].id_utilizador === this.getUserId()) {
-    //     this.tbRooms = this.tbRooms.filter(
-    //       event => this.tbRooms[i].id_utilizador == event.id_utilizador
-    //     );
-    //   }
-    // }
-
     this.id = this.getUserId();
-    this.getAllRents(this.getUserId());
-    
+    this.getAllRents(this.id);
 
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
   },
+  computed: {
+    ...mapGetters(["getRents"])
+  },
   methods: {
-    saveStorage() {
-      localStorage.setItem(
-        "roomRents",
-        JSON.stringify(this.$store.state.opinions)
-      );
-    },
-
-    getUser() {
-      return this.$store.getters.getUser;
-    },
+    // getUser() {
+    //   return this.$store.getters.getUser;
+    // },
 
     getUserId() {
       return this.$store.getters.getLoggedUserId;
     },
 
-    getRooms() {
-      return this.$store.state.roomRents;
-    },
+    // getRooms() {
+    //   return this.$store.state.roomRents;
+    // },
 
-    getLastIdRooms() {
-      return this.$store.getters.getLastIdRooms;
-    },
+    // getLastIdRooms() {
+    //   return this.$store.getters.getLastIdRooms;
+    // },
 
-    removeRooms(id) {
-      for (let i in this.tbRooms) {
-        if (this.tbRooms[i].id === id) {
-          this.tbRooms = this.tbRooms.filter(
-            tbRooms => this.tbRooms[i].id !== tbRooms.id
-          );
-          localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
-          this.tbRooms = this.getRooms;
-
-          this.$bvToast.toast("Removeu o espaço");
-        }
+    async removeRents(ID) {
+      try {
+        await this.$store.dispatch("removeRent", { id: ID });
+        this.getAllRents(this.id);
+      } catch (err) {
+        alert(err);
       }
     },
 
     cancelRooms(id) {
-      for (let i in this.tbRooms) {
-        if (this.tbRooms[i].id === id) {
-          const index = this.tbRooms.findIndex(
-            item => this.tbRooms[i].id === item.id
-          );
-          if (this.tbRooms[index].state != "Cancelado") {
-            this.tbRooms[index].state = "Cancelado";
-          } else {
-            this.$bvToast.toast("Reserva já cancelada");
-          }
-          localStorage.setItem("roomRents", JSON.stringify(this.tbRooms));
-          this.$store.state.roomRents = localStorage.setItem(
-            "roomRents",
-            JSON.stringify(this.tbRooms)
-          );
+      for (let i in this.rents) {
+        if (this.rents[i].id === id) {
+          this.removeRents(id);
+          alert(id)
         }
       }
     },
@@ -151,14 +114,8 @@ export default {
       this.$bvToast.toast("Opinião Enviada!");
       this.opinion = "";
     }
-  },
-  computed: {
-    ...mapGetters(["getRents"]),
-    row() {
-      return this.tbRooms.length;
-    }
   }
-};
+}
 </script>
 
 <style>

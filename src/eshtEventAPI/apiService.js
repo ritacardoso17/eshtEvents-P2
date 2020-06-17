@@ -29,6 +29,22 @@ const apiService = {
             throw Error(response)
         }
     },
+    async getRooms() {
+        let loggedUser = localStorage.getItem("loggedUser")
+        const response = await fetch(`${API_URL}/rooms`, {
+            method: "GET",
+            headers: {
+                'x-access-token': loggedUser.token
+            }
+        })
+ 
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
     async getExtras() {
         const response = await fetch(`${API_URL}/extras`, {
             method: "GET",
@@ -164,8 +180,7 @@ const apiService = {
         }
     },
     async removeReservation(id){
-        let loggedUser = localStorage.getItem("loggedUser")
-        alert(id)
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
         const response = await fetch(`${API_URL}/reservations/${id}`, {
             method: "DELETE",
             headers: {
@@ -180,6 +195,23 @@ const apiService = {
             throw Error(response)
         }
     },
+    async removeRent(id){
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+        const response = await fetch(`${API_URL}/roomRents/${id}`, {
+            method: "DELETE",
+            headers: {
+                'x-access-token': loggedUser.token
+            }
+        })
+ 
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
+
     async addMenus(name, img, type, components) {
         const response = await fetch(`${API_URL}/menus`, {
             method: "POST",

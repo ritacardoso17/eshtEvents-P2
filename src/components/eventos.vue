@@ -1,32 +1,37 @@
 <template>
-  <div>
-    <b-table striped hover head-variant="dark" :items="this.reservations" :fields="this.fields">
-      <template v-slot:cell(cancel)="row">
-        <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id_reserva)">Cancelar</b-button>
-      </template>
-      <template v-slot:cell(opinions)="row">
-        <b-button class="btnDetails rounded-0" @click="row.toggleDetails">Dar opinião</b-button>
-      </template>
-      <template v-slot:row-details="row">
-        <b-card>
-          <!-- Escola -->
-          <b-row class="mb-2">
-            <b-col class="text-sm-right">
-              <textarea
-                name="Opinião"
-                id="txtOpinion"
-                cols="60"
-                rows="5"
-                placeholder="Escreva a sua opinião"
-                v-model="opinion"
-              ></textarea>
-              <b-button @click="send(row.item.id)">Enviar</b-button>
-            </b-col>
-            <b-col></b-col>
-          </b-row>
-        </b-card>
-      </template>
-    </b-table>
+  <div id="table">
+    <div v-if="this.reservations != ''">
+      <b-table striped hover head-variant="dark" :items="this.reservations" :fields="this.fields">
+        <template v-slot:cell(cancel)="row">
+          <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id_reserva)">Cancelar</b-button>
+        </template>
+        <template v-slot:cell(opinions)="row">
+          <b-button class="btnDetails rounded-0" @click="row.toggleDetails">Dar opinião</b-button>
+        </template>
+        <template v-slot:row-details="row">
+          <b-card>
+            <!-- Escola -->
+            <b-row class="mb-2">
+              <b-col class="text-sm-right">
+                <textarea
+                  name="Opinião"
+                  id="txtOpinion"
+                  cols="60"
+                  rows="5"
+                  placeholder="Escreva a sua opinião"
+                  v-model="opinion"
+                ></textarea>
+                <b-button @click="send(row.item.id)">Enviar</b-button>
+              </b-col>
+              <b-col></b-col>
+            </b-row>
+          </b-card>
+        </template>
+      </b-table>
+    </div>
+    <div v-else>
+      <p id="paragraph">Não realizou nenhuma reserva</p>
+    </div>
   </div>
 </template>
 
@@ -37,6 +42,7 @@ export default {
     return {
       reservations: [],
       opinion: "",
+      id: "",
       fields: [
         { key: "tipoReserva", label: "Tipo", sortable: true },
         { key: "data_hora_evento", label: "Dia", sortable: true },
@@ -49,7 +55,7 @@ export default {
   },
   created() {
     this.id = this.getUserId();
-    this.getAllEvents(this.getUserId());
+    this.getAllEvents(this.id);
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     // this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },
@@ -70,55 +76,32 @@ export default {
     async removeReservation(ID) {
       try {
         await this.$store.dispatch("removeReservation", { id: ID });
+        this.getAllEvents(this.id);
       } catch (err) {
         alert(err);
       }
     },
-    // saveStorage() {
-    //   localStorage.setItem(
-    //     "reservations",
-    //     JSON.stringify(this.$store.state.state)
-    //   );
-    // },
-
-    // getUser() {
-    //   return this.$store.state.loggedUser;
-    // },
-
-    // getReservations() {
-    //   return this.$store.state.reservations;
-    // },
 
     getUserId() {
       return this.$store.getters.getLoggedUserId;
     },
-
-    // getLastIdEvents() {
-    //   return this.$store.getters.getLastIdEvents;
-    // },
-
     cancelEvents(idE) {
-     
       for (let i in this.reservations) {
         if (this.reservations[i].id_reserva === idE) {
           this.removeReservation(idE);
-           alert(idE)
         }
       }
     },
     send(id) {
-     
       let reservations = JSON.parse(localStorage.getItem("reservations"));
-       alert(id)
+      alert(id);
       for (let i in reservations) {
         if (reservations[i].id === id) {
-          
           reservations[i].opinions = this.opinion;
         }
       }
       localStorage.setItem("reservations", JSON.stringify(reservations));
       this.$bvToast.toast("Opinião Enviada!");
-
       this.opinion = "";
     }
     //
@@ -127,6 +110,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#table {
+  font-family: GeosansLight;
+  color: black;
+}
+#paragraph{
+  font-size:30px
+}
 .btnDetails {
   background-color: black;
   color: white;

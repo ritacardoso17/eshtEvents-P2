@@ -24,21 +24,22 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     token: [],
-    rooms: [{
-      id: 0,
-      name: "Restaurante Aplicação",
-      img: require('../assets/restApp.jpg')
-    },
-    {
-      id: 1,
-      name: "Cozinha Aplicação",
-      img: require('../assets/img_cozinha.jpg')
-    },
-    {
-      id: 2,
-      name: "Bar Aplicação",
-      img: require('../assets/img_bar.jpg')
-    }
+    rooms: [
+      //   {
+      //   id: 0,
+      //   name: "Restaurante Aplicação",
+      //   img: require('../assets/restApp.jpg')
+      // },
+      // {
+      //   id: 1,
+      //   name: "Cozinha Aplicação",
+      //   img: require('../assets/img_cozinha.jpg')
+      // },
+      // {
+      //   id: 2,
+      //   name: "Bar Aplicação",
+      //   img: require('../assets/img_bar.jpg')
+      // }
     ],
     workshops: [
       //   {
@@ -203,42 +204,44 @@ export default new Vuex.Store({
       extra: [],
       state: "Pendente"
     } */],
-    uniforms: [{
-      id: 0,
-      img: require('../assets/farda05.png'),
-      name: "Farda Cozinha",
-    },
-    {
-      id: 1,
-      img: require('../assets/farda04.png'),
-      name: "Farda Semi-formal",
-    },
-    {
-      id: 2,
-      img: require('../assets/farda03.png'),
-      name: "Farda Formal",
-    },
-    {
-      id: 3,
-      img: require('../assets/farda02.png'),
-      name: "Farda Casual",
-    },
+    uniforms: [
+      //   {
+      //   id: 0,
+      //   img: require('../assets/farda05.png'),
+      //   name: "Farda Cozinha",
+      // },
+      // {
+      //   id: 1,
+      //   img: require('../assets/farda04.png'),
+      //   name: "Farda Semi-formal",
+      // },
+      // {
+      //   id: 2,
+      //   img: require('../assets/farda03.png'),
+      //   name: "Farda Formal",
+      // },
+      // {
+      //   id: 3,
+      //   img: require('../assets/farda02.png'),
+      //   name: "Farda Casual",
+      // },
     ],
-    decorations: [{
-      id: 0,
-      img: require('../assets/deco1.jpg'),
-      name: "Decoração A"
-    },
-    {
-      id: 1,
-      img: require('../assets/deco2.jpg'),
-      name: "Decoração B"
-    },
-    {
-      id: 2,
-      img: require('../assets/deco3.jpg'),
-      name: "Decoração C"
-    },
+    decorations: [
+      //   {
+      //   id: 0,
+      //   img: require('../assets/deco1.jpg'),
+      //   name: "Decoração A"
+      // },
+      // {
+      //   id: 1,
+      //   img: require('../assets/deco2.jpg'),
+      //   name: "Decoração B"
+      // },
+      // {
+      //   id: 2,
+      //   img: require('../assets/deco3.jpg'),
+      //   name: "Decoração C"
+      // },
     ],
     types: [{
       id: 0,
@@ -261,26 +264,27 @@ export default new Vuex.Store({
       name: "Novo Restaurante"
     }
     ],
-    extras: [{
-      id: 0,
-      name: "Musica Ambiente"
-    },
-    {
-      id: 1,
-      name: "Babysitting"
-    },
-    {
-      id: 2,
-      name: "Flores"
-    },
-    {
-      id: 3,
-      name: "Balões"
-    },
-    {
-      id: 4,
-      name: "Palhaços"
-    }
+    extras: [
+      //   {
+      //   id: 0,
+      //   name: "Musica Ambiente"
+      // },
+      // {
+      //   id: 1,
+      //   name: "Babysitting"
+      // },
+      // {
+      //   id: 2,
+      //   name: "Flores"
+      // },
+      // {
+      //   id: 3,
+      //   name: "Balões"
+      // },
+      // {
+      //   id: 4,
+      //   name: "Palhaços"
+      // }
     ],
     componentMenus: [
       // {
@@ -339,15 +343,19 @@ export default new Vuex.Store({
       // }
     ],
     schools: [],
-    states:[],
+    states: [],
     currentMenus: [],
   },
 
 
   mutations: {
-    REMOVE_RESERVATION: (state,reservations) => {
+    REMOVE_RESERVATION: (state, reservations) => {
       state.reservations = reservations
       VueSimpleAlert.fire('Reserva Cancelada com Sucesso')
+    },
+    REMOVE_RENT: (state, roomRents) => {
+      state.roomRents = roomRents
+      VueSimpleAlert.fire('Aluguer cancelado com sucesso')
     },
     ADD_USER: (state, payload) => {
       if (payload.password !== payload.confPass) {
@@ -586,12 +594,19 @@ export default new Vuex.Store({
     getWorkshops: state => state.workshops.message,
     getStates: state => state.states.message,
     getEventypesId: state => state.currentMenus,
+    getRooms: state => state.rooms.message,
+
+
 
   },
   actions: {
-    async removeReservation({ commit }, payload){
+    async removeReservation({ commit }, payload) {
       commit("REMOVE_RESERVATION", await apiService.removeReservation(payload.id))
-     alert(payload.id)
+
+    },
+    async removeRent({ commit }, payload) {
+      commit("REMOVE_RENT", await apiService.removeRent(payload.id))
+
     },
     async getMenus({ commit }) {
       commit("SET_MENUS", await apiService.getMenus())
@@ -601,6 +616,10 @@ export default new Vuex.Store({
     },
     async getComponentsMenus({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents())
+    },
+    async getRooms({ commit }) {
+      commit("SET_ROOMS", await apiService.getRooms())
+      alert("jhsef")
     },
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes())
@@ -661,7 +680,7 @@ export default new Vuex.Store({
       commit("SET_STATES", await apiService.getStates())
     },
     async getEventypesId({ commit }, payload) {
-      commit("SET_TYPEID", await apiService.getEventypesId(payload.id)) 
+      commit("SET_TYPEID", await apiService.getEventypesId(payload.id))
     },
     async login({ commit }, payload) {
       commit("LOGIN", await apiService.login(
