@@ -13,13 +13,12 @@ const routes = [
     path: "/addWorkshop",
     name: "addWorkshop",
     component: () => import("../views/addWorkshop.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -82,13 +81,12 @@ const routes = [
     path: "/menuadmin",
     name: "menuadmin",
     component: () => import("../views/BackofficeMenu.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -96,13 +94,12 @@ const routes = [
     path: "/usersadmin",
     name: "usersadmin",
     component: () => import("../views/userBackOffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -110,13 +107,12 @@ const routes = [
     path: "/workshopadmin",
     name: "workshopadmin",
     component: () => import("../views/workshopBackoffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -129,13 +125,12 @@ const routes = [
     path: "/menusBackoffice",
     name: "menusBackoffice",
     component: () => import("../views/menusBackoffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -143,13 +138,12 @@ const routes = [
     path: "/reservationsBackoffice",
     name: "reservationsBackoffice",
     component: () => import("../views/reservationsBackoffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -162,13 +156,12 @@ const routes = [
     path: "/addMenu",
     name: "addMenu",
     component: () => import("../views/addMenuBackoffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
   },
@@ -176,22 +169,21 @@ const routes = [
     path: "/eventsBackoffice",
     name: "eventsBackoffice",
     component: () => import("../views/eventsBackoffice.vue"),
-    beforeEnter(to,from,next){
-      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
-      next()
-      }
-      else{
-        next("/notFound")
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.user[0].id_tipoUser == 1) {
+        next();
+      } else {
+        next("/notFound");
       }
     }
-  },
+  }
 ];
 
 const router = new VueRouter({
   mode: "history",
-   scrollBehavior() {
-    return { x: 0, y: 0 }
+  scrollBehavior() {
+    return { x: 0, y: 0 };
   },
   base: process.env.BASE_URL,
   routes

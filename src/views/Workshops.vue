@@ -13,7 +13,6 @@
   </div>
 </template>
 
-
 <script>
 import cardWorkshop from "@/components/cardWorkshop.vue";
 
@@ -25,7 +24,6 @@ export default {
   methods: {}
 };
 </script>
-
 
 <style>
 .catering {

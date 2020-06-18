@@ -5,31 +5,61 @@
 
     <b-form v-on:submit.prevent="addMenus()">
       <!-- NOME -->
-      <b-form-group id="input-group-1" label="Nome do Menu:" label-for="input-1"></b-form-group>
-      <input type="text" v-model="name" style=" width: 300px;" placeholder="Insira o titulo" />
+      <b-form-group
+        id="input-group-1"
+        label="Nome do Menu:"
+        label-for="input-1"
+      ></b-form-group>
+      <input
+        type="text"
+        v-model="name"
+        style=" width: 300px;"
+        placeholder="Insira o titulo"
+      />
       <br />
       <!-- IMAGEM -->
-      <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
+      <b-form-label name="image" for="txtImage" class="nameLabel"
+        >Imagem do Menu:</b-form-label
+      >
       <br />
-      <input type="link" class="form-control-center" placeholder="Insira uma imagem" v-model="img" />
+      <input
+        type="link"
+        class="form-control-center"
+        placeholder="Insira uma imagem"
+        v-model="img"
+      />
       <b-img v-bind:src="this.img" fluid style="width:200px"></b-img>
 
       <!-- TIPO EVENTO -->
-      <b-form-group id="input-group-1" label="Tipo de Evento:" label-for="input-1"></b-form-group>
+      <b-form-group
+        id="input-group-1"
+        label="Tipo de Evento:"
+        label-for="input-1"
+      ></b-form-group>
       <select v-model="typeEE">
         <option
           v-for="typeE in eventType"
           v-bind:value="typeE.id_tipo_reserva"
           :key="typeE"
           @click="typeEvent(typeE)"
-        >{{typeE.descritivo}}</option>
+          >{{ typeE.descritivo }}</option
+        >
       </select>
 
       <!-- COMPONENTES DO MENU -->
-      <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
+      <b-form-group
+        id="input-group-1"
+        label="Componenetes:"
+        label-for="input-1"
+      ></b-form-group>
       <div v-for="component in components" :key="component.id_menu.toString()">
-        <input type="checkbox" :value="component.descritivo" unchecked v-model="componentsNew" />
-        {{component.descritivo}}
+        <input
+          type="checkbox"
+          :value="component.descritivo"
+          unchecked
+          v-model="componentsNew"
+        />
+        {{ component.descritivo }}
       </div>
 
       <b-button type="submit" class="btnConf">Confirmar</b-button>
@@ -40,8 +70,17 @@
     <b-form v-on:submit.prevent="addComponent()">
       <!-- NOME -->
       <h2>Adicionar novo componente</h2>
-      <b-form-group id="input-group-1" label="Nome do Componente:" label-for="input-1"></b-form-group>
-      <input type="text" v-model="nameComponent" style=" width: 300px;" placeholder="Insira o nome" />
+      <b-form-group
+        id="input-group-1"
+        label="Nome do Componente:"
+        label-for="input-1"
+      ></b-form-group>
+      <input
+        type="text"
+        v-model="nameComponent"
+        style=" width: 300px;"
+        placeholder="Insira o nome"
+      />
       <br />
       <b-button type="submit" class="btnConf">Confirmar</b-button>
     </b-form>
@@ -59,7 +98,8 @@
           class="btnDetails"
           size="sm"
           @click="removeComponent(row.item.id)"
-        >X</b-button>
+          >X</b-button
+        >
       </template>
     </b-table>
   </div>

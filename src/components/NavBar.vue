@@ -2,16 +2,30 @@
   <div class="navBar">
     <!--Navbar-->
     <nav class="navbar navbar-light bg-light">
-      <a class="nav-item" id="bell" v-if="this.$store.state.loggedUser.length == 0">
+      <a
+        class="nav-item"
+        id="bell"
+        v-if="this.$store.state.loggedUser.length == 0"
+      >
         <a class="navbar-brand text-left" href="/">
-          <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText" alt />
+          <img
+            src="../assets/logo.eshtEvents.png"
+            class="img-fluid"
+            id="logoText"
+            alt
+          />
         </a>
         <img src="../assets/Logo.mao.png" class="img-fluid" id="camp" alt />
         <router-link to="/login" id="loginBtn">Iniciar Sessão</router-link>
       </a>
       <a v-if="this.$store.state.loggedUser.length != 0" href="Profile">
         <a class="navbar-brand text-left" href="/">
-          <img src="../assets/logo.eshtEvents.png" class="img-fluid" id="logoText1" alt />
+          <img
+            src="../assets/logo.eshtEvents.png"
+            class="img-fluid"
+            id="logoText1"
+            alt
+          />
         </a>
         <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
         <img
@@ -30,18 +44,32 @@
       <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
-          <span v-if="this.$store.state.loggedUser.length != 0 ">
-            <router-link class="link" to="/menuadmin" id="links">Area Administrador</router-link>
+          <span v-if="this.$store.state.loggedUser.length != 0">
+            <router-link class="link" to="/menuadmin" id="links"
+              >Area Administrador</router-link
+            >
             <router-link class="link" to="/menu" id="links">Menus</router-link>
-            <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
-            <router-link class="link" to="/room" id="links">Espaços</router-link>
-            <router-link class="link" to="/workshops" id="links">Workshops</router-link>
+            <router-link class="link" to="/events" id="links"
+              >Eventos e Catering</router-link
+            >
+            <router-link class="link" to="/room" id="links"
+              >Espaços</router-link
+            >
+            <router-link class="link" to="/workshops" id="links"
+              >Workshops</router-link
+            >
           </span>
           <span v-else>
             <router-link class="link" to="/menu" id="links">Menus</router-link>
-            <router-link class="link" to="/events" id="links">Eventos e Catering</router-link>
-            <router-link class="link" to="/room" id="links">Espaços</router-link>
-            <router-link class="link" to="/workshops" id="links">Workshops</router-link>
+            <router-link class="link" to="/events" id="links"
+              >Eventos e Catering</router-link
+            >
+            <router-link class="link" to="/room" id="links"
+              >Espaços</router-link
+            >
+            <router-link class="link" to="/workshops" id="links"
+              >Workshops</router-link
+            >
           </span>
         </div>
       </div>
@@ -67,7 +95,7 @@ export default {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
       );
-     
+
       this.foto_perfil = this.$store.state.loggedUser.user[0].foto_perfil;
       this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser;
     }

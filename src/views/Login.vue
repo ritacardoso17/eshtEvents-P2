@@ -20,13 +20,13 @@
         v-model="password"
         required
       />´
-      <b-button type="submit" class="btn btn-primary float-right" id="btnLogin">Entrar</b-button>
+      <b-button type="submit" class="btn btn-primary float-right" id="btnLogin"
+        >Entrar</b-button
+      >
     </form>
-    <router-link
-      tag="a"
-      id="join"
-      :to="{ name: 'register' }"
-    >Ainda não estás registado? Junta-te a nós!</router-link>
+    <router-link tag="a" id="join" :to="{ name: 'register' }"
+      >Ainda não estás registado? Junta-te a nós!</router-link
+    >
   </div>
 </template>
 
@@ -55,16 +55,15 @@ export default {
     );
   },
   methods: {
-   async login() {
-        try {
+    async login() {
+      try {
         await this.$store.dispatch("login", {
-         email: this.email,
-        password: this.password
+          email: this.email,
+          password: this.password
         });
       } catch (err) {
         alert(err);
       }
-     
     }
   }
 };

@@ -1,19 +1,15 @@
 <template>
-<div>
-
-    <b-img class="imgNot" src="../assets/noun_Waiter_notFound.png"> </b-img> 
-    <b-button id="btnNtFn" :to="{path: './' }"> Voltar</b-button>
+  <div>
+    <b-img class="imgNot" src="../assets/noun_Waiter_notFound.png"> </b-img>
+    <b-button id="btnNtFn" :to="{ path: './' }"> Voltar</b-button>
     <h1 class="notfoundText">Página não encontrada</h1>
-
-</div>
+  </div>
 </template>
 
-<script>
-
-</script>
+<script></script>
 
 <style>
-.imgNot{
+.imgNot {
   width: 400px;
 }
 #btnNtFn {
@@ -23,19 +19,18 @@
   font-size: 100%;
   color: white;
   left: -160px;
-  top:-15px;
+  top: -15px;
   background-color: #000;
   font-family: GeosansLight;
 }
 #btnNtFn:hover {
   color: white;
   border: 2px solid;
-  border-color: #DAAA29;
+  border-color: #daaa29;
   background-color: #000;
 }
-.notfoundText{
+.notfoundText {
   font-family: GeosansLight;
-  padding-top: -25px
-
+  padding-top: -25px;
 }
 </style>

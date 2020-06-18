@@ -28,7 +28,9 @@
             required
             v-model="password"
           />
-          <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
+          <label for="confirmarPassTxt" class="confLabel"
+            >Confirmar Palavra-chave:</label
+          >
           <input
             type="password"
             class="form-control"
@@ -68,10 +70,17 @@
           />
           <label for="sltSchool" class="schoolLabel">Instituição:</label>
           <select id="sltSchool" v-model="school">
-            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{s.nome}}</option>
+            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{
+              s.nome
+            }}</option>
           </select>
         </div>
-        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil" />
+        <input
+          type="link"
+          id="urlAvatar"
+          v-model="imgPerfil"
+          :placeholder="imgPerfil"
+        />
         <div id="avatar">
           <img id="avatar1" :src="imgPerfil" />
         </div>
@@ -211,7 +220,7 @@ export default {
   width: 60%;
   margin-top: 4%;
 }
-#form{
+#form {
   align-items: left;
   text-align: left;
 }
@@ -296,7 +305,6 @@ export default {
   height: 37%;
   left: -70%;
   border: 2px solid #232323;
-  
 }
 #avatar1 {
   width: 48%;
@@ -309,12 +317,10 @@ export default {
   top: 52%;
   font-size: 120%;
   font-family: GeosansLight;
-  
 }
 #urlAvatar {
   position: absolute;
   left: -60%;
   top: 60%;
-  
 }
 </style>

@@ -9,17 +9,19 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    users: [{
-      id: 0,
-      name: "Admin",
-      school: "",
-      typeUser: "admin",
-      email: "admin@email.com",
-      password: "123",
-      birth: "",
-      contact: "",
-      imgProfile: "../assets/star.png"
-    }],
+    users: [
+      {
+        id: 0,
+        name: "Admin",
+        school: "",
+        typeUser: "admin",
+        email: "admin@email.com",
+        password: "123",
+        birth: "",
+        contact: "",
+        imgProfile: "../assets/star.png"
+      }
+    ],
     roomRents: [],
     userExist: false,
     loggedUser: [],
@@ -101,7 +103,6 @@ export default new Vuex.Store({
       //     name: "Menu Estudante",
       //     type: "Coffee Break",
       //     components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
-
       //   },
       //   {
       //     id: 3,
@@ -111,7 +112,6 @@ export default new Vuex.Store({
       //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
       //       "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"
       //     ]
-
       //   },
       //   {
       //     id: 4,
@@ -191,8 +191,11 @@ export default new Vuex.Store({
       //     ]
       //   }
     ],
-    eventType: [/* "Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra" */],
-    reservations: [/* {
+    eventType: [
+      /* "Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra" */
+    ],
+    reservations: [
+      /* {
       id: 0,
       user: "João Alves",
       eventType: "Almoço",
@@ -203,7 +206,8 @@ export default new Vuex.Store({
       place: "esmad",
       extra: [],
       state: "Pendente"
-    } */],
+    } */
+    ],
     uniforms: [
       //   {
       //   id: 0,
@@ -243,26 +247,27 @@ export default new Vuex.Store({
       //   name: "Decoração C"
       // },
     ],
-    types: [{
-      id: 0,
-      img: "../assets/cozinha.jpg",
-      name: "Bar"
-    },
-    {
-      id: 1,
-      img: "../assets/cozinha.jpg",
-      name: "Restaurante"
-    },
-    {
-      id: 2,
-      img: "../assets/cozinha.jpg",
-      name: "Cozinha"
-    },
-    {
-      id: 3,
-      img: "../assets/cozinha.jpg",
-      name: "Novo Restaurante"
-    }
+    types: [
+      {
+        id: 0,
+        img: "../assets/cozinha.jpg",
+        name: "Bar"
+      },
+      {
+        id: 1,
+        img: "../assets/cozinha.jpg",
+        name: "Restaurante"
+      },
+      {
+        id: 2,
+        img: "../assets/cozinha.jpg",
+        name: "Cozinha"
+      },
+      {
+        id: 3,
+        img: "../assets/cozinha.jpg",
+        name: "Novo Restaurante"
+      }
     ],
     extras: [
       //   {
@@ -344,57 +349,52 @@ export default new Vuex.Store({
     ],
     schools: [],
     states: [],
-    currentMenus: [],
+    currentMenus: []
   },
-
 
   mutations: {
     REMOVE_RESERVATION: (state, reservations) => {
-      state.reservations = reservations
-      VueSimpleAlert.fire('Reserva Cancelada com Sucesso')
+      state.reservations = reservations;
+      VueSimpleAlert.fire("Reserva Cancelada com Sucesso");
     },
     REMOVE_RENT: (state, roomRents) => {
-      state.roomRents = roomRents
-      VueSimpleAlert.fire('Aluguer cancelado com sucesso')
+      state.roomRents = roomRents;
+      VueSimpleAlert.fire("Aluguer cancelado com sucesso");
     },
     ADD_USER: (state, payload) => {
       if (payload.password !== payload.confPass) {
-        VueSimpleAlert.fire('Passwords diferentes')
+        VueSimpleAlert.fire("Passwords diferentes");
       } else {
-        VueSimpleAlert.fire('Conta criada')
-        window.location = "./login"
+        VueSimpleAlert.fire("Conta criada");
+        window.location = "./login";
       }
-
     },
     LOGIN: (state, data) => {
-      state.loggedUser = data
+      state.loggedUser = data;
 
       //state.token = data.token
-      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser))
-      state.userExist = true
-      window.location = "./"
+      localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser));
+      state.userExist = true;
+      window.location = "./";
       if (!state.userExist) {
-        alert("Conta não existe")
-
+        alert("Conta não existe");
       } else {
-        state.userExist === false
+        state.userExist === false;
       }
-
     },
 
-    LOGOUT: (state) => {
+    LOGOUT: state => {
       // state.loggedUser.pop()
-      apiService.logout(state.loggedUser.token)
-      state.loggedUser = []
-      state.token = []
-      localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser))
-      location.href = "./"
-      VueSimpleAlert.fire('Sessão Terminada com Sucesso')
+      apiService.logout(state.loggedUser.token);
+      state.loggedUser = [];
+      state.token = [];
+      localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser));
+      location.href = "./";
+      VueSimpleAlert.fire("Sessão Terminada com Sucesso");
     },
     REMOVE_USER: (state, payload) => {
-      state.users = state.users.filter((user) => payload.id !== user.id)
-      localStorage.setItem("users", JSON.stringify(state.users))
-
+      state.users = state.users.filter(user => payload.id !== user.id);
+      localStorage.setItem("users", JSON.stringify(state.users));
     },
     CHANGE_TYPE: (state, payload) => {
       for (const user of state.users) {
@@ -408,14 +408,13 @@ export default new Vuex.Store({
             password: user.password,
             contact: user.contact,
             birth: user.birth
-          })
+          });
         }
-
       }
     },
     ADD_WORKSHOP: (state, payload) => {
       if (!state.workshops.some(workshop => workshop.title === payload.title)) {
-        alert("")
+        alert("");
         state.workshops.push({
           id: payload.id,
           title: payload.title,
@@ -427,13 +426,10 @@ export default new Vuex.Store({
           userEmail: [],
           description: payload.description
         });
-        localStorage.setItem("workshops", JSON.stringify(state.workshops))
-        VueSimpleAlert.fire('Workshop adicionado!').then(() => {
-
-        });
+        localStorage.setItem("workshops", JSON.stringify(state.workshops));
+        VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
       } else {
-        VueSimpleAlert.fire('Workshop com nome igual a um workshop criado.')
-
+        VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
       }
     },
     ADD_MENU: (state, payload) => {
@@ -446,25 +442,30 @@ export default new Vuex.Store({
         //   components: payload.components
         // });
         // localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
-        VueSimpleAlert.fire('Menu adicionado!').then(() => {
-
-        });
+        VueSimpleAlert.fire("Menu adicionado!").then(() => {});
       } else {
-        VueSimpleAlert.fire("Já existe um menu com esse nome!")
+        VueSimpleAlert.fire("Já existe um menu com esse nome!");
       }
     },
     ADD_COMPONENT: (state, payload) => {
-      if (!state.componentMenus.some(componentMenu => componentMenu.name === payload.name)) {
+      if (
+        !state.componentMenus.some(
+          componentMenu => componentMenu.name === payload.name
+        )
+      ) {
         state.componentMenus.push({
           id: payload.id,
           name: payload.name,
 
           components: payload.components
         });
-        localStorage.setItem("componentMenus", JSON.stringify(state.componentMenus))
+        localStorage.setItem(
+          "componentMenus",
+          JSON.stringify(state.componentMenus)
+        );
         VueSimpleAlert.fire("Complemento Criado").then(() => {
-          window.location = "./addMenuBackoffice"
-        })
+          window.location = "./addMenuBackoffice";
+        });
       }
       // else{}
     },
@@ -475,10 +476,10 @@ export default new Vuex.Store({
         payload.duration == "" ||
         payload.reason == ""
       ) {
-        VueSimpleAlert.fire('Preencha todos os campos')
+        VueSimpleAlert.fire("Preencha todos os campos");
       } else {
         // window.location = "./room"
-        VueSimpleAlert.fire('Aluguer adicionado')
+        VueSimpleAlert.fire("Aluguer adicionado");
       }
     },
     ADD_RESERVATION: (state, payload) => {
@@ -491,89 +492,96 @@ export default new Vuex.Store({
         payload.id_local == "" ||
         payload.id_decoration == ""
       ) {
-        VueSimpleAlert.fire('Preencha todos os campos')
+        VueSimpleAlert.fire("Preencha todos os campos");
       } else {
-        VueSimpleAlert.fire('Reserva adicionada')
-        window.location = "./Events"
+        VueSimpleAlert.fire("Reserva adicionada");
+        window.location = "./Events";
       }
     },
     SET_MENUS: (state, foodMenus) => {
-      state.foodMenus = foodMenus
+      state.foodMenus = foodMenus;
     },
     SET_COMPONENTS_MENUS: (state, componentMenus) => {
-      state.componentMenus = componentMenus
+      state.componentMenus = componentMenus;
     },
     SET_EVENTYPES: (state, eventType) => {
-      state.eventType = eventType
+      state.eventType = eventType;
     },
     SET_EVENTS: (state, reservations) => {
-      state.reservations = reservations
+      state.reservations = reservations;
     },
     SET_RENTS: (state, roomRents) => {
-      state.roomRents = roomRents
+      state.roomRents = roomRents;
     },
     SET_SCHOOLS: (state, data) => {
-      state.schools = data.message
+      state.schools = data.message;
     },
     SET_EXTRAS: (state, extras) => {
-      state.extras = extras
+      state.extras = extras;
     },
     SET_ROOMS: (state, data) => {
-      state.rooms = data.message
+      state.rooms = data.message;
     },
     SET_DECORATIONS: (state, decorations) => {
-      state.decorations = decorations
+      state.decorations = decorations;
     },
     SET_UNIFORMS: (state, uniforms) => {
-      state.uniforms = uniforms
+      state.uniforms = uniforms;
     },
     SET_WORKSHOPS: (state, workshops) => {
-      state.workshops = workshops
+      state.workshops = workshops;
     },
     SET_STATES: (state, states) => {
-      state.states = states
+      state.states = states;
     },
     SET_TYPEID: (state, data) => {
-      state.currentMenus = data.message.rows
+      state.currentMenus = data.message.rows;
+    },
+    SET_OPINIONRESERVS: () => {
+      this.$bvToast.toast("Opinião Enviada!");
+    },
+    SET_OPINIONRENTS: () => {
+      this.$bvToast.toast("Opinião Enviada!");
     }
   },
   getters: {
-    // getTypeUser(state) {
-    //   return state.loggedUser[0].id_tipoUser
-    // },
     getLastId(state) {
-      return state.users.length ? state.users[state.users.length - 1].id : 0
+      return state.users.length ? state.users[state.users.length - 1].id : 0;
     },
     getLastIdWorkshops(state) {
-      return state.workshops.length ? state.workshops[state.workshops.length - 1].id : 0
+      return state.workshops.length
+        ? state.workshops[state.workshops.length - 1].id
+        : 0;
     },
     getLastIdMenu(state) {
-      return state.foodMenus.length ? state.foodMenus[state.foodMenus.length - 1].id : 0
+      return state.foodMenus.length
+        ? state.foodMenus[state.foodMenus.length - 1].id
+        : 0;
     },
     getLastIdEvents(state) {
-      return state.reservations.length ? state.reservations[state.reservations.length - 1].id : 0
+      return state.reservations.length
+        ? state.reservations[state.reservations.length - 1].id
+        : 0;
     },
     getLastIdRooms(state) {
-      return state.roomRents.length ? state.roomRents[state.roomRents.length - 1].id : 0
+      return state.roomRents.length
+        ? state.roomRents[state.roomRents.length - 1].id
+        : 0;
     },
     getLastIdComponents(state) {
-      return state.componentMenus.length ? state.componentMenus[state.componentMenus.length - 1].id : 0
+      return state.componentMenus.length
+        ? state.componentMenus[state.componentMenus.length - 1].id
+        : 0;
     },
     getTypeUser(state) {
-      return state.loggedUser.user[0].id_tipoUser
+      return state.loggedUser.user[0].id_tipoUser;
     },
     getUserName(state) {
-      return state.loggedUser.user[0].nome
+      return state.loggedUser.user[0].nome;
     },
     getLoggedUserId(state) {
-      return state.loggedUser.user[0].id_utilizador
+      return state.loggedUser.user[0].id_utilizador;
     },
-    // getLoggedUserPassword(state) {
-    //   return state.loggedUser[0].password
-    // },
-    // getUser(state) {
-    //   return state.loggedUser[0];
-    // },
     getMenus: state => state.foodMenus.message,
     getComponentsMenus: state => state.componentMenus.message,
     getEvenTypes: state => state.eventType.message,
@@ -586,109 +594,125 @@ export default new Vuex.Store({
     getWorkshops: state => state.workshops.message,
     getStates: state => state.states.message,
     getEventypesId: state => state.currentMenus,
-    getRooms: state => state.rooms,
-
-
-
+    getRooms: state => state.rooms
   },
   actions: {
     async removeReservation({ commit }, payload) {
-      commit("REMOVE_RESERVATION", await apiService.removeReservation(payload.id))
-
+      commit(
+        "REMOVE_RESERVATION",
+        await apiService.removeReservation(payload.id)
+      );
     },
     async removeRent({ commit }, payload) {
-      commit("REMOVE_RENT", await apiService.removeRent(payload.id))
-
+      commit("REMOVE_RENT", await apiService.removeRent(payload.id));
     },
     async getMenus({ commit }) {
-      commit("SET_MENUS", await apiService.getMenus())
+      commit("SET_MENUS", await apiService.getMenus());
     },
     async getWorkshops({ commit }) {
-      commit("SET_WORKSHOPS", await apiService.getWorkshops())
+      commit("SET_WORKSHOPS", await apiService.getWorkshops());
     },
     async getComponentsMenus({ commit }) {
-      commit("SET_COMPONENTS_MENUS", await apiService.getComponents())
+      commit("SET_COMPONENTS_MENUS", await apiService.getComponents());
     },
     async getRooms({ commit }) {
-      commit("SET_ROOMS", await apiService.getRooms())
-
+      commit("SET_ROOMS", await apiService.getRooms());
     },
     async getEvenTypes({ commit }) {
-      commit("SET_EVENTYPES", await apiService.getEventypes())
+      commit("SET_EVENTYPES", await apiService.getEventypes());
     },
     async getRents({ commit }, payload) {
-      commit("SET_RENTS", await apiService.getUsersRents(payload.id))
+      commit("SET_RENTS", await apiService.getUsersRents(payload.id));
     },
     async getEvents({ commit }, payload) {
-      commit("SET_EVENTS", await apiService.getUsersEvents(payload.id))
+      commit("SET_EVENTS", await apiService.getUsersEvents(payload.id));
+    },
+    async getOpinionReservs({ commit }, payload) {
+      commit(
+        "SET_OPINIONRESERVS",
+        await apiService.getOpinionReservs(payload.id)
+      );
+    },
+    async getOpinionRents({ commit }, payload) {
+      commit("SET_OPINIONRENTS", await apiService.getOpinionRents(payload.id));
     },
     async addMenus({ commit }, payload) {
-      commit("ADD_MENU", await apiService.addMenus(
-        payload.name,
-        payload.img,
-        payload.type,
-        payload.components))
+      commit(
+        "ADD_MENU",
+        await apiService.addMenus(
+          payload.name,
+          payload.img,
+          payload.type,
+          payload.components
+        )
+      );
     },
     async addUser({ commit }, payload) {
-      commit("ADD_USER", await apiService.addUser(
-        payload.name,
-        payload.school,
-        payload.email,
-        payload.password,
-        payload.contact,
-        payload.birth,
-        payload.imgProfile,
-      ))
+      commit(
+        "ADD_USER",
+        await apiService.addUser(
+          payload.name,
+          payload.school,
+          payload.email,
+          payload.password,
+          payload.contact,
+          payload.birth,
+          payload.imgProfile
+        )
+      );
     },
     async addReservations({ commit }, payload) {
-      commit("ADD_RESERVATION", await apiService.addReservations(
-        payload.id_extra,
-        payload.n_people,
-        payload.dateTime_reserv,
-        payload.dateTime_event,
-        payload.id_uniform,
-        payload.id_evenType,
-        payload.id_menu,
-        payload.id_local,
-        payload.id_decoration,
-      ))
+      commit(
+        "ADD_RESERVATION",
+        await apiService.addReservations(
+          payload.id_extra,
+          payload.n_people,
+          payload.dateTime_reserv,
+          payload.dateTime_event,
+          payload.id_uniform,
+          payload.id_evenType,
+          payload.id_menu,
+          payload.id_local,
+          payload.id_decoration
+        )
+      );
     },
     async addRents({ commit }, payload) {
-      commit("ADD_RENT", await apiService.addRents(
-        payload.id_room,
+      commit(
+        "ADD_RENT",
+        await apiService.addRents(
+          payload.id_room,
 
-        // payload.date_reserv,
-        payload.date_required,
-        payload.duration,
-        payload.id_user,
-        payload.reason,
-        // payload.opinion,
-      ))
-      alert(payload.date_required)
+          // payload.date_reserv,
+          payload.date_required,
+          payload.duration,
+          payload.id_user,
+          payload.reason
+          // payload.opinion,
+        )
+      );
+      alert(payload.date_required);
     },
     async getSchools({ commit }) {
-      commit("SET_SCHOOLS", await apiService.getSchools())
+      commit("SET_SCHOOLS", await apiService.getSchools());
     },
     async getExtras({ commit }) {
-      commit("SET_EXTRAS", await apiService.getExtras())
+      commit("SET_EXTRAS", await apiService.getExtras());
     },
     async getDecorations({ commit }) {
-      commit("SET_DECORATIONS", await apiService.getDecorations())
+      commit("SET_DECORATIONS", await apiService.getDecorations());
     },
     async getUniforms({ commit }) {
-      commit("SET_UNIFORMS", await apiService.getUniforms())
+      commit("SET_UNIFORMS", await apiService.getUniforms());
     },
     async getStates({ commit }) {
-      commit("SET_STATES", await apiService.getStates())
+      commit("SET_STATES", await apiService.getStates());
     },
     async getEventypesId({ commit }, payload) {
-      commit("SET_TYPEID", await apiService.getEventypesId(payload.id))
+      commit("SET_TYPEID", await apiService.getEventypesId(payload.id));
     },
     async login({ commit }, payload) {
-      commit("LOGIN", await apiService.login(
-        payload.email,
-        payload.password,
-      ))
+      commit("LOGIN", await apiService.login(payload.email, payload.password));
     }
   }
 });

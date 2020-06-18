@@ -4,9 +4,17 @@
     <h2 class="adminTitle">Reservas de Eventos</h2>
     <br />
 
-    <b-table bordered fixed hover :items="this.reservations" :fields="this.fields">
+    <b-table
+      bordered
+      fixed
+      hover
+      :items="this.reservations"
+      :fields="this.fields"
+    >
       <template v-slot:cell(details)="row">
-        <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+        <b-button class="btnDetails" size="sm" @click="row.toggleDetails"
+          >Mostrar Detalhes</b-button
+        >
       </template>
 
       <template v-slot:cell(options)="row">
@@ -16,14 +24,16 @@
           size="sm"
           @click="acceptReservation(row.item.id, row.item.userMail)"
           style="margin:5px,"
-          v-bind:style="{display:show}"
-        >Aceitar</b-button>
+          v-bind:style="{ display: show }"
+          >Aceitar</b-button
+        >
         <b-button
           variant="danger"
           class="btnChange"
           size="sm"
           @click="refuseReservation(row.item.id)"
-        >Recusar</b-button>
+          >Recusar</b-button
+        >
       </template>
 
       <template v-slot:row-details="row">
@@ -40,7 +50,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
               <b>Menu:</b>
-              {{ row.item.menu}}
+              {{ row.item.menu }}
             </b-col>
           </b-row>
           <!-- NUMERO DE PESSOAS -->
@@ -132,7 +142,7 @@ export default {
       this.$store.state.reservations = localStorage.setItem(
         "reservations",
         JSON.stringify(this.reservations)
-      )
+      );
     },
     refuseReservation(id) {
       for (let i in this.reservations) {

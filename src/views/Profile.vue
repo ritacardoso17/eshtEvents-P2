@@ -1,14 +1,19 @@
 <template>
   <div class="profile">
     <div class="container">
-      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">Perfil</h1>
+      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">
+        Perfil
+      </h1>
     </div>
 
     <div class="container perfilBanner">
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img style="width:200px; height:auto" :src="this.$store.state.loggedUser.user[0].foto_perfil" />
+            <img
+              style="width:200px; height:auto"
+              :src="this.$store.state.loggedUser.user[0].foto_perfil"
+            />
           </div>
           <div class="form-group">
             <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
@@ -16,18 +21,22 @@
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />
               <button type="submit" id="editFoto2">Editar Foto</button>
-                <button type="button" id="editFoto3" @click="cancelFt()">X</button>
+              <button type="button" id="editFoto3" @click="cancelFt()">
+                X
+              </button>
             </form>
           </div>
         </div>
         <div align="left" class="col-sm-4 infos">
           <p class="userName">
-            <b>{{this.$store.state.loggedUser.user[0].nome}}</b>
+            <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
           </p>
-          <p>Data de Nascimento: {{this.$store.state.loggedUser.user[0].nome}}</p>
-          <p>Contacto: {{this.$store.state.loggedUser.user[0].nome}}</p>
-          <p>Instituição: {{this.$store.state.loggedUser.user[0].school}}</p>
-          <p>E-mail: {{this.$store.state.loggedUser.user[0].email_ipp}}</p>
+          <p>
+            Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}
+          </p>
+          <p>Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
+          <p>Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
+          <p>E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
         </div>
         <div class="col-sm-4">
           <router-link to="/Profile/editProfile">
@@ -43,12 +52,14 @@
     </div>
 
     <div class="container" style="padding-bottom: 60px; padding-top: 20px;">
-      <h2 style="font-family: Channel; font-size: 20px; color: black;">As Tuas Reservas</h2>
+      <h2 style="font-family: Channel; font-size: 20px; color: black;">
+        As Tuas Reservas
+      </h2>
     </div>
 
     <div class="container tables">
       <b-tabs align="center">
-        <b-tab title="Eventos" >
+        <b-tab title="Eventos">
           <div class="container" style="padding:120px;">
             <eventos />
           </div>
@@ -76,11 +87,10 @@ export default {
       newPhoto: "",
       loggedUser: [],
 
-      nome:""
+      nome: ""
     };
   },
   created() {
-    
     // if (localStorage.getItem("loggedUser")) {
     //   this.$store.state.loggedUser = JSON.parse(
     //     localStorage.getItem("loggedUser")
@@ -90,7 +100,7 @@ export default {
     //   this.$store.state.users = JSON.parse(localStorage.getItem("users"));
     // }
     // this.users = this.$store.state.users;
-    
+
     // this.loggedUser = this.loggedUser.user[0]
     // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     // if (localStorage.getItem("reservations")) {
@@ -113,7 +123,7 @@ export default {
         let filterResult = true;
         let filterResultType = true;
 
-        if (this.reservations.userId === this.loggedUser.id) {                                             
+        if (this.reservations.userId === this.loggedUser.id) {
           filterResult = reservations.id.includes(this.reservations.userId);
         }
         return filterResultType && filterResult;
@@ -131,17 +141,17 @@ export default {
         localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
         this.$store.state.loggedUser = this.loggedUser;
         if (this.users[i].id == this.loggedUser[0].id) {
-       
           this.users[i].imgProfile = this.newPhoto;
           localStorage.setItem("users", JSON.stringify(this.users));
           this.$store.state.users = this.users;
         }
-      }this.newPhoto=""
+      }
+      this.newPhoto = "";
     },
-    cancelFt(){
-      this.newPhoto=""
-    } 
-  },
+    cancelFt() {
+      this.newPhoto = "";
+    }
+  }
 };
 </script>
 
@@ -189,9 +199,9 @@ export default {
   background-color: #000;
   font-family: GeosansLight;
 }
-#editFoto3{
+#editFoto3 {
   margin-top: 3%;
-   margin-left: 3%;
+  margin-left: 3%;
   font-size: 12px;
   border: 2px solid black;
   height: 1.5vw;
@@ -217,10 +227,10 @@ export default {
   margin-bottom: 4%;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
 }
- a {
-    color: black ;
-    text-decoration: none;
-    background-color: transparent;
+a {
+  color: black;
+  text-decoration: none;
+  background-color: transparent;
 }
 /* .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #495057;

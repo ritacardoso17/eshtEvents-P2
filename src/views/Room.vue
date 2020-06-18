@@ -15,7 +15,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+          <b-card
+            no-body
+            class="overflow-hidden cards border-0"
+            style="max-width: 70vw;"
+          >
             <div class="card-header" id="header">Restaurante Aplicação</div>
             <b-row no-gutters>
               <b-col md="6">
@@ -29,9 +33,9 @@
               <b-col md="6">
                 <b-card-body>
                   <b-card-text id="text">
-                    Restaurante com capacidade para 50 pessoas,
-                    onde são aplicados os métodos de serviço leccionados
-                    nas UC de Práticas Hoteleiras.
+                    Restaurante com capacidade para 50 pessoas, onde são
+                    aplicados os métodos de serviço leccionados nas UC de
+                    Práticas Hoteleiras.
                   </b-card-text>
                 </b-card-body>
               </b-col>
@@ -42,7 +46,11 @@
 
       <div class="row">
         <div class="col-sm-12">
-          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+          <b-card
+            no-body
+            class="overflow-hidden cards border-0"
+            style="max-width: 70vw;"
+          >
             <div class="card-header" id="header">Cozinha de Aplicação</div>
             <b-row no-gutters>
               <b-col md="6">
@@ -55,9 +63,10 @@
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text
-                    id="text"
-                  >Possuimos uma cozinha totalmente equipada e preparada para os mais diversos serviços.</b-card-text>
+                  <b-card-text id="text"
+                    >Possuimos uma cozinha totalmente equipada e preparada para
+                    os mais diversos serviços.</b-card-text
+                  >
                 </b-card-body>
               </b-col>
             </b-row>
@@ -66,7 +75,11 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <b-card no-body class="overflow-hidden cards border-0" style="max-width: 70vw;">
+          <b-card
+            no-body
+            class="overflow-hidden cards border-0"
+            style="max-width: 70vw;"
+          >
             <div class="card-header" id="header">Bar de Aplicação</div>
             <b-row no-gutters>
               <b-col md="6">
@@ -80,9 +93,9 @@
               <b-col md="6">
                 <b-card-body>
                   <b-card-text id="text">
-                    No Bar Aplicação,
-                    os estudantes poêm em prática os conhecimentos de serviço de bar,
-                    obtidos nas aulas da Licenciatura. É um espaço agradável e acolhedor.
+                    No Bar Aplicação, os estudantes poêm em prática os
+                    conhecimentos de serviço de bar, obtidos nas aulas da
+                    Licenciatura. É um espaço agradável e acolhedor.
                   </b-card-text>
                 </b-card-body>
               </b-col>
@@ -95,8 +108,11 @@
         id="btnRent"
         v-if="this.$store.state.loggedUser.length != 0"
         :to="{ name: 'rentRoom' }"
-      >Alugar</router-link>
-      <router-link tag="button" id="btnRent" v-else :to="{ name: 'login' }">Alugar</router-link>
+        >Alugar</router-link
+      >
+      <router-link tag="button" id="btnRent" v-else :to="{ name: 'login' }"
+        >Alugar</router-link
+      >
     </div>
   </div>
 </template>

@@ -1,12 +1,25 @@
 <template>
   <div id="table">
     <div v-if="this.reservations != ''">
-      <b-table striped hover head-variant="dark" :items="this.reservations" :fields="this.fields">
+      <b-table
+        striped
+        hover
+        head-variant="dark"
+        :items="this.reservations"
+        :fields="this.fields"
+      >
         <template v-slot:cell(cancel)="row">
-          <b-button class="btnCancel" size="sm" @click="cancelEvents(row.item.id_reserva)">Cancelar</b-button>
+          <b-button
+            class="btnCancel"
+            size="sm"
+            @click="cancelEvents(row.item.id_reserva)"
+            >Cancelar</b-button
+          >
         </template>
         <template v-slot:cell(opinions)="row">
-          <b-button class="btnDetails rounded-0" @click="row.toggleDetails">Dar opinião</b-button>
+          <b-button class="btnDetails rounded-0" @click="row.toggleDetails"
+            >Dar opinião</b-button
+          >
         </template>
         <template v-slot:row-details="row">
           <b-card>
@@ -56,8 +69,6 @@ export default {
   created() {
     this.id = this.getUserId();
     this.getAllEvents(this.id);
-    // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    // this.reservations = JSON.parse(localStorage.getItem("reservations"));
   },
 
   computed: {
@@ -92,19 +103,19 @@ export default {
         }
       }
     },
-    send(id) {
-      let reservations = JSON.parse(localStorage.getItem("reservations"));
+    async send(id) {
       alert(id);
-      for (let i in reservations) {
-        if (reservations[i].id === id) {
-          reservations[i].opinions = this.opinion;
+      try {
+        for (let i in this.reservations) {
+          if (this.reservations[i].id === id) {
+            this.reservations[i].opinions = this.opinion;
+          }
         }
+        this.opinion = "";
+      } catch (err) {
+        alert(err);
       }
-      localStorage.setItem("reservations", JSON.stringify(reservations));
-      this.$bvToast.toast("Opinião Enviada!");
-      this.opinion = "";
     }
-    //
   }
 };
 </script>
@@ -114,8 +125,8 @@ export default {
   font-family: GeosansLight;
   color: black;
 }
-#paragraph{
-  font-size:30px
+#paragraph {
+  font-size: 30px;
 }
 .btnDetails {
   background-color: black;

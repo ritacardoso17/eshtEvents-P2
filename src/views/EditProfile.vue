@@ -1,20 +1,40 @@
 <template>
   <div class="editProfile">
-    <br>
+    <br />
     <h1 id="title">Editar Perfil</h1>
     <div id="container">
-      <h3 style="color: #daaa29" id="name"><b>{{this.$store.state.loggedUser.user[0].nome}}</b></h3>
+      <h3 style="color: #daaa29" id="name">
+        <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
+      </h3>
       <div>
-        <img  class="imgEdit" style="width:200px; height:auto" :src="this.$store.state.loggedUser.user[0].foto_perfil" />
+        <img
+          class="imgEdit"
+          style="width:200px; height:auto"
+          :src="this.$store.state.loggedUser.user[0].foto_perfil"
+        />
       </div>
       <form v-on:submit.prevent="changePassword()">
         <label for="password" class="password">Palavra-passe:</label>
-        <input type="password" class="form-control" id="password" v-model="password" required />
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          v-model="password"
+          required
+        />
 
         <label for="password" class="newPassword">Nova palavra-passe:</label>
-        <input type="password" class="form-control" id="newPassword" v-model="newPassword" required />
+        <input
+          type="password"
+          class="form-control"
+          id="newPassword"
+          v-model="newPassword"
+          required
+        />
 
-        <label for="password" class="confirmPassword">Confirmar palavra-passe:</label>
+        <label for="password" class="confirmPassword"
+          >Confirmar palavra-passe:</label
+        >
         <input
           type="password"
           class="form-control"
@@ -64,13 +84,11 @@ export default {
             this.$store.state.users = this.users;
           }
         }
-        this.$bvToast.toast('Palavra-Passe alterada!')
+        this.$bvToast.toast("Palavra-Passe alterada!");
       } else if (this.loggedUser[0].password !== this.password) {
-
-         this.$bvToast.toast('A palavra-passe não coincide com a atual!')
+        this.$bvToast.toast("A palavra-passe não coincide com a atual!");
       } else {
-         this.$bvToast.toast('Passwords diferentes')
-        
+        this.$bvToast.toast("Passwords diferentes");
       }
     }
   },
@@ -114,7 +132,7 @@ h1 {
   width: 55vw;
   font-family: GeosansLight;
 }
-form{
+form {
   position: relative;
   margin-top: -20%;
   left: 50%;
@@ -142,7 +160,6 @@ form{
   top: -2.5vw;
   left: 70%;
   width: 75%;
-
 }
 .newPassword {
   position: relative;
@@ -153,13 +170,13 @@ form{
   font-family: GeosansLight;
   top: -2.5vw;
   left: 70%;
-    width: 75%;
+  width: 75%;
 }
 .confirmPassword {
   position: relative;
   font-family: GeosansLight;
 }
-.imgEdit{
+.imgEdit {
   margin-left: -35vw;
   margin-top: 5%;
 }

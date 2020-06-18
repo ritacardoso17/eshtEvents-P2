@@ -8,20 +8,27 @@
         <b-img src="../assets/bandeja.preto.png" class="bandeja"></b-img>
       </div>
       <div class="row">
-        <b-img :src="require('../assets/eshtEvents.dourado.png')" class="douradoLogo" />
+        <b-img
+          :src="require('../assets/eshtEvents.dourado.png')"
+          class="douradoLogo"
+        />
       </div>
       <div id="subTitle">
         <h5>Eventos & Catering</h5>
       </div>
       <div class="row" id="text">
         <p>
-          O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto,
-          com capacidade para 50 pessoas.
-          Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.
+          O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é
+          da responsabilidade do Politécnico do Porto, com capacidade para 50
+          pessoas. Durante estes últimos anos, o Restaurante tem acolhido
+          diversos eventos, conseguindo sempre estar à altura das expectativas
+          dos clientes.
         </p>
       </div>
     </div>
-    <button class="btnAboutUs" @click="location()">Descobre mais sobre nós</button>
+    <button class="btnAboutUs" @click="location()">
+      Descobre mais sobre nós
+    </button>
     <router-link to="/profile">
       <!--PARA TIRAR-->
     </router-link>
@@ -47,22 +54,27 @@
               <b-card-body>
                 <b-card-text>
                   O Restaurante de Aplicação da ESHT permite-te fazer reservas
-                  de Eventos e Catering, agora de forma mais simples e intuitiva,
-                  com um seguimento de passos que facilita a tua comunicação connosco.
+                  de Eventos e Catering, agora de forma mais simples e
+                  intuitiva, com um seguimento de passos que facilita a tua
+                  comunicação connosco.
                 </b-card-text>
-                <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver Mais</router-link>
+                <router-link tag="button" id="seeMore" :to="{ name: 'events' }"
+                  >Ver Mais</router-link
+                >
                 <router-link
                   tag="button"
                   id="reserve"
                   v-if="this.$store.state.loggedUser.length == 0"
                   :to="{ name: 'login' }"
-                >Reservar Agora</router-link>
+                  >Reservar Agora</router-link
+                >
                 <router-link
                   tag="button"
                   id="reserve"
                   v-else
                   :to="{ name: 'eventsReserv' }"
-                >Reservar Agora</router-link>
+                  >Reservar Agora</router-link
+                >
               </b-card-body>
             </b-col>
           </b-row>
@@ -87,22 +99,28 @@
             <b-col md="6">
               <b-card-body>
                 <b-card-text>
-                  A Escola Superior de Hotelaria e Turismo dá-te a possibilidade de alugares um dos seus espaços para organizares o teu próprio evento,
-                  palestra ou outro uso que seja adequado ao espaço pretendido. Vem conhecer as nossas instalações!
+                  A Escola Superior de Hotelaria e Turismo dá-te a possibilidade
+                  de alugares um dos seus espaços para organizares o teu próprio
+                  evento, palestra ou outro uso que seja adequado ao espaço
+                  pretendido. Vem conhecer as nossas instalações!
                 </b-card-text>
-                <router-link tag="button" id="seeMore" :to="{ name: 'events' }">Ver mais</router-link>
+                <router-link tag="button" id="seeMore" :to="{ name: 'events' }"
+                  >Ver mais</router-link
+                >
                 <router-link
                   tag="button"
                   id="reserve"
                   v-if="this.$store.state.loggedUser.length == 0"
                   :to="{ name: 'login' }"
-                >Reservar Agora</router-link>
+                  >Reservar Agora</router-link
+                >
                 <router-link
                   tag="button"
                   id="reserve"
                   v-else
                   :to="{ name: 'eventsReserv' }"
-                >Reservar Agora</router-link>
+                  >Reservar Agora</router-link
+                >
               </b-card-body>
             </b-col>
           </b-row>
@@ -126,16 +144,19 @@
             <b-col md="6">
               <b-card-body>
                 <b-card-text>
-                  A Wine School da Escola Superior de Hotelaria e Turismo do Instituto Politécnico
-                  do Porto pretende dar a conhecer o potencial dos vinhos a entusiastas e
-                  apreciadores de vinho que têm curiosidade e/ou vontade de aprender um pouco mais sobre a área.
-                  Esta história divide-se em seis capítulos e é aberta ao público.
+                  A Wine School da Escola Superior de Hotelaria e Turismo do
+                  Instituto Politécnico do Porto pretende dar a conhecer o
+                  potencial dos vinhos a entusiastas e apreciadores de vinho que
+                  têm curiosidade e/ou vontade de aprender um pouco mais sobre a
+                  área. Esta história divide-se em seis capítulos e é aberta ao
+                  público.
                 </b-card-text>
                 <router-link
                   tag="button"
                   id="workshopsbtn"
                   :to="{ name: 'workshops' }"
-                >Ver Workshops</router-link>
+                  >Ver Workshops</router-link
+                >
               </b-card-body>
             </b-col>
           </b-row>

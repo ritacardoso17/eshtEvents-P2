@@ -14,12 +14,18 @@
       <b-tabs align="center" v-model="tabIndex" small card id="tab">
         <!-- TAB EVENTO -->
         <b-tab title="Evento" :title-link-class="'tab-title-class'" active>
-          <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="16.66"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
           <br />
           <p class="guide2">
             ▶
-            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o tipo de Evento que pretende realizar
+            <b style="color: #daaa29; font-size: 130% ">Escolha</b> o tipo de
+            Evento que pretende realizar
           </p>
           <br />
           <div class="container">
@@ -28,7 +34,7 @@
                 <b-button id="btn4" @click="getMenuByType(e.id_tipo_reserva)">
                   <div style="background-color: black;">
                     <h1 id="eventType" class="centered">
-                      <b>{{e.descritivo}}</b>
+                      <b>{{ e.descritivo }}</b>
                     </h1>
                   </div>
                 </b-button>
@@ -38,12 +44,27 @@
         </b-tab>
         <!-- TAB INFO -->
         <b-tab title="Informações">
-          <b-progress id="progress" :value="33.33" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="33.33"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" v-model="day" />
-              <input type="time" class="form-control" id="txtTime" v-model="time" />
+              <input
+                type="date"
+                class="form-control"
+                id="txtDate"
+                v-model="day"
+              />
+              <input
+                type="time"
+                class="form-control"
+                id="txtTime"
+                v-model="time"
+              />
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -64,9 +85,13 @@
                 v-model="duration"
               />
 
-              <label for="sltLocation" class="locationLabel">▶ Localização</label>
+              <label for="sltLocation" class="locationLabel"
+                >▶ Localização</label
+              >
               <select id="sltLocation" v-model="location">
-                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{l.nome}}</option>
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{
+                  l.nome
+                }}</option>
               </select>
             </div>
           </form>
@@ -75,8 +100,13 @@
         <!-- TAB MENU -->
         <b-tab id="second" title="Menu">
           <div class="container">
-            <div v-if="menus.length !== 0 ">
-              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+            <div v-if="menus.length !== 0">
+              <b-progress
+                id="progress"
+                :value="49.66"
+                variant="warning"
+                :striped="striped"
+              ></b-progress>
               <div class="row">
                 <div class="col-sm-3" v-for="menu in this.menus" :key="menu.id">
                   <b-card
@@ -94,31 +124,45 @@
                       v-b-modal="menu.id"
                       @click="chooseMenu(menu.name, menu.id)"
                       id="cardBtn"
-                    >Escolher</b-button>
+                      >Escolher</b-button
+                    >
                     <div></div>
                   </b-card>
                 </div>
               </div>
             </div>
             <div v-else>
-              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
+              <p class="noEvent">
+                Selecione primeiro o tipo de evento que pretende realizar
+              </p>
             </div>
           </div>
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
-          <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="65.99"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
 
           <div class="container">
             <p class="guide3">
               ▶
-              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda que pretende que seja usada pelos nossos colaboradores
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a farda
+              que pretende que seja usada pelos nossos colaboradores
             </p>
             <br />
-            <b-button v-for="u in this.uniforms" :key="u.id_uniform" id="btn5" @click="uni(u)">
+            <b-button
+              v-for="u in this.uniforms"
+              :key="u.id_uniform"
+              id="btn5"
+              @click="uni(u)"
+            >
               <b-img :src="u.img" style="width:150px"></b-img>
-              <p>{{u.descritivo}}</p>
+              <p>{{ u.descritivo }}</p>
             </b-button>
           </div>
 
@@ -126,7 +170,8 @@
             <br />
             <p class="guide4">
               ▶
-              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a decoração que mais gosta para o seu evento
+              <b style="color: #daaa29; font-size: 130% ">Escolha</b> a
+              decoração que mais gosta para o seu evento
             </p>
             <b-button
               v-for="d in this.decorations"
@@ -135,22 +180,31 @@
               @click="decor(d)"
             >
               <b-img :src="d.img" style="width:200px"></b-img>
-              <p>{{d.descritivo}}</p>
+              <p>{{ d.descritivo }}</p>
             </b-button>
           </div>
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
-          <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="82.33"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
           <p class="guide6">
             ▶
-            <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras que pretenda
+            <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras
+            que pretenda
           </p>
-          <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
+          <b-img
+            id="imgKids"
+            src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"
+          ></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id_extra">
-              <b-button @click="extraChoose(i)">{{i.descritivo}}</b-button>
+              <b-button @click="extraChoose(i)">{{ i.descritivo }}</b-button>
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -165,54 +219,70 @@
         <!-- TAB RESUMO -->
         <b-tab title="Resumo">
           <h3 class="resume2">
-            <b>{{title}}</b>
+            <b>{{ title }}</b>
           </h3>
           <hr id="resumeLine2" />
 
           <div class="container">
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-left: 300px; font-family: GeosansLight"
+              >
                 <p id="inform2">
                   <b>Informações</b>
                 </p>
-                <p id="pDate2">Dia: {{day}}</p>
-                <p id="pTime2">Hora: {{time}}h</p>
-                <p id="pDuration2">Duração: {{duration}}h</p>
-                <p id="pPersons2">Lugares: {{persons}}</p>
-                <p id="pLocation">Local: {{location.nome}}</p>
+                <p id="pDate2">Dia: {{ day }}</p>
+                <p id="pTime2">Hora: {{ time }}h</p>
+                <p id="pDuration2">Duração: {{ duration }}h</p>
+                <p id="pPersons2">Lugares: {{ persons }}</p>
+                <p id="pLocation">Local: {{ location.nome }}</p>
               </div>
 
-              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-right: 50px; font-family: GeosansLight"
+              >
                 <p id="components2">
                   <b>Componentes</b>
                   <br />
                 </p>
                 <p>
-                  {{slctDecor}}
+                  {{ slctDecor }}
                   <br />
-                  {{slctUniform}}
+                  {{ slctUniform }}
                 </p>
               </div>
             </div>
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-left: 300px; font-family: GeosansLight"
+              >
                 <p id="menu2">
                   <b>Menu</b>
                 </p>
-                <p id="choiceMenu2">{{slctMenu}}</p>
+                <p id="choiceMenu2">{{ slctMenu }}</p>
               </div>
-              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-right: 50px; font-family: GeosansLight"
+              >
                 <p id="extras2">
                   <b>Extras</b>
                 </p>
-                <div >
-                  <p>{{extraName}}</p>
+                <div>
+                  <p>{{ extraName }}</p>
                 </div>
                 <p id="observ2">
                   <b>Observações</b>
                 </p>
                 <p id="observMade2">
-                  {{obsDecor}}
+                  {{ obsDecor }}
                   <br />
                 </p>
               </div>
@@ -225,8 +295,16 @@
             class="btn btn-primary"
             role="button"
             @click="addReservation()"
-          >Confirmar</a>
-          <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
+            >Confirmar</a
+          >
+          <a
+            name
+            id="cancel2"
+            class="btn btn-primary"
+            href="/events"
+            role="button"
+            >Cancelar</a
+          >
         </b-tab>
       </b-tabs>
     </b-card>
@@ -246,7 +324,7 @@ export default {
       people: "",
       duration: "",
       location: [],
-      schools:[],
+      schools: [],
       slctDecor: "",
       slctMenu: "",
       decoration: [],
@@ -267,7 +345,7 @@ export default {
       persons: "",
       id_evenType: "",
       id_menu: "",
-      id_extra:"",
+      id_extra: "",
       extraName: "",
       id_decor: ""
     };
@@ -286,9 +364,8 @@ export default {
       try {
         await this.$store.dispatch("getEventypesId", { id: id });
         this.menus = this.getEventypesId;
-        this.id_evenType = id
-      this.tabIndex++;
-
+        this.id_evenType = id;
+        this.tabIndex++;
       } catch (err) {
         alert(err);
       }
@@ -299,26 +376,24 @@ export default {
           this.slctUniform = uni.descritivo;
         }
       }
-      if(this.slctDecor != "" && this.slctUniform != ""){
-      this.tabIndex++;
-
-     }
+      if (this.slctDecor != "" && this.slctUniform != "") {
+        this.tabIndex++;
+      }
     },
     decor(decor) {
-     this.slctDecor = decor.descritivo
-     this.id_decor = decor.id_decoracao
-     if(this.slctDecor != "" && this.slctUniform != ""){
-      this.tabIndex++;
-
-     }
+      this.slctDecor = decor.descritivo;
+      this.id_decor = decor.id_decoracao;
+      if (this.slctDecor != "" && this.slctUniform != "") {
+        this.tabIndex++;
+      }
     },
-    extraChoose(extra){
-      this.id_extra = extra.id_extra
-      this.extraName = extra.descritivo
+    extraChoose(extra) {
+      this.id_extra = extra.id_extra;
+      this.extraName = extra.descritivo;
     },
-    chooseMenu(name,id) {
-         this.slctMenu = name;
-         this.id_menu = id
+    chooseMenu(name, id) {
+      this.slctMenu = name;
+      this.id_menu = id;
       this.tabIndex++;
     },
     getLastIdEvents() {
@@ -400,7 +475,7 @@ export default {
           id_evenType: this.id_evenType,
           id_menu: this.id_menu,
           id_local: this.location.id_ipp,
-          id_decoration: this.id_decor,
+          id_decoration: this.id_decor
         });
       } catch (err) {
         alert(err);
@@ -422,7 +497,6 @@ export default {
     ...mapGetters(["getExtras"]),
     ...mapGetters(["getSchools"]),
     ...mapGetters(["getEventypesId"])
-
   }
 };
 </script>

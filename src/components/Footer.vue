@@ -1,7 +1,7 @@
 <template>
   <!-- Footer -->
   <footer class="page-footer font-small indigo">
-    <hr id="lineFooter">
+    <hr id="lineFooter" />
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
       <!-- Grid row -->
@@ -15,27 +15,22 @@
         </div>
         <!-- Grid column -->
 
-
         <!-- Grid column -->
         <div class="col-md-3 mx-auto">
-
           <p id="textFooter">
             Escola Superior de Hotelaria e Turismo
-            <br />Rua D. Sancho I, n.º 981
-            <br />4480-876 Vila do Conde Portugal
-            <br />T. +351 252 291 700
-            <br />E. geral@esht.ipp.pt
+            <br />Rua D. Sancho I, n.º 981 <br />4480-876 Vila do Conde Portugal
+            <br />T. +351 252 291 700 <br />E. geral@esht.ipp.pt
           </p>
         </div>
-       
+
         <div class="col-md-3 mx-auto">
           <!-- LOGO IPP -->
-          <b-img src="../assets/p.porto.png" class="ipp"/>
-        
+          <b-img src="../assets/p.porto.png" class="ipp" />
         </div>
       </div>
     </div>
-        <hr class="clearfix w-100 d-md-none" />
+    <hr class="clearfix w-100 d-md-none" />
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3" id="copyright">
@@ -48,8 +43,7 @@
   <!-- Footer -->
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style>
 #lineFooter {
@@ -62,28 +56,28 @@
   font-family: GeosansLight;
 }
 
-@media screen and (max-width: 600px){
-.logoFooter{
-  width: 30%;
-  height: auto;
+@media screen and (max-width: 600px) {
+  .logoFooter {
+    width: 30%;
+    height: auto;
+  }
 }
-} 
 
-.logoFooter{
+.logoFooter {
   width: 50%;
   height: auto;
 }
-.logo1Footer{
+.logo1Footer {
   position: relative;
   width: 50%;
   height: auto;
   bottom: -80px;
   left: -90px;
 }
-.ipp{
+.ipp {
   width: 58.5%;
 }
-#copyright{
+#copyright {
   font-family: GeosansLight;
 }
 </style>

@@ -1,15 +1,29 @@
 <template>
   <div id="app">
-    <div v-if="this.$route.name !== 'inicialPage' && this.$route.name !== 'login' && this.$route.name !== 'about' && this.$route.name !== 'register' && this.$route.name !== 'menuadmin'">
+    <div
+      v-if="
+        this.$route.name !== 'inicialPage' &&
+          this.$route.name !== 'login' &&
+          this.$route.name !== 'about' &&
+          this.$route.name !== 'register' &&
+          this.$route.name !== 'menuadmin'
+      "
+    >
       <NavBar />
       <router-view></router-view>
       <Footer />
     </div>
-    <div v-else-if="this.$route.name === 'login'"  >
+    <div v-else-if="this.$route.name === 'login'">
       <NavBar />
       <router-view></router-view>
     </div>
-    <div v-else-if=" this.$route.name === 'about' || this.$route.name === 'register' || this.$route.name === 'menuadmin'" >
+    <div
+      v-else-if="
+        this.$route.name === 'about' ||
+          this.$route.name === 'register' ||
+          this.$route.name === 'menuadmin'
+      "
+    >
       <NavBar />
       <router-view></router-view>
     </div>
@@ -23,8 +37,6 @@
 // @ is an alias to /src
 import NavBar from "@/components/NavBar.vue";
 import Footer from "@/components/Footer.vue";
-
-
 
 export default {
   name: "InicialPage",

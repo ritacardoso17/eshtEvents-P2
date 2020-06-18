@@ -6,7 +6,8 @@
     <br />
 
     <h3 id="title">
-      <hr id="lineLeftW" />Sobre Nós
+      <hr id="lineLeftW" />
+      Sobre Nós
       <hr id="lineRightW" />
     </h3>
 
@@ -14,15 +15,16 @@
       <div class="row">
         <div class="col">
           <p id="whatIs">
-            O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo é da responsabilidade do Politécnico do Porto, com capacidade para 50 pessoas sentadas.
-            Durante estes últimos anos, o Restaurante tem acolhido diversos eventos, conseguindo sempre estar à altura das expectativas dos clientes.
+            O Restaurante de Aplicação da Escola Superior de Hotelaria e Turismo
+            é da responsabilidade do Politécnico do Porto, com capacidade para
+            50 pessoas sentadas. Durante estes últimos anos, o Restaurante tem
+            acolhido diversos eventos, conseguindo sempre estar à altura das
+            expectativas dos clientes.
           </p>
           <p id="whereIs">
             Escola Superior de Hotelaria e Turismo
-            <br />Rua D. Sancho I, n.º 981
-            <br />4480-876 Vila do Conde Portugal
-            <br />T. +351 252 291 700
-            <br />E. geral@esht.ipp.pt
+            <br />Rua D. Sancho I, n.º 981 <br />4480-876 Vila do Conde Portugal
+            <br />T. +351 252 291 700 <br />E. geral@esht.ipp.pt
           </p>
           <br />
           <br />
@@ -73,7 +75,7 @@ export default {
   background-color: #daaa29;
   height: 0.5px;
   width: 20%;
-  top: 53%; 
+  top: 53%;
   margin-left: 60%;
 }
 #title {

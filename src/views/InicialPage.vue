@@ -1,7 +1,12 @@
 <template>
   <div class="nuno d-flex justify-content-center align-items-center">
     <div class="container-fluid d-flex justify-content-center">
-      <img src="../assets/imgInicial.jpg" id="imgInicial" class="position-absolute" alt />
+      <img
+        src="../assets/imgInicial.jpg"
+        id="imgInicial"
+        class="position-absolute"
+        alt
+      />
       <h1 class="position-relative">EshtEvents</h1>
     </div>
   </div>

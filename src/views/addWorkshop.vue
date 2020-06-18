@@ -1,4 +1,4 @@
-  <template>
+<template>
   <div>
     <br />
     <h2 class="adminTitle">Adicionar Workshop</h2>
@@ -8,14 +8,18 @@
         <div class="container">
           <div class="row">
             <div class="col">
-              <b-form-label for="txtTitle" class="nameLabel">Título do Workshop:</b-form-label>
+              <b-form-label for="txtTitle" class="nameLabel"
+                >Título do Workshop:</b-form-label
+              >
               <b-form-input
                 type="text"
                 class="form-control-center"
                 placeholder="Insira o seu titulo"
                 v-model="title"
               />
-              <b-form-label for="txtdate" class="nameLabel">Data do Workshop:</b-form-label>
+              <b-form-label for="txtdate" class="nameLabel"
+                >Data do Workshop:</b-form-label
+              >
               <b-form-input
                 type="date"
                 class="form-control-center"
@@ -23,7 +27,9 @@
                 placeholder="Insira a data"
                 v-model="date"
               />
-              <b-form-label for="txtImage" class="nameLabel">Imagem do Workshop:</b-form-label>
+              <b-form-label for="txtImage" class="nameLabel"
+                >Imagem do Workshop:</b-form-label
+              >
               <b-form-input
                 type="url"
                 class="form-control-center"
@@ -36,7 +42,9 @@
               <br />
             </div>
             <div class="col">
-              <b-form-label for="txtPlace" class="nameLabel">Lugar do Workshop:</b-form-label>
+              <b-form-label for="txtPlace" class="nameLabel"
+                >Lugar do Workshop:</b-form-label
+              >
               <b-form-input
                 type="text"
                 class="form-control-center"
@@ -45,7 +53,9 @@
                 v-model="place"
               />
 
-              <b-form-label for="txtTeacher" class="nameLabel">Locutor do Workshop:</b-form-label>
+              <b-form-label for="txtTeacher" class="nameLabel"
+                >Locutor do Workshop:</b-form-label
+              >
               <b-form-input
                 type="text"
                 class="form-control-center"
@@ -54,7 +64,9 @@
                 v-model="teacher"
               />
 
-              <b-form-label for="txtVacancies" class="nameLabel">Numero de Vagas do Workshop:</b-form-label>
+              <b-form-label for="txtVacancies" class="nameLabel"
+                >Numero de Vagas do Workshop:</b-form-label
+              >
               <b-form-input
                 type="number"
                 class="form-control-center"
@@ -65,7 +77,9 @@
                 v-model="vacancies"
               />
 
-              <b-form-label for="txtDescription" class="nameLabel">Descrição:</b-form-label>
+              <b-form-label for="txtDescription" class="nameLabel"
+                >Descrição:</b-form-label
+              >
               <b-form-textarea
                 type="text"
                 class="form-control-center"

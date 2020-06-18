@@ -1,18 +1,25 @@
 <template>
   <div class="bckMenus">
-    <br>
+    <br />
     <h1 class="adminTitle">Gestão dos Menus</h1>
-    <br>
+    <br />
     <b-button
       class="btnAdd"
       size="sm"
-      :to="{path: '/addMenu' }"
-      v-bind:style="{display:size}"
-    >Adicionar Menu</b-button>
+      :to="{ path: '/addMenu' }"
+      v-bind:style="{ display: size }"
+      >Adicionar Menu</b-button
+    >
     <br />
     <br />
     <!--GERA TABELA COM DADOS DOS MENUS-->
-    <b-table bordered hover :items="this.menus" :fields="this.fields" v-bind:style="{display:size}">
+    <b-table
+      bordered
+      hover
+      :items="this.menus"
+      :fields="this.fields"
+      v-bind:style="{ display: size }"
+    >
       <template v-slot:cell(details)="row">
         <b-button
           variant="info"
@@ -20,7 +27,8 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-        >Mostrar Menu</b-button>
+          >Mostrar Menu</b-button
+        >
       </template>
       <template v-slot:cell(options)="row">
         <b-button
@@ -28,12 +36,22 @@
           class="btnRemove"
           size="sm"
           @click="removeMenu(row.item.id)"
-        >Eliminar Menu</b-button>
+          >Eliminar Menu</b-button
+        >
         <b-button
           class="btnRemove"
           size="sm"
-          @click="editMenu(row.item.id,row.item.name,row.item.componets,row.item.img,row.item.type)"
-        >Editar Menu</b-button>
+          @click="
+            editMenu(
+              row.item.id,
+              row.item.name,
+              row.item.componets,
+              row.item.img,
+              row.item.type
+            )
+          "
+          >Editar Menu</b-button
+        >
       </template>
       <!-- Mostar Detalhes do MENU -->
       <template v-slot:row-details="row">
@@ -41,8 +59,12 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Componentes:</b>
-              <div class="text-sm-center" v-for="component in row.item.components" :key="component">
-                <li>{{component}}</li>
+              <div
+                class="text-sm-center"
+                v-for="component in row.item.components"
+                :key="component"
+              >
+                <li>{{ component }}</li>
               </div>
             </b-col>
           </b-row>
@@ -50,26 +72,41 @@
       </template>
     </b-table>
     <!-- EDITAR MENU  -->
-    <div class="container" v-bind:style="{display:size2}">
+    <div class="container" v-bind:style="{ display: size2 }">
       <h2>Editar menu</h2>
       <b-form v-on:submit.prevent="saveMenu()">
         <div class="container">
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group id="input-group-1" label="Nome do Menu:" label-for="input-1"></b-form-group>
+              <b-form-group
+                id="input-group-1"
+                label="Nome do Menu:"
+                label-for="input-1"
+              ></b-form-group>
               <input type="text" v-model="name" style=" width: 300px;" />
               <br />
 
               <!-- TIPO EVENTO -->
-              <b-form-group id="input-group-1" label="Tipo de Evento:" label-for="input-1"></b-form-group>
+              <b-form-group
+                id="input-group-1"
+                label="Tipo de Evento:"
+                label-for="input-1"
+              ></b-form-group>
               <select v-model="type">
-                <option v-for="typeE in eventType" :key="typeE" @click="typeEvent(typeE)">{{typeE}}</option>
+                <option
+                  v-for="typeE in eventType"
+                  :key="typeE"
+                  @click="typeEvent(typeE)"
+                  >{{ typeE }}</option
+                >
               </select>
             </div>
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
+              <b-form-label name="image" for="txtImage" class="nameLabel"
+                >Imagem do Menu:</b-form-label
+              >
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -79,18 +116,33 @@
 
             <div class="col">
               <!-- COMPONENTES DO MENU -->
-              <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
-              <div align="left" v-for="component in components" :key="component.id">
-                <input type="checkbox" :value="component.name" unchecked v-model="componentsE" />
-                {{component.name}}
+              <b-form-group
+                id="input-group-1"
+                label="Componenetes:"
+                label-for="input-1"
+              ></b-form-group>
+              <div
+                align="left"
+                v-for="component in components"
+                :key="component.id"
+              >
+                <input
+                  type="checkbox"
+                  :value="component.name"
+                  unchecked
+                  v-model="componentsE"
+                />
+                {{ component.name }}
               </div>
             </div>
           </div>
         </div>
 
-        <b-button  type="submit" class="btnConf">Confirmar</b-button>
+        <b-button type="submit" class="btnConf">Confirmar</b-button>
 
-        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+        <b-button type="button" class="btnConf" @click="cancel()"
+          >Cancelar</b-button
+        >
       </b-form>
     </div>
   </div>
@@ -101,7 +153,7 @@ export default {
   data() {
     return {
       menus: [],
-     
+
       fields: [
         {
           key: "name",
@@ -128,8 +180,7 @@ export default {
       name: "",
       components: [],
       componentsE: [],
-      eventType: [],
-     
+      eventType: []
     };
   },
   created() {
@@ -171,7 +222,7 @@ export default {
           this.$store.state.menus = JSON.parse(
             localStorage.getItem("foodMenus")
           );
-          this.$bvToast.toast('Menu removido com sucesso')
+          this.$bvToast.toast("Menu removido com sucesso");
         }
       }
     },
@@ -194,7 +245,7 @@ export default {
           this.menus[m].img = this.img;
 
           localStorage.setItem("foodMenus", JSON.stringify(this.menus));
-          this.$bvToast.toast('Menu editado com sucesso')
+          this.$bvToast.toast("Menu editado com sucesso");
         }
       }
       this.size = "";
@@ -218,8 +269,8 @@ export default {
 };
 </script>
 <style>
-  .adminTitle{
+.adminTitle {
   font-family: GeosansLight;
-  color:black;
+  color: black;
 }
 </style>

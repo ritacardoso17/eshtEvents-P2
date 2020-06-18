@@ -10,7 +10,9 @@
       <div class="container" id="whiteRect"></div>
     </div>
 
-    <p id="guideRoom">Complete as seguintes etapas para efetuar a sua reserva</p>
+    <p id="guideRoom">
+      Complete as seguintes etapas para efetuar a sua reserva
+    </p>
 
     <b-tabs align="center" v-model="tabIndex" small card id="tab1">
       <!-- TAB DA ESCOLHA DO ESPAÇO -->
@@ -43,7 +45,9 @@
                 <button
                   @click="chooseRoom(r.descritivo, r.id_espaco)"
                   id="btnChoose"
-                >{{r.descritivo}}</button>
+                >
+                  {{ r.descritivo }}
+                </button>
               </b-card>
             </div>
           </div>
@@ -53,13 +57,20 @@
       <b-tab title="Informação">
         <div class="container">
           <div class="row" id="progressRow">
-            <b-progress id="progress" :value="66" variant="warning" :striped="striped"></b-progress>
+            <b-progress
+              id="progress"
+              :value="66"
+              variant="warning"
+              :striped="striped"
+            ></b-progress>
           </div>
           <form action>
             <div class="container" style="margin-bottom:100px">
               <div class="row">
                 <div class="col-sm-5">
-                  <label for="input1" style="margin-top:50px; float:left">▶Data</label>
+                  <label for="input1" style="margin-top:50px; float:left"
+                    >▶Data</label
+                  >
                   <b-form-input
                     style="margin-bottom:50px"
                     v-model="day"
@@ -67,7 +78,9 @@
                     id="input1"
                     required
                   ></b-form-input>
-                  <label for="input2" style="float: left">▶ Tempo de duração</label>
+                  <label for="input2" style="float: left"
+                    >▶ Tempo de duração</label
+                  >
                   <b-form-input
                     v-model="duration"
                     type="number"
@@ -78,7 +91,10 @@
                   ></b-form-input>
                 </div>
                 <div class="col-sm-2"></div>
-                <div class="col-sm-5" style="margin-top:50px; margin-bottom:50px">
+                <div
+                  class="col-sm-5"
+                  style="margin-top:50px; margin-bottom:50px"
+                >
                   <label for="input4" style="float: left">▶Hora</label>
                   <b-form-input
                     v-model="time"
@@ -87,7 +103,9 @@
                     id="input4"
                     required
                   ></b-form-input>
-                  <label for="input3" style="float: left">▶ Motivo da reserva</label>
+                  <label for="input3" style="float: left"
+                    >▶ Motivo da reserva</label
+                  >
                   <textarea
                     cols="50"
                     style="float: left; resize:none"
@@ -117,10 +135,10 @@
                 <b>Informações</b>
               </p>
               <div>
-                <p id="pDate">▶ Dia: {{day}}</p>
-                <p id="pTime">▶ Hora: {{time}}h</p>
-                <p id="pDuration">▶ Duração: {{duration}}h</p>
-                <p id="pReason">▶ Motivo: {{reason}}</p>
+                <p id="pDate">▶ Dia: {{ day }}</p>
+                <p id="pTime">▶ Hora: {{ time }}h</p>
+                <p id="pDuration">▶ Duração: {{ duration }}h</p>
+                <p id="pReason">▶ Motivo: {{ reason }}</p>
               </div>
             </div>
 
@@ -128,13 +146,21 @@
               <p id="room">
                 <b>Espaço</b>
               </p>
-              <p id="roomSlt">{{slctRoom}}</p>
+              <p id="roomSlt">{{ slctRoom }}</p>
             </div>
             <div class="col-sm-3"></div>
           </div>
 
-          <a id="confirm" class="btn btn-primary" @click="addARent()" role="button">Confirmar</a>
-          <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
+          <a
+            id="confirm"
+            class="btn btn-primary"
+            @click="addARent()"
+            role="button"
+            >Confirmar</a
+          >
+          <a id="cancel" class="btn btn-primary" href="/room" role="button"
+            >Cancelar</a
+          >
         </div>
       </b-tab>
     </b-tabs>
@@ -175,7 +201,7 @@ export default {
       return this.$store.getters.getLastIdRooms;
     },
     chooseRoom(room, id) {
-         for (let r in this.rooms) {
+      for (let r in this.rooms) {
         if (room === this.rooms[r].descritivo) {
           this.slctRoom = room;
           this.roomId = id;
@@ -199,7 +225,7 @@ export default {
           date_required: this.day,
           duration: this.duration,
           id_user: this.$store.state.loggedUser.user[0].id_utilizador,
-          reason: this.reason,
+          reason: this.reason
         });
       } catch (err) {
         alert(err);

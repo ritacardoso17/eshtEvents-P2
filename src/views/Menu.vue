@@ -5,7 +5,8 @@
     <br />
     <br />
     <h3 id="titleMenu">
-      <hr id="lineLeft2" />Menus
+      <hr id="lineLeft2" />
+      Menus
       <hr id="lineRight2" />
     </h3>
 

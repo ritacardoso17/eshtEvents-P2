@@ -8,10 +8,16 @@
         <b-form-select :options="[{text:user},{text:admin}]" v-model="row.item.typeUser">
       </b-form-select>
       </template>-->
-       <template v-slot:cell(details)="row">
-        <b-button variant="info" class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
-      </template> 
-          <template v-slot:row-details="row">
+      <template v-slot:cell(details)="row">
+        <b-button
+          variant="info"
+          class="btnDetails"
+          size="sm"
+          @click="row.toggleDetails"
+          >Mostrar Detalhes</b-button
+        >
+      </template>
+      <template v-slot:row-details="row">
         <b-card>
           <!-- Escola -->
           <b-row class="mb-2">
@@ -25,7 +31,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-right">
               <b>Email:</b>
-              {{ row.item.email}}
+              {{ row.item.email }}
             </b-col>
           </b-row>
           <!-- Contacto -->
@@ -39,8 +45,17 @@
         </b-card>
       </template>
       <template v-slot:cell(options)="row">
-        <b-button variant="danger" class="btnRemove" size="sm" @click="removeUser(row.item.id)" style="margin:5px">Eliminar Utilizador</b-button>
-        <b-button class="btnChange" size="sm"  @click="changeUser(row.item.id)" >Mudar tipo de utilizador</b-button>
+        <b-button
+          variant="danger"
+          class="btnRemove"
+          size="sm"
+          @click="removeUser(row.item.id)"
+          style="margin:5px"
+          >Eliminar Utilizador</b-button
+        >
+        <b-button class="btnChange" size="sm" @click="changeUser(row.item.id)"
+          >Mudar tipo de utilizador</b-button
+        >
       </template>
     </b-table>
   </div>
@@ -53,8 +68,8 @@ export default {
       items: [],
       fields: [
         { key: "name", label: "Nome utilizador", sortable: "true" },
-        { key: "typeUser", label: "Tipo de utilizador",sortable: "true" },
-         { key: "details", label: "Detalhes" },
+        { key: "typeUser", label: "Tipo de utilizador", sortable: "true" },
+        { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
       ]
     };
@@ -71,7 +86,10 @@ export default {
         if (this.items[i].id === id) {
           this.items = this.items.filter(item => this.items[i].id !== item.id);
           localStorage.setItem("users", JSON.stringify(this.items));
-          this.$store.state.users = localStorage.setItem("users", JSON.stringify(this.items));
+          this.$store.state.users = localStorage.setItem(
+            "users",
+            JSON.stringify(this.items)
+          );
         }
       }
     },
@@ -83,12 +101,14 @@ export default {
           );
           if (this.items[index].typeUser == "user") {
             this.items[index].typeUser = "admin";
-          }
-          else{
-             this.items[index].typeUser = "user";
+          } else {
+            this.items[index].typeUser = "user";
           }
           localStorage.setItem("users", JSON.stringify(this.items));
-          this.$store.state.users = localStorage.setItem("users", JSON.stringify(this.items));
+          this.$store.state.users = localStorage.setItem(
+            "users",
+            JSON.stringify(this.items)
+          );
         }
       }
     }
@@ -113,8 +133,8 @@ export default {
   right: -12px;
   top: 3px;
 }
-.adminTitle{
+.adminTitle {
   font-family: GeosansLight;
-  color:black;
+  color: black;
 }
 </style>

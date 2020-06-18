@@ -1,16 +1,21 @@
 <template>
   <div class="container">
     <b-button class="filterName" @click="orderByName()">Ver por nome</b-button>
-    <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
+    <b-button class="filterDate" @click="orderByDate()"
+      >Ver por mais recente</b-button
+    >
     <br />
     <br />
     <br />
-    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
-      
+    <div
+      class="row"
+      v-for="workshop in workshops"
+      v-bind:key="workshop.id_workshop"
+    >
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id_workshop % 2 == 0">
         <div class="card-header" id="headerWork">
-          {{workshop.nome}}
+          {{ workshop.nome }}
           <hr id="lineCards" />
         </div>
         <div class="card-header" id="lineCards"></div>
@@ -24,26 +29,27 @@
           class="mb-2"
           id="workCard"
         >
-          <b-card-text id="workDescrip">{{workshop.descritivo}}</b-card-text>
+          <b-card-text id="workDescrip">{{ workshop.descritivo }}</b-card-text>
           <b-card-text id="workInfo2">
-            {{workshop.data_hora}}
+            {{ workshop.data_hora }}
             <br />
             <!-- Preço: {{workshop.preco}} -->
             <br />
-            Sala: {{workshop.local}}
+            Sala: {{ workshop.local }}
             <br />
-            Locutor: {{workshop.teacher}}
+            Locutor: {{ workshop.teacher }}
             <br />
-            Vagas: {{workshop.nr_vagas}}
+            Vagas: {{ workshop.nr_vagas }}
           </b-card-text>
 
           <b-button
             href="#"
-            v-bind:style="{display: show2}"
+            v-bind:style="{ display: show2 }"
             id="workInscp2"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-          >{{signMe}}</b-button>
+            >{{ signMe }}</b-button
+          >
 
           <!-- por este b-button como router link para o login mas manter o v-bind  -->
         </b-card>
@@ -53,7 +59,7 @@
       </span>
       <!-- CARD WORKSHOPS À ESQUERDA -->
       <span v-else>
-        <div class="card-header" id="headerWork">{{workshop.title}}</div>
+        <div class="card-header" id="headerWork">{{ workshop.title }}</div>
         <div class="card-header" id="lineCards"></div>
 
         <b-card
@@ -65,26 +71,27 @@
           class="mb-2"
           id="workCard"
         >
-          <b-card-text id="workDescrip2">{{workshop.descritivo}}</b-card-text>
+          <b-card-text id="workDescrip2">{{ workshop.descritivo }}</b-card-text>
           <b-card-text id="workInfo">
-          {{workshop.data_hora}}
+            {{ workshop.data_hora }}
             <br />
             <!-- Preço: {{workshop.preco}} -->
             <br />
-            Sala: {{workshop.local}}
+            Sala: {{ workshop.local }}
             <br />
-            Locutor: {{workshop.teacher}}
+            Locutor: {{ workshop.teacher }}
             <br />
-            Vagas: {{workshop.nr_vagas}}
+            Vagas: {{ workshop.nr_vagas }}
           </b-card-text>
 
           <b-button
             href="#"
-            v-bind:style="{display: show2}"
+            v-bind:style="{ display: show2 }"
             id="workInscp"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-          >{{signMe}}</b-button>
+            >{{ signMe }}</b-button
+          >
         </b-card>
         <br />
         <br />
@@ -112,7 +119,7 @@ export default {
     //   );
     //   this.workshops = this.$store.state.workshops;
     // }
-        this.getAllWorkshops();
+    this.getAllWorkshops();
     if (this.getLoggedUser() !== "") {
       this.show2 = "inline";
     } else {
@@ -179,7 +186,6 @@ export default {
       }
     }
   }
-  
 };
 </script>
 

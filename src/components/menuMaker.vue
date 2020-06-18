@@ -2,7 +2,12 @@
   <div>
     <b-form>
       <div class="form-group">
-        <input type="search" v-model="searchTxt" id="filterTxt" placeholder="Escreve aqui..." />
+        <input
+          type="search"
+          v-model="searchTxt"
+          id="filterTxt"
+          placeholder="Escreve aqui..."
+        />
       </div>
       <div class="form-group">
         <select v-model="selectE" id="sltFilter">
@@ -10,13 +15,18 @@
             v-for="typeE in eventType2"
             :key="typeE"
             @change="filterMenus()"
-          >{{typeE.descritivo}}</option>
+            >{{ typeE.descritivo }}</option
+          >
         </select>
       </div>
     </b-form>
     <div class="container" id="cardsMenu">
       <div class="row">
-        <div class="col-sm-4" v-for="menu in filterMenus" :key="menu.id_menu.toString()">
+        <div
+          class="col-sm-4"
+          v-for="menu in filterMenus"
+          :key="menu.id_menu.toString()"
+        >
           <b-card
             :title="menu.name"
             :img-src="menu.img"
@@ -28,8 +38,10 @@
             class="mb-2"
             id="cards"
           >
-            <b-card-text>{{menu.descritivo}}</b-card-text>
-            <b-button v-b-modal="menu.id_menu.toString()" id="cardBtn">Ver mais</b-button>
+            <b-card-text>{{ menu.descritivo }}</b-card-text>
+            <b-button v-b-modal="menu.id_menu.toString()" id="cardBtn"
+              >Ver mais</b-button
+            >
             <div>
               <b-modal
                 :id="menu.id_menu.toString()"
@@ -47,8 +59,13 @@
                       v-for="component in components"
                       :key="component.id_menu.toString()"
                     >
-                      <div v-if="component.id_menu.toString()==menu.id_menu.toString()">
-                        <p id="components">-->{{component.descritivo}}</p>
+                      <div
+                        v-if="
+                          component.id_menu.toString() ==
+                            menu.id_menu.toString()
+                        "
+                      >
+                        <p id="components">-->{{ component.descritivo }}</p>
                       </div>
                     </div>
                   </div>
@@ -106,7 +123,8 @@ export default {
         let filterResult = true;
         let filterResultType = true;
 
-        if (this.searchTxt !== "") {                                              121
+        if (this.searchTxt !== "") {
+          121;
           filterResult = menu.name.includes(this.searchTxt);
         }
 

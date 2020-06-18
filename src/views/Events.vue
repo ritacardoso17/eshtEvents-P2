@@ -5,7 +5,8 @@
     <br />
     <br />
     <h3 id="title">
-      <hr id="lineLeft" />Eventos e Catering
+      <hr id="lineLeft" />
+      Eventos e Catering
       <hr id="lineRight" />
     </h3>
 
@@ -15,15 +16,22 @@
       <div class="row">
         <div class="col">
           <p id="description">
-            O Restaurante de Aplicação da ESHT permite-te fazer reservas de Eventos e Catering, agora de forma mais simples e intuitiva,
-            com um seguimento de passos que facilita a tua comunicação connosco.
+            O Restaurante de Aplicação da ESHT permite-te fazer reservas de
+            Eventos e Catering, agora de forma mais simples e intuitiva, com um
+            seguimento de passos que facilita a tua comunicação connosco.
           </p>
           <p id="description">
             Diz-nos o que mais gostas e o que não queres de todo no teu evento.
-            Quantas pessoas queres convidar e a localização ideal para o acontecimento.
+            Quantas pessoas queres convidar e a localização ideal para o
+            acontecimento.
           </p>
           <div>
-            <router-link tag="button" id="btnReserve" class="menus" :to="{ name: 'menu' }">
+            <router-link
+              tag="button"
+              id="btnReserve"
+              class="menus"
+              :to="{ name: 'menu' }"
+            >
               <b>Ver menus</b>
             </router-link>
             <router-link
@@ -31,13 +39,15 @@
               id="btnReserve"
               v-if="this.$store.state.loggedUser.length == 0"
               :to="{ name: 'login' }"
-            >Fazer Reserva</router-link>
+              >Fazer Reserva</router-link
+            >
             <router-link
               tag="button"
               id="btnReserve"
               v-else
               :to="{ name: 'eventsReserv' }"
-            >Fazer Reserva</router-link>
+              >Fazer Reserva</router-link
+            >
           </div>
         </div>
         <div class="col">
@@ -47,8 +57,6 @@
     </div>
   </div>
 </template>
-
-
 
 <style>
 .catering {

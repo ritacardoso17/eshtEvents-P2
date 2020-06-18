@@ -9,7 +9,9 @@
     <div v-else>
       <b-table bordered fixed hover :items="this.rooms" :fields="this.fields">
         <template v-slot:cell(details)="row">
-          <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+          <b-button class="btnDetails" size="sm" @click="row.toggleDetails"
+            >Mostrar Detalhes</b-button
+          >
         </template>
 
         <template v-slot:cell(options)="row">
@@ -19,14 +21,16 @@
             size="sm"
             @click="acceptReservation(row.item.id)"
             style="margin:5px,"
-            v-bind:style="{display:show}"
-          >Aceitar</b-button>
+            v-bind:style="{ display: show }"
+            >Aceitar</b-button
+          >
           <b-button
             variant="danger"
             class="btnChange"
             size="sm"
             @click="refuseReservation(row.item.id)"
-          >Recusar</b-button>
+            >Recusar</b-button
+          >
         </template>
 
         <template v-slot:row-details="row">
@@ -43,7 +47,7 @@
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Duração:</b>
-                {{ row.item.duration}}
+                {{ row.item.duration }}
               </b-col>
             </b-row>
             <!-- NUMERO DE PESSOAS -->
@@ -58,7 +62,7 @@
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Opinião:</b>
-                {{ row.item.opinions}}
+                {{ row.item.opinions }}
               </b-col>
             </b-row>
           </b-card>
@@ -102,7 +106,7 @@ export default {
             this.rooms[index].state = "Aceite";
             // this.show = "none";
           } else {
-            this.$bvToast.toast('Ja tem uma reserva para este dia.');
+            this.$bvToast.toast("Ja tem uma reserva para este dia.");
           }
           this.$bvToast.toast("Aceitou esta reserva");
 
