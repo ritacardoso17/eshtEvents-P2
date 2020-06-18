@@ -302,8 +302,8 @@ export default {
     },
     decor(decor) {
       for (let d in this.decorations) {
-        if (decor.descritivo === this.decorations[d].descritivo) {
-          this.slctDecor = decor.descritivo;
+        if (decor === this.decorations[d].descritivo) {
+          this.slctDecor = decor;
         }
       }
     },
@@ -385,7 +385,7 @@ export default {
     },
     async addReservation() {
       try {
-        await this.$store.dispatch("addReservation", {
+        await this.$store.dispatch("addReservations", {
           id_extra: this.id_extra,
           id_user: this.getLoggedUserId(),
           n_people: this.n_people,

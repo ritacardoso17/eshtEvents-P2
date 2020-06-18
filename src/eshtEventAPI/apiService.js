@@ -238,7 +238,23 @@ const apiService = {
             throw Error(response)
         }
     },
+    async addRents(id_user, date_reserv, date_required, duration, id_room, reason, opinion) {
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+        const response = await fetch(`${API_URL}/roomRents`, {
+            method: "POST",
+            headers: {
+                'x-access-token': loggedUser.token
+            },
+            body: JSON.stringify({ id_user: id_user, date_reserv: date_reserv, date_required: date_required, duration: duration, id_room: id_room, reason: reason, opinion: opinion})
+        })
 
+        if (response.ok) {
+            return response.json()
+        }
+        else {
+            throw Error(response)
+        }
+    },
     //LOGIN
     async login(email, password) {
         const response = await fetch(`${API_URL}/login `, {

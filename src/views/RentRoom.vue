@@ -40,7 +40,10 @@
                 img-top
                 class="mb-2"
               >
-                <button @click="chooseRoom(r.descritivo, r.id_espaco)" id="btnChoose">{{r.descritivo}}</button>
+                <button
+                  @click="chooseRoom(r.descritivo, r.id_espaco)"
+                  id="btnChoose"
+                >{{r.descritivo}}</button>
               </b-card>
             </div>
           </div>
@@ -130,7 +133,7 @@
             <div class="col-sm-3"></div>
           </div>
 
-          <a id="confirm" class="btn btn-primary" @click="rentRoom()" role="button">Confirmar</a>
+          <a id="confirm" class="btn btn-primary" @click="addRent()" role="button">Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
         </div>
       </b-tab>
@@ -173,8 +176,8 @@ export default {
     // }
     this.getAllRooms();
   },
-  computed:{
-    ...mapGetters(["getRooms"]),
+  computed: {
+    ...mapGetters(["getRooms"])
   },
   methods: {
     saveStorage() {
@@ -194,11 +197,11 @@ export default {
       return this.$store.getters.getLastIdRooms;
     },
     chooseRoom(room, id) {
-      alert(room)
+      alert(room);
       for (let r in this.rooms) {
         if (room === this.rooms[r].descritivo) {
           this.slctRoom = room;
-          this.roomId = id;
+          return this.roomId = id;
         }
       }
       this.tabIndex++;
@@ -212,27 +215,28 @@ export default {
       }
     },
     rentRoom() {
-      this.$store.commit("RENT_ROOM", {
-        id: this.getLastIdRooms() + 1,
-        room: this.slctRoom,
-        day: this.day,
-        time: this.time,
-        duration: this.duration,
-        userName: this.$store.state.loggedUser[0].name,
-        userMail: this.getLoggedUserEmail(),
-        reason: this.reason
-      });
-      if (
-        this.room == "" ||
-        this.day == "" ||
-        this.time == "" ||
-        this.duration == "" ||
-        this.reason == ""
-      ) {
-        this.$bvToast.toast("Tem de preencher todos os campos");
-      } else {
-        location.href = "./room";
-        this.$bvToast.toast("Alguer de Espaço efetuado com sucesso");
+      this.$store.commit("RENT_ROOM", {});
+    },
+    async addRent() {
+      try {
+        await this.$store.dispatch("addRents", {
+          /* id: this.getLastIdRooms() + 1,
+          room: this.slctRoom,
+          day: this.day,
+          time: this.time,
+          duration: this.duration,
+          userName: this.$store.state.loggedUser[0].name,
+          userMail: this.getLoggedUserEmail(),
+          reason: this.reason */
+          id_room: this.roomId,
+          /* date_reserv: this.getHours() + ":" + this.getMinutes() + " " + this.getYear() + "/" + this.getMonth() + "/" + this.getDate(), */
+          date_required: this.day + this.time,
+          duration: this.chooseRoom(),
+          id_user: this.$store.state.loggedUser.user[0].id_utilizador,
+          reason: this.reason,
+        });
+      } catch (err) {
+        alert(err);
       }
     }
   }

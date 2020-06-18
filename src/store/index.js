@@ -469,20 +469,18 @@ export default new Vuex.Store({
       }
       // else{}
     },
-    RENT_ROOM: (state, payload) => {
-      state.roomRents.push({
-        id: payload.id,
-        room: payload.room,
-        day: payload.day,
-        time: payload.time,
-        duration: payload.duration,
-        userName: payload.userName,
-        userMail: payload.userMail,
-        state: "Pendente",
-        reason: payload.reason,
-        opinions: ""
-      });
-      localStorage.setItem("roomRents", JSON.stringify(state.roomRents))
+    ADD_RENT: (state, payload) => {
+      if (
+        payload.id_room == "" ||
+        payload.date_required == "" ||
+        payload.duration == "" ||
+        payload.reason == ""
+      ){
+        VueSimpleAlert.fire('Preencha todos os campos')
+      }else {
+        window.location = "./room"
+        VueSimpleAlert.fire('Aluguer adicionado')
+      }
     },
     ADD_RESERVATION: (state, payload) => {
       state.reservations.push({
@@ -664,6 +662,17 @@ export default new Vuex.Store({
         payload.id_menu,
         payload.id_local,
         payload.id_decoration,
+        payload.opinion,
+      ))
+    },
+    async addRents({ commit }, payload) {
+      commit("ADD_RENT", await apiService.addRents(
+        payload.id_user,
+        payload.date_reserv,
+        payload.date_required,
+        payload.duration,
+        payload.id_room,
+        payload.reason,
         payload.opinion,
       ))
     },
