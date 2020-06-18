@@ -87,11 +87,12 @@ export default {
       }
     },
 
-    cancelRooms(id) {
+    cancelRooms(idE) {
+       alert(idE)
       for (let i in this.rents) {
-        if (this.rents[i].id === id) {
-          this.removeRents(id);
-          alert(id)
+        if (this.rents[i].id === idE) {
+          this.removeRents(idE);
+         
         }
       }
     },
