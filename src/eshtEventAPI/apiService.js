@@ -225,10 +225,15 @@ const apiService = {
             throw Error(response)
         }
     },
-    async addReservations(id_extra, id_user, n_people, dateTime_reserv, dateTime_event, id_uniform, id_evenType, id_state, id_menu, id_local, id_decoration, opinion) {
+    async addReservations(id_extra, n_people, dateTime_reserv, dateTime_event, id_uniform, id_evenType, id_menu, id_local, id_decoration) {
+        let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
         const response = await fetch(`${API_URL}/reservations`, {
             method: "POST",
-            body: JSON.stringify({ id_extra: id_extra, id_user: id_user, n_people: n_people, dateTime_reserv: dateTime_reserv, dateTime_event: dateTime_event, id_uniform: id_uniform, id_evenType: id_evenType, id_state: id_state, id_menu: id_menu, id_local: id_local, id_decoration: id_decoration, opinion: opinion })
+            headers: {
+                'x-access-token': loggedUser.token,
+                'Content-type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({ id_extra: id_extra, id_user: loggedUser.user[0].id_utilizador, n_people: n_people, date_reserv: dateTime_reserv, date_required: dateTime_event, id_uniform: id_uniform, id_reservType: id_evenType, id_menu: id_menu, id_local: id_local, id_decoration: id_decoration })
         })
 
         if (response.ok) {
@@ -238,15 +243,15 @@ const apiService = {
             throw Error(response)
         }
     },
-    async addRents(id_room, date_required, duration, id_user) {
-        alert(date_required)    
+    async addRents(id_room, date_required, duration, reason) {
         let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
         const response = await fetch(`${API_URL}/roomRents`, {
             method: "POST",
             headers: {
-                'x-access-token': loggedUser.token
+                'x-access-token': loggedUser.token,
+                'Content-type': 'application/json; charset=utf-8'
             },
-            body: JSON.stringify({ id_user: id_user, date_required: date_required, duration: duration, id_room: id_room})
+            body: JSON.stringify({ id_user: loggedUser.user[0].id_utilizador, date_required: date_required, duration: duration, id_room: id_room, reason: reason})
         })
         if (response.ok) {
             return response.json()

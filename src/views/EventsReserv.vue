@@ -66,7 +66,7 @@
 
               <label for="sltLocation" class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
-                <option v-for="l in schools" :value="l.id_ipp" :key="l.id_ipp">{{l.nome}}</option>
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{l.nome}}</option>
               </select>
             </div>
           </form>
@@ -92,7 +92,7 @@
                   >
                     <b-button
                       v-b-modal="menu.id"
-                      @click="chooseMenu(menu.name)"
+                      @click="chooseMenu(menu.name, menu.id)"
                       id="cardBtn"
                     >Escolher</b-button>
                     <div></div>
@@ -150,16 +150,7 @@
           <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id_extra">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                name
-                id="check6"
-                :value="i.descritivo"
-                unchecked
-                v-model="extra_reserv"
-              />
-              {{i.descritivo}}
+              <b-button @click="extraChoose(i)">{{i.descritivo}}</b-button>
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -188,7 +179,7 @@
                 <p id="pTime2">Hora: {{time}}h</p>
                 <p id="pDuration2">Duração: {{duration}}h</p>
                 <p id="pPersons2">Lugares: {{persons}}</p>
-                <p id="pLocation">Local: {{location}}</p>
+                <p id="pLocation">Local: {{location.nome}}</p>
               </div>
 
               <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
@@ -214,8 +205,8 @@
                 <p id="extras2">
                   <b>Extras</b>
                 </p>
-                <div v-for="extra in this.extra_reserv" :key="extra">
-                  <p>{{extra}}</p>
+                <div >
+                  <p>{{extraName}}</p>
                 </div>
                 <p id="observ2">
                   <b>Observações</b>
@@ -233,7 +224,7 @@
             id="confirm2"
             class="btn btn-primary"
             role="button"
-            @click="eventsReserv()"
+            @click="addReservation()"
           >Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
@@ -264,7 +255,7 @@ export default {
       place: "",
       obsUniform: "",
       obsDecor: "",
-      extra_reserv: [],
+      extra_reserv: "",
       eventType: [],
       extras: [],
       user: "",
@@ -272,7 +263,13 @@ export default {
       state: "Pendente",
       tabIndex: 1,
       title: "",
-      menus: []
+      menus: [],
+      persons: "",
+      id_evenType: "",
+      id_menu: "",
+      id_extra:"",
+      extraName: "",
+      id_decor: ""
     };
   },
   created() {
@@ -289,6 +286,9 @@ export default {
       try {
         await this.$store.dispatch("getEventypesId", { id: id });
         this.menus = this.getEventypesId;
+        this.id_evenType = id
+      this.tabIndex++;
+
       } catch (err) {
         alert(err);
       }
@@ -299,20 +299,26 @@ export default {
           this.slctUniform = uni.descritivo;
         }
       }
+      if(this.slctDecor != "" && this.slctUniform != ""){
+      this.tabIndex++;
+
+     }
     },
     decor(decor) {
-      for (let d in this.decorations) {
-        if (decor === this.decorations[d].descritivo) {
-          this.slctDecor = decor;
-        }
-      }
+     this.slctDecor = decor.descritivo
+     this.id_decor = decor.id_decoracao
+     if(this.slctDecor != "" && this.slctUniform != ""){
+      this.tabIndex++;
+
+     }
     },
-    chooseMenu(menu) {
-      for (let m in this.menus) {
-        if (menu === this.menus[m].name) {
-          this.slctMenu = menu;
-        }
-      }
+    extraChoose(extra){
+      this.id_extra = extra.id_extra
+      this.extraName = extra.descritivo
+    },
+    chooseMenu(name,id) {
+         this.slctMenu = name;
+         this.id_menu = id
       this.tabIndex++;
     },
     getLastIdEvents() {
@@ -387,17 +393,14 @@ export default {
       try {
         await this.$store.dispatch("addReservations", {
           id_extra: this.id_extra,
-          id_user: this.getLoggedUserId(),
-          n_people: this.n_people,
-          dateTime_reserv: this.dateTime_reserv,
-          dateTime_event: this.dateTime_event,
+          n_people: this.persons,
+          dateTime_reserv: Date.now(),
+          dateTime_event: this.day + " " + this.time,
           id_uniform: this.id_uniform,
           id_evenType: this.id_evenType,
-          id_state: 1,
           id_menu: this.id_menu,
-          id_local: this.location,
-          id_decoration: this.id_decoration,
-          opinion: this.opinion
+          id_local: this.location.id_ipp,
+          id_decoration: this.id_decor,
         });
       } catch (err) {
         alert(err);

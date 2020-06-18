@@ -15,7 +15,7 @@ const routes = [
     component: () => import("../views/addWorkshop.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -84,7 +84,7 @@ const routes = [
     component: () => import("../views/BackofficeMenu.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -98,7 +98,7 @@ const routes = [
     component: () => import("../views/userBackOffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -112,7 +112,7 @@ const routes = [
     component: () => import("../views/workshopBackoffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -131,7 +131,7 @@ const routes = [
     component: () => import("../views/menusBackoffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -145,7 +145,7 @@ const routes = [
     component: () => import("../views/reservationsBackoffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -164,7 +164,7 @@ const routes = [
     component: () => import("../views/addMenuBackoffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{
@@ -178,7 +178,7 @@ const routes = [
     component: () => import("../views/eventsBackoffice.vue"),
     beforeEnter(to,from,next){
       let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
-      if(loggedUser && loggedUser[0].typeUser ===  "admin"){
+      if(loggedUser && loggedUser.user[0].id_tipoUser == 1){
       next()
       }
       else{

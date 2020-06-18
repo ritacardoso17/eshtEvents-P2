@@ -199,7 +199,7 @@ export default {
           date_required: this.day,
           duration: this.duration,
           id_user: this.$store.state.loggedUser.user[0].id_utilizador,
-          // reason: this.reason,
+          reason: this.reason,
         });
       } catch (err) {
         alert(err);

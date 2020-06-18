@@ -474,36 +474,28 @@ export default new Vuex.Store({
         payload.date_required == "" ||
         payload.duration == "" ||
         payload.reason == ""
-      ){
+      ) {
         VueSimpleAlert.fire('Preencha todos os campos')
-      }else {
+      } else {
         // window.location = "./room"
         VueSimpleAlert.fire('Aluguer adicionado')
       }
     },
     ADD_RESERVATION: (state, payload) => {
-      state.reservations.push({
-        id: payload.id,
-        day: payload.day,
-        time: payload.time,
-        people: payload.people,
-        duration: payload.duration,
-        location: payload.location,
-        obs: payload.obs,
-        decor: payload.decor,
-        extra: payload.extra,
-        userName: payload.userName,
-        userMail: payload.userMail,
-        state: payload.state,
-        eventType: payload.eventType,
-        menu: payload.menu,
-        uniform: payload.uniform,
-        opinions: ""
-      });
-      localStorage.setItem("reservations", JSON.stringify(state.reservations))
-
-      VueSimpleAlert.fire('Reserva adicionada')
-      window.location = "./Events"
+      if (
+        payload.n_people == "" ||
+        payload.dateTime_event == "" ||
+        payload.id_uniform == "" ||
+        payload.id_evenType == "" ||
+        payload.id_menu == "" ||
+        payload.id_local == "" ||
+        payload.id_decoration == ""
+      ) {
+        VueSimpleAlert.fire('Preencha todos os campos')
+      } else {
+        VueSimpleAlert.fire('Reserva adicionada')
+        window.location = "./Events"
+      }
     },
     SET_MENUS: (state, foodMenus) => {
       state.foodMenus = foodMenus
@@ -619,7 +611,7 @@ export default new Vuex.Store({
     },
     async getRooms({ commit }) {
       commit("SET_ROOMS", await apiService.getRooms())
-     
+
     },
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes())
@@ -651,23 +643,20 @@ export default new Vuex.Store({
     async addReservations({ commit }, payload) {
       commit("ADD_RESERVATION", await apiService.addReservations(
         payload.id_extra,
-        payload.id_user,
         payload.n_people,
         payload.dateTime_reserv,
         payload.dateTime_event,
         payload.id_uniform,
         payload.id_evenType,
-        payload.id_state,
         payload.id_menu,
         payload.id_local,
         payload.id_decoration,
-        payload.opinion,
       ))
     },
     async addRents({ commit }, payload) {
       commit("ADD_RENT", await apiService.addRents(
         payload.id_room,
-       
+
         // payload.date_reserv,
         payload.date_required,
         payload.duration,
