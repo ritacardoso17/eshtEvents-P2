@@ -651,6 +651,7 @@ export default new Vuex.Store({
         payload.id_menu,
         payload.id_local,
         payload.id_decoration,
+        payload.obs
       ))
     },
     async addRents({ commit }, payload) {
