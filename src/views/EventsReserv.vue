@@ -362,7 +362,7 @@ export default {
     async getAllDecorations() {
       try {
         await this.$store.dispatch("getDecorations");
-        this.decoration = this.getDecorations;
+        this.decorations = this.getDecorations;
       } catch (err) {
         alert(err);
       }

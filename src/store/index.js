@@ -384,7 +384,6 @@ export default new Vuex.Store({
 
     LOGOUT: (state) => {
       // state.loggedUser.pop()
-      alert(state.loggedUser.token)
       apiService.logout(state.loggedUser.token)
       state.loggedUser = []
       state.token = []
@@ -478,7 +477,7 @@ export default new Vuex.Store({
       ){
         VueSimpleAlert.fire('Preencha todos os campos')
       }else {
-        window.location = "./room"
+        // window.location = "./room"
         VueSimpleAlert.fire('Aluguer adicionado')
       }
     },
@@ -620,7 +619,7 @@ export default new Vuex.Store({
     },
     async getRooms({ commit }) {
       commit("SET_ROOMS", await apiService.getRooms())
-      alert("jhsef")
+     
     },
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes())
@@ -667,14 +666,16 @@ export default new Vuex.Store({
     },
     async addRents({ commit }, payload) {
       commit("ADD_RENT", await apiService.addRents(
-        payload.id_user,
-        payload.date_reserv,
+        payload.id_room,
+       
+        // payload.date_reserv,
         payload.date_required,
         payload.duration,
-        payload.id_room,
+        payload.id_user,
         payload.reason,
-        payload.opinion,
+        // payload.opinion,
       ))
+      alert(payload.date_required)
     },
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools())

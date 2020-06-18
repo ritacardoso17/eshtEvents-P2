@@ -133,7 +133,7 @@
             <div class="col-sm-3"></div>
           </div>
 
-          <a id="confirm" class="btn btn-primary" @click="addRent()" role="button">Confirmar</a>
+          <a id="confirm" class="btn btn-primary" @click="addARent()" role="button">Confirmar</a>
           <a id="cancel" class="btn btn-primary" href="/room" role="button">Cancelar</a>
         </div>
       </b-tab>
@@ -152,41 +152,19 @@ export default {
     time: "",
     duration: "",
     user: "",
-    state: 0,
     slctRoom: "",
     rooms: [],
     tabIndex: 1,
-    roomRents: [],
     reason: "",
     roomId: ""
   }),
   created() {
-    // window.addEventListener("unload", this.saveStorage);
-
-    // localStorage.setItem("rooms", JSON.stringify(this.$store.state.rooms));
-    // if (localStorage.getItem("rooms")) {
-    //   this.$store.state.rooms = JSON.parse(localStorage.getItem("rooms"));
-    //   this.rooms = this.$store.state.rooms;
-    // }
-    // if (localStorage.getItem("roomRents")) {
-    //   this.$store.state.roomRents = JSON.parse(
-    //     localStorage.getItem("roomRents")
-    //   );
-    //   this.roomRents = this.$store.state.roomRents;
-    // }
     this.getAllRooms();
   },
   computed: {
     ...mapGetters(["getRooms"])
   },
   methods: {
-    saveStorage() {
-      localStorage.setItem(
-        "roomRents",
-        JSON.stringify(this.$store.state.roomRents)
-      );
-    },
-
     getLoggedUserEmail() {
       return this.$store.getters.getLoggedUserEmail;
     },
@@ -197,11 +175,10 @@ export default {
       return this.$store.getters.getLastIdRooms;
     },
     chooseRoom(room, id) {
-      alert(room);
-      for (let r in this.rooms) {
+         for (let r in this.rooms) {
         if (room === this.rooms[r].descritivo) {
           this.slctRoom = room;
-          return this.roomId = id;
+          this.roomId = id;
         }
       }
       this.tabIndex++;
@@ -214,26 +191,15 @@ export default {
         alert(err);
       }
     },
-    rentRoom() {
-      this.$store.commit("RENT_ROOM", {});
-    },
-    async addRent() {
+    async addARent() {
       try {
         await this.$store.dispatch("addRents", {
-          /* id: this.getLastIdRooms() + 1,
-          room: this.slctRoom,
-          day: this.day,
-          time: this.time,
-          duration: this.duration,
-          userName: this.$store.state.loggedUser[0].name,
-          userMail: this.getLoggedUserEmail(),
-          reason: this.reason */
           id_room: this.roomId,
           /* date_reserv: this.getHours() + ":" + this.getMinutes() + " " + this.getYear() + "/" + this.getMonth() + "/" + this.getDate(), */
-          date_required: this.day + this.time,
-          duration: this.chooseRoom(),
+          date_required: this.day,
+          duration: this.duration,
           id_user: this.$store.state.loggedUser.user[0].id_utilizador,
-          reason: this.reason,
+          // reason: this.reason,
         });
       } catch (err) {
         alert(err);
