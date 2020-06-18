@@ -673,7 +673,8 @@ export default new Vuex.Store({
           payload.id_evenType,
           payload.id_menu,
           payload.id_local,
-          payload.id_decoration
+          payload.id_decoration,
+          payload.obs
         )
       );
     },

@@ -347,12 +347,13 @@ export default {
       id_menu: "",
       id_extra: "",
       extraName: "",
-      id_decor: ""
+      id_decor: "",
+      id_uniforme:""
     };
   },
   created() {
     this.getAllEventTypes();
-    this.getAllComponents();
+    // this.getAllComponents();
     this.getAllUniforms();
     this.getAllDecorations();
     this.getAllExtras();
@@ -371,11 +372,8 @@ export default {
       }
     },
     uni(uni) {
-      for (let u in this.uniforms) {
-        if (uni.descritivo === this.uniforms[u].descritivo) {
-          this.slctUniform = uni.descritivo;
-        }
-      }
+      this.slctUniform = uni.descritivo;
+      this.id_uniforme = uni.id_farda
       if (this.slctDecor != "" && this.slctUniform != "") {
         this.tabIndex++;
       }
@@ -424,14 +422,14 @@ export default {
         alert(err);
       }
     },
-    async getAllComponents() {
-      try {
-        await this.$store.dispatch("getComponentsMenus");
-        this.components = this.getComponentsMenus;
-      } catch (err) {
-        alert(err);
-      }
-    },
+    // async getAllComponents() {
+    //   try {
+    //     await this.$store.dispatch("getComponentsMenus");
+    //     this.components = this.getComponentsMenus;
+    //   } catch (err) {
+    //     alert(err);
+    //   }
+    // },
     async getAllUniforms() {
       try {
         await this.$store.dispatch("getUniforms");
@@ -471,11 +469,12 @@ export default {
           n_people: this.persons,
           dateTime_reserv: Date.now(),
           dateTime_event: this.day + " " + this.time,
-          id_uniform: this.id_uniform,
+          id_uniform: this.id_uniforme,
           id_evenType: this.id_evenType,
           id_menu: this.id_menu,
           id_local: this.location.id_ipp,
-          id_decoration: this.id_decor
+          id_decoration: this.id_decor,
+          obs: this.obsDecor
         });
       } catch (err) {
         alert(err);
@@ -491,7 +490,7 @@ export default {
   computed: {
     ...mapGetters(["getEvenTypes"]),
     ...mapGetters(["getMenus"]),
-    ...mapGetters(["getComponentsMenus"]),
+
     ...mapGetters(["getUniforms"]),
     ...mapGetters(["getDecorations"]),
     ...mapGetters(["getExtras"]),
