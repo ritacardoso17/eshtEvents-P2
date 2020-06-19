@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import { mount } from "@vue/test-utils";
+import navbar from "@/components/NavBar.vue";
 
 describe("HelloWorld.vue", () => {
   it("renders props.msg when passed", () => {
@@ -12,8 +13,12 @@ describe("HelloWorld.vue", () => {
   });
 });
 
-test("emit events when btnRent clicked", () => {
-  const btnRent = wrapper.find("#btnRent");
-  btnRent.trigger("click");
-  expect(wrapper.emitted().pressed.length).toBe(1);
+test("if logged in is false, do not show logout Button", () => {
+  const wrapper = mount(navbar);
+  expect(wrapper.find("#logout").isVisible()).toBe(false);
+});
+
+test("if logged in, show logout Button", () => {
+  const wrapper = mount(navbar);
+  expect(wrapper.find("#logout").isVisible()).toBe(true);
 });
