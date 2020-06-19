@@ -14,7 +14,7 @@ export default {
       marker: ""
     };
   },
-  beforeCreate(){
+  beforeCreate() {
     window.onload = function() {
       document.getElementById("mapButton").click();
     };

@@ -15,12 +15,26 @@
       </div>
       <form v-on:submit.prevent="changePassword()">
         <label for="password" class="password">Palavra-passe:</label>
-        <input type="password" class="form-control" id="password" v-model="password" required />
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          v-model="password"
+          required
+        />
 
         <label for="password" class="newPassword">Nova palavra-passe:</label>
-        <input type="password" class="form-control" id="newPassword" v-model="newPassword" required />
+        <input
+          type="password"
+          class="form-control"
+          id="newPassword"
+          v-model="newPassword"
+          required
+        />
 
-        <label for="password" class="confirmPassword">Confirmar palavra-passe:</label>
+        <label for="password" class="confirmPassword"
+          >Confirmar palavra-passe:</label
+        >
         <input
           type="password"
           class="form-control"
