@@ -721,7 +721,6 @@ export default new Vuex.Store({
           payload.id_workshop,
         )
       );
-      alert(payload.id_user + payload.id_workshop);
     },
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools());
