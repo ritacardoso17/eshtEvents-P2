@@ -15,26 +15,12 @@
       </div>
       <form v-on:submit.prevent="changePassword()">
         <label for="password" class="password">Palavra-passe:</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          v-model="password"
-          required
-        />
+        <input type="password" class="form-control" id="password" v-model="password" required />
 
         <label for="password" class="newPassword">Nova palavra-passe:</label>
-        <input
-          type="password"
-          class="form-control"
-          id="newPassword"
-          v-model="newPassword"
-          required
-        />
+        <input type="password" class="form-control" id="newPassword" v-model="newPassword" required />
 
-        <label for="password" class="confirmPassword"
-          >Confirmar palavra-passe:</label
-        >
+        <label for="password" class="confirmPassword">Confirmar palavra-passe:</label>
         <input
           type="password"
           class="form-control"
@@ -69,24 +55,20 @@ export default {
     };
   },
   methods: {
-    changePassword() {
-      if (
-        this.loggedUser[0].password === this.password &&
-        this.newPassword === this.confirmPassword
-      ) {
-        this.loggedUser[0].password = this.newPassword;
-        localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
-        this.$store.state.loggedUser = this.loggedUser;
-        for (let i in this.users) {
-          if (this.users[i].id == this.loggedUser[0].id) {
-            this.users[i].password = this.newPassword;
-            localStorage.setItem("users", JSON.stringify(this.users));
-            this.$store.state.users = this.users;
-          }
+    async changePassword() {
+      if (this.newPassword === this.confirmPassword) {
+        try {
+          await this.$store.dispatch("editUser", {
+            pass: this.newPassword,
+            oldPass: this.loggedUser.user[0].password,
+            img: ""
+          });
+          this.password = "";
+          this.newPassword = "";
+          this.confirmPassword = "";
+        } catch (err) {
+          alert(err);
         }
-        this.$bvToast.toast("Palavra-Passe alterada!");
-      } else if (this.loggedUser[0].password !== this.password) {
-        this.$bvToast.toast("A palavra-passe não coincide com a atual!");
       } else {
         this.$bvToast.toast("Passwords diferentes");
       }

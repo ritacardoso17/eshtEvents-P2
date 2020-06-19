@@ -17,9 +17,14 @@
           >
         </template>
         <template v-slot:cell(opinions)="row">
-          <b-button class="btnDetails rounded-0" @click="row.toggleDetails"
+          <b-button
+            v-if="row.item.opiniao == 'Ainda sem opinião'
+            "
+            class="btnDetails rounded-0"
+            @click="row.toggleDetails"
             >Dar opinião</b-button
           >
+          <p v-else>Opinião Enviada</p>
         </template>
         <template v-slot:row-details="row">
           <b-card>
@@ -34,7 +39,7 @@
                   placeholder="Escreva a sua opinião"
                   v-model="opinion"
                 ></textarea>
-                <b-button @click="send(row.item.id)">Enviar</b-button>
+                <b-button @click="send(row.item.id_reserva)">Enviar</b-button>
               </b-col>
               <b-col></b-col>
             </b-row>
@@ -104,14 +109,12 @@ export default {
       }
     },
     async send(id) {
-      alert(id);
       try {
-        for (let i in this.reservations) {
-          if (this.reservations[i].id === id) {
-            this.reservations[i].opinions = this.opinion;
-          }
-        }
-        this.opinion = "";
+        await this.$store.dispatch("getOpinionReservs", {
+          id: id,
+          opinion: this.opinion
+        });
+        this.getAllEvents(this.id);
       } catch (err) {
         alert(err);
       }

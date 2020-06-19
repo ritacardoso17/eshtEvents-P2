@@ -349,7 +349,8 @@ export default new Vuex.Store({
     ],
     schools: [],
     states: [],
-    currentMenus: []
+    currentMenus: [],
+    avatar: ""
   },
 
   mutations: {
@@ -371,9 +372,11 @@ export default new Vuex.Store({
     },
     LOGIN: (state, data) => {
       state.loggedUser = data;
-
+      state.avatar = state.loggedUser.user[0].foto_perfil
       //state.token = data.token
       localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser));
+      localStorage.setItem("avatar", JSON.stringify(state.avatar));
+
       state.userExist = true;
       window.location = "./";
       if (!state.userExist) {
@@ -389,6 +392,7 @@ export default new Vuex.Store({
       state.loggedUser = [];
       state.token = [];
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser));
+      localStorage.removeItem("avatar", JSON.stringify(state.avatar));
       location.href = "./";
       VueSimpleAlert.fire("Sessão Terminada com Sucesso");
     },
@@ -513,6 +517,9 @@ export default new Vuex.Store({
     SET_RENTS: (state, roomRents) => {
       state.roomRents = roomRents;
     },
+    EDIT_USER: () => {
+      VueSimpleAlert.fire("Dados atualizados");
+    },
     SET_SCHOOLS: (state, data) => {
       state.schools = data.message;
     },
@@ -538,10 +545,10 @@ export default new Vuex.Store({
       state.currentMenus = data.message.rows;
     },
     SET_OPINIONRESERVS: () => {
-      this.$bvToast.toast("Opinião Enviada!");
+      VueSimpleAlert.fire("Opinião Enviada!");
     },
     SET_OPINIONRENTS: () => {
-      this.$bvToast.toast("Opinião Enviada!");
+      VueSimpleAlert.fire("Opinião Enviada!");
     }
   },
   getters: {
@@ -630,11 +637,20 @@ export default new Vuex.Store({
     async getOpinionReservs({ commit }, payload) {
       commit(
         "SET_OPINIONRESERVS",
-        await apiService.getOpinionReservs(payload.id)
+        await apiService.getOpinionReservs(payload.id, payload.opinion)
+      );
+    },
+    async editUser({ commit }, payload) {
+      commit(
+        "EDIT_USER",
+        await apiService.editUser(payload.pass, payload.oldPass, payload.img)
       );
     },
     async getOpinionRents({ commit }, payload) {
-      commit("SET_OPINIONRENTS", await apiService.getOpinionRents(payload.id));
+      commit(
+        "SET_OPINIONRENTS",
+        await apiService.getOpinionRents(payload.id, payload.opinion)
+      );
     },
     async addMenus({ commit }, payload) {
       commit(

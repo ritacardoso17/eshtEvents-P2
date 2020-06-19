@@ -29,7 +29,7 @@
         </a>
         <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
         <img
-          :src="foto_perfil"
+          :src=" this.$store.state.avatar"
           style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;"
           class="img-fluid"
           id="photo"
@@ -96,7 +96,7 @@ export default {
         localStorage.getItem("loggedUser")
       );
 
-      this.foto_perfil = this.$store.state.loggedUser.user[0].foto_perfil;
+      this.foto_perfil = this.$store.state.avatar;
       this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser;
     }
     if (!localStorage.getItem("foodMenus")) {

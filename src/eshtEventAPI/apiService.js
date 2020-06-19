@@ -84,6 +84,24 @@ const apiService = {
       throw Error(response);
     }
   },
+  async editUser(pass, oldPass, img) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let id = loggedUser.user[0].id_utilizador;
+    const response = await fetch(`${API_URL}/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({ pass: pass, oldPass: oldPass, img: img })
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async getExtras() {
     const response = await fetch(`${API_URL}/extras`, {
       method: "GET"

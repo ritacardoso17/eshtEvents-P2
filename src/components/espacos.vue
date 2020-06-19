@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="table">
     <div v-if="this.rents != ''">
       <b-table
         striped
@@ -18,11 +18,13 @@
         </template>
         <template v-slot:cell(opinions)="row">
           <b-button
+            v-if="row.item.opiniao == 'Ainda sem opinião'"
             class="btnDetails rounded-0"
             @click="row.toggleDetails"
             style="background-color:black; color:white; height:40px;"
             >Dar opinião</b-button
           >
+          <p v-else>Opinião Enviada</p>
         </template>
         <template v-slot:row-details="row">
           <b-card>
@@ -106,16 +108,16 @@ export default {
         alert(err);
       }
     },
-    send(id) {
-      let rentRooms = JSON.parse(localStorage.getItem("roomRents"));
-      for (let i in rentRooms) {
-        if (rentRooms[i].id === id) {
-          rentRooms[i].opinions = this.opinion;
-        }
+    async send(id) {
+      try {
+        await this.$store.dispatch("getOpinionRents", {
+          id: id,
+          opinion: this.opinion
+        });
+        this.getAllRents(this.id);
+      } catch (err) {
+        alert(err);
       }
-      localStorage.setItem("roomRents", JSON.stringify(rentRooms));
-      this.$bvToast.toast("Opinião Enviada!");
-      this.opinion = "";
     }
   }
 };
@@ -126,5 +128,12 @@ export default {
   background-color: black;
   color: white;
   height: 40px;
+}
+#table {
+  font-family: GeosansLight;
+  color: black;
+}
+#paragraph {
+  font-size: 30px;
 }
 </style>

@@ -1,19 +1,14 @@
 <template>
   <div class="profile">
     <div class="container">
-      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">
-        Perfil
-      </h1>
+      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">Perfil</h1>
     </div>
 
     <div class="container perfilBanner">
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img
-              style="width:200px; height:auto"
-              :src="this.$store.state.loggedUser.user[0].foto_perfil"
-            />
+            <img style="width:200px; height:auto" :src="this.avatar" />
           </div>
           <div class="form-group">
             <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
@@ -21,9 +16,7 @@
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />
               <button type="submit" id="editFoto2">Editar Foto</button>
-              <button type="button" id="editFoto3" @click="cancelFt()">
-                X
-              </button>
+              <button type="button" id="editFoto3" @click="cancelFt()">X</button>
             </form>
           </div>
         </div>
@@ -31,9 +24,7 @@
           <p class="userName">
             <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
           </p>
-          <p>
-            Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}
-          </p>
+          <p>Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}</p>
           <p>Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
           <p>Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
           <p>E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
@@ -52,9 +43,7 @@
     </div>
 
     <div class="container" style="padding-bottom: 60px; padding-top: 20px;">
-      <h2 style="font-family: Channel; font-size: 20px; color: black;">
-        As Tuas Reservas
-      </h2>
+      <h2 style="font-family: Channel; font-size: 20px; color: black;">As Tuas Reservas</h2>
     </div>
 
     <div class="container tables">
@@ -86,7 +75,7 @@ export default {
     return {
       newPhoto: "",
       loggedUser: [],
-
+      avatar: "",
       nome: ""
     };
   },
@@ -114,7 +103,10 @@ export default {
       this.$store.state.roomRents = JSON.parse(
         localStorage.getItem("roomRents")
       );
-      this.roomRents = this.$store.state.roomRents;
+      if (localStorage.getItem("avatar")) {
+        this.$store.state.avatar = JSON.parse(localStorage.getItem("avatar"));
+        this.avatar = this.$store.state.avatar;
+      }
     }
   },
   computed: {
@@ -134,19 +126,21 @@ export default {
     getUser() {
       return this.$store.state.loggedUser;
     },
-
-    changePhoto() {
-      for (let i in this.users) {
-        this.loggedUser[0].imgProfile = this.newPhoto;
-        localStorage.setItem("loggedUser", JSON.stringify(this.loggedUser));
-        this.$store.state.loggedUser = this.loggedUser;
-        if (this.users[i].id == this.loggedUser[0].id) {
-          this.users[i].imgProfile = this.newPhoto;
-          localStorage.setItem("users", JSON.stringify(this.users));
-          this.$store.state.users = this.users;
-        }
+    async changePhoto() {
+      alert(this.newPhoto)
+      try {
+        await this.$store.dispatch("editUser", {
+          pass: "",
+          oldPass: "",
+          img: this.newPhoto
+        });
+        localStorage.setItem("avatar", JSON.stringify(this.newPhoto));
+        this.$store.state.avatar = this.newPhoto
+        this.avatar = this.newPhoto;
+        this.newPhoto = "";
+      } catch (err) {
+        alert(err);
       }
-      this.newPhoto = "";
     },
     cancelFt() {
       this.newPhoto = "";
