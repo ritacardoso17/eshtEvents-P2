@@ -1,17 +1,11 @@
 <template>
   <div class="container">
     <b-button class="filterName" @click="orderByName()">Ver por nome</b-button>
-    <b-button class="filterDate" @click="orderByDate()"
-      >Ver por mais recente</b-button
-    >
+    <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
     <br />
     <br />
     <br />
-    <div
-      class="row"
-      v-for="workshop in workshops"
-      v-bind:key="workshop.id_workshop"
-    >
+    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id_workshop % 2 == 0">
         <div class="card-header" id="headerWork">
@@ -48,8 +42,7 @@
             id="workInscp2"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-            >{{ signMe }}</b-button
-          >
+          >{{ signMe }}</b-button>
 
           <!-- por este b-button como router link para o login mas manter o v-bind  -->
         </b-card>
@@ -90,8 +83,7 @@
             id="workInscp"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-            >{{ signMe }}</b-button
-          >
+          >{{ signMe }}</b-button>
         </b-card>
         <br />
         <br />
@@ -103,6 +95,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import VueSimpleAlert from "vue-simple-alert";
 export default {
   data() {
     return {
@@ -113,12 +106,6 @@ export default {
     };
   },
   created() {
-    // if (localStorage.getItem("workshops")) {
-    //   this.$store.state.workshops = JSON.parse(
-    //     localStorage.getItem("workshops")
-    //   );
-    //   this.workshops = this.$store.state.workshops;
-    // }
     this.getAllWorkshops();
     if (this.getLoggedUser() !== "") {
       this.show2 = "inline";
@@ -131,32 +118,20 @@ export default {
   },
   methods: {
     getLoggedUser() {
-      return this.$store.getters.getLoggedUser;
+      return this.$store.getters.getLoggedUserId;
     },
     getUserEmail() {
       return this.$store.getters.getLoggedUserEmail;
     },
 
-    sign(id) {
-      for (let i in this.workshops) {
-        if (this.workshops[i].id === id) {
-          if (
-            this.workshops[i].nr_vagas > 0 &&
-            this.workshops[i].userEmail != this.getUserEmail()
-          ) {
-            this.workshops[i].vacancies = this.workshops[i].vacancies - 1;
-            this.workshops[i].userEmail.push(this.getUserEmail());
-            localStorage.setItem("workshops", JSON.stringify(this.workshops));
-            this.$store.getters.getLoggedUser = this.workshops;
-          } else if (
-            this.workshops[i].vacancies > 0 &&
-            this.workshops[i].userEmail.includes(this.getUserEmail())
-          ) {
-            this.$bvToast.toast("Não se pode inscrever mais do que uma vez!");
-          } else {
-            this.$bvToast.toast("Não ha mais vagas!");
-          }
-        }
+    async sign(id) {
+      alert(id);
+      try {
+        await this.$store.dispatch("addUserWorkshop", {
+          id_workshop: id
+        });
+      } catch (err) {
+        VueSimpleAlert.fire("Já inscrito no Workshop");
       }
     },
     orderName(a, b) {

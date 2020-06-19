@@ -370,6 +370,10 @@ export default new Vuex.Store({
         window.location = "./login";
       }
     },
+    ADD_USER_WORKSHOP: () => {
+      VueSimpleAlert.fire("Inscrito com sucesso no Workshop");
+    },
+
     LOGIN: (state, data) => {
       state.loggedUser = data;
       state.avatar = state.loggedUser.user[0].foto_perfil;
@@ -431,7 +435,7 @@ export default new Vuex.Store({
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops));
-        VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
+        VueSimpleAlert.fire("Workshop adicionado!").then(() => { });
       } else {
         VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
       }
@@ -446,7 +450,7 @@ export default new Vuex.Store({
         //   components: payload.components
         // });
         // localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
-        VueSimpleAlert.fire("Menu adicionado!").then(() => {});
+        VueSimpleAlert.fire("Menu adicionado!").then(() => { });
       } else {
         VueSimpleAlert.fire("Já existe um menu com esse nome!");
       }
@@ -709,6 +713,15 @@ export default new Vuex.Store({
         )
       );
       alert(payload.date_required);
+    },
+    async addUserWorkshop({ commit }, payload) {
+      commit(
+        "ADD_USER_WORKSHOP",
+        await apiService.addUserWorkshop(
+          payload.id_workshop,
+        )
+      );
+      alert(payload.id_user + payload.id_workshop);
     },
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools());

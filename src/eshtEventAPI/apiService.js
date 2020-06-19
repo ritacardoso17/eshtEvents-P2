@@ -225,6 +225,23 @@ const apiService = {
       throw Error(response);
     }
   },
+  async addUserWorkshop( id_workshop){
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/userWorkshops  `, {
+      method: "POST",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({ id_user:loggedUser.user[0].id_utilizador, id_workshop: id_workshop })
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async removeReservation(id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/reservations/${id}`, {
