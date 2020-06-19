@@ -18,7 +18,7 @@
         id="txtPasswordLogin"
         placeholder="Insira a sua palavra-chave"
         v-model="password"
-       required
+        required
       />´
       <b-button type="submit" class="btn btn-primary float-right" id="btnLogin"
         >Entrar</b-button

@@ -348,7 +348,7 @@ export default {
       id_extra: "",
       extraName: "",
       id_decor: "",
-      id_uniforme:""
+      id_uniforme: ""
     };
   },
   created() {
@@ -373,7 +373,7 @@ export default {
     },
     uni(uni) {
       this.slctUniform = uni.descritivo;
-      this.id_uniforme = uni.id_farda
+      this.id_uniforme = uni.id_farda;
       if (this.slctDecor != "" && this.slctUniform != "") {
         this.tabIndex++;
       }

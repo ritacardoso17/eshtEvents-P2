@@ -18,8 +18,7 @@
         </template>
         <template v-slot:cell(opinions)="row">
           <b-button
-            v-if="row.item.opiniao == 'Ainda sem opinião'
-            "
+            v-if="row.item.opiniao == 'Ainda sem opinião'"
             class="btnDetails rounded-0"
             @click="row.toggleDetails"
             >Dar opinião</b-button

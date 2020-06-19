@@ -1,7 +1,9 @@
 <template>
   <div class="profile">
     <div class="container">
-      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">Perfil</h1>
+      <h1 id="profileTitle" style="padding-top:20px; padding-bottom: 50px;">
+        Perfil
+      </h1>
     </div>
 
     <div class="container perfilBanner">
@@ -16,7 +18,9 @@
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />
               <button type="submit" id="editFoto2">Editar Foto</button>
-              <button type="button" id="editFoto3" @click="cancelFt()">X</button>
+              <button type="button" id="editFoto3" @click="cancelFt()">
+                X
+              </button>
             </form>
           </div>
         </div>
@@ -24,7 +28,9 @@
           <p class="userName">
             <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
           </p>
-          <p>Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}</p>
+          <p>
+            Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}
+          </p>
           <p>Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
           <p>Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
           <p>E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
@@ -43,7 +49,9 @@
     </div>
 
     <div class="container" style="padding-bottom: 60px; padding-top: 20px;">
-      <h2 style="font-family: Channel; font-size: 20px; color: black;">As Tuas Reservas</h2>
+      <h2 style="font-family: Channel; font-size: 20px; color: black;">
+        As Tuas Reservas
+      </h2>
     </div>
 
     <div class="container tables">
@@ -127,7 +135,7 @@ export default {
       return this.$store.state.loggedUser;
     },
     async changePhoto() {
-      alert(this.newPhoto)
+      alert(this.newPhoto);
       try {
         await this.$store.dispatch("editUser", {
           pass: "",
@@ -135,7 +143,7 @@ export default {
           img: this.newPhoto
         });
         localStorage.setItem("avatar", JSON.stringify(this.newPhoto));
-        this.$store.state.avatar = this.newPhoto
+        this.$store.state.avatar = this.newPhoto;
         this.avatar = this.newPhoto;
         this.newPhoto = "";
       } catch (err) {

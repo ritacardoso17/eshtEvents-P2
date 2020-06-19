@@ -372,7 +372,7 @@ export default new Vuex.Store({
     },
     LOGIN: (state, data) => {
       state.loggedUser = data;
-      state.avatar = state.loggedUser.user[0].foto_perfil
+      state.avatar = state.loggedUser.user[0].foto_perfil;
       //state.token = data.token
       localStorage.setItem("loggedUser", JSON.stringify(state.loggedUser));
       localStorage.setItem("avatar", JSON.stringify(state.avatar));

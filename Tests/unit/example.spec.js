@@ -1,15 +1,14 @@
 /* eslint-disable no-undef */
 import { shallowMount } from "@vue/test-utils";
-import app from "@/App.vue";
-import rents from "@/views/room.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
 
-describe("App.vue", () => {
-  it("has data", () => {
-    const msg = "hey";
-    const wrapper = shallowMount(app, {
+describe("HelloWorld.vue", () => {
+  it("renders props.msg when passed", () => {
+    const msg = "new message";
+    const wrapper = shallowMount(HelloWorld, {
       propsData: { msg }
     });
-    expect(wrapper.props()).toBe(true);
+    expect(wrapper.text()).toMatch(msg);
   });
 });
 

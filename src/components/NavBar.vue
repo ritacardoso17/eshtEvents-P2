@@ -29,7 +29,7 @@
         </a>
         <img src="../assets/Logo.mao.png" class="img-fluid" id="camp1" alt />
         <img
-          :src=" this.$store.state.avatar"
+          :src="this.$store.state.avatar"
           style="width:40px; height:40px; border: 2px solid #daaa29; border-radius: 100px; margin-right:10px;"
           class="img-fluid"
           id="photo"
