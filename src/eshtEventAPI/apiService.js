@@ -102,15 +102,30 @@ const apiService = {
       throw Error(response);
     }
   },
-  async editUserType( id,tipoUser) {
+  async editUserType( id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    const response = await fetch(`${API_URL}/users/${id}`, {
+    const response = await fetch(`${API_URL}/userType/${id}`, {
       method: "PUT",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify({ tipoUser: tipoUser })
+      }
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async editUserTypeClient( id) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/userTypeC/${id}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      }
     });
 
     if (response.ok) {

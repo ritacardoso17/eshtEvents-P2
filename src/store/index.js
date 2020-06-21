@@ -650,7 +650,13 @@ export default new Vuex.Store({
     async editUserType({ commit }, payload) {
       commit(
         "CHANGE_TYPE",
-        await apiService.editUserType( payload.id,payload.tipoUser)
+        await apiService.editUserType( payload.id)
+      );
+    },
+    async editUserTypeClient({ commit }, payload) {
+      commit(
+        "CHANGE_TYPE",
+        await apiService.editUserTypeClient( payload.id)
       );
     },
     async getOpinionRents({ commit }, payload) {

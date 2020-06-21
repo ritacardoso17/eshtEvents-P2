@@ -103,15 +103,27 @@ export default {
         VueSimpleAlert.fire("Não pode eliminar o utilizador que esta loggado");
       }
     },
-    async changeUser(id,tipoUser) {
-      alert(tipoUser)
-      try {
-        await this.$store.dispatch("editUserType", {
-          tipoUser: tipoUser,
-          id:id
-        });
-      } catch (err) {
-        alert(err);
+    async changeUser(id, tipoUser) {
+      alert(tipoUser);
+      if (tipoUser === "Administrador") {
+        try {
+          await this.$store.dispatch("editUserType", {
+            id: id
+          });
+          this.getAllUsers();
+        } catch (err) {
+          alert(err);
+        }
+      }
+      else{
+         try {
+          await this.$store.dispatch("editUserTypeClient", {
+            id: id
+          });
+            this.getAllUsers();
+        } catch (err) {
+          alert(err);
+        }
       }
     }
   }
