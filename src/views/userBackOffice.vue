@@ -54,7 +54,7 @@
         <b-button
           class="btnChange"
           size="sm"
-          @click="changeUser(row.item.id)"
+          @click="changeUser(row.item.id_utilizador,row.item.tipoUser)"
         >Mudar tipo de utilizador</b-button>
       </template>
     </b-table>
@@ -63,7 +63,7 @@
 
 <script>
 import VueSimpleAlert from "vue-simple-alert";
-import { mapGetters } from "vuex"
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -77,13 +77,13 @@ export default {
     };
   },
   created() {
-   this.getAllUsers()
+    this.getAllUsers();
   },
   computed: {
     ...mapGetters(["getUsers"])
   },
   methods: {
-     async getAllUsers() {
+    async getAllUsers() {
       try {
         await this.$store.dispatch("getUsers");
         this.items = this.getUsers;
@@ -91,36 +91,27 @@ export default {
         alert(err);
       }
     },
-     async removeUser(id) {
-       if(id != this.$store.state.loggedUser.user[0].id_utilizador){
-         try {
-        await this.$store.dispatch("removeUser", { id: id });
-         this.getAllUsers()
+    async removeUser(id) {
+      if (id != this.$store.state.loggedUser.user[0].id_utilizador) {
+        try {
+          await this.$store.dispatch("removeUser", { id: id });
+          this.getAllUsers();
+        } catch (err) {
+          alert(err);
+        }
+      } else {
+        VueSimpleAlert.fire("Não pode eliminar o utilizador que esta loggado");
+      }
+    },
+    async changeUser(id,tipoUser) {
+      alert(tipoUser)
+      try {
+        await this.$store.dispatch("editUserType", {
+          tipoUser: tipoUser,
+          id:id
+        });
       } catch (err) {
         alert(err);
-      }
-       }
-     else{
-      VueSimpleAlert.fire("Não pode eliminar o utilizador que esta loggado");
-     }
-    },
-    changeUser(id) {
-      for (let i in this.items) {
-        if (this.items[i].id === id) {
-          const index = this.items.findIndex(
-            item => this.items[i].id === item.id
-          );
-          if (this.items[index].typeUser == "user") {
-            this.items[index].typeUser = "admin";
-          } else {
-            this.items[index].typeUser = "user";
-          }
-          localStorage.setItem("users", JSON.stringify(this.items));
-          this.$store.state.users = localStorage.setItem(
-            "users",
-            JSON.stringify(this.items)
-          );
-        }
       }
     }
   }

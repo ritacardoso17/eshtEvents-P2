@@ -102,7 +102,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async editUserType(tipoUser, id) {
+  async editUserType( id,tipoUser) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/users/${id}`, {
       method: "PUT",
