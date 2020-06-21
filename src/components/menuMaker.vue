@@ -96,21 +96,7 @@ export default {
     };
   },
   created() {
-    // localStorage.setItem(
-    //   "foodMenus",
-    //   JSON.stringify(this.$store.state.foodMenus)
-    // );
-    // if (localStorage.getItem("foodMenus")) {
-    //   this.menus = JSON.parse(localStorage.getItem("foodMenus"));
-    // }
-    // if (localStorage.getItem("eventType")) {
-    //   this.eventType = JSON.parse(localStorage.getItem("eventType"));
-    // }
-    // localStorage.setItem(
-    //   "eventType",
-    //   JSON.stringify(this.$store.state.eventType)
-    // );
-    this.getAllMenus();
+      this.getAllMenus();
     this.getAllComponents();
     this.getAllEventTypes();
   },

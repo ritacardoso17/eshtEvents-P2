@@ -358,6 +358,10 @@ export default new Vuex.Store({
       state.reservations = reservations;
       VueSimpleAlert.fire("Reserva Cancelada com Sucesso");
     },
+    REMOVE_USER: (state, users) => {
+      state.users = users;
+      VueSimpleAlert.fire("Utilizador eliminado");
+    },
     REMOVE_RENT: (state, roomRents) => {
       state.roomRents = roomRents;
       VueSimpleAlert.fire("Aluguer cancelado com sucesso");
@@ -400,25 +404,8 @@ export default new Vuex.Store({
       location.href = "./";
       VueSimpleAlert.fire("Sessão Terminada com Sucesso");
     },
-    REMOVE_USER: (state, payload) => {
-      state.users = state.users.filter(user => payload.id !== user.id);
-      localStorage.setItem("users", JSON.stringify(state.users));
-    },
-    CHANGE_TYPE: (state, payload) => {
-      for (const user of state.users) {
-        if (user.id == payload.id) {
-          state.users.push({
-            id: user.id,
-            name: user.name,
-            school: user.school,
-            typeUser: "admin",
-            email: user.email,
-            password: user.password,
-            contact: user.contact,
-            birth: user.birth
-          });
-        }
-      }
+    CHANGE_TYPE: () => {
+      VueSimpleAlert.fire("Tipo de utilizador mudado com sucesso");
     },
     ADD_WORKSHOP: (state, payload) => {
       if (!state.workshops.some(workshop => workshop.title === payload.title)) {
@@ -527,6 +514,9 @@ export default new Vuex.Store({
     SET_SCHOOLS: (state, data) => {
       state.schools = data.message;
     },
+    SET_USERS: (state, data) => {
+      state.users = data.message;
+    },
     SET_EXTRAS: (state, extras) => {
       state.extras = extras;
     },
@@ -605,13 +595,20 @@ export default new Vuex.Store({
     getWorkshops: state => state.workshops.message,
     getStates: state => state.states.message,
     getEventypesId: state => state.currentMenus,
-    getRooms: state => state.rooms
+    getRooms: state => state.rooms,
+    getUsers: state => state.users
   },
   actions: {
     async removeReservation({ commit }, payload) {
       commit(
         "REMOVE_RESERVATION",
         await apiService.removeReservation(payload.id)
+      );
+    },
+    async removeUser({ commit }, payload) {
+      commit(
+        "REMOVE_USER",
+        await apiService.removeUser(payload.id)
       );
     },
     async removeRent({ commit }, payload) {
@@ -648,6 +645,12 @@ export default new Vuex.Store({
       commit(
         "EDIT_USER",
         await apiService.editUser(payload.pass, payload.oldPass, payload.img)
+      );
+    },
+    async editUserType({ commit }, payload) {
+      commit(
+        "CHANGE_TYPE",
+        await apiService.editUserType(payload.tipoUser, payload.id)
       );
     },
     async getOpinionRents({ commit }, payload) {
@@ -724,6 +727,9 @@ export default new Vuex.Store({
     },
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools());
+    },
+     async getUsers({ commit }) {
+      commit("SET_USERS", await apiService.getUsers());
     },
     async getExtras({ commit }) {
       commit("SET_EXTRAS", await apiService.getExtras());

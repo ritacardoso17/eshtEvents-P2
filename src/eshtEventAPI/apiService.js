@@ -102,9 +102,42 @@ const apiService = {
       throw Error(response);
     }
   },
+  async editUserType(tipoUser, id) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({ tipoUser: tipoUser })
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async getExtras() {
     const response = await fetch(`${API_URL}/extras`, {
       method: "GET"
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async getUsers() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/users`, {
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -225,7 +258,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async addUserWorkshop( id_workshop){
+  async addUserWorkshop(id_workshop) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/userWorkshops  `, {
       method: "POST",
@@ -233,7 +266,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-      body: JSON.stringify({ id_user:loggedUser.user[0].id_utilizador, id_workshop: id_workshop })
+      body: JSON.stringify({ id_user: loggedUser.user[0].id_utilizador, id_workshop: id_workshop })
     });
 
     if (response.ok) {
@@ -245,6 +278,20 @@ const apiService = {
   async removeReservation(id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/reservations/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-access-token": loggedUser.token
+      }
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  }, async removeUser(id) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/users/${id}`, {
       method: "DELETE",
       headers: {
         "x-access-token": loggedUser.token
