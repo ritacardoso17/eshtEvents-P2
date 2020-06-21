@@ -88,9 +88,6 @@ export default {
     tipoUser: ""
   }),
   created: function() {
-    if (localStorage.getItem("users")) {
-      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    }
     if (localStorage.getItem("loggedUser")) {
       this.$store.state.loggedUser = JSON.parse(
         localStorage.getItem("loggedUser")
@@ -98,31 +95,6 @@ export default {
 
       this.foto_perfil = this.$store.state.avatar;
       this.tipoUser = this.$store.state.loggedUser.user[0].id_tipoUser;
-    }
-    if (!localStorage.getItem("foodMenus")) {
-      localStorage.setItem(
-        "foodMenus",
-        JSON.stringify(this.$store.state.foodMenus)
-      );
-    }
-    if (!localStorage.getItem("workshops")) {
-      localStorage.setItem(
-        "workshops",
-        JSON.stringify(this.$store.state.workshops)
-      );
-    }
-
-    if (!localStorage.getItem("roomRents")) {
-      localStorage.setItem(
-        "roomRents",
-        JSON.stringify(this.$store.state.rentRooms)
-      );
-    }
-    if (!localStorage.getItem("componentMenus")) {
-      localStorage.setItem(
-        "componentMenus",
-        JSON.stringify(this.$store.state.componentMenus)
-      );
     }
   },
   methods: {
