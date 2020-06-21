@@ -8,8 +8,7 @@
       size="sm"
       :to="{ path: '/addMenu' }"
       v-bind:style="{ display: size }"
-      >Adicionar Menu</b-button
-    >
+    >Adicionar Menu</b-button>
     <br />
     <br />
     <!--GERA TABELA COM DADOS DOS MENUS-->
@@ -27,8 +26,7 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-          >Mostrar Menu</b-button
-        >
+        >Mostrar Menu</b-button>
       </template>
       <template v-slot:cell(options)="row">
         <b-button
@@ -36,8 +34,7 @@
           class="btnRemove"
           size="sm"
           @click="removeMenu(row.item.id)"
-          >Eliminar Menu</b-button
-        >
+        >Eliminar Menu</b-button>
         <b-button
           class="btnRemove"
           size="sm"
@@ -50,8 +47,7 @@
               row.item.type
             )
           "
-          >Editar Menu</b-button
-        >
+        >Editar Menu</b-button>
       </template>
       <!-- Mostar Detalhes do MENU -->
       <template v-slot:row-details="row">
@@ -59,11 +55,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Componentes:</b>
-              <div
-                class="text-sm-center"
-                v-for="component in row.item.components"
-                :key="component"
-              >
+              <div class="text-sm-center" v-for="component in row.item.components" :key="component">
                 <li>{{ component }}</li>
               </div>
             </b-col>
@@ -79,34 +71,23 @@
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group
-                id="input-group-1"
-                label="Nome do Menu:"
-                label-for="input-1"
-              ></b-form-group>
+              <b-form-group id="input-group-1" label="Nome do Menu:" label-for="input-1"></b-form-group>
               <input type="text" v-model="name" style=" width: 300px;" />
               <br />
 
               <!-- TIPO EVENTO -->
-              <b-form-group
-                id="input-group-1"
-                label="Tipo de Evento:"
-                label-for="input-1"
-              ></b-form-group>
+              <b-form-group id="input-group-1" label="Tipo de Evento:" label-for="input-1"></b-form-group>
               <select v-model="type">
                 <option
                   v-for="typeE in eventType"
                   :key="typeE"
                   @click="typeEvent(typeE)"
-                  >{{ typeE }}</option
-                >
+                >{{ typeE }}</option>
               </select>
             </div>
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel"
-                >Imagem do Menu:</b-form-label
-              >
+              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -116,22 +97,9 @@
 
             <div class="col">
               <!-- COMPONENTES DO MENU -->
-              <b-form-group
-                id="input-group-1"
-                label="Componenetes:"
-                label-for="input-1"
-              ></b-form-group>
-              <div
-                align="left"
-                v-for="component in components"
-                :key="component.id"
-              >
-                <input
-                  type="checkbox"
-                  :value="component.name"
-                  unchecked
-                  v-model="componentsE"
-                />
+              <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
+              <div align="left" v-for="component in components" :key="component.id">
+                <input type="checkbox" :value="component.name" unchecked v-model="componentsE" />
                 {{ component.name }}
               </div>
             </div>
@@ -140,15 +108,14 @@
 
         <b-button type="submit" class="btnConf">Confirmar</b-button>
 
-        <b-button type="button" class="btnConf" @click="cancel()"
-          >Cancelar</b-button
-        >
+        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
       </b-form>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -161,7 +128,7 @@ export default {
           sortable: "true"
         },
         {
-          key: "type",
+          key: "descritivo",
           label: "Tipo de evento",
           sortable: "true"
         },
@@ -184,35 +151,22 @@ export default {
     };
   },
   created() {
-    if (localStorage.getItem("foodMenus")) {
-      this.$store.state.foodMenus = JSON.parse(
-        localStorage.getItem("foodMenus")
-      );
-      this.menus = this.$store.state.foodMenus;
-    }
-    if (localStorage.getItem("foodMenus")) {
-      this.$store.state.foodMenus = JSON.parse(
-        localStorage.getItem("foodMenus")
-      );
-    }
-    if (localStorage.getItem("componentMenus")) {
-      this.components = JSON.parse(localStorage.getItem("componentMenus"));
-    }
-    localStorage.setItem(
-      "componentMenus",
-      JSON.stringify(this.$store.state.componentMenus)
-    );
-
-    if (localStorage.getItem("eventType")) {
-      this.eventType = JSON.parse(localStorage.getItem("eventType"));
-    }
-    localStorage.setItem(
-      "eventType",
-      JSON.stringify(this.$store.state.eventType)
-    );
+    this.getAllMenus();
+  },
+  computed: {
+    ...mapGetters(["getMenus"])
   },
   methods: {
-    removeMenu(id) {
+    async getAllMenus() {
+      try {
+        await this.$store.dispatch("getMenus");
+        this.menus = this.getMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+
+    eMenu(id) {
       for (let i in this.menus) {
         if (this.menus[i].id === id) {
           this.menus = this.menus.filter(
