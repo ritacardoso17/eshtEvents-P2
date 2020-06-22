@@ -14,7 +14,8 @@
           class="btnDetails"
           size="sm"
           @click="row.toggleDetails"
-        >Mostrar Detalhes</b-button>
+          >Mostrar Detalhes</b-button
+        >
       </template>
       <template v-slot:row-details="row">
         <b-card>
@@ -50,12 +51,14 @@
           size="sm"
           @click="removeUser(row.item.id_utilizador)"
           style="margin:5px"
-        >Eliminar Utilizador</b-button>
+          >Eliminar Utilizador</b-button
+        >
         <b-button
           class="btnChange"
           size="sm"
-          @click="changeUser(row.item.id_utilizador,row.item.tipoUser)"
-        >Mudar tipo de utilizador</b-button>
+          @click="changeUser(row.item.id_utilizador, row.item.tipoUser)"
+          >Mudar tipo de utilizador</b-button
+        >
       </template>
     </b-table>
   </div>
@@ -114,13 +117,12 @@ export default {
         } catch (err) {
           alert(err);
         }
-      }
-      else{
-         try {
+      } else {
+        try {
           await this.$store.dispatch("editUserTypeClient", {
             id: id
           });
-            this.getAllUsers();
+          this.getAllUsers();
         } catch (err) {
           alert(err);
         }

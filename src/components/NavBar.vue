@@ -80,7 +80,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: "navbar",
   data: () => ({
     email: "",
     password: "",

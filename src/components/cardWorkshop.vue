@@ -1,11 +1,17 @@
 <template>
   <div class="container">
     <b-button class="filterName" @click="orderByName()">Ver por nome</b-button>
-    <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
+    <b-button class="filterDate" @click="orderByDate()"
+      >Ver por mais recente</b-button
+    >
     <br />
     <br />
     <br />
-    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
+    <div
+      class="row"
+      v-for="workshop in workshops"
+      v-bind:key="workshop.id_workshop"
+    >
       <!-- CARD WORKSHOPS À DIREITA -->
       <span v-if="workshop.id_workshop % 2 == 0">
         <div class="card-header" id="headerWork">
@@ -42,7 +48,8 @@
             id="workInscp2"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-          >{{ signMe }}</b-button>
+            >{{ signMe }}</b-button
+          >
 
           <!-- por este b-button como router link para o login mas manter o v-bind  -->
         </b-card>
@@ -83,7 +90,8 @@
             id="workInscp"
             variant="primary"
             @click="sign(workshop.id_workshop)"
-          >{{ signMe }}</b-button>
+            >{{ signMe }}</b-button
+          >
         </b-card>
         <br />
         <br />
