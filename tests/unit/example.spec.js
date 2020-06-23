@@ -1,8 +1,7 @@
-// import store from '../../src/store/index.js'
 import { shallowMount } from "@vue/test-utils";
 import { mount } from "@vue/test-utils";
 import navbar from "@/components/NavBar.vue";
-// import Menu from "@/components/menuMaker.vue";
+import workshop from "@/components/cardWorkshop.vue";
 import profile from "@/views/Profile.vue";
 import eventos from "@/components/eventos.vue";
 import espacos from "@/components/espacos.vue";
@@ -42,110 +41,160 @@ let mocked = new Vuex.Store({
 
 // Eventos da navbar
 describe("NavBar.vue", () => {
-  test("if logged in is false, do not show logout Button", () => {
+  test("if logged in, do not show logout Button", () => {
     const wrapper = mount(navbar, {
       store: mocked
     });
     expect(wrapper.find("#logout").isVisible()).toBe(true);
   });
 
-  test("if logged in, show logout Button", () => {
+  test("if logged in is false, do not show logout Button", () => {
     const wrapper = mount(navbar, { store });
     expect(wrapper.find("#logout").exists()).toBe(false);
   });
 
-  test("if logged in is false, do not show logout Button", () => {
+  test("if logged in, do not show login Button", () => {
     const wrapper = mount(navbar, {
       store: mocked
     });
     expect(wrapper.find("#loginBtn").exists()).toBe(false);
   });
 
-  test("if logged in, show logout Button", () => {
+  test("if logged in is false, show login Button", () => {
     const wrapper = mount(navbar, { store });
     expect(wrapper.find("#loginBtn").isVisible()).toBe(true);
   });
 
-  test("if logged in is false, do not show logout Button", () => {
+  test("if logged in, show profile Button", () => {
     const wrapper = mount(navbar, {
       store: mocked
     });
     expect(wrapper.find("#photo").isVisible()).toBe(true);
   });
 
-  test("if logged in, show logout Button", () => {
-    const wrapper = mount(navbar, { store });
+  test("if logged in is false, do not show profile Button", () => {
+    const wrapper = mount(navbar, store);
     expect(wrapper.find("#photo").exists()).toBe(false);
   });
 });
 
-// Filtros dos menus
-// describe("menuMaker.vue", () => {
-//   test("if logged in is false, do not show logout Button", () => {
-//     const wrapper = Menu.computed.filterMenus();
-//     const input = [
-//       { id: 1, descritivo: "Menu A" },
-//       { id: 2, descritivo: "Menu B" },
-//       { id: 3, descritivo: "Menu C" }
-//     ];
-//     const output = [{ id: 3, descritivo: "Menu C" }];
-//     expect(wrapper(input).toEqual(output));
-//   });
-// });
+// Filtros dos workshops
+describe("CardWorkshop.vue", () => {
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderDate(
+      { data_hora: 100 },
+      { data_hora: 5 }
+    );
+    expect(wrapper).toBe(1);
+  });
+
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderDate(
+      { data_hora: 6 },
+      { data_hora: 80 }
+    );
+    expect(wrapper).toBe(-1);
+  });
+
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderDate(
+      { data_hora: 120 },
+      { data_hora: 120 }
+    );
+    expect(wrapper).toBe(0);
+  });
+
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderName(
+      { nome: "Sushi" },
+      { nome: "Carne" }
+    );
+    expect(wrapper).toBe(1);
+  });
+
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderName(
+      { nome: "carne" },
+      { nome: "sushi" }
+    );
+    expect(wrapper).toBe(-1);
+  });
+
+  it("renders props.msg when passed", () => {
+    const wrapper = workshop.methods.orderName(
+      { nome: "carne" },
+      { nome: "carne" }
+    );
+    expect(wrapper).toBe(0);
+  });
+});
 
 // Informação do utilizador
 describe("Profile.vue", () => {
-  test("if logged in is false, send to login", () => {
-    const wrapper = shallowMount(profile, {store: mocked});
+  test("Check if phone number belongs to loggedUser", () => {
+    const wrapper = shallowMount(profile, { store: mocked });
     expect(wrapper.find("#phone").text()).toEqual("Contacto: antonio");
   });
 
-  test("if logged in is false, send to login", () => {
-    const wrapper = shallowMount(profile, {store: mocked});
+  test("Check if userName belongs to loggedUser", () => {
+    const wrapper = shallowMount(profile, { store: mocked });
     expect(wrapper.find("#userName").text()).toEqual("antonio");
   });
 
-  test("if logged in is false, send to login", () => {
-    const wrapper = shallowMount(profile, {store: mocked});
-    expect(wrapper.find("#birthDate").text()).toEqual("Data de Nascimento: antonio");
+  test("Check if birthDate belongs to loggedUser", () => {
+    const wrapper = shallowMount(profile, { store: mocked });
+    expect(wrapper.find("#birthDate").text()).toEqual(
+      "Data de Nascimento: antonio"
+    );
   });
 
-  test("if logged in is false, send to login", () => {
-    const wrapper = shallowMount(profile, {store: mocked});
+  test("Check if school belongs to loggedUser", () => {
+    const wrapper = shallowMount(profile, { store: mocked });
     expect(wrapper.find("#ipp").text()).toEqual("Instituição: ESMAD");
   });
 
-  test("if logged in is false, send to login", () => {
-    const wrapper = shallowMount(profile, {store: mocked});
-    expect(wrapper.find("#email").text()).toEqual("E-mail: 9190335@esmad.ipp.pt");
+  test("Check if email belongs to loggedUser", () => {
+    const wrapper = shallowMount(profile, { store: mocked });
+    expect(wrapper.find("#email").text()).toEqual(
+      "E-mail: 9190335@esmad.ipp.pt"
+    );
   });
 });
 
 // Verificar botão de opinião nos eventos
 describe("eventos.vue", () => {
-  test("if logged in is false, do not show logout Button", () => {
+  test("If opinion, do not show opinion button", () => {
     const wrapper = mount(eventos, {
       store: mocked
     });
     expect(wrapper.find("#opinion").exists()).toBe(false);
   });
 
-  test("if logged in is false, do not show logout Button", () => {
+  test("If opinion is false, show opinion button", () => {
     const wrapper = mount(eventos, { store });
     expect(wrapper.find("#opinion").exists()).toBe(false);
+  });
+
+  test("Check cancel button", () => {
+    const cancelEvents = jest.fn();
+    const cancelButton = mount(
+      <b-button onClick={cancelEvents}>Cancelar</b-button>
+    );
+    cancelButton.find(".btnCancel").simulate("click");
+    expect(cancelButton.mock.calls.length).toEqual(1);
   });
 });
 
 // Verificar botão de opinião nos alugueres
 describe("espacos.vue", () => {
-  test("if logged in is false, do not show logout Button", () => {
+  test("If opinion, do not show opinion button", () => {
     const wrapper = mount(espacos, {
       store: mocked
     });
     expect(wrapper.find(".btnDetails").exists()).toBe(false);
   });
 
-  test("if logged in is false, do not show logout Button", () => {
+  test("If opinion is false, show opinion button", () => {
     const wrapper = mount(espacos, { store });
     expect(wrapper.find(".btnDetails").exists()).toBe(false);
   });

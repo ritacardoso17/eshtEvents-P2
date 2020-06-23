@@ -38,7 +38,9 @@
                   placeholder="Escreva a sua opinião"
                   v-model="opinion"
                 ></textarea>
-                <b-button id="opinion" @click="send(row.item.id_reserva)">Enviar</b-button>
+                <b-button id="opinion" @click="send(row.item.id_reserva)">
+                  Enviar
+                </b-button>
               </b-col>
               <b-col></b-col>
             </b-row>
