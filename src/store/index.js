@@ -366,6 +366,12 @@ export default new Vuex.Store({
       state.roomRents = roomRents;
       VueSimpleAlert.fire("Aluguer cancelado com sucesso");
     },
+    REMOVE_MENU: (state, foodMenus) => {
+      state.foodMenus = foodMenus;
+      VueSimpleAlert.fire("Aluguer cancelado com sucesso");
+
+    },
+
     ADD_USER: (state, payload) => {
       if (payload.password !== payload.confPass) {
         VueSimpleAlert.fire("Passwords diferentes");
@@ -508,6 +514,9 @@ export default new Vuex.Store({
     SET_RENTS: (state, roomRents) => {
       state.roomRents = roomRents;
     },
+    EDIT_MENU: () => {
+      VueSimpleAlert.fire("Dados atualizados");
+    },
     EDIT_USER: () => {
       VueSimpleAlert.fire("Dados atualizados");
     },
@@ -614,6 +623,9 @@ export default new Vuex.Store({
     async removeRent({ commit }, payload) {
       commit("REMOVE_RENT", await apiService.removeRent(payload.id));
     },
+    async removeMenu({ commit }, payload) {
+      commit("REMOVE_MENU", await apiService.removeMenu(payload.id));
+    },
     async getMenus({ commit }) {
       commit("SET_MENUS", await apiService.getMenus());
     },
@@ -641,6 +653,12 @@ export default new Vuex.Store({
         await apiService.getOpinionReservs(payload.id, payload.opinion)
       );
     },
+    async editMenu({ commit }, payload) {
+      commit(
+        "EDIT_MENU",
+        await apiService.editMenu(payload.id, payload.id_componente,payload.id_tipo_reserva,payload.description, payload.img)
+      );
+    },
     async editUser({ commit }, payload) {
       commit(
         "EDIT_USER",
@@ -650,13 +668,13 @@ export default new Vuex.Store({
     async editUserType({ commit }, payload) {
       commit(
         "CHANGE_TYPE",
-        await apiService.editUserType( payload.id)
+        await apiService.editUserType(payload.id)
       );
     },
     async editUserTypeClient({ commit }, payload) {
       commit(
         "CHANGE_TYPE",
-        await apiService.editUserTypeClient( payload.id)
+        await apiService.editUserTypeClient(payload.id)
       );
     },
     async getOpinionRents({ commit }, payload) {
@@ -734,7 +752,7 @@ export default new Vuex.Store({
     async getSchools({ commit }) {
       commit("SET_SCHOOLS", await apiService.getSchools());
     },
-     async getUsers({ commit }) {
+    async getUsers({ commit }) {
       commit("SET_USERS", await apiService.getUsers());
     },
     async getExtras({ commit }) {

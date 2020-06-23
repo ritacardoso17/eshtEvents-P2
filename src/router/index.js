@@ -45,22 +45,55 @@ const routes = [
   {
     path: "/register",
     name: "register",
-    component: () => import("../views/Register.vue")
+    component: () => import("../views/Register.vue"),
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (!loggedUser) {
+        next();
+      } else {
+        next("/notFound");
+      }
+    }
   },
   {
     path: "/profile",
     name: "profile",
-    component: () => import("../views/Profile.vue")
+    component: () => import("../views/Profile.vue"),
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.length != 0) {
+        next();
+      } else {
+        next("/notFound");
+      }
+    }
+
   },
   {
     path: "/profile/editProfile",
     name: "editProfile",
-    component: () => import("../views/EditProfile.vue")
+    component: () => import("../views/EditProfile.vue"),
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.length != 0) {
+        next();
+      } else {
+        next("/notFound");
+      }
+    }
   },
   {
     path: "/rentRoom",
     name: "rentRoom",
-    component: () => import("../views/RentRoom.vue")
+    component: () => import("../views/RentRoom.vue"),
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (loggedUser && loggedUser.length != 0) {
+        next();
+      } else {
+        next("/notFound");
+      }
+    }
   },
   {
     path: "/room",
@@ -150,7 +183,15 @@ const routes = [
   {
     path: "/login",
     name: "login",
-    component: () => import("../views/Login.vue")
+    component: () => import("../views/Login.vue"),
+    beforeEnter(to, from, next) {
+      let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+      if (!loggedUser) {
+        next();
+      } else {
+        next("/notFound");
+      }
+    }
   },
   {
     path: "/addMenu",
@@ -177,6 +218,11 @@ const routes = [
         next("/notFound");
       }
     }
+  },
+  {
+    path: "*",
+    component: () => import("../views/notFound.vue"),
+    
   }
 ];
 

@@ -6,28 +6,17 @@
           this.$route.name !== 'login' &&
           this.$route.name !== 'about' &&
           this.$route.name !== 'register' &&
-          this.$route.name !== 'menuadmin'
+          this.$route.name !== 'menuadmin' &&  this.$route.name !== 'notFound'
       "
     >
       <NavBar />
       <router-view></router-view>
       <Footer />
     </div>
-    <div v-else-if="this.$route.name === 'login'">
-      <NavBar />
-      <router-view></router-view>
-    </div>
     <div
-      v-else-if="
-        this.$route.name === 'about' ||
-          this.$route.name === 'register' ||
-          this.$route.name === 'menuadmin'
-      "
+      v-else-if="this.$route.name === 'login'  || this.$route.name === 'notFound'||  this.$route.name === 'about' || this.$route.name === 'register' ||  this.$route.name === 'menuadmin'"
     >
       <NavBar />
-      <router-view></router-view>
-    </div>
-    <div v-else>
       <router-view></router-view>
     </div>
   </div>

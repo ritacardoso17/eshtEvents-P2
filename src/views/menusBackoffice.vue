@@ -33,7 +33,7 @@
           variant="danger"
           class="btnRemove"
           size="sm"
-          @click="removeMenu(row.item.id)"
+          @click="removeMenu(row.item.id_menu)"
         >Eliminar Menu</b-button>
         <b-button
           class="btnRemove"
@@ -55,8 +55,14 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Componentes:</b>
-              <div class="text-sm-center" v-for="component in row.item.components" :key="component">
-                <li>{{ component }}</li>
+              <div
+                class="text-sm-center"
+                v-for="component in components"
+                :key="component.descritivo"
+              >
+                <div v-if=" component.id_menu === row.item.id_menu">
+                  <li>{{ component.descritivo }}</li>
+                </div>
               </div>
             </b-col>
           </b-row>
@@ -80,9 +86,9 @@
               <select v-model="type">
                 <option
                   v-for="typeE in eventType"
-                  :key="typeE"
+                  :key="typeE.id_tipo_reserva"
                   @click="typeEvent(typeE)"
-                >{{ typeE }}</option>
+                >{{ typeE.descritivo }}</option>
               </select>
             </div>
             <div class="col">
@@ -98,14 +104,14 @@
             <div class="col">
               <!-- COMPONENTES DO MENU -->
               <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
-              <div align="left" v-for="component in components" :key="component.id">
-                <input type="checkbox" :value="component.name" unchecked v-model="componentsE" />
-                {{ component.name }}
+              <div align="left" v-for="component in components" :key="component.descritivo">
+                <input type="checkbox" :value="component.descritivo" unchecked v-model="componentsE" />
+                {{component.descritivo}}
               </div>
             </div>
           </div>
         </div>
-
+<br>
         <b-button type="submit" class="btnConf">Confirmar</b-button>
 
         <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
@@ -152,9 +158,13 @@ export default {
   },
   created() {
     this.getAllMenus();
+    this.getAllComponents();
+    this.getAllEventTypes();
   },
   computed: {
-    ...mapGetters(["getMenus"])
+    ...mapGetters(["getMenus"]),
+    ...mapGetters(["getComponentsMenus"]),
+     ...mapGetters(["getEvenTypes"]),
   },
   methods: {
     async getAllMenus() {
@@ -165,19 +175,29 @@ export default {
         alert(err);
       }
     },
+    async getAllComponents() {
+      try {
+        await this.$store.dispatch("getComponentsMenus");
+        this.components = this.getComponentsMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+     async getAllEventTypes() {
+      try {
+        await this.$store.dispatch("getEvenTypes");
+        this.eventType= this.getEvenTypes;
+      } catch (err) {
+        alert(err);
+      }
+    },
 
-    eMenu(id) {
-      for (let i in this.menus) {
-        if (this.menus[i].id === id) {
-          this.menus = this.menus.filter(
-            menus => this.menus[i].id !== menus.id
-          );
-          localStorage.setItem("foodMenus", JSON.stringify(this.menus));
-          this.$store.state.menus = JSON.parse(
-            localStorage.getItem("foodMenus")
-          );
-          this.$bvToast.toast("Menu removido com sucesso");
-        }
+    async removeMenu(id) {
+      try {
+        await this.$store.dispatch("removeMenu", { id: id });
+        this.getAllMenus();
+      } catch (err) {
+        alert(err);
       }
     },
     editMenu(id, name, componentsE, img, type) {
