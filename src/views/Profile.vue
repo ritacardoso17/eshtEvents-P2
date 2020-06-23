@@ -25,15 +25,15 @@
           </div>
         </div>
         <div align="left" class="col-sm-4 infos">
-          <p class="userName">
+          <p class="userName" id="userName">
             <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
           </p>
-          <p>
+          <p id="birthDate">
             Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}
           </p>
-          <p>Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
-          <p>Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
-          <p>E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
+          <p id="phone">Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
+          <p id="ipp">Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
+          <p id="email">E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
         </div>
         <div class="col-sm-4">
           <router-link to="/Profile/editProfile">
@@ -79,6 +79,7 @@ export default {
     espacos,
     eventos
   },
+  name: "profile",
   data() {
     return {
       newPhoto: "",

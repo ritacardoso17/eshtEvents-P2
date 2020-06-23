@@ -96,7 +96,7 @@ export default {
     };
   },
   created() {
-      this.getAllMenus();
+    this.getAllMenus();
     this.getAllComponents();
     this.getAllEventTypes();
   },

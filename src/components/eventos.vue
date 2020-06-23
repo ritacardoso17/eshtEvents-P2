@@ -38,7 +38,7 @@
                   placeholder="Escreva a sua opinião"
                   v-model="opinion"
                 ></textarea>
-                <b-button @click="send(row.item.id_reserva)">Enviar</b-button>
+                <b-button id="opinion" @click="send(row.item.id_reserva)">Enviar</b-button>
               </b-col>
               <b-col></b-col>
             </b-row>
@@ -55,6 +55,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  name: "eventos",
   data: function() {
     return {
       reservations: [],
