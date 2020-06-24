@@ -152,13 +152,14 @@ export default {
       id: "",
       name: "",
       components: [],
+      componentsEdit:[],
       componentsE: [],
       eventType: []
     };
   },
   created() {
     this.getAllMenus();
-    this.getAllComponents();
+    this.getAllComponentsMenus();
     this.getAllEventTypes();
   },
   computed: {
@@ -175,7 +176,7 @@ export default {
         alert(err);
       }
     },
-    async getAllComponents() {
+    async getAllComponentsMenus() {
       try {
         await this.$store.dispatch("getComponentsMenus");
         this.components = this.getComponentsMenus;
