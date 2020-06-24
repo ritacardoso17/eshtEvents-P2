@@ -315,11 +315,12 @@ export default {
 
 #line {
   background-color: #daaa29;
-  height: 5px;
-  width: 1000px;
   position: relative;
+  height: 10px;
+  width: 130%;
+  margin-top: -1px;
+  margin-bottom: -90px;
   left: -20px;
-  top: -15px;
 }
 
 .text {

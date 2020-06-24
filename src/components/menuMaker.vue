@@ -110,7 +110,6 @@ export default {
         let filterResultType = true;
 
         if (this.searchTxt !== "") {
-          121;
           filterResult = menu.name.includes(this.searchTxt);
         }
 
