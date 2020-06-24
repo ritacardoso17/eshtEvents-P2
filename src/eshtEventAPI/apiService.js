@@ -151,8 +151,13 @@ const apiService = {
     }
   },
   async getExtras() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/extras`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      }
     });
 
     if (response.ok) {
@@ -178,8 +183,13 @@ const apiService = {
     }
   },
   async getDecorations() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/decorations`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -189,8 +199,13 @@ const apiService = {
     }
   },
   async getUniforms() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/uniforms`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -212,6 +227,7 @@ const apiService = {
   },
   //obter menus
   async getMenus() {
+  
     const response = await fetch(`${API_URL}/menus`, {
       method: "GET"
     });
@@ -224,8 +240,29 @@ const apiService = {
   },
   //obter componentes dos menus
   async getComponents() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/components`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async getAllComponents() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    const response = await fetch(`${API_URL}/allComponents`, {
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -235,8 +272,10 @@ const apiService = {
     }
   },
   async getEventypes() {
+   
     const response = await fetch(`${API_URL}/evenTypes`, {
-      method: "GET"
+      method: "GET",
+     
     });
 
     if (response.ok) {
@@ -246,8 +285,13 @@ const apiService = {
     }
   },
   async getEventypesId(id) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/menuTypesById/${id}`, {
-      method: "GET"
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -430,7 +474,7 @@ const apiService = {
     const response = await fetch(`${API_URL}/roomRents`, {
       method: "POST",
       headers: {
-        "x-access-token": loggedUser.token,
+        "x-access-token":loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
       body: JSON.stringify({

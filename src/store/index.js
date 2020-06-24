@@ -347,6 +347,7 @@ export default new Vuex.Store({
       //   name: "Mini Croissants"
       // }
     ],
+    components:[],
     schools: [],
     states: [],
     currentMenus: [],
@@ -505,6 +506,9 @@ export default new Vuex.Store({
     SET_COMPONENTS_MENUS: (state, componentMenus) => {
       state.componentMenus = componentMenus;
     },
+    SET_ALL_COMPONENTS: (state, components) => {
+      state.components = components;
+    },
     SET_EVENTYPES: (state, eventType) => {
       state.eventType = eventType;
     },
@@ -594,6 +598,7 @@ export default new Vuex.Store({
     },
     getMenus: state => state.foodMenus.message,
     getComponentsMenus: state => state.componentMenus.message,
+    getAllComponents: state => state.components.message,
     getEvenTypes: state => state.eventType.message,
     getEvents: state => state.reservations.message,
     getRents: state => state.roomRents.message,
@@ -634,6 +639,9 @@ export default new Vuex.Store({
     },
     async getComponentsMenus({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents());
+    },
+    async getAllComponents({ commit }) {
+      commit("SET_ALL_COMPONENTS", await apiService.getAllComponents());
     },
     async getRooms({ commit }) {
       commit("SET_ROOMS", await apiService.getRooms());

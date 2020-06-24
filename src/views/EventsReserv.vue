@@ -14,12 +14,7 @@
       <b-tabs align="center" v-model="tabIndex" small card id="tab">
         <!-- TAB EVENTO -->
         <b-tab title="Evento" :title-link-class="'tab-title-class'" active>
-          <b-progress
-            id="progress"
-            :value="16.66"
-            variant="warning"
-            :striped="striped"
-          ></b-progress>
+          <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
           <br />
           <br />
           <p class="guide2">
@@ -44,27 +39,12 @@
         </b-tab>
         <!-- TAB INFO -->
         <b-tab title="Informações">
-          <b-progress
-            id="progress"
-            :value="33.33"
-            variant="warning"
-            :striped="striped"
-          ></b-progress>
+          <b-progress id="progress" :value="33.33" variant="warning" :striped="striped"></b-progress>
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input
-                type="date"
-                class="form-control"
-                id="txtDate"
-                v-model="day"
-              />
-              <input
-                type="time"
-                class="form-control"
-                id="txtTime"
-                v-model="time"
-              />
+              <input type="date" class="form-control" id="txtDate" v-model="day" />
+              <input type="time" class="form-control" id="txtTime" v-model="time" />
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -85,13 +65,13 @@
                 v-model="duration"
               />
 
-              <label for="sltLocation" class="locationLabel"
-                >▶ Localização</label
-              >
+              <label for="sltLocation" class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
-                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">
+                  {{
                   l.nome
-                }}</option>
+                  }}
+                </option>
               </select>
             </div>
           </form>
@@ -101,12 +81,7 @@
         <b-tab id="second" title="Menu">
           <div class="container">
             <div v-if="menus.length !== 0">
-              <b-progress
-                id="progress"
-                :value="49.66"
-                variant="warning"
-                :striped="striped"
-              ></b-progress>
+              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
               <div class="row">
                 <div class="col-sm-3" v-for="menu in this.menus" :key="menu.id">
                   <b-card
@@ -124,28 +99,20 @@
                       v-b-modal="menu.id"
                       @click="chooseMenu(menu.name, menu.id)"
                       id="cardBtn"
-                      >Escolher</b-button
-                    >
+                    >Escolher</b-button>
                     <div></div>
                   </b-card>
                 </div>
               </div>
             </div>
             <div v-else>
-              <p class="noEvent">
-                Selecione primeiro o tipo de evento que pretende realizar
-              </p>
+              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
             </div>
           </div>
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
-          <b-progress
-            id="progress"
-            :value="65.99"
-            variant="warning"
-            :striped="striped"
-          ></b-progress>
+          <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
           <br />
 
           <div class="container">
@@ -155,12 +122,7 @@
               que pretende que seja usada pelos nossos colaboradores
             </p>
             <br />
-            <b-button
-              v-for="u in this.uniforms"
-              :key="u.id_uniform"
-              id="btn5"
-              @click="uni(u)"
-            >
+            <b-button v-for="u in this.uniforms" :key="u.id_uniform" id="btn5" @click="uni(u)">
               <b-img :src="u.img" style="width:150px"></b-img>
               <p>{{ u.descritivo }}</p>
             </b-button>
@@ -186,22 +148,14 @@
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
-          <b-progress
-            id="progress"
-            :value="82.33"
-            variant="warning"
-            :striped="striped"
-          ></b-progress>
+          <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
           <br />
           <p class="guide6">
             ▶
             <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras
             que pretenda
           </p>
-          <b-img
-            id="imgKids"
-            src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"
-          ></b-img>
+          <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id_extra">
               <b-button @click="extraChoose(i)">{{ i.descritivo }}</b-button>
@@ -225,11 +179,7 @@
 
           <div class="container">
             <div class="row">
-              <div
-                class="col"
-                align="left"
-                style="margin-left: 300px; font-family: GeosansLight"
-              >
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
                 <p id="inform2">
                   <b>Informações</b>
                 </p>
@@ -240,11 +190,7 @@
                 <p id="pLocation">Local: {{ location.nome }}</p>
               </div>
 
-              <div
-                class="col"
-                align="left"
-                style="margin-right: 50px; font-family: GeosansLight"
-              >
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="components2">
                   <b>Componentes</b>
                   <br />
@@ -257,21 +203,13 @@
               </div>
             </div>
             <div class="row">
-              <div
-                class="col"
-                align="left"
-                style="margin-left: 300px; font-family: GeosansLight"
-              >
+              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
                 <p id="menu2">
                   <b>Menu</b>
                 </p>
                 <p id="choiceMenu2">{{ slctMenu }}</p>
               </div>
-              <div
-                class="col"
-                align="left"
-                style="margin-right: 50px; font-family: GeosansLight"
-              >
+              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
                 <p id="extras2">
                   <b>Extras</b>
                 </p>
@@ -295,16 +233,8 @@
             class="btn btn-primary"
             role="button"
             @click="addReservation()"
-            >Confirmar</a
-          >
-          <a
-            name
-            id="cancel2"
-            class="btn btn-primary"
-            href="/events"
-            role="button"
-            >Cancelar</a
-          >
+          >Confirmar</a>
+          <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
       </b-tabs>
     </b-card>
@@ -410,6 +340,8 @@ export default {
         this.slctMenu == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
+      } else if (this.persons < 20 || this.duration < 1) {
+        this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
         this.addReservation();
       }

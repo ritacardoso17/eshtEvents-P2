@@ -104,8 +104,8 @@
             <div class="col">
               <!-- COMPONENTES DO MENU -->
               <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
-              <div align="left" v-for="component in components" :key="component.descritivo">
-                <input type="checkbox" :value="component.descritivo" unchecked v-model="componentsE" />
+              <div align="left" v-for="component in componentsEdit" :key="component.descritivo">
+                <input type="checkbox" :value="component.id_componente" unchecked v-model="componentsE" />
                 {{component.descritivo}}
               </div>
             </div>
@@ -161,11 +161,13 @@ export default {
     this.getAllMenus();
     this.getAllComponentsMenus();
     this.getAllEventTypes();
+    this.getMyComponents()
   },
   computed: {
     ...mapGetters(["getMenus"]),
     ...mapGetters(["getComponentsMenus"]),
      ...mapGetters(["getEvenTypes"]),
+      ...mapGetters(["getAllComponents"]),
   },
   methods: {
     async getAllMenus() {
@@ -180,6 +182,14 @@ export default {
       try {
         await this.$store.dispatch("getComponentsMenus");
         this.components = this.getComponentsMenus;
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async getMyComponents() {
+      try {
+        await this.$store.dispatch("getAllComponents");
+        this.componentsEdit = this.getAllComponents;
       } catch (err) {
         alert(err);
       }
@@ -206,7 +216,7 @@ export default {
       this.size2 = "block";
 
       this.name = name;
-      // this.componentsE = componentsE;
+      this.componentsE = componentsE;
       this.img = img;
       this.type = type;
       this.id = id;
