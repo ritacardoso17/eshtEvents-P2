@@ -83,7 +83,7 @@ const apiService = {
     } else {
       throw Error(response);
     }
-  }, async editMenu(id, id_componente,id_tipo_reserva,description, img) {
+  }, async editMenu(id, id_componente,id_tipo_reserva,description,img) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/menus/${id}`, {
       method: "PUT",
@@ -240,13 +240,9 @@ const apiService = {
   },
   //obter componentes dos menus
   async getComponents() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    
     const response = await fetch(`${API_URL}/components`, {
-      method: "GET",
-      headers: {
-        "x-access-token": loggedUser.token,
-        "Content-type": "application/json; charset=utf-8"
-      },
+      method: "GET"
     });
 
     if (response.ok) {

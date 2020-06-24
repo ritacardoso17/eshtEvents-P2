@@ -52,7 +52,7 @@
         label="Componenetes:"
         label-for="input-1"
       ></b-form-group>
-      <div v-for="component in components" :key="component.id_menu.toString()">
+      <div v-for="component in components" :key="component.id_componente">
         <input
           type="checkbox"
           :value="component.descritivo"
@@ -131,11 +131,11 @@ export default {
   },
   created() {
     this.getAllEventTypes();
-    this.getAllComponents();
+    this.getMyComponents();
   },
   computed: {
     ...mapGetters(["getEvenTypes"]),
-    ...mapGetters(["getComponentsMenus"])
+    ...mapGetters(["getAllComponents"])
   },
   methods: {
     async addMenus() {
@@ -158,10 +158,10 @@ export default {
         alert(err);
       }
     },
-    async getAllComponents() {
-      try {
-        await this.$store.dispatch("getComponentsMenus");
-        this.components = this.getComponentsMenus;
+    async getMyComponents() {
+       try {
+        await this.$store.dispatch("getAllComponents");
+        this.components = this.getAllComponents;
       } catch (err) {
         alert(err);
       }

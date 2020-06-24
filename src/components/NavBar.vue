@@ -44,7 +44,7 @@
       <div class="container" id="container1" style="justify-content: center">
         <!--GESTÃO DO ADMIN-->
         <div class="nav-item">
-          <span v-if="this.$store.state.loggedUser.length != 0">
+          <span v-if="this.$store.state.loggedUser.length != 0 && this.$store.state.loggedUser.user[0].id_tipoUser === 1 ">
             <router-link class="link" to="/menuadmin" id="links"
               >Area Administrador</router-link
             >
