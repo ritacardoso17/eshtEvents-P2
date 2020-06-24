@@ -105,6 +105,7 @@
 import { mapGetters } from "vuex";
 import VueSimpleAlert from "vue-simple-alert";
 export default {
+  name: "workshop",
   data() {
     return {
       workshops: [],
