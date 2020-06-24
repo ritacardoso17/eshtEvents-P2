@@ -191,6 +191,31 @@ export default {
     ...mapGetters(["getRooms"])
   },
   methods: {
+    rentRooms() {
+      let splited = this.day.split("-");
+      let year = splited[0];
+      let month = splited[1];
+      let day = splited[0];
+      if (
+        this.day == "" ||
+        this.time == "" ||
+        this.reason == "" ||
+        this.duration == "" ||
+        this.slctRoom == ""
+      ) {
+        this.$bvToast.toast("Precisa de preencher todos os campos");
+      } else if (parseInt(year) < new Date().getFullYear()) {
+        this.$bvToast.toast("Não pode realizar reservas para esse ano");
+      } else if (parseInt(month) < new Date().getFullYear()) {
+        this.$bvToast.toast("Não pode realizar reservas para esse mês");
+      } else if (parseInt(day) <= new Date().getFullYear()) {
+        this.$bvToast.toast("Não pode realizar reservas para esse dia");
+      } else if (this.duration < 1) {
+        this.$bvToast.toast("Os campos estão mal preenchidos");
+      } else {
+        this.addARent();
+      }
+    },
     getLoggedUserEmail() {
       return this.$store.getters.getLoggedUserEmail;
     },
