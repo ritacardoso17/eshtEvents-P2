@@ -37,7 +37,7 @@
       <!-- PRIMEIRO CARD -->
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw;">
+        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
           <div class="card-header" id="header">
             Eventos e Catering
             <hr id="line" />
@@ -52,7 +52,7 @@
             </b-col>
             <b-col md="6">
               <b-card-body>
-                <b-card-text>
+                <b-card-text style="font-family: GeosansLight; font-size: 16px">
                   O Restaurante de Aplicação da ESHT permite-te fazer reservas
                   de Eventos e Catering, agora de forma mais simples e
                   intuitiva, com um seguimento de passos que facilita a tua
@@ -82,7 +82,7 @@
       </div>
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw;">
+        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
           <div class="card-header" id="header">
             Espaços
             <hr id="line" />
@@ -98,7 +98,7 @@
             </b-col>
             <b-col md="6">
               <b-card-body>
-                <b-card-text>
+                <b-card-text style="font-family: GeosansLight; font-size: 16px">
                   A Escola Superior de Hotelaria e Turismo dá-te a possibilidade
                   de alugares um dos seus espaços para organizares o teu próprio
                   evento, palestra ou outro uso que seja adequado ao espaço
@@ -128,7 +128,7 @@
       </div>
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw;">
+        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
           <div class="card-header" id="header">
             Workshops
             <hr id="line" />
@@ -143,7 +143,7 @@
             </b-col>
             <b-col md="6">
               <b-card-body>
-                <b-card-text>
+                <b-card-text style="font-family: GeosansLight; font-size: 16px">
                   A Wine School da Escola Superior de Hotelaria e Turismo do
                   Instituto Politécnico do Porto pretende dar a conhecer o
                   potencial dos vinhos a entusiastas e apreciadores de vinho que
@@ -185,10 +185,6 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.cards {
-  margin-bottom: 50px;
 }
 
 .container {
@@ -321,10 +317,5 @@ export default {
   margin-top: -1px;
   margin-bottom: -90px;
   left: -20px;
-}
-
-.text {
-  font-size: 16px;
-  font-family: GeosansLight;
 }
 </style>

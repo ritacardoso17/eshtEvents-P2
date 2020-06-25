@@ -119,7 +119,7 @@
   height: 40px;
   font-size: 100%;
   color: white;
-  border: 2px solid black;
+  border: 2px solid #232323;
   margin: 10px;
   background-color: #232323;
   font-family: GeosansLight;
@@ -128,6 +128,6 @@
   color: white;
   border: 2px solid;
   border-color: #daaa29;
-  background-color: #000;
+  background-color: #232323;
 }
 </style>

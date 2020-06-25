@@ -34,11 +34,13 @@
             img-top
             img-height="150px"
             tag="article"
-            style="max-width: 15rem;min-width: 15rem;"
+            style="max-width: 15rem;min-width: 15rem; font-family: GeosansLight"
             class="mb-2"
             id="cards"
           >
-            <b-card-text>{{ menu.descritivo }}</b-card-text>
+            <b-card-text style="font-family: GeosansLight">{{
+              menu.descritivo
+            }}</b-card-text>
             <b-button v-b-modal="menu.id_menu.toString()" id="cardBtn"
               >Ver mais</b-button
             >
@@ -164,15 +166,15 @@ export default {
   font-size: 12px;
   height: 30px;
   color: white;
-  background-color: #000;
+  background-color: #232323;
   font-family: GeosansLight;
-  border: 2px solid black;
+  border: 2px solid #232323;
 }
 #cardBtn:hover {
   color: white;
   border: 2px solid;
   border-color: #daaa29;
-  background-color: #000;
+  background-color: #232323;
 }
 #imgModal {
   position: absolute;
@@ -190,7 +192,7 @@ export default {
   color: white;
   border: 2px solid;
   border-color: #daaa29;
-  background-color: black;
+  background-color: #232323;
 }
 #sltFilter {
   width: 200px;
@@ -202,7 +204,7 @@ export default {
 }
 .btn-primary {
   color: #fff;
-  background-color: black;
+  background-color: #232323;
   border-color: #daaa29;
 }
 .modal-title {
