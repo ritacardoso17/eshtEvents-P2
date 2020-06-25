@@ -107,7 +107,7 @@ export default {
       }
     },
     async changeUser(id, tipoUser) {
-      alert(tipoUser);
+   
       if (tipoUser === "Administrador") {
         try {
           await this.$store.dispatch("editUserType", {
