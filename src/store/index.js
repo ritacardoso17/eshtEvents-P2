@@ -642,11 +642,15 @@ export default new Vuex.Store({
     async getEvenTypes({ commit }) {
       commit("SET_EVENTYPES", await apiService.getEventypes());
     },
-    async getRents({ commit }, payload) {
+    async getUsersRents({ commit }, payload) {
       commit("SET_RENTS", await apiService.getUsersRents(payload.id));
     },
-    async getEvents({ commit }, payload) {
+    
+    async getUsersEvents({ commit }, payload) {
       commit("SET_EVENTS", await apiService.getUsersEvents(payload.id));
+    },
+    async getEvents({ commit }) {
+      commit("SET_EVENTS", await apiService.getReservations());
     },
     async getOpinionReservs({ commit }, payload) {
       commit(

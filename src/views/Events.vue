@@ -4,11 +4,11 @@
     <br />
     <br />
     <br />
-    <h3 id="title">
-      <hr id="lineLeft" />
-      Eventos e Catering
-      <hr id="lineRight" />
-    </h3>
+    <div class="container-full title" style="padding-bottom: 50px;">
+      <h3 id="redTitle">Eventos e Catering</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
 
     <br />
     <br />
@@ -63,27 +63,35 @@
   position: relative;
   width: 1263px;
 }
-#lineLeft {
+
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 380px;
   position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: 30px;
-  margin-left: 30%;
+  display: block;
+  z-index: 6;
 }
-#lineRight {
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
   position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 30%;
+  height: 1px;
 }
-#title {
-  margin-top: -3%;
-  font-family: Channel;
+
+#redTitle {
+  font-family: "Channel";
   color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
 }
+
 #description {
   font-family: GeosansLight;
   text-align: justify;
@@ -111,7 +119,7 @@
   height: 40px;
   font-size: 100%;
   color: white;
-  border: 2px solid black;
+  border: 2px solid #232323;
   margin: 10px;
   background-color: #232323;
   font-family: GeosansLight;
@@ -120,6 +128,6 @@
   color: white;
   border: 2px solid;
   border-color: #daaa29;
-  background-color: #000;
+  background-color: #232323;
 }
 </style>

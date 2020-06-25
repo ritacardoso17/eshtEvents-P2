@@ -83,7 +83,7 @@ const apiService = {
     } else {
       throw Error(response);
     }
-  }, async editMenu(id, id_componente,id_tipo_reserva,description,img) {
+  }, async editMenu(id, id_componente, id_tipo_reserva, description, img) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/menus/${id}`, {
       method: "PUT",
@@ -91,7 +91,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-      body: JSON.stringify({ id_componente: id_componente, id_tipo_reserva:id_tipo_reserva, description:description, img: img })
+      body: JSON.stringify({ id_componente: id_componente, id_tipo_reserva: id_tipo_reserva, description: description, img: img })
     });
 
     if (response.ok) {
@@ -227,7 +227,7 @@ const apiService = {
   },
   //obter menus
   async getMenus() {
-  
+
     const response = await fetch(`${API_URL}/menus`, {
       method: "GET"
     });
@@ -278,12 +278,9 @@ const apiService = {
     }
   },
   async getEventypes() {
-   
     const response = await fetch(`${API_URL}/evenTypes`, {
-      method: "GET",
-     
+      method: "GET"
     });
-
     if (response.ok) {
       return response.json();
     } else {
@@ -309,6 +306,22 @@ const apiService = {
   async getUsersEvents(id) {
     const response = await fetch(`${API_URL}/reservations/${id}`, {
       method: "GET"
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async getReservations() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    const response = await fetch(`${API_URL}/reservations`, {
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
     });
 
     if (response.ok) {
@@ -480,7 +493,7 @@ const apiService = {
     const response = await fetch(`${API_URL}/roomRents`, {
       method: "POST",
       headers: {
-        "x-access-token":loggedUser.token,
+        "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
       body: JSON.stringify({

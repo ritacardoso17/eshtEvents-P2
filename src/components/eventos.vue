@@ -85,7 +85,7 @@ export default {
   methods: {
     async getAllEvents(ID) {
       try {
-        await this.$store.dispatch("getEvents", { id: ID });
+        await this.$store.dispatch("getUsersEvents", { id: ID });
         this.reservations = this.getEvents;
       } catch (err) {
         alert(err);

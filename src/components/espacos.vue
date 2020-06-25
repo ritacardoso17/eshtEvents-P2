@@ -102,7 +102,7 @@ export default {
     },
     async getAllRents(ID) {
       try {
-        await this.$store.dispatch("getRents", { id: ID });
+        await this.$store.dispatch("getUsersRents", { id: ID });
         this.rents = this.getRents;
       } catch (err) {
         alert(err);

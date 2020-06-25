@@ -4,9 +4,11 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeft" />
-    <h3 id="title">Eventos e Catering</h3>
-    <hr id="lineRight" />
+    <div class="container-full title" style="padding-bottom: 50px;">
+      <h3 id="redTitle">Eventos e Catering</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
 
     <p id="guide">Complete as seguintes etapas para efetuar a sua reserva</p>
 
@@ -14,7 +16,12 @@
       <b-tabs align="center" v-model="tabIndex" small card id="tab">
         <!-- TAB EVENTO -->
         <b-tab title="Evento" :title-link-class="'tab-title-class'" active>
-          <b-progress id="progress" :value="16.66" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="16.66"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
           <br />
           <p class="guide2">
@@ -39,12 +46,27 @@
         </b-tab>
         <!-- TAB INFO -->
         <b-tab title="Informações">
-          <b-progress id="progress" :value="33.33" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="33.33"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <form action>
             <div class="form-group">
               <label for class="dateLabel">▶ Data e hora do evento</label>
-              <input type="date" class="form-control" id="txtDate" v-model="day" />
-              <input type="time" class="form-control" id="txtTime" v-model="time" />
+              <input
+                type="date"
+                class="form-control"
+                id="txtDate"
+                v-model="day"
+              />
+              <input
+                type="time"
+                class="form-control"
+                id="txtTime"
+                v-model="time"
+              />
               <label for class="personsLabel">▶ Número de Pessoas</label>
               <input
                 type="number"
@@ -65,13 +87,13 @@
                 v-model="duration"
               />
 
-              <label for="sltLocation" class="locationLabel">▶ Localização</label>
+              <label for="sltLocation" class="locationLabel"
+                >▶ Localização</label
+              >
               <select id="sltLocation" v-model="location">
-                <option v-for="l in schools" :value="l" :key="l.id_ipp">
-                  {{
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{
                   l.nome
-                  }}
-                </option>
+                }}</option>
               </select>
             </div>
           </form>
@@ -81,7 +103,12 @@
         <b-tab id="second" title="Menu">
           <div class="container">
             <div v-if="menus.length !== 0">
-              <b-progress id="progress" :value="49.66" variant="warning" :striped="striped"></b-progress>
+              <b-progress
+                id="progress"
+                :value="49.66"
+                variant="warning"
+                :striped="striped"
+              ></b-progress>
               <div class="row">
                 <div class="col-sm-3" v-for="menu in this.menus" :key="menu.id">
                   <b-card
@@ -99,20 +126,28 @@
                       v-b-modal="menu.id"
                       @click="chooseMenu(menu.name, menu.id)"
                       id="cardBtn"
-                    >Escolher</b-button>
+                      >Escolher</b-button
+                    >
                     <div></div>
                   </b-card>
                 </div>
               </div>
             </div>
             <div v-else>
-              <p class="noEvent">Selecione primeiro o tipo de evento que pretende realizar</p>
+              <p class="noEvent">
+                Selecione primeiro o tipo de evento que pretende realizar
+              </p>
             </div>
           </div>
         </b-tab>
         <!-- TAB COMPONENTES -->
         <b-tab title="Componentes">
-          <b-progress id="progress" :value="65.99" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="65.99"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
 
           <div class="container">
@@ -122,7 +157,12 @@
               que pretende que seja usada pelos nossos colaboradores
             </p>
             <br />
-            <b-button v-for="u in this.uniforms" :key="u.id_uniform" id="btn5" @click="uni(u)">
+            <b-button
+              v-for="u in this.uniforms"
+              :key="u.id_uniform"
+              id="btn5"
+              @click="uni(u)"
+            >
               <b-img :src="u.img" style="width:150px"></b-img>
               <p>{{ u.descritivo }}</p>
             </b-button>
@@ -148,17 +188,27 @@
         </b-tab>
         <!-- TAB EXTRAS -->
         <b-tab title="Extras">
-          <b-progress id="progress" :value="82.33" variant="warning" :striped="striped"></b-progress>
+          <b-progress
+            id="progress"
+            :value="82.33"
+            variant="warning"
+            :striped="striped"
+          ></b-progress>
           <br />
           <p class="guide6">
             ▶
             <b style="color: #daaa29; font-size: 130% ">Selecione</b> os extras
             que pretenda
           </p>
-          <b-img id="imgKids" src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"></b-img>
+          <b-img
+            id="imgKids"
+            src="../assets/dc6f0020e99c65d6f42b96820d04cbaa.jpg"
+          ></b-img>
           <form action>
             <div class="form-check" v-for="i in this.extras" :key="i.id_extra">
-              <b-button @click="extraChoose(i)">{{ i.descritivo }}</b-button>
+              <b-button @click="extraChoose(i)" id="extraBtn">{{
+                i.descritivo
+              }}</b-button>
             </div>
           </form>
           <p class="observ">▶ Observações</p>
@@ -179,7 +229,11 @@
 
           <div class="container">
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-left: 300px; font-family: GeosansLight"
+              >
                 <p id="inform2">
                   <b>Informações</b>
                 </p>
@@ -190,7 +244,11 @@
                 <p id="pLocation">Local: {{ location.nome }}</p>
               </div>
 
-              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-right: 50px; font-family: GeosansLight"
+              >
                 <p id="components2">
                   <b>Componentes</b>
                   <br />
@@ -203,13 +261,21 @@
               </div>
             </div>
             <div class="row">
-              <div class="col" align="left" style="margin-left: 300px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-left: 300px; font-family: GeosansLight"
+              >
                 <p id="menu2">
                   <b>Menu</b>
                 </p>
                 <p id="choiceMenu2">{{ slctMenu }}</p>
               </div>
-              <div class="col" align="left" style="margin-right: 50px; font-family: GeosansLight">
+              <div
+                class="col"
+                align="left"
+                style="margin-right: 50px; font-family: GeosansLight"
+              >
                 <p id="extras2">
                   <b>Extras</b>
                 </p>
@@ -232,9 +298,17 @@
             id="confirm2"
             class="btn btn-primary"
             role="button"
-            @click="addReservation()"
-          >Confirmar</a>
-          <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
+            @click="eventsReserv()"
+            >Confirmar</a
+          >
+          <a
+            name
+            id="cancel2"
+            class="btn btn-primary"
+            href="/events"
+            role="button"
+            >Cancelar</a
+          >
         </b-tab>
       </b-tabs>
     </b-card>
@@ -331,28 +405,16 @@ export default {
       return this.$store.getters.getLoggedUserId;
     },
     eventsReserv() {
-      let splited = this.day.split("-");
-      let year = splited[0];
-      let month = splited[1];
-      let day = splited[0];
       if (
         this.day == "" ||
         this.time == "" ||
         this.persons == "" ||
         this.duration == "" ||
         this.location == "" ||
+        this.extra == "" ||
         this.slctMenu == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      }
-      if (parseInt(year) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse ano");
-      }
-      if (parseInt(month) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse mês");
-      }
-      if (parseInt(day) <= new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse dia");
       } else if (this.persons < 20 || this.duration < 1) {
         this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
@@ -451,34 +513,38 @@ export default {
   width: 66.5%;
 }
 
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 380px;
+  position: relative;
+  display: block;
+  z-index: 6;
+}
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
+
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
+}
+
 #progress {
   width: 400px;
   margin: auto;
   height: 8px;
-}
-
-#lineLeft {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 30%;
-}
-
-#lineRight {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 30%;
-}
-
-#title {
-  margin-top: -2%;
-  font-family: Channel;
-  color: black;
 }
 
 #guide {
@@ -500,12 +566,9 @@ export default {
   font-family: GeosansLight;
 }
 
-.nav-link.active {
-  background-color: #232323 !important;
-}
-
+.nav-link.active,
 .card-header:first-child {
-  background-color: #232323;
+  background-color: #232323 !important;
 }
 
 .tab-content {
@@ -514,7 +577,7 @@ export default {
 
 /* EVENTO TAB */
 #btn4 {
-  border: 2px solid black;
+  border: 3px solid black;
   background-color: black;
   width: 200px;
   margin: 10px;
@@ -532,17 +595,6 @@ export default {
   position: absolute;
   left: 30vw;
   top: 100px;
-}
-
-#bar2 {
-  position: absolute;
-  opacity: 0.8;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 30px;
-  background-color: black;
 }
 
 #eventType {
@@ -700,12 +752,11 @@ export default {
   left: 30%;
   top: 150px;
 }
+
 .form-check {
   position: relative;
   text-align: justify;
-  display: block;
   padding-left: 700px;
-  padding-top: 10px;
   left: 20%;
   top: 55px;
 }
@@ -725,6 +776,21 @@ export default {
   position: absolute;
   left: 30%;
   top: 480px;
+}
+
+#extraBtn {
+  width: 130px;
+  height: 40px;
+  margin: 5px;
+  color: white;
+  border: 2px solid #232323;
+  background-color: #232323;
+  font-family: GeosansLight;
+}
+
+#extraBtn:hover {
+  border: 2px solid;
+  border-color: #daaa29;
 }
 
 /* RESUMO TAB */

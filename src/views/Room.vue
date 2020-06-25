@@ -5,7 +5,7 @@
     <br />
     <br />
 
-    <div class="container-full title">
+    <div class="container-full title" style="padding-bottom: 50px;">
       <h3 id="redTitle">Os nossos Espaços</h3>
       <hr class="back-line" />
       <div class="container" id="whiteRect"></div>
@@ -18,7 +18,7 @@
           <b-card
             no-body
             class="overflow-hidden cards border-0"
-            style="max-width: 70vw;"
+            style="max-width: 70vw; font-family: GeosansLight"
           >
             <div class="card-header" id="header">Restaurante Aplicação</div>
             <b-row no-gutters>
@@ -26,13 +26,13 @@
                 <b-card-img
                   :src="require('../assets/restApp.jpg')"
                   class="rounded-0"
-                  style="margin-top: 5px;"
+                  style="margin-top: 5px; "
                   img-right
                 ></b-card-img>
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text id="text">
+                  <b-card-text id="text" style="font-size: 20px">
                     Restaurante com capacidade para 50 pessoas, onde são
                     aplicados os métodos de serviço leccionados nas UC de
                     Práticas Hoteleiras.
@@ -49,7 +49,7 @@
           <b-card
             no-body
             class="overflow-hidden cards border-0"
-            style="max-width: 70vw;"
+            style="max-width: 70vw; font-family: GeosansLight; "
           >
             <div class="card-header" id="header">Cozinha de Aplicação</div>
             <b-row no-gutters>
@@ -63,7 +63,7 @@
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text id="text"
+                  <b-card-text id="text" style="font-size: 20px"
                     >Possuimos uma cozinha totalmente equipada e preparada para
                     os mais diversos serviços.</b-card-text
                   >
@@ -78,7 +78,7 @@
           <b-card
             no-body
             class="overflow-hidden cards border-0"
-            style="max-width: 70vw;"
+            style="max-width: 70vw; font-family: GeosansLight"
           >
             <div class="card-header" id="header">Bar de Aplicação</div>
             <b-row no-gutters>
@@ -92,7 +92,7 @@
               </b-col>
               <b-col md="6">
                 <b-card-body>
-                  <b-card-text id="text">
+                  <b-card-text id="text" style="font-size: 20px">
                     No Bar Aplicação, os estudantes poêm em prática os
                     conhecimentos de serviço de bar, obtidos nas aulas da
                     Licenciatura. É um espaço agradável e acolhedor.
@@ -124,27 +124,6 @@ export default {};
 .catering {
   position: relative;
   width: 66.5%;
-}
-#lineLeftR {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 300px;
-}
-#lineRightR {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-right: 300px;
-}
-#title {
-  margin-top: -4%;
-  font-family: Channel;
-  color: black;
 }
 .paragraph1 {
   font-family: GeosansLight;
@@ -198,15 +177,7 @@ export default {};
   font-family: GeosansLight;
   font-size: 150%;
 }
-.restaurant {
-  margin-top: 10px;
-}
-.kitchen {
-  margin-top: 50px;
-}
-.barApp {
-  margin-top: 50px;
-}
+
 #btnRent {
   position: relative;
   width: 120px;
@@ -214,25 +185,21 @@ export default {};
   font-size: 100%;
   color: white;
   margin-bottom: 50px;
-  background-color: #000;
-  border-color: black;
+  background-color: #232323;
+  border-color: #232323;
   font-family: GeosansLight;
 }
 #btnRent:hover {
   border: 2px solid;
   border-color: #daaa29;
-  background-color: #000;
-}
-
-.title {
-  padding-bottom: 50px;
+  background-color: #232323;
 }
 
 #whiteRect {
   background-color: white;
   margin-top: -35px;
   height: 35px;
-  width: 300px;
+  width: 350px;
   position: relative;
   display: block;
   z-index: 6;
@@ -241,7 +208,7 @@ export default {};
 .back-line {
   background-color: #daaa29;
   margin-top: -25px;
-  width: 70%;
+  width: 700px;
   display: block;
   z-index: 5;
   position: relative;
@@ -252,7 +219,6 @@ export default {};
   font-family: "Channel";
   color: black;
   display: block;
-  font-size: 150%;
   z-index: 7;
   position: relative;
 }
@@ -263,9 +229,5 @@ export default {};
   align-items: center;
   margin: 0px;
   margin-bottom: 50px;
-}
-
-.text {
-  font-family: GeosansLight;
 }
 </style>

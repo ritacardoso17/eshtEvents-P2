@@ -4,7 +4,7 @@
     <br />
     <br />
     <br />
-    <div class="container-full title">
+    <div class="container-full title" style="padding-bottom: 50px;">
       <h3 id="redTitle">Os nossos Espaços</h3>
       <hr class="back-line" />
       <div class="container" id="whiteRect"></div>
@@ -154,7 +154,7 @@
           <a
             id="confirm"
             class="btn btn-primary"
-            @click="addARent()"
+            @click="rentRooms()"
             role="button"
             >Confirmar</a
           >
@@ -192,10 +192,6 @@ export default {
   },
   methods: {
     rentRooms() {
-      let splited = this.day.split("-");
-      let year = splited[0];
-      let month = splited[1];
-      let day = splited[0];
       if (
         this.day == "" ||
         this.time == "" ||
@@ -204,12 +200,6 @@ export default {
         this.slctRoom == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      } else if (parseInt(year) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse ano");
-      } else if (parseInt(month) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse mês");
-      } else if (parseInt(day) <= new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse dia");
       } else if (this.duration < 1) {
         this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
@@ -340,7 +330,7 @@ export default {
   font-size: 110%;
 }
 
-.guide9 {
+/* .guide9 {
   font-family: GeosansLight;
   text-align: justify;
   position: relative;
@@ -348,9 +338,9 @@ export default {
   left: 700px;
   width: 300px;
   font-size: 110%;
-}
+} */
 
-.guide10 {
+/* .guide10 {
   font-family: GeosansLight;
   text-align: justify;
   position: relative;
@@ -358,37 +348,37 @@ export default {
   width: 300px;
   left: 700px;
   font-size: 110%;
-}
+} */
 
-#rentDate {
+/* #rentDate {
   position: relative;
   width: 200px;
   height: 35px;
   left: 200px;
-}
+} */
 
-#rentTime {
+/* #rentTime {
   position: relative;
   width: 200px;
   height: 35px;
   left: 200px;
   top: 80px;
-}
-
+} */
+/* 
 #rentDuration {
   width: 200px;
   height: 35px;
   position: relative;
   left: 700px;
   top: -117px;
-}
+} */
 
-#rentReason {
+/* #rentReason {
   width: 200px;
   position: relative;
   left: 200px;
   top: -80px;
-}
+} */
 
 /* RESUMO TAB */
 .resume {
@@ -415,36 +405,17 @@ export default {
   color: black;
 }
 
-#pDate {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 14px;
-  color: black;
-}
-#pTime {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 14px;
-  color: black;
-}
-#pDuration {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 14px;
-  color: black;
-}
-#pReason {
-  font-family: GeosansLight;
-  text-align: justify;
-  font-size: 14px;
-  color: black;
-}
+#pDate,
+#pTime,
+#pDuration,
+#pReason,
 #roomSlt {
   font-family: GeosansLight;
   text-align: justify;
   font-size: 14px;
   color: black;
 }
+
 #confirm {
   position: relative;
   width: 90px;
@@ -456,12 +427,14 @@ export default {
   font-family: GeosansLight;
   margin: 10px;
 }
+
 #confirm:hover {
   color: white;
   border: 2px solid;
   border-color: #daaa29;
   background-color: #000;
 }
+
 #cancel:hover {
   color: white;
   border: 2px solid;
@@ -481,21 +454,6 @@ export default {
   margin: 10px;
 }
 
-.col-sm-4 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px;
-  margin-bottom: 50px;
-}
-
-.col-sm-12 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px;
-  margin-bottom: 50px;
-}
 .col-sm-3 {
   display: flex;
   flex-direction: column;
@@ -503,13 +461,7 @@ export default {
   margin: 0px;
   margin-bottom: 50px;
 }
-.col-sm-5 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px;
-  margin-bottom: 50px;
-}
+
 #progress {
   width: 400px;
   height: 8px;
@@ -520,15 +472,12 @@ export default {
   flex-direction: column;
   align-items: center;
 }
-.title {
-  padding-bottom: 50px;
-}
 
 #whiteRect {
   background-color: white;
   margin-top: -35px;
   height: 35px;
-  width: 300px;
+  width: 350px;
   position: relative;
   display: block;
   z-index: 6;
@@ -537,12 +486,13 @@ export default {
 .back-line {
   background-color: #daaa29;
   margin-top: -25px;
-  width: 70%;
+  width: 700px;
   display: block;
   z-index: 5;
   position: relative;
   height: 1px;
 }
+
 #redTitle {
   font-family: "Channel";
   color: black;

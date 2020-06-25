@@ -97,16 +97,16 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       reservations: [],
-      users: [],
       fields: [
-        { key: "userName", label: "Nome do Utilizador" },
-        { key: "day", label: "Dia" },
-        { key: "location", label: "Local" },
-        { key: "state", label: "Estado da Reserva", sortable: "true" },
+        { key: "user", label: "Nome do Utilizador" },
+        { key: "data_hora_reserva", label: "Dia" },
+        { key: "id_localizacao", label: "Local" },
+        { key: "estado", label: "Estado da Reserva", sortable: "true" },
         { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
       ],
@@ -114,57 +114,59 @@ export default {
     };
   },
   created() {
-    if (localStorage.getItem("reservations")) {
-      this.$store.state.reservations = JSON.parse(
-        localStorage.getItem("reservations")
-      );
-      this.reservations = this.$store.state.reservations;
-    }
-    if (localStorage.getItem("users")) {
-      this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-      this.users = this.$store.state.users;
-    }
+    this.getAllEvents();
+  },
+  computed: {
+    ...mapGetters(["getEvents"])
   },
   methods: {
-    acceptReservation(id) {
-      for (let i in this.reservations) {
-        if (this.reservations[i].id === id) {
-          const index = this.reservations.findIndex(
-            reservation => this.reservations[i].id === reservation.id
-          );
-          if (this.reservations[index].state != "Aceite") {
-            this.reservations[index].state = "Aceite";
-          }
-        }
+    async getAllEvents() {
+      try {
+        await this.$store.dispatch("getEvents");
+        this.reservations = this.getEvents;
+      } catch (err) {
+        alert(err);
       }
-      this.$bvToast.toast("Reserva aceite");
-      localStorage.setItem("reservations", JSON.stringify(this.reservations));
-      this.$store.state.reservations = localStorage.setItem(
-        "reservations",
-        JSON.stringify(this.reservations)
-      );
     },
-    refuseReservation(id) {
-      for (let i in this.reservations) {
-        if (this.reservations[i].id === id) {
-          const index = this.reservations.findIndex(
-            reservation => this.reservations[i].id === reservation.id
-          );
-          if (this.reservations[index].state != "Recusado") {
-            this.reservations[index].state = "Recusado";
-          }
-          this.$bvToast.toast("Recusou esta reserva");
-          localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-          this.$store.state.reservations = localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-        }
-      }
-    }
+    // acceptReservation(id) {
+    //   for (let i in this.reservations) {
+    //     if (this.reservations[i].id === id) {
+    //       const index = this.reservations.findIndex(
+    //         reservation => this.reservations[i].id === reservation.id
+    //       );
+    //       if (this.reservations[index].state != "Aceite") {
+    //         this.reservations[index].state = "Aceite";
+    //       }
+    //     }
+    //   }
+    //   this.$bvToast.toast("Reserva aceite");
+    //   localStorage.setItem("reservations", JSON.stringify(this.reservations));
+    //   this.$store.state.reservations = localStorage.setItem(
+    //     "reservations",
+    //     JSON.stringify(this.reservations)
+    //   );
+    // },
+    // refuseReservation(id) {
+    //   for (let i in this.reservations) {
+    //     if (this.reservations[i].id === id) {
+    //       const index = this.reservations.findIndex(
+    //         reservation => this.reservations[i].id === reservation.id
+    //       );
+    //       if (this.reservations[index].state != "Recusado") {
+    //         this.reservations[index].state = "Recusado";
+    //       }
+    //       this.$bvToast.toast("Recusou esta reserva");
+    //       localStorage.setItem(
+    //         "reservations",
+    //         JSON.stringify(this.reservations)
+    //       );
+    //       this.$store.state.reservations = localStorage.setItem(
+    //         "reservations",
+    //         JSON.stringify(this.reservations)
+    //       );
+    //     }
+    //   }
+    // }
   }
 };
 </script>
