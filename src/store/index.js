@@ -347,7 +347,7 @@ export default new Vuex.Store({
       //   name: "Mini Croissants"
       // }
     ],
-    components:[],
+    components: [],
     schools: [],
     states: [],
     currentMenus: [],
@@ -434,20 +434,10 @@ export default new Vuex.Store({
         VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
       }
     },
-    ADD_MENU: (state, payload) => {
-      if (!state.foodMenus.some(foodMenu => foodMenu.name === payload.name)) {
-        // state.foodMenus.push({
-        //   id: payload.id,
-        //   name: payload.name,
-        //   img: payload.img,
-        //   type: payload.type,
-        //   components: payload.components
-        // });
-        // localStorage.setItem("foodMenus", JSON.stringify(state.foodMenus))
-        VueSimpleAlert.fire("Menu adicionado!").then(() => { });
-      } else {
-        VueSimpleAlert.fire("Já existe um menu com esse nome!");
-      }
+    ADD_MENU: () => {
+
+      VueSimpleAlert.fire("Menu adicionado!")
+
     },
     ADD_COMPONENT: (state, payload) => {
       if (
@@ -637,7 +627,10 @@ export default new Vuex.Store({
     async getWorkshops({ commit }) {
       commit("SET_WORKSHOPS", await apiService.getWorkshops());
     },
-    async getComponentsMenus({ commit }) {
+    async getComponentsMenus({ commit },payload) {
+      commit("SET_COMPONENTS_MENUS", await apiService.getComponentsMenus(payload.id));
+    },
+    async getComponents({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents());
     },
     async getAllComponents({ commit }) {
@@ -664,7 +657,7 @@ export default new Vuex.Store({
     async editMenu({ commit }, payload) {
       commit(
         "EDIT_MENU",
-        await apiService.editMenu(payload.id, payload.id_componente,payload.id_tipo_reserva,payload.description, payload.img)
+        await apiService.editMenu(payload.id, payload.id_componente, payload.id_tipo_reserva, payload.description, payload.img)
       );
     },
     async editUser({ commit }, payload) {

@@ -40,11 +40,10 @@
           size="sm"
           @click="
             editMenu(
-              row.item.id,
+              row.item.id_menu,
               row.item.name,
-              row.item.componets,
               row.item.img,
-              row.item.type
+              row.item.descritivo
             )
           "
         >Editar Menu</b-button>
@@ -58,7 +57,7 @@
               <div
                 class="text-sm-center"
                 v-for="component in components"
-                :key="component.descritivo"
+                :key="component.id_menu"
               >
                 <div v-if=" component.id_menu === row.item.id_menu">
                   <li>{{ component.descritivo }}</li>
@@ -101,18 +100,14 @@
 
               <b-img v-bind:src="this.img" fluid style="width:200px"></b-img>
             </div>
-
+            <!-- COMPONENTES DO MENU -->
             <div class="col">
-              <!-- COMPONENTES DO MENU -->
-              <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
-              <div align="left" v-for="component in componentsEdit"  :value="component.id_componente" :key="component.descritivo">
-                <input
-                  type="checkbox"
-                 
-                  unchecked
-                  v-model="componentsE"
-                />
-                {{component.descritivo}}
+              <div v-for="component in componentsEdit" :key="component.id_componente">
+                <b-form-group>
+                  <b-form-checkbox-group v-model="checkComp">
+                    <b-form-checkbox :value="component.id_componente">{{component.descritivo}}</b-form-checkbox>
+                  </b-form-checkbox-group>
+                </b-form-group>
               </div>
             </div>
           </div>
@@ -157,15 +152,18 @@ export default {
       size2: "none",
       id: "",
       name: "",
+      img:"",
+      type:"",
       components: [],
       componentsEdit: [],
       componentsE: [],
-      eventType: []
+      eventType: [],
+      checkComp:[]
     };
   },
   created() {
     this.getAllMenus();
-    this.getAllComponentsMenus();
+    this.getTableComponents();
     this.getAllEventTypes();
     this.getMyComponents();
   },
@@ -184,9 +182,9 @@ export default {
         alert(err);
       }
     },
-    async getAllComponentsMenus() {
+    async getTableComponents() {
       try {
-        await this.$store.dispatch("getComponentsMenus");
+        await this.$store.dispatch("getComponents");
         this.components = this.getComponentsMenus;
       } catch (err) {
         alert(err);
@@ -217,21 +215,21 @@ export default {
         alert(err);
       }
     },
-    editMenu(id, name, componentsE, img, type) {
+    editMenu(id, name, img, type) {
       this.size = "none";
       this.size2 = "block";
 
       this.name = name;
-      this.componentsE = componentsE;
       this.img = img;
       this.type = type;
       this.id = id;
+      alert(this.name + this.img + "APARTIR DAQUI"+this.type +"APARTIR DAQUI"+ this.id)
     },
     async saveMenu() {
       try {
-        await this.$store.dispatch("editUser", {
+        await this.$store.dispatch("editMenu", {
           id: this.id,
-          id_componente: this.componentsE,
+          id_componente: this.checkComp,
           id_tipo_reserva: this.type,
           description: this.name,
           img: this.img
@@ -239,13 +237,14 @@ export default {
         this.size = "";
         this.size2 = "none";
         this.name = "";
-        this.componentsE = [];
+        this.checkComp = [];
         this.img = "";
         this.type = [];
         this.id = "";
       } catch (err) {
         alert(err);
       }
+      this.getAllMenus();
     },
     cancel() {
       this.size = "";

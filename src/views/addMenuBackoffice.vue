@@ -55,7 +55,7 @@
       <div v-for="component in components" :key="component.id_componente">
         <input
           type="checkbox"
-          :value="component.descritivo"
+          :value="component.id_componente"
           unchecked
           v-model="componentsNew"
         />

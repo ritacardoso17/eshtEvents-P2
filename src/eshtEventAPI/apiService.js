@@ -239,8 +239,18 @@ const apiService = {
     }
   },
   //obter componentes dos menus
+  async getComponentsMenus(id) {
+    const response = await fetch(`${API_URL}/menu/${id}/components`, {
+      method: "GET"
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async getComponents() {
-    
     const response = await fetch(`${API_URL}/components`, {
       method: "GET"
     });
@@ -453,9 +463,9 @@ const apiService = {
       },
       body: JSON.stringify({
         description: name,
-        file: img,
+        img: img,
         id_tipo_reserva: type,
-        components: components
+        id_componente: components
       })
     });
 
