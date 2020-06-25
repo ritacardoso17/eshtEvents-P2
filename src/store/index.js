@@ -652,6 +652,9 @@ export default new Vuex.Store({
     async getEvents({ commit }) {
       commit("SET_EVENTS", await apiService.getReservations());
     },
+    async getRents({ commit }) {
+      commit("SET_RENTS", await apiService.getRoomRents());
+    },
     async getOpinionReservs({ commit }, payload) {
       commit(
         "SET_OPINIONRESERVS",

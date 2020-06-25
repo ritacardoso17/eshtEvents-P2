@@ -1,7 +1,7 @@
 <template>
   <div>
     <br />
-    <h2 class="adminTitle">Reservas de Eventos</h2>
+    <h2 class="adminTitle">Reservas de Espaços</h2>
     <br />
     <div v-if="this.rooms == 0">
       <h5>Nao existe reserva de espaços</h5>
@@ -39,7 +39,7 @@
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Lugar:</b>
-                {{ row.item.room }}
+                {{ row.item.espaco }}
               </b-col>
               <b-col></b-col>
             </b-row>
@@ -47,14 +47,14 @@
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Duração:</b>
-                {{ row.item.duration }}
+                {{ row.item.duracao }}
               </b-col>
             </b-row>
             <!-- NUMERO DE PESSOAS -->
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Razão:</b>
-                {{ row.item.reason }}
+                {{ row.item.motivo }}
               </b-col>
               <b-col></b-col>
             </b-row>
@@ -62,7 +62,7 @@
             <b-row class="mb-2">
               <b-col sm="3" class="text-sm-left">
                 <b>Opinião:</b>
-                {{ row.item.opinions }}
+                {{ row.item.opiniao }}
               </b-col>
             </b-row>
           </b-card>
@@ -73,14 +73,15 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       rooms: [],
       fields: [
-        { key: "userName", label: "Nome do Utilizador" },
-        { key: "day", label: "Dia" },
-        { key: "state", label: "Estado da Reserva", sortable: "true" },
+        { key: "user", label: "Nome do Utilizador" },
+        { key: "data_hora_requirida", label: "Dia" },
+        { key: "estado", label: "Estado da Reserva", sortable: "true" },
         { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
       ],
@@ -88,57 +89,63 @@ export default {
     };
   },
   created() {
-    if (localStorage.getItem("roomRents")) {
-      this.$store.state.roomRents = JSON.parse(
-        localStorage.getItem("roomRents")
-      );
-      this.rooms = this.$store.state.roomRents;
-    }
+    this.getAllRents();
+  },
+  computed: {
+    ...mapGetters(["getRents"])
   },
   methods: {
-    acceptReservation(id) {
-      for (let i in this.rooms) {
-        if (this.rooms[i].id === id) {
-          const index = this.rooms.findIndex(
-            room => this.rooms[i].id === room.id
-          );
-          if (this.rooms[index].state == "Pendente") {
-            this.rooms[index].state = "Aceite";
-            // this.show = "none";
-          } else {
-            this.$bvToast.toast("Ja tem uma reserva para este dia.");
-          }
-          this.$bvToast.toast("Aceitou esta reserva");
-
-          localStorage.setItem("roomRents", JSON.stringify(this.rooms));
-          this.$store.state.roomRents = localStorage.setItem(
-            "roomRents",
-            JSON.stringify(this.rooms)
-          );
-        }
+    async getAllRents() {
+      try {
+        await this.$store.dispatch("getRents");
+        this.rooms = this.getRents;
+      } catch (err) {
+        alert(err);
       }
     },
-    refuseReservation(id) {
-      for (let i in this.reservations) {
-        if (this.reservations[i].id === id) {
-          const index = this.reservations.findIndex(
-            reservation => this.reservations[i].id === reservation.id
-          );
-          if (this.reservations[index].state == "Pendente") {
-            this.reservations[index].state = "Recusado";
-          }
-          this.$bvToast.toast("Recusou esta reserva");
-          localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-          this.$store.state.reservations = localStorage.setItem(
-            "reservations",
-            JSON.stringify(this.reservations)
-          );
-        }
-      }
-    }
+    // acceptReservation(id) {
+    //   for (let i in this.rooms) {
+    //     if (this.rooms[i].id === id) {
+    //       const index = this.rooms.findIndex(
+    //         room => this.rooms[i].id === room.id
+    //       );
+    //       if (this.rooms[index].state == "Pendente") {
+    //         this.rooms[index].state = "Aceite";
+    //         // this.show = "none";
+    //       } else {
+    //         this.$bvToast.toast("Ja tem uma reserva para este dia.");
+    //       }
+    //       this.$bvToast.toast("Aceitou esta reserva");
+
+    //       localStorage.setItem("roomRents", JSON.stringify(this.rooms));
+    //       this.$store.state.roomRents = localStorage.setItem(
+    //         "roomRents",
+    //         JSON.stringify(this.rooms)
+    //       );
+    //     }
+    //   }
+    // },
+    // refuseReservation(id) {
+    //   for (let i in this.reservations) {
+    //     if (this.reservations[i].id === id) {
+    //       const index = this.reservations.findIndex(
+    //         reservation => this.reservations[i].id === reservation.id
+    //       );
+    //       if (this.reservations[index].state == "Pendente") {
+    //         this.reservations[index].state = "Recusado";
+    //       }
+    //       this.$bvToast.toast("Recusou esta reserva");
+    //       localStorage.setItem(
+    //         "reservations",
+    //         JSON.stringify(this.reservations)
+    //       );
+    //       this.$store.state.reservations = localStorage.setItem(
+    //         "reservations",
+    //         JSON.stringify(this.reservations)
+    //       );
+    //     }
+    //   }
+    // }
   }
 };
 </script>
