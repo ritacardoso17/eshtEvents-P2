@@ -42,7 +42,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
               <b>Tipo de Evento:</b>
-              {{ row.item.eventType }}
+              {{ row.item.estado }}
             </b-col>
             <b-col></b-col>
           </b-row>
@@ -57,7 +57,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
               <b>Numero de Pessoas:</b>
-              {{ row.item.people }}
+              {{ row.item.nr_pessoas }}
             </b-col>
             <b-col></b-col>
           </b-row>
@@ -65,7 +65,7 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
               <b>Uniforme:</b>
-              {{ row.item.uniform }}
+              {{ row.item.farda }}
             </b-col>
             <b-col></b-col>
           </b-row>
@@ -73,16 +73,16 @@
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
               <b>Decoração:</b>
-              {{ row.item.decor }}
+              {{ row.item.decoracao }}
             </b-col>
             <b-col></b-col>
           </b-row>
 
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-left">
-              <div v-if="row.item.opinions != 0">
+              <div v-if="row.item.opiniao != 0">
                 <b>Opinião:</b>
-                {{ row.item.opinions }}
+                {{ row.item.opiniao }}
               </div>
               <div v-else>
                 <b>Opinião:O UTILIZADOR AINDA NAO DEU A SUA OPINIAO</b>
@@ -105,7 +105,7 @@ export default {
       fields: [
         { key: "user", label: "Nome do Utilizador" },
         { key: "data_hora_reserva", label: "Dia" },
-        { key: "id_localizacao", label: "Local" },
+        { key: "escola", label: "Local" },
         { key: "estado", label: "Estado da Reserva", sortable: "true" },
         { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
