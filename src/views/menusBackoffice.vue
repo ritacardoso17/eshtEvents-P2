@@ -88,6 +88,7 @@
                   v-for="typeE in eventType"
                   :key="typeE.id_tipo_reserva"
                   @click="typeEvent(typeE)"
+                  :value="typeE.id_tipo_reserva"
                 >{{ typeE.descritivo }}</option>
               </select>
             </div>
@@ -104,14 +105,19 @@
             <div class="col">
               <!-- COMPONENTES DO MENU -->
               <b-form-group id="input-group-1" label="Componenetes:" label-for="input-1"></b-form-group>
-              <div align="left" v-for="component in componentsEdit" :key="component.descritivo">
-                <input type="checkbox" :value="component.id_componente" unchecked v-model="componentsE" />
+              <div align="left" v-for="component in componentsEdit"  :value="component.id_componente" :key="component.descritivo">
+                <input
+                  type="checkbox"
+                 
+                  unchecked
+                  v-model="componentsE"
+                />
                 {{component.descritivo}}
               </div>
             </div>
           </div>
         </div>
-<br>
+        <br />
         <b-button type="submit" class="btnConf">Confirmar</b-button>
 
         <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
@@ -152,7 +158,7 @@ export default {
       id: "",
       name: "",
       components: [],
-      componentsEdit:[],
+      componentsEdit: [],
       componentsE: [],
       eventType: []
     };
@@ -161,13 +167,13 @@ export default {
     this.getAllMenus();
     this.getAllComponentsMenus();
     this.getAllEventTypes();
-    this.getMyComponents()
+    this.getMyComponents();
   },
   computed: {
     ...mapGetters(["getMenus"]),
     ...mapGetters(["getComponentsMenus"]),
-     ...mapGetters(["getEvenTypes"]),
-      ...mapGetters(["getAllComponents"]),
+    ...mapGetters(["getEvenTypes"]),
+    ...mapGetters(["getAllComponents"])
   },
   methods: {
     async getAllMenus() {
@@ -194,10 +200,10 @@ export default {
         alert(err);
       }
     },
-     async getAllEventTypes() {
+    async getAllEventTypes() {
       try {
         await this.$store.dispatch("getEvenTypes");
-        this.eventType= this.getEvenTypes;
+        this.eventType = this.getEvenTypes;
       } catch (err) {
         alert(err);
       }
@@ -221,25 +227,25 @@ export default {
       this.type = type;
       this.id = id;
     },
-    saveMenu() {
-      for (let m in this.menus) {
-        if (this.menus[m].id == this.id) {
-          this.menus[m].name = this.name;
-          this.menus[m].components = this.componentsE;
-          this.menus[m].type = this.type;
-          this.menus[m].img = this.img;
-
-          localStorage.setItem("foodMenus", JSON.stringify(this.menus));
-          this.$bvToast.toast("Menu editado com sucesso");
-        }
+    async saveMenu() {
+      try {
+        await this.$store.dispatch("editUser", {
+          id: this.id,
+          id_componente: this.componentsE,
+          id_tipo_reserva: this.type,
+          description: this.name,
+          img: this.img
+        });
+        this.size = "";
+        this.size2 = "none";
+        this.name = "";
+        this.componentsE = [];
+        this.img = "";
+        this.type = [];
+        this.id = "";
+      } catch (err) {
+        alert(err);
       }
-      this.size = "";
-      this.size2 = "none";
-      this.name = "";
-      this.componentsE = [];
-      this.img = "";
-      this.type = [];
-      this.id = "";
     },
     cancel() {
       this.size = "";
