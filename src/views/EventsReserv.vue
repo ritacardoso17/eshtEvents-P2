@@ -67,11 +67,7 @@
 
               <label for="sltLocation" class="locationLabel">▶ Localização</label>
               <select id="sltLocation" v-model="location">
-                <option v-for="l in schools" :value="l" :key="l.id_ipp">
-                  {{
-                  l.nome
-                  }}
-                </option>
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{ l.nome }}</option>
               </select>
             </div>
           </form>
@@ -232,7 +228,7 @@
             id="confirm2"
             class="btn btn-primary"
             role="button"
-            @click="addReservation()"
+            @click="eventsReserv()"
           >Confirmar</a>
           <a name id="cancel2" class="btn btn-primary" href="/events" role="button">Cancelar</a>
         </b-tab>
@@ -331,33 +327,47 @@ export default {
       return this.$store.getters.getLoggedUserId;
     },
     eventsReserv() {
-      let splited = this.day.split("-");
-      let year = splited[0];
-      let month = splited[1];
-      let day = splited[0];
       if (
         this.day == "" ||
         this.time == "" ||
         this.persons == "" ||
         this.duration == "" ||
         this.location == "" ||
+        this.extra == "" ||
         this.slctMenu == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      }
-      if (parseInt(year) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse ano");
-      }
-      if (parseInt(month) < new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse mês");
-      }
-      if (parseInt(day) <= new Date().getFullYear()) {
-        this.$bvToast.toast("Não pode realizar reservas para esse dia");
       } else if (this.persons < 20 || this.duration < 1) {
         this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
         this.addReservation();
       }
+
+      // let splited = this.day.split("-");
+      // let year = splited[0];
+      // let month = splited[1];
+      // let day = splited[0];
+      // if (
+      //   this.day == "" ||
+      //   this.time == "" ||
+      //   this.persons == "" ||
+      //   this.duration == "" ||
+      //   this.location == "" ||
+      //   this.extra == "" ||
+      //   this.slctMenu == ""
+      // ) {
+      //   this.$bvToast.toast("Precisa de preencher todos os campos");
+      // } else if (parseInt(year) < new Date().getFullYear()) {
+      //   this.$bvToast.toast("Não pode realizar reservas para esse ano");
+      // } else if (parseInt(month) < new Date().getFullYear()) {
+      //   this.$bvToast.toast("Não pode realizar reservas para esse mês");
+      // } else if (parseInt(day) <= new Date().getFullYear()) {
+      //   this.$bvToast.toast("Não pode realizar reservas para esse dia");
+      // } else if (this.persons < 20 || this.duration < 1) {
+      //   this.$bvToast.toast("Os campos estão mal preenchidos");
+      // } else {
+      //   this.addReservation();
+      // }
     },
     async getAllEventTypes() {
       try {
