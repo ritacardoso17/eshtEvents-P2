@@ -48,7 +48,7 @@
                 class="btn"
                 id="sign"
               >
-                INSCREVER
+                Inscrever
               </button>
             </b-card-body>
           </b-col>
@@ -144,7 +144,8 @@ export default {
   background-color: #232323;
   border: 2px solid #232323;
   border-radius: 0px;
-  margin-left: 200px;
+  margin-top: 3%;
+  margin-left: 75%;
 }
 
 .yay-line {

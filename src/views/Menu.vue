@@ -4,11 +4,11 @@
     <br />
     <br />
     <br />
-    <h3 id="titleMenu">
-      <hr id="lineLeft2" />
-      Menus
-      <hr id="lineRight2" />
-    </h3>
+    <div class="container-full title" style="padding-bottom: 50px;">
+      <h3 id="redTitle">Menus</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
 
     <menuMaker />
   </div>
@@ -26,26 +26,32 @@ export default {
 </script>
 
 <style>
-#lineLeft2 {
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 170px;
   position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: 30px;
-  margin-left: 30%;
+  display: block;
+  z-index: 6;
 }
-#lineRight2 {
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
   position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 30%;
+  height: 1px;
 }
-#titleMenu {
-  margin-top: -3%;
-  font-family: Channel;
+
+#redTitle {
+  font-family: "Channel";
   color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
 }
 .catering {
   position: relative;

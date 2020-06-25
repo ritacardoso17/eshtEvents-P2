@@ -5,9 +5,14 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeftW" />
-    <h3 id="title">Workshops</h3>
-    <hr id="lineRightW" />
+    <div
+      class="container-full title"
+      style="padding-bottom: 50px; margin-top: -20px"
+    >
+      <h3 id="redTitle">Workshop</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
     <br />
     <cardWorkshop />
   </div>
@@ -26,29 +31,36 @@ export default {
 </script>
 
 <style>
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 200px;
+  position: relative;
+  display: block;
+  z-index: 6;
+}
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
+
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
+}
+
 .catering {
   position: relative;
   width: 66.5%;
-}
-#lineLeftW {
-  position: absolute;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 20%;
-  top: 52%;
-  margin-left: 20%;
-}
-#lineRightW {
-  position: absolute;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 20%;
-  top: 52%;
-  margin-left: 60%;
-}
-#title {
-  margin-top: -2%;
-  font-family: Channel;
-  color: black;
 }
 </style>

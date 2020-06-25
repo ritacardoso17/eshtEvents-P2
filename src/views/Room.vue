@@ -5,7 +5,7 @@
     <br />
     <br />
 
-    <div class="container-full title">
+    <div class="container-full title" style="padding-bottom: 50px;">
       <h3 id="redTitle">Os nossos Espaços</h3>
       <hr class="back-line" />
       <div class="container" id="whiteRect"></div>
@@ -224,15 +224,11 @@ export default {};
   background-color: #000;
 }
 
-.title {
-  padding-bottom: 50px;
-}
-
 #whiteRect {
   background-color: white;
   margin-top: -35px;
   height: 35px;
-  width: 300px;
+  width: 350px;
   position: relative;
   display: block;
   z-index: 6;
@@ -241,7 +237,7 @@ export default {};
 .back-line {
   background-color: #daaa29;
   margin-top: -25px;
-  width: 70%;
+  width: 700px;
   display: block;
   z-index: 5;
   position: relative;
@@ -252,7 +248,6 @@ export default {};
   font-family: "Channel";
   color: black;
   display: block;
-  font-size: 150%;
   z-index: 7;
   position: relative;
 }

@@ -4,9 +4,11 @@
     <br />
     <br />
     <br />
-    <hr id="lineLeft" />
-    <h3 id="title">Eventos e Catering</h3>
-    <hr id="lineRight" />
+    <div class="container-full title" style="padding-bottom: 50px;">
+      <h3 id="redTitle">Eventos e Catering</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
 
     <p id="guide">Complete as seguintes etapas para efetuar a sua reserva</p>
 
@@ -435,35 +437,40 @@ export default {
   width: 66.5%;
 }
 
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 380px;
+  position: relative;
+  display: block;
+  z-index: 6;
+}
+
+.back-line {
+  background-color: #daaa29;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
+
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
+}
+
 #progress {
   width: 400px;
   margin: auto;
   height: 8px;
 }
 
-#lineLeft {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 30%;
-}
-
-#lineRight {
-  position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 30%;
-}
-
-#title {
-  margin-top: -2%;
-  font-family: Channel;
-  color: black;
-}
 
 #guide {
   font-family: GeosansLight;
@@ -484,12 +491,8 @@ export default {
   font-family: GeosansLight;
 }
 
-.nav-link.active {
+.nav-link.active, .card-header:first-child {
   background-color: #232323 !important;
-}
-
-.card-header:first-child {
-  background-color: #232323;
 }
 
 .tab-content {
@@ -518,7 +521,7 @@ export default {
   top: 100px;
 }
 
-#bar2 {
+/* #bar2 {
   position: absolute;
   opacity: 0.8;
   top: 50%;
@@ -527,7 +530,7 @@ export default {
   width: 300px;
   height: 30px;
   background-color: black;
-}
+} */
 
 #eventType {
   font-size: 20px;

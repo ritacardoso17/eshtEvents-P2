@@ -4,12 +4,11 @@
     <br />
     <br />
     <br />
-
-    <h3 id="title">
-      <hr id="lineLeftW" />
-      Sobre Nós
-      <hr id="lineRightW" />
-    </h3>
+    <div class="container-full title" style="padding-bottom: 50px;">
+      <h3 id="redTitle">Sobre Nós</h3>
+      <hr class="back-line" />
+      <div class="container" id="whiteRect"></div>
+    </div>
 
     <div class="container">
       <div class="row">
@@ -23,8 +22,10 @@
           </p>
           <p id="whereIs">
             Escola Superior de Hotelaria e Turismo
-            <br />Rua D. Sancho I, n.º 981 <br />4480-876 Vila do Conde Portugal
-            <br />T. +351 252 291 700 <br />E. geral@esht.ipp.pt
+            <br />Rua D. Sancho I, n.º 981
+            <br />4480-876 Vila do Conde Portugal
+            <br />T. +351 252 291 700
+            <br />E. geral@esht.ipp.pt
           </p>
           <br />
           <br />
@@ -62,27 +63,35 @@ export default {
   /* width: 1263px; */
   width: 66.5%;
 }
-#lineLeftW {
-  position: absolute;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 20%;
-  top: 53%;
-  margin-left: 20%;
+
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 230px;
+  position: relative;
+  display: block;
+  z-index: 6;
 }
-#lineRightW {
-  position: absolute;
+
+.back-line {
   background-color: #daaa29;
-  height: 0.5px;
-  width: 20%;
-  top: 53%;
-  margin-left: 60%;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
 }
-#title {
-  margin-top: 0%;
-  font-family: Channel;
+
+#redTitle {
+  font-family: "Channel";
   color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
 }
+
 #whatIs {
   font-family: GeosansLight;
   font-size: 110%;
@@ -91,6 +100,7 @@ export default {
   padding-top: 20px;
   padding-left: 100px;
 }
+
 #whereIs {
   font-family: GeosansLight;
   font-size: 110%;
@@ -99,6 +109,7 @@ export default {
   padding-top: 20px;
   padding-left: 100px;
 }
+
 #subTitle2 {
   text-align: center;
   font-family: GeosansLight;
@@ -106,6 +117,7 @@ export default {
   top: 150px;
   right: 120px;
 }
+
 .bandeja2 {
   width: 100px;
   height: auto;
@@ -113,6 +125,7 @@ export default {
   display: block;
   top: 150px;
 }
+
 .douradoLogo2 {
   width: 250px;
   position: relative;
