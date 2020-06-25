@@ -362,6 +362,22 @@ const apiService = {
       throw Error(response);
     }
   },
+  async getRoomRents() {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
+    const response = await fetch(`${API_URL}/roomRents`, {
+      method: "GET",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      }, 
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async getUsersRents(id) {
     const response = await fetch(`${API_URL}/roomRents/${id}`, {
       method: "GET"

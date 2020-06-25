@@ -8,7 +8,8 @@
       size="sm"
       :to="{ path: '/addMenu' }"
       v-bind:style="{ display: size }"
-    >Adicionar Menu</b-button>
+      >Adicionar Menu</b-button
+    >
     <br />
     <br />
     <!--GERA TABELA COM DADOS DOS MENUS-->
@@ -26,7 +27,8 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-        >Mostrar Menu</b-button>
+          >Mostrar Menu</b-button
+        >
       </template>
       <template v-slot:cell(options)="row">
         <b-button
@@ -34,7 +36,8 @@
           class="btnRemove"
           size="sm"
           @click="removeMenu(row.item.id_menu)"
-        >Eliminar Menu</b-button>
+          >Eliminar Menu</b-button
+        >
         <b-button
           class="btnRemove"
           size="sm"
@@ -46,7 +49,8 @@
               row.item.descritivo
             )
           "
-        >Editar Menu</b-button>
+          >Editar Menu</b-button
+        >
       </template>
       <!-- Mostar Detalhes do MENU -->
       <template v-slot:row-details="row">
@@ -59,7 +63,7 @@
                 v-for="component in components"
                 :key="component.id_menu"
               >
-                <div v-if=" component.id_menu === row.item.id_menu">
+                <div v-if="component.id_menu === row.item.id_menu">
                   <li>{{ component.descritivo }}</li>
                 </div>
               </div>
@@ -76,24 +80,35 @@
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group id="input-group-1" label="Nome do Menu:" label-for="input-1"></b-form-group>
+              <b-form-group
+                id="input-group-1"
+                label="Nome do Menu:"
+                label-for="input-1"
+              ></b-form-group>
               <input type="text" v-model="name" style=" width: 300px;" />
               <br />
 
               <!-- TIPO EVENTO -->
-              <b-form-group id="input-group-1" label="Tipo de Evento:" label-for="input-1"></b-form-group>
+              <b-form-group
+                id="input-group-1"
+                label="Tipo de Evento:"
+                label-for="input-1"
+              ></b-form-group>
               <select v-model="type">
                 <option
                   v-for="typeE in eventType"
                   :key="typeE.id_tipo_reserva"
                   @click="typeEvent(typeE)"
                   :value="typeE.id_tipo_reserva"
-                >{{ typeE.descritivo }}</option>
+                  >{{ typeE.descritivo }}</option
+                >
               </select>
             </div>
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
+              <b-form-label name="image" for="txtImage" class="nameLabel"
+                >Imagem do Menu:</b-form-label
+              >
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -102,10 +117,15 @@
             </div>
             <!-- COMPONENTES DO MENU -->
             <div class="col">
-              <div v-for="component in componentsEdit" :key="component.id_componente">
+              <div
+                v-for="component in componentsEdit"
+                :key="component.id_componente"
+              >
                 <b-form-group>
                   <b-form-checkbox-group v-model="checkComp">
-                    <b-form-checkbox :value="component.id_componente">{{component.descritivo}}</b-form-checkbox>
+                    <b-form-checkbox :value="component.id_componente">{{
+                      component.descritivo
+                    }}</b-form-checkbox>
                   </b-form-checkbox-group>
                 </b-form-group>
               </div>
@@ -115,7 +135,9 @@
         <br />
         <b-button type="submit" class="btnConf">Confirmar</b-button>
 
-        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+        <b-button type="button" class="btnConf" @click="cancel()"
+          >Cancelar</b-button
+        >
       </b-form>
     </div>
   </div>
@@ -152,13 +174,13 @@ export default {
       size2: "none",
       id: "",
       name: "",
-      img:"",
-      type:"",
+      img: "",
+      type: "",
       components: [],
       componentsEdit: [],
       componentsE: [],
       eventType: [],
-      checkComp:[]
+      checkComp: []
     };
   },
   created() {
@@ -223,7 +245,14 @@ export default {
       this.img = img;
       this.type = type;
       this.id = id;
-      alert(this.name + this.img + "APARTIR DAQUI"+this.type +"APARTIR DAQUI"+ this.id)
+      alert(
+        this.name +
+          this.img +
+          "APARTIR DAQUI" +
+          this.type +
+          "APARTIR DAQUI" +
+          this.id
+      );
     },
     async saveMenu() {
       try {
