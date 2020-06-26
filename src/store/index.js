@@ -695,6 +695,12 @@ export default new Vuex.Store({
     async updateStatusCancel({ commit }, payload) {
       commit( "CHANGE_STATE",await apiService.updateStatusCancel(payload.id, payload.tipoEstado));
     },
+    async updateStatusRents({ commit }, payload) {
+      commit( "CHANGE_STATE",await apiService.updateStatusRents(payload.id, payload.tipoEstado));
+    },
+    async updateStatusCancelRents({ commit }, payload) {
+      commit( "CHANGE_STATE",await apiService.updateStatusCancelRents(payload.id, payload.tipoEstado));
+    },
     async getOpinionRents({ commit }, payload) {
       commit(
         "SET_OPINIONRENTS",

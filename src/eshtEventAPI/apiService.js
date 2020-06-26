@@ -182,6 +182,38 @@ const apiService = {
       throw Error(response);
     }
   },
+  async updateStatusRents(id,tipoEstado) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/changeStatusRents/${id}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+       body: JSON.stringify({ tipoEstado:tipoEstado })
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async updateStatusCancelRents(id,tipoEstado) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/changeStatusCancelRents/${id}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+       body: JSON.stringify({ tipoEstado:tipoEstado })
+    });
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async getExtras() {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/extras`, {

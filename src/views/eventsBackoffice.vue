@@ -9,9 +9,7 @@
     <div v-else>
       <b-table bordered fixed hover :items="this.rooms" :fields="this.fields">
         <template v-slot:cell(details)="row">
-          <b-button class="btnDetails" size="sm" @click="row.toggleDetails"
-            >Mostrar Detalhes</b-button
-          >
+          <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
         </template>
 
         <template v-slot:cell(options)="row">
@@ -19,18 +17,16 @@
             variant="success"
             class="btnRemove"
             size="sm"
-            @click="acceptReservation(row.item.id)"
+            @click="acceptReservation(row.item.id_aluguer,row.item.estado)"
             style="margin:5px,"
             v-bind:style="{ display: show }"
-            >Aceitar</b-button
-          >
+          >Aceitar</b-button>
           <b-button
             variant="danger"
             class="btnChange"
             size="sm"
-            @click="refuseReservation(row.item.id)"
-            >Recusar</b-button
-          >
+            @click="refuseReservation(row.item.id_aluguer,row.item.estado)"
+          >Recusar</b-button>
         </template>
 
         <template v-slot:row-details="row">
@@ -73,6 +69,7 @@
 </template>
 
 <script>
+import VueSimpleAlert from "vue-simple-alert";
 import { mapGetters } from "vuex";
 export default {
   data() {
@@ -103,49 +100,33 @@ export default {
         alert(err);
       }
     },
-    // acceptReservation(id) {
-    //   for (let i in this.rooms) {
-    //     if (this.rooms[i].id === id) {
-    //       const index = this.rooms.findIndex(
-    //         room => this.rooms[i].id === room.id
-    //       );
-    //       if (this.rooms[index].state == "Pendente") {
-    //         this.rooms[index].state = "Aceite";
-    //         // this.show = "none";
-    //       } else {
-    //         this.$bvToast.toast("Ja tem uma reserva para este dia.");
-    //       }
-    //       this.$bvToast.toast("Aceitou esta reserva");
-
-    //       localStorage.setItem("roomRents", JSON.stringify(this.rooms));
-    //       this.$store.state.roomRents = localStorage.setItem(
-    //         "roomRents",
-    //         JSON.stringify(this.rooms)
-    //       );
-    //     }
-    //   }
-    // },
-    // refuseReservation(id) {
-    //   for (let i in this.reservations) {
-    //     if (this.reservations[i].id === id) {
-    //       const index = this.reservations.findIndex(
-    //         reservation => this.reservations[i].id === reservation.id
-    //       );
-    //       if (this.reservations[index].state == "Pendente") {
-    //         this.reservations[index].state = "Recusado";
-    //       }
-    //       this.$bvToast.toast("Recusou esta reserva");
-    //       localStorage.setItem(
-    //         "reservations",
-    //         JSON.stringify(this.reservations)
-    //       );
-    //       this.$store.state.reservations = localStorage.setItem(
-    //         "reservations",
-    //         JSON.stringify(this.reservations)
-    //       );
-    //     }
-    //   }
-    // }
+    async acceptReservation(id, tipoEstado) {
+      if (tipoEstado == "Pendente") {
+        try {
+          await this.$store.dispatch("updateStatusRents", {
+            id: id,
+            tipoEstado: tipoEstado
+          });
+          this.getAllRents();
+        } catch (err) {
+          alert(err);
+        }
+      } else {
+        VueSimpleAlert.fire("Não pode alterar o estado da reserva");
+      }
+      alert(id)
+    },
+    async refuseReservation(id, tipoEstado) {
+        try {
+        await this.$store.dispatch("updateStatusCancelRents", {
+          id: id,
+          tipoEstado: tipoEstado
+        });
+        this.getAllRents();
+      } catch (err) {
+        alert(err);
+      }
+    }
   }
 };
 </script>
