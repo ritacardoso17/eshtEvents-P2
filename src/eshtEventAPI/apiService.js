@@ -150,7 +150,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async updateStatus(id,tipoEstado) {
+  async updateStatus(id, tipoEstado) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/changeStatus/${id}`, {
       method: "PUT",
@@ -158,7 +158,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-       body: JSON.stringify({ tipoEstado:tipoEstado })
+      body: JSON.stringify({ tipoEstado: tipoEstado })
     });
     if (response.ok) {
       return response.json();
@@ -166,7 +166,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async updateStatusCancel(id,tipoEstado) {
+  async updateStatusCancel(id, tipoEstado) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/changeStatusCancel/${id}`, {
       method: "PUT",
@@ -174,7 +174,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-       body: JSON.stringify({ tipoEstado:tipoEstado })
+      body: JSON.stringify({ tipoEstado: tipoEstado })
     });
     if (response.ok) {
       return response.json();
@@ -182,7 +182,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async updateStatusRents(id,tipoEstado) {
+  async updateStatusRents(id, tipoEstado) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/changeStatusRents/${id}`, {
       method: "PUT",
@@ -190,7 +190,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-       body: JSON.stringify({ tipoEstado:tipoEstado })
+      body: JSON.stringify({ tipoEstado: tipoEstado })
     });
     if (response.ok) {
       return response.json();
@@ -198,7 +198,7 @@ const apiService = {
       throw Error(response);
     }
   },
-  async updateStatusCancelRents(id,tipoEstado) {
+  async updateStatusCancelRents(id, tipoEstado) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/changeStatusCancelRents/${id}`, {
       method: "PUT",
@@ -206,7 +206,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-       body: JSON.stringify({ tipoEstado:tipoEstado })
+      body: JSON.stringify({ tipoEstado: tipoEstado })
     });
     if (response.ok) {
       return response.json();
@@ -401,7 +401,7 @@ const apiService = {
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }, 
+      },
     });
 
     if (response.ok) {
@@ -452,6 +452,21 @@ const apiService = {
   async removeReservation(id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/reservations/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-access-token": loggedUser.token
+      }
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
+  async removeWorkshop(id) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/workshops/${id}`, {
       method: "DELETE",
       headers: {
         "x-access-token": loggedUser.token

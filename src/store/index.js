@@ -372,9 +372,13 @@ export default new Vuex.Store({
       VueSimpleAlert.fire("Aluguer cancelado com sucesso");
 
     },
+    REMOVE_WORKSHOP: (state, workshops) => {
+      state.workshops = workshops;
+      VueSimpleAlert.fire("Workshop Removido");
 
+    },
     ADD_USER: (state, payload) => {
-      if (payload.password !== payload.confPass) {
+      if (payload.password != payload.confPass) {
         VueSimpleAlert.fire("Passwords diferentes");
       } else {
         VueSimpleAlert.fire("Conta criada");
@@ -624,6 +628,9 @@ export default new Vuex.Store({
     },
     async removeMenu({ commit }, payload) {
       commit("REMOVE_MENU", await apiService.removeMenu(payload.id));
+    },
+    async removeWorkshop({ commit }, payload) {
+      commit("REMOVE_WORKSHOP", await apiService.removeWorkshop(payload.id));
     },
     async getMenus({ commit }) {
       commit("SET_MENUS", await apiService.getMenus());

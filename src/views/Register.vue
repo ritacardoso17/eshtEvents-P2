@@ -28,9 +28,7 @@
             required
             v-model="password"
           />
-          <label for="confirmarPassTxt" class="confLabel"
-            >Confirmar Palavra-chave:</label
-          >
+          <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
           <input
             type="password"
             class="form-control"
@@ -70,17 +68,14 @@
           />
           <label for="sltSchool" class="schoolLabel">Instituição:</label>
           <select id="sltSchool" v-model="school">
-            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{
+            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">
+              {{
               s.nome
-            }}</option>
+              }}
+            </option>
           </select>
         </div>
-        <input
-          type="link"
-          id="urlAvatar"
-          v-model="imgPerfil"
-          :placeholder="imgPerfil"
-        />
+        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil" />
         <div id="avatar">
           <img id="avatar1" :src="imgPerfil" />
         </div>
@@ -96,6 +91,7 @@
 </template>
 
 <script>
+import VueSimpleAlert from "vue-simple-alert";
 import { mapGetters } from "vuex";
 // @ is an alias to /src
 export default {
@@ -121,18 +117,23 @@ export default {
   },
   methods: {
     async addUser() {
-      try {
-        await this.$store.dispatch("addUser", {
-          name: this.name,
-          school: this.school,
-          email: this.email,
-          password: this.password,
-          birth: this.birth,
-          contact: this.contact,
-          imgProfile: this.imgPerfil
-        });
-      } catch (err) {
-        alert(err);
+      if (this.password === this.confPass) {
+        try {
+          await this.$store.dispatch("addUser", {
+            name: this.name,
+            school: this.school,
+            email: this.email,
+            password: this.password,
+            birth: this.birth,
+            contact: this.contact,
+            imgProfile: this.imgPerfil
+          });
+        } catch (err) {
+          alert(err);
+        }
+      }
+      else{
+         VueSimpleAlert.fire("Passwords diferentes");
       }
     },
     saveStorage() {
