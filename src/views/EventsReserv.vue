@@ -72,9 +72,9 @@
                 type="number"
                 class="form-control"
                 id="txtPersons"
-                placeholder="0"
-                min="1"
-                max="100"
+                placeholder="min:20; max: 200"
+                min="20"
+                max="200"
                 v-model="persons"
               />
               <label for class="durationLabel">▶ Tempo de duração</label>
@@ -84,6 +84,7 @@
                 min="1"
                 class="form-control"
                 id="txtDuration"
+                placeholder="min:1h; max: 12h"
                 v-model="duration"
               />
 
@@ -415,7 +416,12 @@ export default {
         this.slctMenu == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      } else if (this.persons < 20 || this.duration < 1) {
+      } else if (
+        this.persons < 20 ||
+        this.persons > 200 ||
+        this.duration < 1 ||
+        this.duration > 12
+      ) {
         this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
         this.addReservation();

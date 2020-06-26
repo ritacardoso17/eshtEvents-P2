@@ -84,9 +84,10 @@
                   <b-form-input
                     v-model="duration"
                     type="number"
-                    max="12"
+                    max="6"
                     min="1"
                     id="input2"
+                    placeholder="min:1h; max:6h"
                     required
                   ></b-form-input>
                 </div>
@@ -200,7 +201,7 @@ export default {
         this.slctRoom == ""
       ) {
         this.$bvToast.toast("Precisa de preencher todos os campos");
-      } else if (this.duration < 1) {
+      } else if (this.duration < 1 || this.duration > 6) {
         this.$bvToast.toast("Os campos estão mal preenchidos");
       } else {
         this.addARent();
