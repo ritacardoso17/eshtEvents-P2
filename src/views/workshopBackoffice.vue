@@ -211,6 +211,7 @@ export default {
       try {
         await this.$store.dispatch("getWorkshops");
         this.workshops = this.getWorkshops;
+        
       } catch (err) {
         alert(err);
       }
