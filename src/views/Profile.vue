@@ -10,10 +10,10 @@
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img style="width:200px; height:auto" :src="this.avatar" />
+            <img style="width:200px; height:200px; object-fit:cover" :src="this.avatar" />
           </div>
           <div class="form-group">
-            <b-img v-bind:src="this.newPhoto" fluid style="width:200px"></b-img>
+            <b-img v-if="this.newPhoto != ''" v-bind:src="this.newPhoto" fluid style="width:200px; height:200px; object-fit:cover"></b-img>
             <form v-on:submit.prevent="changePhoto()">
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />

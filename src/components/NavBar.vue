@@ -169,6 +169,7 @@ export default {
 #photo {
   width: 10vw;
   left: 77vw;
+  object-fit: cover;
   position: relative;
 }
 

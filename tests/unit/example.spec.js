@@ -133,7 +133,7 @@ describe("CardWorkshop.vue", () => {
 describe("Profile.vue", () => {
   test("Check if phone number belongs to loggedUser", () => {
     const wrapper = shallowMount(profile, { store: mocked });
-    expect(wrapper.find("#phone").text()).toEqual("Contacto: antonio");
+    expect(wrapper.find("#phone").text()).toEqual("Contacto: 915694177");
   });
 
   test("Check if userName belongs to loggedUser", () => {
@@ -172,16 +172,7 @@ describe("eventos.vue", () => {
 
   test("If opinion is false, show opinion button", () => {
     const wrapper = mount(eventos, { store });
-    expect(wrapper.find("#opinion").exists()).toBe(false);
-  });
-
-  test("Check cancel button", () => {
-    const cancelEvents = jest.fn();
-    const cancelButton = mount(
-      <b-button onClick={cancelEvents}>Cancelar</b-button>
-    );
-    cancelButton.find(".btnCancel").simulate("click");
-    expect(cancelButton.mock.calls.length).toEqual(1);
+    expect(wrapper.find("#opinion").exists()).toBe(true);
   });
 });
 
@@ -196,6 +187,6 @@ describe("espacos.vue", () => {
 
   test("If opinion is false, show opinion button", () => {
     const wrapper = mount(espacos, { store });
-    expect(wrapper.find(".btnDetails").exists()).toBe(false);
+    expect(wrapper.find(".btnDetails").exists()).toBe(true);
   });
 });
