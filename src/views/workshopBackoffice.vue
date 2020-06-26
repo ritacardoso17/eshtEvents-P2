@@ -34,7 +34,7 @@
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Local:</b>
               <div class="text-sm-center">
-                <li>{{ row.item.localizacao }}</li>
+                <li>{{ row.item.local }}</li>
               </div>
             </b-col>
           </b-row>
@@ -50,7 +50,7 @@
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Descrição:</b>
               <div class="text-sm-center">
-                <li>{{ row.item.descricao }}</li>
+                <li>{{ row.item.info }}</li>
               </div>
             </b-col>
           </b-row>
@@ -61,7 +61,7 @@
           class="btnRemove"
           variant="danger"
           size="sm"
-          @click="removeWorkshop(row.item.id)"
+          @click="removeWorkshop(row.item.id_workshop)"
           style="margin:10px;"
         >Eliminar Workshop</b-button>
         <b-button
@@ -69,14 +69,14 @@
           size="sm"
           @click="
             editWorkshop(
-              row.item.id,
-              row.item.title,
+              row.item.id_workshop,
+              row.item.name,
               row.item.img,
-              row.item.vacancies,
-              row.item.place,
-              row.item.date,
-              row.item.teacher,
-              row.item.description
+              row.item.nr_vagas,
+              row.item.local,
+              row.item.data_hora,
+              row.item.locutor,
+              row.item.info
             )
           "
         >Editar</b-button>
@@ -194,7 +194,10 @@ export default {
       description: ""
     };
   },
-  created: {
+  created() {
+    this.getAllWorkshops();
+  },
+  computed: {
     ...mapGetters(["getWorkshops"])
     // if (localStorage.getItem("workshops")) {
     //   this.$store.state.workshops = JSON.parse(
@@ -204,7 +207,7 @@ export default {
     // }
   },
   methods: {
-    async getWorkshops() {
+    async getAllWorkshops() {
       try {
         await this.$store.dispatch("getWorkshops");
         this.workshops = this.getWorkshops;
@@ -212,19 +215,12 @@ export default {
         alert(err);
       }
     },
-    removeWorkshop(id) {
-      for (let i in this.workshops) {
-        if (this.workshops[i].id === id) {
-          this.workshops = this.workshops.filter(
-            workshop => this.workshops[i].id !== workshop.id
-          );
-
-          localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          this.$store.state.workshops = localStorage.setItem(
-            "workshops",
-            JSON.stringify(this.workshops)
-          );
-        }
+    async removeWorkshop(id) {
+      try {
+        await this.$store.dispatch("removeWorkshop", { id: id });
+        this.getAllWorkshops();
+      } catch (err) {
+        alert(err);
       }
     },
     editWorkshop(id, title, img, vacancies, place, date, teacher, description) {
