@@ -191,10 +191,10 @@ const apiService = {
       },
       body: JSON.stringify({
         title: title,
-        vacancies: vacancies,
+        n_vacancies: vacancies,
         img: img,
         place: place,
-        date: date,
+        date_hour: date,
         teacher: teacher,
         description: description
       })
