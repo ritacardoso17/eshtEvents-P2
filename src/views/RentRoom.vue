@@ -236,7 +236,7 @@ export default {
       try {
         await this.$store.dispatch("addRents", {
           id_room: this.roomId,
-          /* date_reserv: this.getHours() + ":" + this.getMinutes() + " " + this.getYear() + "/" + this.getMonth() + "/" + this.getDate(), */
+          date_reserv: Date.now(),
           date_required: this.day,
           duration: this.duration,
           id_user: this.$store.state.loggedUser.user[0].id_utilizador,
@@ -256,22 +256,32 @@ export default {
   width: 66.5%;
 }
 
-#lineLeftR {
+#whiteRect {
+  background-color: white;
+  margin-top: -35px;
+  height: 35px;
+  width: 350px;
   position: relative;
-  background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -15px;
-  margin-left: 300px;
+  display: block;
+  z-index: 6;
 }
 
-#lineRightR {
-  position: relative;
+.back-line {
   background-color: #daaa29;
-  height: 0.5px;
-  width: 150px;
-  top: -30px;
-  margin-right: 300px;
+  margin-top: -25px;
+  width: 700px;
+  display: block;
+  z-index: 5;
+  position: relative;
+  height: 1px;
+}
+
+#redTitle {
+  font-family: "Channel";
+  color: black;
+  display: block;
+  z-index: 7;
+  position: relative;
 }
 
 #titule {
@@ -329,56 +339,6 @@ export default {
   margin-left: 180px;
   font-size: 110%;
 }
-
-/* .guide9 {
-  font-family: GeosansLight;
-  text-align: justify;
-  position: relative;
-  top: -115px;
-  left: 700px;
-  width: 300px;
-  font-size: 110%;
-} */
-
-/* .guide10 {
-  font-family: GeosansLight;
-  text-align: justify;
-  position: relative;
-  top: -70px;
-  width: 300px;
-  left: 700px;
-  font-size: 110%;
-} */
-
-/* #rentDate {
-  position: relative;
-  width: 200px;
-  height: 35px;
-  left: 200px;
-} */
-
-/* #rentTime {
-  position: relative;
-  width: 200px;
-  height: 35px;
-  left: 200px;
-  top: 80px;
-} */
-/* 
-#rentDuration {
-  width: 200px;
-  height: 35px;
-  position: relative;
-  left: 700px;
-  top: -117px;
-} */
-
-/* #rentReason {
-  width: 200px;
-  position: relative;
-  left: 200px;
-  top: -80px;
-} */
 
 /* RESUMO TAB */
 .resume {
@@ -471,33 +431,5 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#whiteRect {
-  background-color: white;
-  margin-top: -35px;
-  height: 35px;
-  width: 350px;
-  position: relative;
-  display: block;
-  z-index: 6;
-}
-
-.back-line {
-  background-color: #daaa29;
-  margin-top: -25px;
-  width: 700px;
-  display: block;
-  z-index: 5;
-  position: relative;
-  height: 1px;
-}
-
-#redTitle {
-  font-family: "Channel";
-  color: black;
-  display: block;
-  z-index: 7;
-  position: relative;
 }
 </style>

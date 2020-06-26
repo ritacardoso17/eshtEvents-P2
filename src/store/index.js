@@ -478,7 +478,7 @@ export default new Vuex.Store({
       ) {
         VueSimpleAlert.fire("Preencha todos os campos");
       } else {
-        // window.location = "./room"
+        window.location = "./room"
         VueSimpleAlert.fire("Aluguer adicionado");
       }
     },
