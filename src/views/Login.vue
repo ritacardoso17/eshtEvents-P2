@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 #loginTitle {
   font-family: channel;
   color: black;

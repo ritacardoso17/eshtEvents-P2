@@ -125,7 +125,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 #table {
   font-family: GeosansLight;
   color: black;
