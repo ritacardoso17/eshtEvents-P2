@@ -70,7 +70,9 @@ export default {
   },
   methods: {
     async changePassword() {
-      if (this.newPassword === this.confirmPassword) {
+      if (this.password === this.newPassword) {
+        this.$bvToast.toast("A nova password não pode ser igual à atual!");
+      } else if (this.newPassword === this.confirmPassword) {
         try {
           await this.$store.dispatch("editUser", {
             pass: this.newPassword,
