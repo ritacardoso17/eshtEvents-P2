@@ -100,7 +100,7 @@ export default {
         }
 
         if (this.selectE !== "" && this.selectE != "Todos") {
-          filterResultType = menu.descritivo.includes(this.selectE);
+          filterResultType = menu.tipo_reserva.includes(this.selectE);
         }
         return filterResultType && filterResult;
       });
