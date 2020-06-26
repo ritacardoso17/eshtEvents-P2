@@ -174,7 +174,7 @@ export default {
       workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "name", label: "Titulo", sortable: "true" },
+        { key: "nome", label: "Titulo", sortable: "true" },
         { key: "data_hora", label: "Data", sortable: "true" },
         { key: "nr_vagas", label: "Vagas" },
         { key: "details", label: "Detalhes" },
@@ -211,7 +211,7 @@ export default {
       try {
         await this.$store.dispatch("getWorkshops");
         this.workshops = this.getWorkshops;
-        
+
       } catch (err) {
         alert(err);
       }
