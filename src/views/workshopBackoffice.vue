@@ -8,8 +8,7 @@
       v-bind:style="{ display: size }"
       :to="{ path: '/addWorkshop' }"
       class="btnAdd"
-      >Adicionar</b-button
-    >
+    >Adicionar</b-button>
     <!--GERA TABELA COM DADOS DOS WORKSHOPS-->
     <b-table
       bordered
@@ -26,8 +25,7 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-          >Mostrar workshop</b-button
-        >
+        >Mostrar workshop</b-button>
       </template>
       <!-- Mostar Detalhes do WORKSHOP -->
       <template v-slot:row-details="row">
@@ -36,7 +34,7 @@
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Local:</b>
               <div class="text-sm-center">
-                <li>{{ row.item.place }}</li>
+                <li>{{ row.item.localizacao }}</li>
               </div>
             </b-col>
           </b-row>
@@ -44,7 +42,7 @@
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Locutor:</b>
               <div class="text-sm-center">
-                <li>{{ row.item.teacher }}</li>
+                <li>{{ row.item.locutor }}</li>
               </div>
             </b-col>
           </b-row>
@@ -52,7 +50,7 @@
             <b-col sm="3" class="text-sm-center" style="margin-left:450px">
               <b>Descrição:</b>
               <div class="text-sm-center">
-                <li>{{ row.item.description }}</li>
+                <li>{{ row.item.descricao }}</li>
               </div>
             </b-col>
           </b-row>
@@ -65,8 +63,7 @@
           size="sm"
           @click="removeWorkshop(row.item.id)"
           style="margin:10px;"
-          >Eliminar Workshop</b-button
-        >
+        >Eliminar Workshop</b-button>
         <b-button
           class="btnChange"
           size="sm"
@@ -82,8 +79,7 @@
               row.item.description
             )
           "
-          >Editar</b-button
-        >
+        >Editar</b-button>
       </template>
     </b-table>
     <!-- EDITAR WORKSHOP  -->
@@ -94,18 +90,12 @@
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group
-                id="input-group-1"
-                label="Titulo do Workshop:"
-                label-for="input-1"
-              ></b-form-group>
+              <b-form-group id="input-group-1" label="Titulo do Workshop:" label-for="input-1"></b-form-group>
               <input type="text" v-model="title" style=" width: 300px;" />
               <br />
 
               <!-- VAGAS -->
-              <b-form-label for="txtVacancies" class="nameLabel"
-                >Numero de Vagas do Workshop:</b-form-label
-              >
+              <b-form-label for="txtVacancies" class="nameLabel">Numero de Vagas do Workshop:</b-form-label>
               <br />
               <input
                 type="number"
@@ -118,9 +108,7 @@
               />
               <br />
               <!-- LOCUTOR -->
-              <b-form-label for="txtTeacher" class="nameLabel"
-                >Locutor do Workshop:</b-form-label
-              >
+              <b-form-label for="txtTeacher" class="nameLabel">Locutor do Workshop:</b-form-label>
               <br />
               <input
                 type="text"
@@ -133,9 +121,7 @@
 
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel"
-                >Imagem do Menu:</b-form-label
-              >
+              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -143,21 +129,12 @@
             </div>
             <!-- DATA -->
             <div class="col">
-              <b-form-label for="txtdate" class="nameLabel"
-                >Data do Workshop:</b-form-label
-              >
+              <b-form-label for="txtdate" class="nameLabel">Data do Workshop:</b-form-label>
               <br />
-              <input
-                type="date"
-                class="form-control-center"
-                id="txtdate"
-                v-model="date"
-              />
+              <input type="date" class="form-control-center" id="txtdate" v-model="date" />
               <!-- SITIO -->
               <br />
-              <b-form-label for="txtPlace" class="nameLabel"
-                >Lugar do Workshop:</b-form-label
-              >
+              <b-form-label for="txtPlace" class="nameLabel">Lugar do Workshop:</b-form-label>
               <br />
               <input
                 type="text"
@@ -168,9 +145,7 @@
               />
               <br />
               <!-- DESCRIÇAO -->
-              <b-form-label for="txtDescription" class="nameLabel"
-                >Descrição:</b-form-label
-              >
+              <b-form-label for="txtDescription" class="nameLabel">Descrição:</b-form-label>
               <b-form-textarea
                 type="text"
                 class="form-control-center"
@@ -185,24 +160,23 @@
 
         <b-button type="submit" class="btnConf">Confirmar</b-button>
 
-        <b-button type="button" class="btnConf" @click="cancel()"
-          >Cancelar</b-button
-        >
+        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
       </b-form>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
       workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "title", label: "Titulo", sortable: "true" },
-        { key: "date", label: "Data", sortable: "true" },
-        { key: "vacancies", label: "Vagas" },
+        { key: "name", label: "Titulo", sortable: "true" },
+        { key: "data_hora", label: "Data", sortable: "true" },
+        { key: "nr_vagas", label: "Vagas" },
         { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
       ],
@@ -220,15 +194,24 @@ export default {
       description: ""
     };
   },
-  created() {
-    if (localStorage.getItem("workshops")) {
-      this.$store.state.workshops = JSON.parse(
-        localStorage.getItem("workshops")
-      );
-      this.workshops = this.$store.state.workshops;
-    }
+  created: {
+    ...mapGetters(["getWorkshops"])
+    // if (localStorage.getItem("workshops")) {
+    //   this.$store.state.workshops = JSON.parse(
+    //     localStorage.getItem("workshops")
+    //   );
+    //   this.workshops = this.$store.state.workshops;
+    // }
   },
   methods: {
+    async getWorkshops() {
+      try {
+        await this.$store.dispatch("getWorkshops");
+        this.workshops = this.getWorkshops;
+      } catch (err) {
+        alert(err);
+      }
+    },
     removeWorkshop(id) {
       for (let i in this.workshops) {
         if (this.workshops[i].id === id) {
