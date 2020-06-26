@@ -370,12 +370,10 @@ export default new Vuex.Store({
     REMOVE_MENU: (state, foodMenus) => {
       state.foodMenus = foodMenus;
       VueSimpleAlert.fire("Aluguer cancelado com sucesso");
-
     },
     REMOVE_WORKSHOP: (state, workshops) => {
       state.workshops = workshops;
       VueSimpleAlert.fire("Workshop Removido");
-
     },
     ADD_USER: (state, payload) => {
       if (payload.password != payload.confPass) {
@@ -419,7 +417,7 @@ export default new Vuex.Store({
       VueSimpleAlert.fire("Tipo de utilizador mudado com sucesso");
     },
     CHANGE_STATE: () => {
-         VueSimpleAlert.fire("Estado da reserva alterada")     
+      VueSimpleAlert.fire("Estado da reserva alterada");
     },
 
     ADD_WORKSHOP: (state, payload) => {
@@ -437,15 +435,13 @@ export default new Vuex.Store({
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops));
-        VueSimpleAlert.fire("Workshop adicionado!").then(() => { });
+        VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
       } else {
         VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
       }
     },
     ADD_MENU: () => {
-
-      VueSimpleAlert.fire("Menu adicionado!")
-
+      VueSimpleAlert.fire("Menu adicionado!");
     },
     ADD_COMPONENT: (state, payload) => {
       if (
@@ -478,7 +474,7 @@ export default new Vuex.Store({
       ) {
         VueSimpleAlert.fire("Preencha todos os campos");
       } else {
-        window.location = "./room"
+        window.location = "./room";
         VueSimpleAlert.fire("Aluguer adicionado");
       }
     },
@@ -618,10 +614,7 @@ export default new Vuex.Store({
       );
     },
     async removeUser({ commit }, payload) {
-      commit(
-        "REMOVE_USER",
-        await apiService.removeUser(payload.id)
-      );
+      commit("REMOVE_USER", await apiService.removeUser(payload.id));
     },
     async removeRent({ commit }, payload) {
       commit("REMOVE_RENT", await apiService.removeRent(payload.id));
@@ -639,7 +632,10 @@ export default new Vuex.Store({
       commit("SET_WORKSHOPS", await apiService.getWorkshops());
     },
     async getComponentsMenus({ commit }, payload) {
-      commit("SET_COMPONENTS_MENUS", await apiService.getComponentsMenus(payload.id));
+      commit(
+        "SET_COMPONENTS_MENUS",
+        await apiService.getComponentsMenus(payload.id)
+      );
     },
     async getComponents({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents());
@@ -675,7 +671,13 @@ export default new Vuex.Store({
     async editMenu({ commit }, payload) {
       commit(
         "EDIT_MENU",
-        await apiService.editMenu(payload.id, payload.id_componente, payload.id_tipo_reserva, payload.description, payload.img)
+        await apiService.editMenu(
+          payload.id,
+          payload.id_componente,
+          payload.id_tipo_reserva,
+          payload.description,
+          payload.img
+        )
       );
     },
     async editUser({ commit }, payload) {
@@ -685,28 +687,34 @@ export default new Vuex.Store({
       );
     },
     async editUserType({ commit }, payload) {
-      commit(
-        "CHANGE_TYPE",
-        await apiService.editUserType(payload.id)
-      );
+      commit("CHANGE_TYPE", await apiService.editUserType(payload.id));
     },
     async editUserTypeClient({ commit }, payload) {
-      commit(
-        "CHANGE_TYPE",
-        await apiService.editUserTypeClient(payload.id)
-      );
+      commit("CHANGE_TYPE", await apiService.editUserTypeClient(payload.id));
     },
     async updateStatus({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatus(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatus(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusCancel({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusCancel(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusCancel(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusRents({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusRents(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusRents(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusCancelRents({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusCancelRents(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusCancelRents(payload.id, payload.tipoEstado)
+      );
     },
     async getOpinionRents({ commit }, payload) {
       commit(
@@ -761,13 +769,11 @@ export default new Vuex.Store({
         "ADD_RENT",
         await apiService.addRents(
           payload.id_room,
-
-          // payload.date_reserv,
+          payload.date_reserv,
           payload.date_required,
           payload.duration,
           payload.id_user,
           payload.reason
-          // payload.opinion,
         )
       );
       alert(payload.date_required);
@@ -775,9 +781,7 @@ export default new Vuex.Store({
     async addUserWorkshop({ commit }, payload) {
       commit(
         "ADD_USER_WORKSHOP",
-        await apiService.addUserWorkshop(
-          payload.id_workshop,
-        )
+        await apiService.addUserWorkshop(payload.id_workshop)
       );
     },
     async getSchools({ commit }) {

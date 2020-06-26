@@ -242,8 +242,10 @@ export default {
           id_user: this.$store.state.loggedUser.user[0].id_utilizador,
           reason: this.reason
         });
+        
       } catch (err) {
         alert(err);
+        alert(this.date_reserv)
       }
     }
   }

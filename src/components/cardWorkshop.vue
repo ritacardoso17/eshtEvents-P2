@@ -1,55 +1,41 @@
 <template>
   <div class="container">
     <b-button class="filterName" @click="orderByName()">Ver por nome</b-button>
-    <b-button class="filterDate" @click="orderByDate()"
-      >Ver por mais recente</b-button
-    >
+    <b-button class="filterDate" @click="orderByDate()">Ver por mais recente</b-button>
     <br />
     <br />
     <br />
-    <div
-      class="row"
-      v-for="workshop in workshops"
-      v-bind:key="workshop.id_workshop"
-    >
+    <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
       <b-card
         :header="workshop.nome"
         header-text-variant="white"
         header-tag="header"
-        header-bg-variant="dark"
         no-body
         class="overflow-hidden"
-        style="max-width: 800px; max-height:300px; margin-bottom:50px; font-family:GeosansLight"
+        style="max-width: 1000px; max-height:300px; margin-bottom:50px; font-family:GeosansLight; color: black"
         align="left"
       >
         <b-row no-gutters>
           <hr class="yay-line" />
           <b-col md="6">
-            <b-card-img
-              :src="workshop.img"
-              alt="Image"
-              class="rounded-0"
-            ></b-card-img>
+            <b-card-img :src="workshop.img" alt="Image" class="rounded-0"></b-card-img>
           </b-col>
           <b-col md="6">
             <b-card-body style="margin-left: 10px;">
               <b-card-text>
-                Data: {{ workshop.data_hora }} Locutor:{{
-                  workshop.teacher
-                }}
+                Data: {{ workshop.data_hora }}
+                <br />
+                Locutor:{{ workshop.locutor }}
+                <br />
                 Vagas:{{ workshop.nr_vagas }}
               </b-card-text>
-              <b-card-text>
-                {{ workshop.descritivo }}
-              </b-card-text>
+              <b-card-text>{{ workshop.info }}</b-card-text>
               <button
                 @click="sign(workshop.id_workshop)"
                 type="button"
                 class="btn"
                 id="sign"
-              >
-                Inscrever
-              </button>
+              >Inscrever</button>
             </b-card-body>
           </b-col>
         </b-row>
@@ -144,8 +130,13 @@ export default {
   background-color: #232323;
   border: 2px solid #232323;
   border-radius: 0px;
-  margin-top: 3%;
+  margin-top: 4%;
   margin-left: 75%;
+}
+
+.card-header {
+  background-color: #232323;
+  font-size: 150%;
 }
 
 .yay-line {
@@ -165,12 +156,14 @@ export default {
   right: 43%;
   position: absolute;
 }
+
 .filterName:hover,
 .filterDate:hover,
 #sign:hover {
   border: 2px solid #daaa29;
   background-color: black;
 }
+
 .filterDate {
   font-family: GeosansLight;
   background-color: #232323;
