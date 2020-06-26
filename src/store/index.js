@@ -205,6 +205,9 @@ export default new Vuex.Store({
     EDIT_USER: () => {
       VueSimpleAlert.fire("Dados atualizados");
     },
+    EDIT_WORKSHOP: () => {
+      VueSimpleAlert.fire("Dados atualizados");
+    },
     SET_SCHOOLS: (state, data) => {
       state.schools = data.message;
     },
@@ -371,6 +374,20 @@ export default new Vuex.Store({
       commit(
         "EDIT_USER",
         await apiService.editUser(payload.pass, payload.oldPass, payload.img)
+      );
+    },
+    async editWorkshop({ commit }, payload) {
+      commit(
+        "EDIT_WORKSHOP",
+        await apiService.editWorkshop(
+          payload.title,
+          payload.vacancies,
+          payload.img,
+          payload.place,
+          payload.date,
+          payload.teacher,
+          payload.description
+        )
       );
     },
     async editUserType({ commit }, payload) {

@@ -158,9 +158,9 @@
           </div>
         </div>
 
-        <b-button type="submit" class="btnConf">Confirmar</b-button>
-
         <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+
+        <b-button type="submit" class="btnConf" @click="changeWorkshop()">Confirmar</b-button>
       </b-form>
     </div>
   </div>
@@ -211,7 +211,6 @@ export default {
       try {
         await this.$store.dispatch("getWorkshops");
         this.workshops = this.getWorkshops;
-
       } catch (err) {
         alert(err);
       }
@@ -220,6 +219,24 @@ export default {
       try {
         await this.$store.dispatch("removeWorkshop", { id: id });
         this.getAllWorkshops();
+      } catch (err) {
+        alert(err);
+      }
+    },
+    async changeWorkshop() {
+      try {
+        await this.$store.dispatch("editWorkshop", {
+          title: this.title,
+          vacancies: this.vacancies,
+          img: "",
+          place: this.place,
+          date: this.date,
+          teacher: this.teacher,
+          description: this.description
+        });
+        this.password = "";
+        this.newPassword = "";
+        this.confirmPassword = "";
       } catch (err) {
         alert(err);
       }
@@ -254,7 +271,6 @@ export default {
       }
       this.size = "";
       this.size2 = "none";
-
       this.title = "";
       this.vacancies = "";
       this.img = "";
@@ -264,10 +280,9 @@ export default {
       this.teacher = "";
       this.description = "";
     },
-    cancel() {
+    async cancel() {
       this.size = "";
       this.size2 = "none";
-
       this.title = "";
       this.vacancies = "";
       this.img = "";
