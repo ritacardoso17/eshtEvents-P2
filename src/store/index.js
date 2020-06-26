@@ -414,6 +414,10 @@ export default new Vuex.Store({
     CHANGE_TYPE: () => {
       VueSimpleAlert.fire("Tipo de utilizador mudado com sucesso");
     },
+    CHANGE_STATE: () => {
+         VueSimpleAlert.fire("Estado da reserva alterada")     
+    },
+
     ADD_WORKSHOP: (state, payload) => {
       if (!state.workshops.some(workshop => workshop.title === payload.title)) {
         alert("");
@@ -627,7 +631,7 @@ export default new Vuex.Store({
     async getWorkshops({ commit }) {
       commit("SET_WORKSHOPS", await apiService.getWorkshops());
     },
-    async getComponentsMenus({ commit },payload) {
+    async getComponentsMenus({ commit }, payload) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponentsMenus(payload.id));
     },
     async getComponents({ commit }) {
@@ -645,7 +649,7 @@ export default new Vuex.Store({
     async getUsersRents({ commit }, payload) {
       commit("SET_RENTS", await apiService.getUsersRents(payload.id));
     },
-    
+
     async getUsersEvents({ commit }, payload) {
       commit("SET_EVENTS", await apiService.getUsersEvents(payload.id));
     },
@@ -684,6 +688,12 @@ export default new Vuex.Store({
         "CHANGE_TYPE",
         await apiService.editUserTypeClient(payload.id)
       );
+    },
+    async updateStatus({ commit }, payload) {
+      commit( "CHANGE_STATE",await apiService.updateStatus(payload.id, payload.tipoEstado));
+    },
+    async updateStatusCancel({ commit }, payload) {
+      commit( "CHANGE_STATE",await apiService.updateStatusCancel(payload.id, payload.tipoEstado));
     },
     async getOpinionRents({ commit }, payload) {
       commit(
