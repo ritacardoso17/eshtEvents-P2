@@ -88,6 +88,7 @@ export default {
         await this.$store.dispatch("addUserWorkshop", {
           id_workshop: id
         });
+        this.getAllWorkshops();
       } catch (err) {
         VueSimpleAlert.fire("Já inscrito no Workshop");
       }
