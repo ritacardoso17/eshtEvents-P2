@@ -26,327 +26,16 @@ export default new Vuex.Store({
     userExist: false,
     loggedUser: [],
     token: [],
-    rooms: [
-      //   {
-      //   id: 0,
-      //   name: "Restaurante Aplicação",
-      //   img: require('../assets/restApp.jpg')
-      // },
-      // {
-      //   id: 1,
-      //   name: "Cozinha Aplicação",
-      //   img: require('../assets/img_cozinha.jpg')
-      // },
-      // {
-      //   id: 2,
-      //   name: "Bar Aplicação",
-      //   img: require('../assets/img_bar.jpg')
-      // }
-    ],
-    workshops: [
-      //   {
-      //   id: 0,
-      //   title: "Momentos entre amigas - VINHOS NO FEMININO",
-      //   vacancies: 20,
-      //   img: require('../assets/work1.jpg'),
-      //   description: "A presença da Mulher na Enologia. Guia prático: Seleção de Vinhos. Dos Brancos aos Tintos: Prova de Estilos",
-      //   date: "06/03/2020",
-      //   place: "ESHT",
-      //   teacher: "Américo Andrade",
-      //   userEmail: []
-      // },
-      // {
-      //   id: 1,
-      //   title: "Páscoa Vínica",
-      //   vacancies: 20,
-      //   img: require('../assets/work2.jpg'),
-      //   description: "Cocktails Vínicos. Serviço: Copos, Temperaturas. Prova de diferentes cocktails. Harmonização",
-      //   date: "03/04/2020",
-      //   place: "ESHT",
-      //   teacher: "Américo Andrade",
-      //   userEmail: []
-      // },
-      // {
-      //   id: 2,
-      //   title: "Vinhos e Conservas - As conservas estão na moda",
-      //   vacancies: 20,
-      //   img: require('../assets/work3.jpg'),
-      //   description: "Tipologias de Conservas. Os Vinhos do Atlântico. Empratamento. Prova: Petiscos com Conservas e Vinhos",
-      //   date: "08/05/2020",
-      //   place: "Theatro",
-      //   teacher: "Américo Andrade",
-      //   userEmail: []
-      // },
-      // {
-      //   id: 3,
-      //   title: "Piquenique Vínico - Monverde Wine Experience",
-      //   vacancies: 20,
-      //   img: require('../assets/work4.jpg'),
-      //   description: "Welcome drink. Passeio pela Vinha. Piquenique vínico",
-      //   date: "06/06/2020",
-      //   place: "Amarante",
-      //   teacher: "Américo Andrade",
-      //   userEmail: []
-      // }
-    ],
-    foodMenus: [
-      // {
-      //     id: 1,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Base",
-      //     type: "Coffee Break",
-      //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água", "Triângulos Mistos"]
-      //   },
-      //   {
-      //     id: 2,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Estudante",
-      //     type: "Coffee Break",
-      //     components: ["Café Soluvel", "Leite", "Seleção de Chás e Infusões", "Sumo de Laranja", "Água", "Pastelaria Seca e Variada", "Triângulos Mistos", "Fruta à peça"]
-      //   },
-      //   {
-      //     id: 3,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Executivo",
-      //     type: "Coffee Break",
-      //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
-      //       "Triângulos Mistos", "Natinhas com Canela", "Queijadinhas", "Fruta à Peça"
-      //     ]
-      //   },
-      //   {
-      //     id: 4,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Supremo",
-      //     type: "Coffee Break",
-      //     components: ["Café Soluvel", "Leite", "Seleção de Chás", "Sumo de Laranja", "Sumo de Morango e Goiaba", "Água Lisa", "Água Gaseificada", "Pastelaria Seca e Variada",
-      //       "Triângulos Mistos", "Compotas Variadas", "Queijo Fresco", "Natinhas com Canela", "Mini Croissants", "Iogurtes com Frescos e Secos", "Queijadinhas", "Fruta à Peça"
-      //     ]
-      //   },
-      //   {
-      //     id: 5,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Italiano",
-      //     type: "Almoço",
-      //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-      //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-      //     ]
-      //   },
-      //   {
-      //     id: 6,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Mexicano",
-      //     type: "Almoço",
-      //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-      //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-      //     ]
-      //   },
-      //   {
-      //     id: 7,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Português",
-      //     type: "Almoço",
-      //     components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
-      //       "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
-      //     ]
-      //   },
-      //   {
-      //     id: 8,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Uva",
-      //     type: "Porto de Honra",
-      //     components: ["Porto Tawny Reserva", "Porto Tawny 10 anos", "Porto Vintage", "Snacks"]
-      //   },
-      //   {
-      //     id: 9,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Videira",
-      //     type: "Porto de Honra",
-      //     components: ["Porto Colheita", "Porto Late Bottled Vintage", "Porto Ruby Reserva", "Snacks"]
-      //   },
-      //   {
-      //     id: 10,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Solar",
-      //     type: "Jantar",
-      //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-      //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-      //     ]
-      //   },
-      //   {
-      //     id: 11,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Estrelado",
-      //     type: "Jantar",
-      //     components: ["Salada de Cenoura e Rucula", "Creme de Alheira com Crocante deCogumelos",
-      //       "Carne de Porco à Alentejana", "Leite Creme à Portuguesa"
-      //     ]
-      //   },
-      //   {
-      //     id: 12,
-      //     img: require('../assets/transferir.jpg'),
-      //     name: "Menu Noite",
-      //     type: "Jantar",
-      //     components: ["Salada de Tomate e Milho", "Creme de cenoura com Croutons aromatizados",
-      //       "Fusilli com molho de ricotta e nozes", "Mousse de Frutos Vermelhos com Crocante de Chocolate"
-      //     ]
-      //   }
-    ],
-    eventType: [
-      /* "Todos", "Coffee Break", "Almoço", "Jantar", "Porto de Honra" */
-    ],
-    reservations: [
-      /* {
-      id: 0,
-      user: "João Alves",
-      eventType: "Almoço",
-      day: "06-04-2020",
-      time: "19:45",
-      people: "20",
-      duration: "2",
-      place: "esmad",
-      extra: [],
-      state: "Pendente"
-    } */
-    ],
-    uniforms: [
-      //   {
-      //   id: 0,
-      //   img: require('../assets/farda05.png'),
-      //   name: "Farda Cozinha",
-      // },
-      // {
-      //   id: 1,
-      //   img: require('../assets/farda04.png'),
-      //   name: "Farda Semi-formal",
-      // },
-      // {
-      //   id: 2,
-      //   img: require('../assets/farda03.png'),
-      //   name: "Farda Formal",
-      // },
-      // {
-      //   id: 3,
-      //   img: require('../assets/farda02.png'),
-      //   name: "Farda Casual",
-      // },
-    ],
-    decorations: [
-      //   {
-      //   id: 0,
-      //   img: require('../assets/deco1.jpg'),
-      //   name: "Decoração A"
-      // },
-      // {
-      //   id: 1,
-      //   img: require('../assets/deco2.jpg'),
-      //   name: "Decoração B"
-      // },
-      // {
-      //   id: 2,
-      //   img: require('../assets/deco3.jpg'),
-      //   name: "Decoração C"
-      // },
-    ],
-    types: [
-      {
-        id: 0,
-        img: "../assets/cozinha.jpg",
-        name: "Bar"
-      },
-      {
-        id: 1,
-        img: "../assets/cozinha.jpg",
-        name: "Restaurante"
-      },
-      {
-        id: 2,
-        img: "../assets/cozinha.jpg",
-        name: "Cozinha"
-      },
-      {
-        id: 3,
-        img: "../assets/cozinha.jpg",
-        name: "Novo Restaurante"
-      }
-    ],
-    extras: [
-      //   {
-      //   id: 0,
-      //   name: "Musica Ambiente"
-      // },
-      // {
-      //   id: 1,
-      //   name: "Babysitting"
-      // },
-      // {
-      //   id: 2,
-      //   name: "Flores"
-      // },
-      // {
-      //   id: 3,
-      //   name: "Balões"
-      // },
-      // {
-      //   id: 4,
-      //   name: "Palhaços"
-      // }
-    ],
-    componentMenus: [
-      // {
-      //   id: 1,
-      //   name: "Leite"
-      // },
-      // {
-      //   id: 2,
-      //   name: "Cafe"
-      // },
-      // {
-      //   id: 3,
-      //   name: "Bolo de Laranja"
-      // },
-      // {
-      //   id: 4,
-      //   name: "Seleção de Chás e Infusões"
-      // }, {
-      //   id: 5,
-      //   name: "Sumo de Laranja"
-      // }, {
-      //   id: 6,
-      //   name: "Água"
-      // },
-      // {
-      //   id: 7,
-      //   name: "Pastelaria Seca e Variada"
-      // },
-      // {
-      //   id: 8,
-      //   name: "Triângulos Mistos"
-      // },
-      // {
-      //   id: 9,
-      //   name: "Fruta à peça"
-      // }, {
-      //   id: 10,
-      //   name: "Água Gaseificada"
-      // }, {
-      //   id: 11,
-      //   name: "Natinhas com Canela"
-      // }, {
-      //   id: 12,
-      //   name: "Queijadinhas"
-      // },
-      // {
-      //   id: 13,
-      //   name: "Sumo de Morango e Goiaba"
-      // },
-      // {
-      //   id: 14,
-      //   name: "Iogurtes com Frescos e Secos"
-      // }, {
-      //   id: 15,
-      //   name: "Mini Croissants"
-      // }
-    ],
+    rooms: [],
+    workshops: [],
+    foodMenus: [],
+    eventType: [],
+    reservations: [],
+    uniforms: [],
+    decorations: [],
+    types: [],
+    extras: [],
+    componentMenus: [],
     components: [],
     schools: [],
     states: [],
@@ -370,12 +59,10 @@ export default new Vuex.Store({
     REMOVE_MENU: (state, foodMenus) => {
       state.foodMenus = foodMenus;
       VueSimpleAlert.fire("Aluguer cancelado com sucesso");
-
     },
     REMOVE_WORKSHOP: (state, workshops) => {
       state.workshops = workshops;
       VueSimpleAlert.fire("Workshop Removido");
-
     },
     ADD_USER: (state, payload) => {
       if (payload.password != payload.confPass) {
@@ -406,7 +93,6 @@ export default new Vuex.Store({
     },
 
     LOGOUT: state => {
-      // state.loggedUser.pop()
       apiService.logout(state.loggedUser.token);
       state.loggedUser = [];
       state.token = [];
@@ -419,7 +105,7 @@ export default new Vuex.Store({
       VueSimpleAlert.fire("Tipo de utilizador mudado com sucesso");
     },
     CHANGE_STATE: () => {
-         VueSimpleAlert.fire("Estado da reserva alterada")     
+      VueSimpleAlert.fire("Estado da reserva alterada");
     },
 
     ADD_WORKSHOP: (state, payload) => {
@@ -437,15 +123,13 @@ export default new Vuex.Store({
           description: payload.description
         });
         localStorage.setItem("workshops", JSON.stringify(state.workshops));
-        VueSimpleAlert.fire("Workshop adicionado!").then(() => { });
+        VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
       } else {
         VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
       }
     },
     ADD_MENU: () => {
-
-      VueSimpleAlert.fire("Menu adicionado!")
-
+      VueSimpleAlert.fire("Menu adicionado!");
     },
     ADD_COMPONENT: (state, payload) => {
       if (
@@ -467,7 +151,6 @@ export default new Vuex.Store({
           window.location = "./addMenuBackoffice";
         });
       }
-      // else{}
     },
     ADD_RENT: (state, payload) => {
       if (
@@ -478,7 +161,7 @@ export default new Vuex.Store({
       ) {
         VueSimpleAlert.fire("Preencha todos os campos");
       } else {
-        window.location = "./room"
+        window.location = "./room";
         VueSimpleAlert.fire("Aluguer adicionado");
       }
     },
@@ -618,10 +301,7 @@ export default new Vuex.Store({
       );
     },
     async removeUser({ commit }, payload) {
-      commit(
-        "REMOVE_USER",
-        await apiService.removeUser(payload.id)
-      );
+      commit("REMOVE_USER", await apiService.removeUser(payload.id));
     },
     async removeRent({ commit }, payload) {
       commit("REMOVE_RENT", await apiService.removeRent(payload.id));
@@ -639,7 +319,10 @@ export default new Vuex.Store({
       commit("SET_WORKSHOPS", await apiService.getWorkshops());
     },
     async getComponentsMenus({ commit }, payload) {
-      commit("SET_COMPONENTS_MENUS", await apiService.getComponentsMenus(payload.id));
+      commit(
+        "SET_COMPONENTS_MENUS",
+        await apiService.getComponentsMenus(payload.id)
+      );
     },
     async getComponents({ commit }) {
       commit("SET_COMPONENTS_MENUS", await apiService.getComponents());
@@ -675,7 +358,13 @@ export default new Vuex.Store({
     async editMenu({ commit }, payload) {
       commit(
         "EDIT_MENU",
-        await apiService.editMenu(payload.id, payload.id_componente, payload.id_tipo_reserva, payload.description, payload.img)
+        await apiService.editMenu(
+          payload.id,
+          payload.id_componente,
+          payload.id_tipo_reserva,
+          payload.description,
+          payload.img
+        )
       );
     },
     async editUser({ commit }, payload) {
@@ -685,28 +374,34 @@ export default new Vuex.Store({
       );
     },
     async editUserType({ commit }, payload) {
-      commit(
-        "CHANGE_TYPE",
-        await apiService.editUserType(payload.id)
-      );
+      commit("CHANGE_TYPE", await apiService.editUserType(payload.id));
     },
     async editUserTypeClient({ commit }, payload) {
-      commit(
-        "CHANGE_TYPE",
-        await apiService.editUserTypeClient(payload.id)
-      );
+      commit("CHANGE_TYPE", await apiService.editUserTypeClient(payload.id));
     },
     async updateStatus({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatus(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatus(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusCancel({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusCancel(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusCancel(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusRents({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusRents(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusRents(payload.id, payload.tipoEstado)
+      );
     },
     async updateStatusCancelRents({ commit }, payload) {
-      commit( "CHANGE_STATE",await apiService.updateStatusCancelRents(payload.id, payload.tipoEstado));
+      commit(
+        "CHANGE_STATE",
+        await apiService.updateStatusCancelRents(payload.id, payload.tipoEstado)
+      );
     },
     async getOpinionRents({ commit }, payload) {
       commit(
@@ -761,13 +456,11 @@ export default new Vuex.Store({
         "ADD_RENT",
         await apiService.addRents(
           payload.id_room,
-
-          // payload.date_reserv,
+          payload.date_reserv,
           payload.date_required,
           payload.duration,
           payload.id_user,
           payload.reason
-          // payload.opinion,
         )
       );
       alert(payload.date_required);
@@ -775,9 +468,7 @@ export default new Vuex.Store({
     async addUserWorkshop({ commit }, payload) {
       commit(
         "ADD_USER_WORKSHOP",
-        await apiService.addUserWorkshop(
-          payload.id_workshop,
-        )
+        await apiService.addUserWorkshop(payload.id_workshop)
       );
     },
     async getSchools({ commit }) {

@@ -102,9 +102,6 @@ export default {
     logout() {
       this.$store.commit("LOGOUT");
     },
-    // getTypeUser() {
-    //   return this.$store.getters.getTypeUser;
-    // },
     showModal() {
       this.$root.$emit("bv::show::modal", "modal-1", "#btnShow");
     },
