@@ -10,11 +10,21 @@
       <div class="row">
         <div class="col-sm-4 fotoP">
           <div>
-            <img style="width:200px; height:200px; object-fit:cover" :src="this.avatar" />
+            <img
+              style="width:200px; height:200px; object-fit:cover; border: 2px solid black"
+              :src="this.$store.state.loggedUser.user[0].foto_perfil"
+            />
           </div>
+          <br>
           <div class="form-group">
-            <b-img v-if="this.newPhoto != ''" v-bind:src="this.newPhoto" fluid style="width:200px; height:200px; object-fit:cover"></b-img>
+            <b-img
+              v-if="this.newPhoto != ''"
+              v-bind:src="this.newPhoto"
+              fluid
+              style="width:200px; height:200px; object-fit:cover; border: 2px solid black"
+            ></b-img>
             <form v-on:submit.prevent="changePhoto()">
+              <br>
               <input type="link" id="urlAvatar2" v-model="newPhoto" />
               <br />
               <button type="submit" id="editFoto2">Editar Foto</button>
@@ -29,19 +39,24 @@
             <b>{{ this.$store.state.loggedUser.user[0].nome }}</b>
           </p>
           <p id="birthDate">
-            Data de Nascimento: {{ this.$store.state.loggedUser.user[0].nome }}
+            Data de Nascimento:
+            {{ this.$store.state.loggedUser.user[0].data_nascimento }}
           </p>
-          <p id="phone">Contacto: {{ this.$store.state.loggedUser.user[0].nome }}</p>
-          <p id="ipp">Instituição: {{ this.$store.state.loggedUser.user[0].school }}</p>
-          <p id="email">E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}</p>
+          <p id="ipp">
+            Instituição: {{ this.$store.state.loggedUser.user[0].school }}
+          </p>
+          <p id="email">
+            E-mail: {{ this.$store.state.loggedUser.user[0].email_ipp }}
+          </p>
         </div>
         <div class="col-sm-4">
           <router-link to="/Profile/editProfile">
             <button id="edit">
+              Editar Perfil
               <img
-                style="width:25px; margin-right:5px; margin-top:5px"
+                style="width:25px; margin-right:5px; margin-left:5px; margin-top:-2px"
                 src="../assets/settings.svg"
-              />Editar Perfil
+              />
             </button>
           </router-link>
         </div>
@@ -89,25 +104,6 @@ export default {
     };
   },
   created() {
-    // if (localStorage.getItem("loggedUser")) {
-    //   this.$store.state.loggedUser = JSON.parse(
-    //     localStorage.getItem("loggedUser")
-    //   );
-    // }
-    // if (localStorage.getItem("users")) {
-    //   this.$store.state.users = JSON.parse(localStorage.getItem("users"));
-    // }
-    // this.users = this.$store.state.users;
-
-    // this.loggedUser = this.loggedUser.user[0]
-    // this.loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    // if (localStorage.getItem("reservations")) {
-    //   this.$store.state.reservations = JSON.parse(
-    //     localStorage.getItem("reservations")
-    //   );
-    //   this.reservations = this.$store.state.reservations;
-    // }
-
     if (localStorage.getItem("roomRents")) {
       this.$store.state.roomRents = JSON.parse(
         localStorage.getItem("roomRents")
@@ -136,7 +132,6 @@ export default {
       return this.$store.state.loggedUser;
     },
     async changePhoto() {
-      alert(this.newPhoto);
       try {
         await this.$store.dispatch("editUser", {
           pass: "",
@@ -160,13 +155,13 @@ export default {
 
 <style>
 #edit {
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: transparent;
   border: 0px;
   font-family: GeosansLight;
   position: absolute;
   top: 0%;
-  right: 0%;
+  right: 20px;
   height: 23%;
 }
 #profileTitle {

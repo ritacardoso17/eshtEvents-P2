@@ -18,12 +18,23 @@
         </template>
         <template v-slot:cell(opinions)="row">
           <b-button
-            v-if="row.item.opiniao == 'Ainda sem opinião'"
+            v-if="
+              row.item.estado == 'Aceite' &&
+                row.item.opiniao == 'Ainda sem opinião'
+            "
             class="btnDetails rounded-0"
             @click="row.toggleDetails"
             >Dar opinião</b-button
           >
-          <p v-else>Opinião Enviada</p>
+          <p
+            v-if="
+              row.item.estado == 'Aceite' &&
+                row.item.opiniao != 'Ainda sem opinião'
+            "
+          >
+            Opinião Enviada
+          </p>
+          <p v-if="row.item.estado != 'Aceite'">Não pode dar opinião</p>
         </template>
         <template v-slot:row-details="row">
           <b-card>
