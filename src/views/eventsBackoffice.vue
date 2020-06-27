@@ -9,24 +9,31 @@
     <div v-else>
       <b-table bordered fixed hover :items="this.rooms" :fields="this.fields">
         <template v-slot:cell(details)="row">
-          <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+          <b-button class="btnDetails" size="sm" @click="row.toggleDetails"
+            >Mostrar Detalhes</b-button
+          >
         </template>
 
         <template v-slot:cell(options)="row">
-          <b-button
-            variant="success"
-            class="btnRemove"
-            size="sm"
-            @click="acceptReservation(row.item.id_aluguer,row.item.estado)"
-            style="margin:5px,"
-            v-bind:style="{ display: show }"
-          >Aceitar</b-button>
-          <b-button
-            variant="danger"
-            class="btnChange"
-            size="sm"
-            @click="refuseReservation(row.item.id_aluguer,row.item.estado)"
-          >Recusar</b-button>
+          <div v-if="row.item.estado == 'Pendente'">
+            <b-button
+              variant="success"
+              class="btnRemove"
+              size="sm"
+              @click="acceptReservation(row.item.id_aluguer, row.item.estado)"
+              style="margin:5px,"
+              v-bind:style="{ display: show }"
+              >Aceitar</b-button
+            >
+            <b-button
+              variant="danger"
+              class="btnChange"
+              size="sm"
+              @click="refuseReservation(row.item.id_aluguer, row.item.estado)"
+              >Recusar</b-button
+            >
+          </div>
+          <p v-else-if ="row.item.estado != 'Pendente'">Já alterou o estado do aluguer.</p>
         </template>
 
         <template v-slot:row-details="row">
@@ -116,7 +123,7 @@ export default {
       }
     },
     async refuseReservation(id, tipoEstado) {
-        try {
+      try {
         await this.$store.dispatch("updateStatusCancelRents", {
           id: id,
           tipoEstado: tipoEstado

@@ -4,26 +4,41 @@
     <h2 class="adminTitle">Reservas de Eventos</h2>
     <br />
 
-    <b-table bordered fixed hover :items="this.reservations" :fields="this.fields">
+    <b-table
+      bordered
+      fixed
+      hover
+      :items="this.reservations"
+      :fields="this.fields"
+    >
       <template v-slot:cell(details)="row">
-        <b-button class="btnDetails" size="sm" @click="row.toggleDetails">Mostrar Detalhes</b-button>
+        <b-button class="btnDetails" size="sm" @click="row.toggleDetails"
+          >Mostrar Detalhes</b-button
+        >
       </template>
 
       <template v-slot:cell(options)="row">
-        <b-button
-          variant="success"
-          class="btnRemove"
-          size="sm"
-          @click="acceptReservation(row.item.id_reserva, row.item.estado)"
-          style="margin:5px,"
-          v-bind:style="{ display: show }"
-        >Aceitar</b-button>
-        <b-button
-          variant="danger"
-          class="btnChange"
-          size="sm"
-          @click="refuseReservation(row.item.id_reserva, row.item.estado)"
-        >Recusar</b-button>
+        <div v-if="row.item.estado == 'Pendente'">
+          <b-button
+            variant="success"
+            class="btnRemove"
+            size="sm"
+            @click="acceptReservation(row.item.id_reserva, row.item.estado)"
+            style="margin:5px,"
+            v-bind:style="{ display: show }"
+            >Aceitar</b-button
+          >
+          <b-button
+            variant="danger"
+            class="btnChange"
+            size="sm"
+            @click="refuseReservation(row.item.id_reserva, row.item.estado)"
+            >Recusar</b-button
+          >
+        </div>
+        <p v-else-if="row.item.estado != 'Pendente'">
+          Já alterou o estado do aluguer.
+        </p>
       </template>
 
       <template v-slot:row-details="row">
@@ -130,9 +145,8 @@ export default {
         } catch (err) {
           alert(err);
         }
-      }
-      else{
-         VueSimpleAlert.fire("Não pode alterar o estado da reserva")     
+      } else {
+        VueSimpleAlert.fire("Não pode alterar o estado da reserva");
       }
     },
     async refuseReservation(id, tipoEstado) {
