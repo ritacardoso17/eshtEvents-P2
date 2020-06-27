@@ -68,7 +68,7 @@
           class="btnChange"
           size="sm"
           @click="
-            editWorkshop(
+            editWorkshops(
               row.item.id_workshop,
               row.item.name,
               row.item.img,
@@ -85,7 +85,7 @@
     <!-- EDITAR WORKSHOP  -->
     <div class="container" v-bind:style="{ display: size2 }">
       <h2>Editar Workshop</h2>
-      <b-form v-on:submit.prevent="saveWorkshop()">
+      <b-form v-on:submit.prevent="changeWorkshop()">
         <div class="container">
           <div class="row">
             <div class="col">
@@ -136,13 +136,13 @@
               <br />
               <b-form-label for="txtPlace" class="nameLabel">Lugar do Workshop:</b-form-label>
               <br />
-              <input
-                type="text"
-                class="form-control-center"
-                id="txtLugar"
-                placeholder="Insira o lugar "
-                v-model="place"
-              />
+              <select v-model="location">
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">
+                  {{
+                  l.nome
+                  }}
+                </option>
+              </select>
               <br />
               <!-- DESCRIÇAO -->
               <b-form-label for="txtDescription" class="nameLabel">Descrição:</b-form-label>
@@ -158,9 +158,9 @@
           </div>
         </div>
 
-        <b-button type="submit" class="btnConf">Confirmar</b-button>
-
         <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+
+        <b-button type="submit" class="btnConf">Confirmar</b-button>
       </b-form>
     </div>
   </div>
@@ -172,6 +172,8 @@ export default {
   data() {
     return {
       workshops: [],
+      location: [],
+      schools: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
         { key: "name", label: "Titulo", sortable: "true" },
@@ -180,10 +182,8 @@ export default {
         { key: "details", label: "Detalhes" },
         { key: "options", label: "Opções" }
       ],
-
       size: "",
       size2: "none",
-
       id: "",
       title: "",
       img: "",
@@ -196,9 +196,11 @@ export default {
   },
   created() {
     this.getAllWorkshops();
+    this.getAllSchools();
   },
   computed: {
-    ...mapGetters(["getWorkshops"])
+    ...mapGetters(["getWorkshops"]),
+    ...mapGetters(["getSchools"])
     // if (localStorage.getItem("workshops")) {
     //   this.$store.state.workshops = JSON.parse(
     //     localStorage.getItem("workshops")
@@ -215,6 +217,14 @@ export default {
         alert(err);
       }
     },
+    async getAllSchools() {
+      try {
+        await this.$store.dispatch("getSchools");
+        this.schools = this.getSchools;
+      } catch (err) {
+        alert(err);
+      }
+    },
     async removeWorkshop(id) {
       try {
         await this.$store.dispatch("removeWorkshop", { id: id });
@@ -223,10 +233,44 @@ export default {
         alert(err);
       }
     },
-    editWorkshop(id, title, img, vacancies, place, date, teacher, description) {
+    async changeWorkshop() {
+      try {
+        await this.$store.dispatch("editWorkshop", {
+          id: this.id,
+          title: this.title,
+          vacancies: this.vacancies,
+          teacher: this.teacher,
+          place: this.location.id_ipp,
+          date: this.date,
+          img: this.img,
+          description: this.description
+        });
+        this.size = "";
+        this.size2 = "none";
+        this.id = "";
+        this.title = "";
+        this.vacancies = "";
+        this.teacher = "";
+        this.place = "";
+        this.date = "";
+        this.img = "";
+        this.description = "";
+      } catch (err) {
+        alert(err);
+      }
+    },
+    editWorkshops(
+      id,
+      title,
+      img,
+      vacancies,
+      place,
+      date,
+      teacher,
+      description
+    ) {
       this.size = "none";
       this.size2 = "block";
-
       this.title = title;
       this.vacancies = vacancies;
       this.img = img;
@@ -236,37 +280,9 @@ export default {
       this.teacher = teacher;
       this.description = description;
     },
-    saveWorkshop() {
-      for (let w in this.workshops) {
-        if (this.workshops[w].id == this.id) {
-          this.workshops[w].title = this.title;
-          this.workshops[w].vacancies = this.vacancies;
-          this.workshops[w].img = this.img;
-          this.workshops[w].place = this.place;
-          this.workshops[w].date = this.date;
-          this.workshops[w].teacher = this.teacher;
-          this.workshops[w].description = this.description;
-
-          localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          this.$bvToast.toast("Workshop Editado");
-        }
-      }
+    async cancel() {
       this.size = "";
       this.size2 = "none";
-
-      this.title = "";
-      this.vacancies = "";
-      this.img = "";
-      this.place = "";
-      this.date = "";
-      this.id = "";
-      this.teacher = "";
-      this.description = "";
-    },
-    cancel() {
-      this.size = "";
-      this.size2 = "none";
-
       this.title = "";
       this.vacancies = "";
       this.img = "";

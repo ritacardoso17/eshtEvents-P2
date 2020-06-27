@@ -380,12 +380,13 @@ export default new Vuex.Store({
       commit(
         "EDIT_WORKSHOP",
         await apiService.editWorkshop(
+          payload.id,
           payload.title,
           payload.vacancies,
-          payload.img,
-          payload.place,
           payload.date,
           payload.teacher,
+          payload.place,
+          payload.img,
           payload.description
         )
       );
