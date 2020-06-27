@@ -176,10 +176,10 @@ const apiService = {
     id,
     title,
     vacancies,
-    img,
-    place,
     date,
     teacher,
+    place,
+    img,
     description
   ) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));

@@ -8,8 +8,7 @@
       v-bind:style="{ display: size }"
       :to="{ path: '/addWorkshop' }"
       class="btnAdd"
-      >Adicionar</b-button
-    >
+    >Adicionar</b-button>
     <!--GERA TABELA COM DADOS DOS WORKSHOPS-->
     <b-table
       bordered
@@ -26,8 +25,7 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-          >Mostrar workshop</b-button
-        >
+        >Mostrar workshop</b-button>
       </template>
       <!-- Mostar Detalhes do WORKSHOP -->
       <template v-slot:row-details="row">
@@ -65,8 +63,7 @@
           size="sm"
           @click="removeWorkshop(row.item.id_workshop)"
           style="margin:10px;"
-          >Eliminar Workshop</b-button
-        >
+        >Eliminar Workshop</b-button>
         <b-button
           class="btnChange"
           size="sm"
@@ -82,8 +79,7 @@
               row.item.info
             )
           "
-          >Editar</b-button
-        >
+        >Editar</b-button>
       </template>
     </b-table>
     <!-- EDITAR WORKSHOP  -->
@@ -94,18 +90,12 @@
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group
-                id="input-group-1"
-                label="Titulo do Workshop:"
-                label-for="input-1"
-              ></b-form-group>
+              <b-form-group id="input-group-1" label="Titulo do Workshop:" label-for="input-1"></b-form-group>
               <input type="text" v-model="title" style=" width: 300px;" />
               <br />
 
               <!-- VAGAS -->
-              <b-form-label for="txtVacancies" class="nameLabel"
-                >Numero de Vagas do Workshop:</b-form-label
-              >
+              <b-form-label for="txtVacancies" class="nameLabel">Numero de Vagas do Workshop:</b-form-label>
               <br />
               <input
                 type="number"
@@ -118,9 +108,7 @@
               />
               <br />
               <!-- LOCUTOR -->
-              <b-form-label for="txtTeacher" class="nameLabel"
-                >Locutor do Workshop:</b-form-label
-              >
+              <b-form-label for="txtTeacher" class="nameLabel">Locutor do Workshop:</b-form-label>
               <br />
               <input
                 type="text"
@@ -133,9 +121,7 @@
 
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel"
-                >Imagem do Menu:</b-form-label
-              >
+              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -143,32 +129,23 @@
             </div>
             <!-- DATA -->
             <div class="col">
-              <b-form-label for="txtdate" class="nameLabel"
-                >Data do Workshop:</b-form-label
-              >
+              <b-form-label for="txtdate" class="nameLabel">Data do Workshop:</b-form-label>
               <br />
-              <input
-                type="date"
-                class="form-control-center"
-                id="txtdate"
-                v-model="date"
-              />
+              <input type="date" class="form-control-center" id="txtdate" v-model="date" />
               <!-- SITIO -->
               <br />
-              <b-form-label for="txtPlace" class="nameLabel"
-                >Lugar do Workshop:</b-form-label
-              >
+              <b-form-label for="txtPlace" class="nameLabel">Lugar do Workshop:</b-form-label>
               <br />
               <select v-model="location">
-                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">
+                  {{
                   l.nome
-                }}</option>
+                  }}
+                </option>
               </select>
               <br />
               <!-- DESCRIÇAO -->
-              <b-form-label for="txtDescription" class="nameLabel"
-                >Descrição:</b-form-label
-              >
+              <b-form-label for="txtDescription" class="nameLabel">Descrição:</b-form-label>
               <b-form-textarea
                 type="text"
                 class="form-control-center"
@@ -181,9 +158,7 @@
           </div>
         </div>
 
-        <b-button type="button" class="btnConf" @click="cancel()"
-          >Cancelar</b-button
-        >
+        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
 
         <b-button type="submit" class="btnConf">Confirmar</b-button>
       </b-form>
@@ -272,6 +247,9 @@ export default {
           img: this.img,
           description: this.description
         });
+        this.size = "";
+        this.size2 = "none";
+
         this.id = "";
         this.title = "";
         this.vacancies = "";
@@ -282,7 +260,6 @@ export default {
         this.description = "";
       } catch (err) {
         alert(err);
-        alert(this.id);
       }
     },
     editWorkshops(
