@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-/* import router from "vue-router";
- */
+import router from "../router";
+
 import VueSimpleAlert from "vue-simple-alert";
 import apiService from "../eshtEventAPI/apiService";
 Vue.use(VueSimpleAlert);
@@ -69,7 +69,7 @@ export default new Vuex.Store({
         VueSimpleAlert.fire("Passwords diferentes");
       } else {
         VueSimpleAlert.fire("Conta criada");
-        window.location = "./login";
+        router.push("/login");
       }
     },
     ADD_USER_WORKSHOP: () => {
@@ -84,7 +84,7 @@ export default new Vuex.Store({
       localStorage.setItem("avatar", JSON.stringify(state.avatar));
 
       state.userExist = true;
-      window.location = "./";
+      router.push("/");
       if (!state.userExist) {
         alert("Conta não existe");
       } else {
@@ -98,7 +98,7 @@ export default new Vuex.Store({
       state.token = [];
       localStorage.removeItem("loggedUser", JSON.stringify(state.loggedUser));
       localStorage.removeItem("avatar", JSON.stringify(state.avatar));
-      location.href = "./";
+      router.push("/");
       VueSimpleAlert.fire("Sessão Terminada com Sucesso");
     },
     CHANGE_TYPE: () => {
@@ -148,7 +148,7 @@ export default new Vuex.Store({
           JSON.stringify(state.componentMenus)
         );
         VueSimpleAlert.fire("Complemento Criado").then(() => {
-          window.location = "./addMenuBackoffice";
+          router.push("./addMenuBackoffice");
         });
       }
     },
@@ -161,7 +161,7 @@ export default new Vuex.Store({
       ) {
         VueSimpleAlert.fire("Preencha todos os campos");
       } else {
-        window.location = "./room";
+        router.push("/room");
         VueSimpleAlert.fire("Aluguer adicionado");
       }
     },
@@ -178,7 +178,7 @@ export default new Vuex.Store({
         VueSimpleAlert.fire("Preencha todos os campos");
       } else {
         VueSimpleAlert.fire("Reserva adicionada");
-        window.location = "./Events";
+        router.push("./Events");
       }
     },
     SET_MENUS: (state, foodMenus) => {
@@ -481,7 +481,6 @@ export default new Vuex.Store({
           payload.reason
         )
       );
-      alert(payload.date_required);
     },
     async addUserWorkshop({ commit }, payload) {
       commit(

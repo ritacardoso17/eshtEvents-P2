@@ -114,7 +114,6 @@ export default {
       } else {
         VueSimpleAlert.fire("Não pode alterar o estado da reserva");
       }
-      alert(id)
     },
     async refuseReservation(id, tipoEstado) {
         try {

@@ -245,14 +245,6 @@ export default {
       this.img = img;
       this.type = type;
       this.id = id;
-      alert(
-        this.name +
-          this.img +
-          "APARTIR DAQUI" +
-          this.type +
-          "APARTIR DAQUI" +
-          this.id
-      );
     },
     async saveMenu() {
       try {

@@ -435,14 +435,6 @@ export default {
         alert(err);
       }
     },
-    // async getAllComponents() {
-    //   try {
-    //     await this.$store.dispatch("getComponentsMenus");
-    //     this.components = this.getComponentsMenus;
-    //   } catch (err) {
-    //     alert(err);
-    //   }
-    // },
     async getAllUniforms() {
       try {
         await this.$store.dispatch("getUniforms");

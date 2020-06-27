@@ -2,7 +2,12 @@
   <div>
     <b-form>
       <div class="form-group">
-        <input type="search" v-model="searchTxt" id="filterTxt" placeholder="Escreve aqui..." />
+        <input
+          type="search"
+          v-model="searchTxt"
+          id="filterTxt"
+          placeholder="Escreve aqui..."
+        />
       </div>
       <div class="form-group">
         <select v-model="selectE" id="sltFilter">
@@ -10,7 +15,8 @@
             v-for="typeE in eventType2"
             :key="typeE"
             @change="filterMenus()"
-          >{{ typeE.descritivo }}</option>
+            >{{ typeE.descritivo }}</option
+          >
         </select>
       </div>
     </b-form>
@@ -33,11 +39,12 @@
               v-b-modal="menu.id_menu.toString()"
               id="cardBtn"
               @click="getAllComponents(menu.id_menu)"
-            >Ver mais</b-button>
+              >Ver mais</b-button
+            >
             <div>
               <b-modal
                 :id="menu.id_menu.toString()"
-                :title="menu.name + ' - ' + menu.descritivo"
+                :title="menu.name + ' - ' + menu.tipo_reserva"
                 ok-only
                 ok-title="cancel"
               >
@@ -51,8 +58,7 @@
                       v-for="component in components"
                       :key="component.id_menu"
                     >
-                      <p  
-                        id="components">-->{{component.descritivo }}</p>
+                      <p id="components">-->{{ component.descritivo }}</p>
                     </div>
                   </div>
                 </div>

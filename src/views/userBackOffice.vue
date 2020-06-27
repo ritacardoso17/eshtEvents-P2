@@ -103,7 +103,7 @@ export default {
           alert(err);
         }
       } else {
-        VueSimpleAlert.fire("Não pode eliminar o utilizador que esta loggado");
+        VueSimpleAlert.fire("Não pode eliminar a sua própria conta!");
       }
     },
     async changeUser(id, tipoUser) {

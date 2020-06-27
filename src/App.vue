@@ -6,7 +6,8 @@
           this.$route.name !== 'login' &&
           this.$route.name !== 'about' &&
           this.$route.name !== 'register' &&
-          this.$route.name !== 'menuadmin' &&  this.$route.name !== 'notFound'
+          this.$route.name !== 'menuadmin' &&
+          this.$route.name !== 'notFound'
       "
     >
       <NavBar />
@@ -14,7 +15,13 @@
       <Footer />
     </div>
     <div
-      v-else-if="this.$route.name === 'login'  || this.$route.name === 'notFound'||  this.$route.name === 'about' || this.$route.name === 'register' ||  this.$route.name === 'menuadmin'"
+      v-else-if="
+        this.$route.name === 'login' ||
+          this.$route.name === 'notFound' ||
+          this.$route.name === 'about' ||
+          this.$route.name === 'register' ||
+          this.$route.name === 'menuadmin'
+      "
     >
       <NavBar />
       <router-view></router-view>
@@ -39,22 +46,22 @@ export default {
 <style>
 @font-face {
   font-family: Channel;
-  src: url(/assets/Fonts/Channel.ttf);
+  src: url(./assets/Fonts/Channel.ttf);
 }
 
 @font-face {
   font-family: Champagne;
-  src: url(/assets/Fonts/Champagne&Limousines.ttf);
+  src: url(./assets/Fonts/Champagne&Limousines.ttf);
 }
 
 @font-face {
   font-family: GeosansLight;
-  src: url(/assets/Fonts/GeosansLight.ttf);
+  src: url(./assets/Fonts/GeosansLight.ttf);
 }
 
 @font-face {
   font-family: ScriptMTBold;
-  src: url(/assets/Fonts/ScriptMTBold.ttf);
+  src: url(./assets/Fonts/ScriptMTBold.ttf);
 }
 
 #app {

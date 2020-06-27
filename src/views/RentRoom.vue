@@ -246,7 +246,6 @@ export default {
         
       } catch (err) {
         alert(err);
-        alert(this.date_reserv)
       }
     }
   }

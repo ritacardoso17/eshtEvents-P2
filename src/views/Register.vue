@@ -28,7 +28,9 @@
             required
             v-model="password"
           />
-          <label for="confirmarPassTxt" class="confLabel">Confirmar Palavra-chave:</label>
+          <label for="confirmarPassTxt" class="confLabel"
+            >Confirmar Palavra-chave:</label
+          >
           <input
             type="password"
             class="form-control"
@@ -68,22 +70,20 @@
           />
           <label for="sltSchool" class="schoolLabel">Instituição:</label>
           <select id="sltSchool" v-model="school">
-            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">
-              {{
+            <option v-for="s in schools" :value="s.id_ipp" :key="s.id_ipp">{{
               s.nome
-              }}
-            </option>
+            }}</option>
           </select>
         </div>
-        <input type="link" id="urlAvatar" v-model="imgPerfil" :placeholder="imgPerfil" />
-        <div id="avatar">
-          <img id="avatar1" :src="imgPerfil" />
-        </div>
+        <input
+          type="link"
+          id="urlAvatar"
+          v-model="imgPerfil"
+          :placeholder="imgPerfil"
+        />
+        <img id="avatar1" :src="imgPerfil" style="object-fit:cover" />
         <p href id="addAvatar">Insira Url do avatar</p>
         <button type="submit" class="btnConf">Confirmar</button>
-        <!-- <button type="button" class="btn btn-link float-right">
-          <router-link to="/login">Login</router-link>
-        </button>-->
       </form>
     </div>
     <hr class="line2" />
@@ -131,9 +131,8 @@ export default {
         } catch (err) {
           alert(err);
         }
-      }
-      else{
-         VueSimpleAlert.fire("Passwords diferentes");
+      } else {
+        VueSimpleAlert.fire("Passwords diferentes");
       }
     },
     saveStorage() {
@@ -308,8 +307,12 @@ export default {
   border: 2px solid #232323;
 }
 #avatar1 {
-  width: 48%;
-  height: 36%;
+  position: absolute;
+  top: 10%;
+  width: 230px;
+  height: 230px;
+  left: -62%;
+  border: 2px solid #232323;
 }
 #addAvatar {
   position: absolute;

@@ -26,9 +26,11 @@
         </p>
       </div>
     </div>
-    <button class="btnAboutUs" @click="location()">
-      Descobre mais sobre nós
-    </button>
+    <router-link to="/about">
+      <button class="btnAboutUs">
+        Descobre mais sobre nós
+      </button>
+    </router-link>
     <router-link to="/profile">
       <!--PARA TIRAR-->
     </router-link>
@@ -37,7 +39,11 @@
       <!-- PRIMEIRO CARD -->
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
+        <b-card
+          no-body
+          class="overflow-hidden cards"
+          style="max-width: 70vw; margin-bottom: 50px;"
+        >
           <div class="card-header" id="header">
             Eventos e Catering
             <hr id="line" />
@@ -82,7 +88,11 @@
       </div>
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
+        <b-card
+          no-body
+          class="overflow-hidden cards"
+          style="max-width: 70vw; margin-bottom: 50px;"
+        >
           <div class="card-header" id="header">
             Espaços
             <hr id="line" />
@@ -128,7 +138,11 @@
       </div>
 
       <div class="row">
-        <b-card no-body class="overflow-hidden cards" style="max-width: 70vw; margin-bottom: 50px;">
+        <b-card
+          no-body
+          class="overflow-hidden cards"
+          style="max-width: 70vw; margin-bottom: 50px;"
+        >
           <div class="card-header" id="header">
             Workshops
             <hr id="line" />
@@ -170,13 +184,7 @@
 // @ is an alias to /src
 
 export default {
-  name: "home",
-  components: {},
-  methods: {
-    location() {
-      window.location = "./About";
-    }
-  }
+  name: "home"
 };
 </script>
 
