@@ -8,7 +8,8 @@
       v-bind:style="{ display: size }"
       :to="{ path: '/addWorkshop' }"
       class="btnAdd"
-    >Adicionar</b-button>
+      >Adicionar</b-button
+    >
     <!--GERA TABELA COM DADOS DOS WORKSHOPS-->
     <b-table
       bordered
@@ -25,7 +26,8 @@
           size="sm"
           @click="row.toggleDetails"
           style="left:30px; margin:7px"
-        >Mostrar workshop</b-button>
+          >Mostrar workshop</b-button
+        >
       </template>
       <!-- Mostar Detalhes do WORKSHOP -->
       <template v-slot:row-details="row">
@@ -63,12 +65,13 @@
           size="sm"
           @click="removeWorkshop(row.item.id_workshop)"
           style="margin:10px;"
-        >Eliminar Workshop</b-button>
+          >Eliminar Workshop</b-button
+        >
         <b-button
           class="btnChange"
           size="sm"
           @click="
-            editWorkshop(
+            editWorkshops(
               row.item.id_workshop,
               row.item.name,
               row.item.img,
@@ -79,23 +82,30 @@
               row.item.info
             )
           "
-        >Editar</b-button>
+          >Editar</b-button
+        >
       </template>
     </b-table>
     <!-- EDITAR WORKSHOP  -->
     <div class="container" v-bind:style="{ display: size2 }">
       <h2>Editar Workshop</h2>
-      <b-form v-on:submit.prevent="saveWorkshop()">
+      <b-form v-on:submit.prevent="changeWorkshop()">
         <div class="container">
           <div class="row">
             <div class="col">
               <!-- NOME -->
-              <b-form-group id="input-group-1" label="Titulo do Workshop:" label-for="input-1"></b-form-group>
+              <b-form-group
+                id="input-group-1"
+                label="Titulo do Workshop:"
+                label-for="input-1"
+              ></b-form-group>
               <input type="text" v-model="title" style=" width: 300px;" />
               <br />
 
               <!-- VAGAS -->
-              <b-form-label for="txtVacancies" class="nameLabel">Numero de Vagas do Workshop:</b-form-label>
+              <b-form-label for="txtVacancies" class="nameLabel"
+                >Numero de Vagas do Workshop:</b-form-label
+              >
               <br />
               <input
                 type="number"
@@ -108,7 +118,9 @@
               />
               <br />
               <!-- LOCUTOR -->
-              <b-form-label for="txtTeacher" class="nameLabel">Locutor do Workshop:</b-form-label>
+              <b-form-label for="txtTeacher" class="nameLabel"
+                >Locutor do Workshop:</b-form-label
+              >
               <br />
               <input
                 type="text"
@@ -121,7 +133,9 @@
 
             <div class="col">
               <!-- IMAGEM -->
-              <b-form-label name="image" for="txtImage" class="nameLabel">Imagem do Menu:</b-form-label>
+              <b-form-label name="image" for="txtImage" class="nameLabel"
+                >Imagem do Menu:</b-form-label
+              >
               <br />
               <input type="link" class="form-control-center" v-model="img" />
               <br />
@@ -129,23 +143,32 @@
             </div>
             <!-- DATA -->
             <div class="col">
-              <b-form-label for="txtdate" class="nameLabel">Data do Workshop:</b-form-label>
-              <br />
-              <input type="date" class="form-control-center" id="txtdate" v-model="date" />
-              <!-- SITIO -->
-              <br />
-              <b-form-label for="txtPlace" class="nameLabel">Lugar do Workshop:</b-form-label>
+              <b-form-label for="txtdate" class="nameLabel"
+                >Data do Workshop:</b-form-label
+              >
               <br />
               <input
-                type="text"
+                type="date"
                 class="form-control-center"
-                id="txtLugar"
-                placeholder="Insira o lugar "
-                v-model="place"
+                id="txtdate"
+                v-model="date"
               />
+              <!-- SITIO -->
+              <br />
+              <b-form-label for="txtPlace" class="nameLabel"
+                >Lugar do Workshop:</b-form-label
+              >
+              <br />
+              <select v-model="location">
+                <option v-for="l in schools" :value="l" :key="l.id_ipp">{{
+                  l.nome
+                }}</option>
+              </select>
               <br />
               <!-- DESCRIÇAO -->
-              <b-form-label for="txtDescription" class="nameLabel">Descrição:</b-form-label>
+              <b-form-label for="txtDescription" class="nameLabel"
+                >Descrição:</b-form-label
+              >
               <b-form-textarea
                 type="text"
                 class="form-control-center"
@@ -158,9 +181,11 @@
           </div>
         </div>
 
-        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+        <b-button type="button" class="btnConf" @click="cancel()"
+          >Cancelar</b-button
+        >
 
-        <b-button type="submit" class="btnConf" @click="changeWorkshop()">Confirmar</b-button>
+        <b-button type="submit" class="btnConf">Confirmar</b-button>
       </b-form>
     </div>
   </div>
@@ -172,9 +197,11 @@ export default {
   data() {
     return {
       workshops: [],
+      location: [],
+      schools: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "nome", label: "Titulo", sortable: "true" },
+        { key: "name", label: "Titulo", sortable: "true" },
         { key: "data_hora", label: "Data", sortable: "true" },
         { key: "nr_vagas", label: "Vagas" },
         { key: "details", label: "Detalhes" },
@@ -196,9 +223,11 @@ export default {
   },
   created() {
     this.getAllWorkshops();
+    this.getAllSchools();
   },
   computed: {
-    ...mapGetters(["getWorkshops"])
+    ...mapGetters(["getWorkshops"]),
+    ...mapGetters(["getSchools"])
     // if (localStorage.getItem("workshops")) {
     //   this.$store.state.workshops = JSON.parse(
     //     localStorage.getItem("workshops")
@@ -215,6 +244,14 @@ export default {
         alert(err);
       }
     },
+    async getAllSchools() {
+      try {
+        await this.$store.dispatch("getSchools");
+        this.schools = this.getSchools;
+      } catch (err) {
+        alert(err);
+      }
+    },
     async removeWorkshop(id) {
       try {
         await this.$store.dispatch("removeWorkshop", { id: id });
@@ -226,22 +263,38 @@ export default {
     async changeWorkshop() {
       try {
         await this.$store.dispatch("editWorkshop", {
+          id: this.id,
           title: this.title,
           vacancies: this.vacancies,
-          img: "",
-          place: this.place,
-          date: this.date,
           teacher: this.teacher,
+          place: this.location.id_ipp,
+          date: this.date,
+          img: this.img,
           description: this.description
         });
-        this.password = "";
-        this.newPassword = "";
-        this.confirmPassword = "";
+        this.id = "";
+        this.title = "";
+        this.vacancies = "";
+        this.teacher = "";
+        this.place = "";
+        this.date = "";
+        this.img = "";
+        this.description = "";
       } catch (err) {
         alert(err);
+        alert(this.id);
       }
     },
-    editWorkshop(id, title, img, vacancies, place, date, teacher, description) {
+    editWorkshops(
+      id,
+      title,
+      img,
+      vacancies,
+      place,
+      date,
+      teacher,
+      description
+    ) {
       this.size = "none";
       this.size2 = "block";
 
@@ -253,32 +306,6 @@ export default {
       this.id = id;
       this.teacher = teacher;
       this.description = description;
-    },
-    saveWorkshop() {
-      for (let w in this.workshops) {
-        if (this.workshops[w].id == this.id) {
-          this.workshops[w].title = this.title;
-          this.workshops[w].vacancies = this.vacancies;
-          this.workshops[w].img = this.img;
-          this.workshops[w].place = this.place;
-          this.workshops[w].date = this.date;
-          this.workshops[w].teacher = this.teacher;
-          this.workshops[w].description = this.description;
-
-          localStorage.setItem("workshops", JSON.stringify(this.workshops));
-          this.$bvToast.toast("Workshop Editado");
-        }
-      }
-      this.size = "";
-      this.size2 = "none";
-      this.title = "";
-      this.vacancies = "";
-      this.img = "";
-      this.place = "";
-      this.date = "";
-      this.id = "";
-      this.teacher = "";
-      this.description = "";
     },
     async cancel() {
       this.size = "";

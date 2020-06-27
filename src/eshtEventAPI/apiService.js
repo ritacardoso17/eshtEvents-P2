@@ -193,8 +193,8 @@ const apiService = {
         title: title,
         n_vacancies: vacancies,
         img: img,
-        place: place,
-        date_hour: date,
+        id_local: place,
+        date: date,
         teacher: teacher,
         description: description
       })
