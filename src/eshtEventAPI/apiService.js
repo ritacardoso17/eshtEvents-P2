@@ -627,6 +627,31 @@ const apiService = {
       throw Error(response);
     }
   },
+  async addWorkshops(nome,description, n_vacancies, date_hour, teacher,id_local,img) {
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    const response = await fetch(`${API_URL}/workshops`, {
+      method: "POST",
+      headers: {
+        "x-access-token": loggedUser.token,
+        "Content-type": "application/json; charset=utf-8"
+      },
+      body: JSON.stringify({
+        nome:nome,
+        description: description,
+        n_vacancies: n_vacancies,
+        date_hour: date_hour,
+        teacher: teacher,
+        id_local:id_local,
+        img:img
+      })
+    });
+
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw Error(response);
+    }
+  },
   async addRents(id_room, date_reserv, date_required, duration, reason) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/roomRents`, {

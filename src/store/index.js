@@ -91,7 +91,6 @@ export default new Vuex.Store({
         state.userExist === false;
       }
     },
-
     LOGOUT: state => {
       apiService.logout(state.loggedUser.token);
       state.loggedUser = [];
@@ -108,25 +107,8 @@ export default new Vuex.Store({
       VueSimpleAlert.fire("Estado da reserva alterada");
     },
 
-    ADD_WORKSHOP: (state, payload) => {
-      if (!state.workshops.some(workshop => workshop.title === payload.title)) {
-        alert("");
-        state.workshops.push({
-          id: payload.id,
-          title: payload.title,
-          img: payload.img,
-          date: payload.date,
-          place: payload.place,
-          teacher: payload.teacher,
-          vacancies: payload.vacancies,
-          userEmail: [],
-          description: payload.description
-        });
-        localStorage.setItem("workshops", JSON.stringify(state.workshops));
-        VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
-      } else {
-        VueSimpleAlert.fire("Workshop com nome igual a um workshop criado.");
-      }
+    ADD_WORKSHOP: () => {
+      VueSimpleAlert.fire("Workshop adicionado!").then(() => { });
     },
     ADD_MENU: () => {
       VueSimpleAlert.fire("Menu adicionado!");
@@ -435,6 +417,20 @@ export default new Vuex.Store({
           payload.img,
           payload.type,
           payload.components
+        )
+      );
+    },
+    async addWorkshops({ commit }, payload) {
+      commit(
+        "ADD_WORKSHOP",
+        await apiService.addWorkshops(
+          payload.nome,
+          payload.description,
+          payload.n_vacancies,
+          payload.date_hour,
+          payload.teacher,
+          payload.id_local,
+          payload.img
         )
       );
     },
