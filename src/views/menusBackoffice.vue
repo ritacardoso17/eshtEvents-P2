@@ -157,7 +157,7 @@ export default {
           sortable: "true"
         },
         {
-          key: "descritivo",
+          key: "tipo_reserva",
           label: "Tipo de evento",
           sortable: "true"
         },

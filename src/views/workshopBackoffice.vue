@@ -158,9 +158,9 @@
           </div>
         </div>
 
-        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
+        <b-button type="submit" class="btnConf">Confirmar</b-button>
 
-        <b-button type="submit" class="btnConf" @click="changeWorkshop()">Confirmar</b-button>
+        <b-button type="button" class="btnConf" @click="cancel()">Cancelar</b-button>
       </b-form>
     </div>
   </div>
@@ -174,7 +174,7 @@ export default {
       workshops: [],
       //ADICIONAR O NUMERO DE PARTICIPANTES, E VER DETALHES DO WORKSHOP(FIELDS)
       fields: [
-        { key: "nome", label: "Titulo", sortable: "true" },
+        { key: "name", label: "Titulo", sortable: "true" },
         { key: "data_hora", label: "Data", sortable: "true" },
         { key: "nr_vagas", label: "Vagas" },
         { key: "details", label: "Detalhes" },
@@ -223,24 +223,6 @@ export default {
         alert(err);
       }
     },
-    async changeWorkshop() {
-      try {
-        await this.$store.dispatch("editWorkshop", {
-          title: this.title,
-          vacancies: this.vacancies,
-          img: "",
-          place: this.place,
-          date: this.date,
-          teacher: this.teacher,
-          description: this.description
-        });
-        this.password = "";
-        this.newPassword = "";
-        this.confirmPassword = "";
-      } catch (err) {
-        alert(err);
-      }
-    },
     editWorkshop(id, title, img, vacancies, place, date, teacher, description) {
       this.size = "none";
       this.size2 = "block";
@@ -271,6 +253,7 @@ export default {
       }
       this.size = "";
       this.size2 = "none";
+
       this.title = "";
       this.vacancies = "";
       this.img = "";
@@ -280,9 +263,10 @@ export default {
       this.teacher = "";
       this.description = "";
     },
-    async cancel() {
+    cancel() {
       this.size = "";
       this.size2 = "none";
+
       this.title = "";
       this.vacancies = "";
       this.img = "";

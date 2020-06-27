@@ -83,8 +83,7 @@ const apiService = {
     } else {
       throw Error(response);
     }
-  },
-  async editMenu(id, id_componente, id_tipo_reserva, description, img) {
+  }, async editMenu(id, id_componente, id_tipo_reserva, description, img) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/menus/${id}`, {
       method: "PUT",
@@ -92,12 +91,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-      body: JSON.stringify({
-        id_componente: id_componente,
-        id_tipo_reserva: id_tipo_reserva,
-        description: description,
-        img: img
-      })
+      body: JSON.stringify({ id_componente: id_componente, id_tipo_reserva: id_tipo_reserva, description: description, img: img })
     });
 
     if (response.ok) {
@@ -172,40 +166,6 @@ const apiService = {
       throw Error(response);
     }
   },
-  async editWorkshop(
-    id,
-    title,
-    vacancies,
-    img,
-    place,
-    date,
-    teacher,
-    description
-  ) {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
-    const response = await fetch(`${API_URL}/workshops/${id}`, {
-      method: "PUT",
-      headers: {
-        "x-access-token": loggedUser.token,
-        "Content-type": "application/json; charset=utf-8"
-      },
-      body: JSON.stringify({
-        title: title,
-        vacancies: vacancies,
-        img: img,
-        place: place,
-        date: date,
-        teacher: teacher,
-        description: description
-      })
-    });
-
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw Error(response);
-    }
-  },
   async updateStatusCancel(id, tipoEstado) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/changeStatusCancel/${id}`, {
@@ -255,7 +215,7 @@ const apiService = {
     }
   },
   async getExtras() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/extras`, {
       method: "GET",
       headers: {
@@ -277,7 +237,7 @@ const apiService = {
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -287,13 +247,13 @@ const apiService = {
     }
   },
   async getDecorations() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/decorations`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -303,13 +263,13 @@ const apiService = {
     }
   },
   async getUniforms() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/uniforms`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -331,6 +291,7 @@ const apiService = {
   },
   //obter menus
   async getMenus() {
+
     const response = await fetch(`${API_URL}/menus`, {
       method: "GET"
     });
@@ -365,13 +326,13 @@ const apiService = {
     }
   },
   async getAllComponents() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/allComponents`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -391,13 +352,13 @@ const apiService = {
     }
   },
   async getEventypesId(id) {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/menuTypesById/${id}`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -418,13 +379,13 @@ const apiService = {
     }
   },
   async getReservations() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/reservations`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -434,13 +395,13 @@ const apiService = {
     }
   },
   async getRoomRents() {
-    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+    let loggedUser = JSON.parse(localStorage.getItem("loggedUser"))
     const response = await fetch(`${API_URL}/roomRents`, {
       method: "GET",
       headers: {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
-      }
+      },
     });
 
     if (response.ok) {
@@ -479,10 +440,7 @@ const apiService = {
         "x-access-token": loggedUser.token,
         "Content-type": "application/json; charset=utf-8"
       },
-      body: JSON.stringify({
-        id_user: loggedUser.user[0].id_utilizador,
-        id_workshop: id_workshop
-      })
+      body: JSON.stringify({ id_user: loggedUser.user[0].id_utilizador, id_workshop: id_workshop })
     });
 
     if (response.ok) {
@@ -520,8 +478,7 @@ const apiService = {
     } else {
       throw Error(response);
     }
-  },
-  async removeUser(id) {
+  }, async removeUser(id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/users/${id}`, {
       method: "DELETE",
@@ -549,8 +506,7 @@ const apiService = {
     } else {
       throw Error(response);
     }
-  },
-  async removeMenu(id) {
+  }, async removeMenu(id) {
     let loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
     const response = await fetch(`${API_URL}/menus/${id}`, {
       method: "DELETE",

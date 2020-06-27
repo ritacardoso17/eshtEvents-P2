@@ -7,7 +7,7 @@
     <br />
     <div class="row" v-for="workshop in workshops" v-bind:key="workshop.id_workshop">
       <b-card
-        :header="workshop.nome"
+        :header="workshop.name"
         header-text-variant="white"
         header-tag="header"
         no-body
@@ -94,8 +94,8 @@ export default {
       }
     },
     orderName(a, b) {
-      if (a.nome < b.nome) return -1;
-      if (a.nome > b.nome) return 1;
+      if (a.name < b.name) return -1;
+      if (a.name > b.name) return 1;
       else return 0;
     },
     orderByName() {
