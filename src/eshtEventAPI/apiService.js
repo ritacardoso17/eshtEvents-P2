@@ -194,7 +194,7 @@ const apiService = {
         n_vacancies: vacancies,
         img: img,
         id_local: place,
-        date: date,
+        date_hour: date,
         teacher: teacher,
         description: description
       })
