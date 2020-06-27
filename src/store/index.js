@@ -108,7 +108,7 @@ export default new Vuex.Store({
     },
 
     ADD_WORKSHOP: () => {
-      VueSimpleAlert.fire("Workshop adicionado!").then(() => {});
+      VueSimpleAlert.fire("Workshop adicionado!").then(() => { });
     },
     ADD_MENU: () => {
       VueSimpleAlert.fire("Menu adicionado!");
@@ -424,10 +424,13 @@ export default new Vuex.Store({
       commit(
         "ADD_WORKSHOP",
         await apiService.addWorkshops(
-          payload.name,
-          payload.img,
-          payload.type,
-          payload.components
+          payload.nome,
+          payload.description,
+          payload.n_vacancies,
+          payload.date_hour,
+          payload.teacher,
+          payload.id_local,
+          payload.img
         )
       );
     },
