@@ -83,7 +83,6 @@ export default {
     },
 
     async sign(id) {
-      alert(id);
       try {
         await this.$store.dispatch("addUserWorkshop", {
           id_workshop: id
